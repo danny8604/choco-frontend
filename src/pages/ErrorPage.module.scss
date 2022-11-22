@@ -1,5 +1,15 @@
-@use "../styles/colors" as *;
+@use "../styles/" as *;
 
-.section {
-  display: flex;
+.errorPage {
+  height: 100vh;
+  background-color: $color-black;
+  .errorText {
+    font-size: 6rem;
+    height: 100%;
+    color: $color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

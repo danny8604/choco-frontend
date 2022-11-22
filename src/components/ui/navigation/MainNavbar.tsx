@@ -15,7 +15,7 @@ const MainNavbar = () => {
             <Link to="/">HOME</Link>
           </li>
           <li>
-            <Link to="/">SHOP</Link>
+            <Link to="/:id">SHOP</Link>
           </li>
           <li>
             <Link to="/">ABOUT</Link>

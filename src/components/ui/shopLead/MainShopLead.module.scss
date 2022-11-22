@@ -19,13 +19,13 @@
 
     h1 {
       font-size: $shopLead__fontSize--h1;
-      font-weight: 500;
+      font-weight: $text-bold;
       letter-spacing: 1.6px;
       color: $color-black;
     }
     p {
       font-size: $shopLead__fontSize--p;
-      font-weight: 400;
+      font-weight: $text-regular;
       letter-spacing: 0.6px;
       padding-bottom: 50px;
       color: $color-gray;
@@ -49,14 +49,14 @@
 
     h2 {
       font-size: $shopLead__fontSize--h2;
-      font-weight: 400;
+      font-weight: $text-regular;
       letter-spacing: 0.6px;
       padding-bottom: 15px;
       color: $color-gray;
     }
     p {
       font-size: $shopLead__fontSize--p;
-      font-weight: 400;
+      font-weight: $text-regular;
       letter-spacing: 0.6px;
       padding-bottom: 50px;
       color: $color-gray;

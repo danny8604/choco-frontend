@@ -2,6 +2,10 @@ $shopLead__fontSize--h1: 6.5rem;
 $shopLead__fontSize--h2: 5rem;
 $shopLead__fontSize--p: 1.8rem;
 
+$text-bold: 700;
+$text-medium: 500;
+$text-regular: 400;
+
 @mixin textTypo {
   display: flex;
   flex-direction: column;

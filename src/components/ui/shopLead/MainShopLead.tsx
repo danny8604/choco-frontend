@@ -6,7 +6,7 @@ const ShopLead = () => {
   return (
     <article>
       <section className={styles.mainSection}>
-        <div className={styles.text}>
+        <div className={styles.mainText}>
           <h1>DESIGNER CHAIR</h1>
           <p>FOREVER RELEVANT IN TIME</p>
           <button className={styles.shopNowbutton}>SHOP NOW ➝</button>
@@ -18,13 +18,23 @@ const ShopLead = () => {
           <p>FOREVER RELEVANT IN TIME</p>
           <button className={styles.shopNowbutton}>SHOP NOW ➝</button>
         </div>
-        <div className={styles.imgOneSide}>
-          <img src={chart06} alt="a green chair" />
+        <div className={styles.imgSide}>
+          <img
+            className={styles.imgRight}
+            loading="lazy"
+            src={chart06}
+            alt="a green chair"
+          />
         </div>
       </section>
       <section className={styles.middleSection}>
-        <div className={styles.imgOneSide}>
-          <img src={chart05} alt="a wooden chair" />
+        <div className={styles.imgSide}>
+          <img
+            className={styles.imgLeft}
+            loading="lazy"
+            src={chart05}
+            alt="a wooden chair"
+          />
         </div>
         <div className={styles.middleSectionText}>
           <h2>ANYTHING BUT ORDINARY</h2>

@@ -6,6 +6,7 @@ import searchIcon from "../../../assets/search-outline.svg";
 const MainNavbar = () => {
   return (
     <header className={styles.header}>
+      {/* <div className={styles.navInfor}></div> */}
       <nav className={styles.nav}>
         <div className={styles.logoLink}>
           <Link to="/">CHOCO</Link>
@@ -30,12 +31,12 @@ const MainNavbar = () => {
         <ul className={styles.shopIcon}>
           <li>
             <Link to="/">
-              <img src={searchIcon} className={styles.carIcon} alt="rwar" />
+              <img src={searchIcon} className={styles.Icon} alt="rwar" />
             </Link>
           </li>
           <li>
             <Link to="/">
-              <img src={carIcon} className={styles.carIcon} alt="rwar" />
+              <img src={carIcon} className={styles.Icon} alt="rwar" />
             </Link>
           </li>
         </ul>

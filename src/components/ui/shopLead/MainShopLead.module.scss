@@ -1,19 +1,19 @@
 @use "../../../styles/" as *;
 
 .mainSection {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
   background-size: cover;
   background-image: url(../../../assets/chair-03.jpg);
   width: 100%;
   height: 100vh;
   color: $color-black;
 
-  .text {
-    width: 80%;
-    height: 60%;
-    text-align: right;
+  .mainText {
+    grid-row: 2;
+    height: 70%;
+    max-width: 80%;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
     align-items: flex-end;
     @include textTypo;
 
@@ -27,7 +27,6 @@
       font-size: $shopLead__fontSize--p;
       font-weight: $text-regular;
       letter-spacing: 0.6px;
-      padding-bottom: 50px;
       color: $color-gray;
     }
   }
@@ -37,9 +36,10 @@
   display: grid;
   overflow: hidden;
   grid-template-columns: 50% 50%;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 4.125em);
 
   .middleSectionText {
+    box-shadow: inset 0 0 1.25em rgba($color-warmGray, 0.8);
     grid: 1;
     align-items: center;
     width: 100%;
@@ -58,15 +58,14 @@
       font-size: $shopLead__fontSize--p;
       font-weight: $text-regular;
       letter-spacing: 0.6px;
-      padding-bottom: 50px;
       color: $color-gray;
     }
   }
 
-  .imgOneSide {
+  .imgSide {
     img {
       width: 100%;
-      height: calc(100vh - 70px);
+      height: calc(100vh - 4.125em);
       object-fit: cover;
     }
   }

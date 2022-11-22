@@ -1,0 +1,10 @@
+$shopLead__fontSize--h1: 6.5rem;
+$shopLead__fontSize--h2: 5rem;
+$shopLead__fontSize--p: 1.8rem;
+
+@mixin textTypo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}

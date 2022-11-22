@@ -1,0 +1,17 @@
+@use "./colors" as *;
+
+@mixin warmGraybutton {
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 0.6rem 3rem;
+  border: solid 1.8px $color-warmGray;
+  background-color: $color-warmGray;
+  color: $color-white;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    border: solid 1.8px;
+    color: $color-warmGray;
+    background-color: $color-lightGray;
+  }
+}

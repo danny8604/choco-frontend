@@ -1,12 +1,15 @@
-import { useState } from "react";
-import "./App.module.scss";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainPage />,
+  },
+]);
 
 function App() {
-  return (
-    <article>
-      <p>TEST</p>
-    </article>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -1,18 +1,18 @@
 @use "./colors" as *;
 
-@mixin warmGraybutton {
+@mixin button($mainColor, $textColor, $bgColor) {
   font-size: 1rem;
   font-weight: 300;
   padding: 0.625em 2.5em;
   margin-top: 3em;
-  border: solid 1.8px $color-warmGray;
-  background-color: $color-warmGray;
-  color: $color-white;
+  border: solid 1.8px $mainColor;
+  background-color: $mainColor;
+  color: $textColor;
   cursor: pointer;
   transition: all 0.3s;
   &:hover {
     border: solid 1.8px;
-    color: $color-warmGray;
-    background-color: $color-lightGray;
+    color: $mainColor;
+    background-color: $bgColor;
   }
 }

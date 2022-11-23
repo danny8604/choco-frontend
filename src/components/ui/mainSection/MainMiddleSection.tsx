@@ -1,17 +1,10 @@
-import styles from "./MainShopLead.module.scss";
+import styles from "./MainMiddleSection.module.scss";
 import chart05 from "../../../assets/chair-05.jpg";
 import chart06 from "../../../assets/chair-06.jpg";
 
-const ShopLead = () => {
+const MainMiddleSection = () => {
   return (
-    <article>
-      <section className={styles.mainSection}>
-        <div className={styles.mainText}>
-          <h1>DESIGNER CHAIR</h1>
-          <p>FOREVER RELEVANT IN TIME</p>
-          <button className={styles.shopNowbutton}>SHOP NOW ➝</button>
-        </div>
-      </section>
+    <>
       <section className={styles.middleSection}>
         <div className={styles.middleSectionText}>
           <h2>ANYTHING BUT ORDINARY</h2>
@@ -42,8 +35,8 @@ const ShopLead = () => {
           <button className={styles.shopNowbutton}>SHOP NOW ➝</button>
         </div>
       </section>
-    </article>
+    </>
   );
 };
 
-export default ShopLead;
+export default MainMiddleSection;

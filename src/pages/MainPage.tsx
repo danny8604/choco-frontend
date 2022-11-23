@@ -1,11 +1,17 @@
 import MainNavbar from "../components/ui/navigation/MainNavbar";
-import MainShopLead from "../components/ui/shopLead/MainShopLead";
+import MainTopSection from "../components/ui/mainSection/MainTopSection";
+import MainMiddleSection from "../components/ui/mainSection/MainMiddleSection";
+import MainIntroSection from "../components/ui/mainSection/MainIntroSection";
 
 const MainPage = () => {
   return (
     <main>
-      <MainNavbar />
-      <MainShopLead />
+      <article>
+        <MainNavbar />
+        <MainTopSection />
+        <MainMiddleSection />
+        <MainIntroSection />
+      </article>
     </main>
   );
 };

@@ -6,8 +6,7 @@ const ErrorPage = () => {
     <section className={styles.errorPage}>
       <MainNavbar />
       <div className={styles.errorText}>
-        <h1>Oops</h1>
-        <p>Sorry, an unexpected error has occurred.</p>
+        <p>Sorry, an unexpected error has occurred...</p>
       </div>
     </section>
   );

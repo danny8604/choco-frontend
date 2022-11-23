@@ -1,0 +1,31 @@
+@use "../../../styles/" as *;
+
+.introSection {
+  padding: 4.25em 0;
+  color: $color-white;
+  background-color: $color-black;
+  .introSectionText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    gap: 1em;
+    text-align: center;
+    max-width: 45%;
+
+    h2 {
+      color: $color-lightGray;
+      letter-spacing: 3px;
+      font-size: 2.75rem;
+    }
+
+    p {
+      color: $color-lightGray;
+      font-size: 1rem;
+    }
+  }
+}
+
+.aboutbutton {
+  @include button($color-white, $color-warmGray, $color-warmGray);
+}

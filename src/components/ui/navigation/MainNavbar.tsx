@@ -9,14 +9,18 @@ const MainNavbar = () => {
       {/* <div className={styles.navInfor}></div> */}
       <nav className={styles.nav}>
         <div className={styles.logoLink}>
-          <Link to="/">CHOCO</Link>
+          <Link to="/" reloadDocument>
+            CHOCO
+          </Link>
         </div>
         <ul className={styles.pageLink}>
           <li>
-            <Link to="/">HOME</Link>
+            <Link to="/" reloadDocument>
+              HOME
+            </Link>
           </li>
           <li>
-            <Link to="/:id">SHOP</Link>
+            <Link to="/shop">SHOP</Link>
           </li>
           <li>
             <Link to="/">ABOUT</Link>

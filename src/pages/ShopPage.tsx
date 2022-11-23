@@ -1,4 +1,4 @@
-import MainNavbar from "../../components/ui/navigation/MainNavbar";
+import MainNavbar from "../components/navigation/MainNavbar";
 
 const ShopPage = () => {
   return (

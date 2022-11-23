@@ -8,11 +8,24 @@
   border: solid 1.8px $mainColor;
   background-color: $mainColor;
   color: $textColor;
-  cursor: pointer;
   transition: all 0.3s;
+  cursor: pointer;
   &:hover {
     border: solid 1.8px;
     color: $mainColor;
     background-color: $bgColor;
+  }
+}
+
+@mixin underLineButton {
+  color: $color-black;
+  border: none;
+  border-bottom: solid 1px $color-black;
+  background-color: $color-white;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    color: $color-warmGray;
+    border-bottom: solid 1px $color-warmGray;
   }
 }

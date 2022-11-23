@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./MainNavbar.module.scss";
-import carIcon from "../../../assets/cart-outline.svg";
-import searchIcon from "../../../assets/search-outline.svg";
+import carIcon from "../../assets/cart-outline.svg";
+import searchIcon from "../../assets/search-outline.svg";
 
 const MainNavbar = () => {
   return (

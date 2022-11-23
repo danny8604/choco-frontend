@@ -1,7 +1,9 @@
-import MainNavbar from "../components/ui/navigation/MainNavbar";
-import MainTopSection from "../components/ui/mainSection/MainTopSection";
-import MainMiddleSection from "../components/ui/mainSection/MainMiddleSection";
-import MainIntroSection from "../components/ui/mainSection/MainIntroSection";
+import MainNavbar from "../components/navigation/MainNavbar";
+import MainTopSection from "../components/mainSection/MainTopSection";
+import MainMiddleSection from "../components/mainSection/MainMiddleSection";
+import MainIntroSection from "../components/mainSection/MainIntroSection";
+import MainSofaSection from "../components/mainSection/MainSofaSection";
+import MainScrollSection from "../components/mainSection/MainScrollSection";
 
 const MainPage = () => {
   return (
@@ -11,6 +13,8 @@ const MainPage = () => {
         <MainTopSection />
         <MainMiddleSection />
         <MainIntroSection />
+        <MainSofaSection />
+        <MainScrollSection />
       </article>
     </main>
   );

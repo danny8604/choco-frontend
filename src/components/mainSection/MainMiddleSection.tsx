@@ -1,6 +1,6 @@
 import styles from "./MainMiddleSection.module.scss";
-import chart05 from "../../../assets/chair-05.jpg";
-import chart06 from "../../../assets/chair-06.jpg";
+import chart05 from "../../assets/chair-05.jpg";
+import chart06 from "../../assets/chair-06.jpg";
 
 const MainMiddleSection = () => {
   return (

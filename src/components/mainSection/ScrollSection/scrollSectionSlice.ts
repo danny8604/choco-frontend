@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "../../app/store";
+import type { RootState } from "../../../app/store";
 
 interface mouseDragState {
   isDown: boolean;
@@ -15,7 +15,7 @@ const initialState: mouseDragState = {
   clickX: 0,
 };
 
-const mouseDragSlice = createSlice({
+const scrollSectionSlice = createSlice({
   name: "mouseDrag",
   initialState,
   reducers: {
@@ -38,6 +38,6 @@ const mouseDragSlice = createSlice({
 });
 
 export const { mouseDown, mouseLeave, mouseUp, mouseMove } =
-  mouseDragSlice.actions;
+  scrollSectionSlice.actions;
 
-export default mouseDragSlice.reducer;
+export default scrollSectionSlice.reducer;

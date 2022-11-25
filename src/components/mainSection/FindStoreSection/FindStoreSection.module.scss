@@ -1,0 +1,41 @@
+@use "../../../styles/" as *;
+
+.findStoreSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 90%;
+  margin: 5% auto;
+
+  .storePhoto {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .storeInfor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2em 3em;
+    background-color: $color-darkWarmGray;
+    h3 {
+      font-size: $fontSize--h4;
+      color: $color-white;
+      letter-spacing: 1.5px;
+      padding-bottom: 0.5em;
+    }
+    p {
+      color: $color-lightGray;
+      font-size: $fontSize--p;
+      font-weight: $text-regular;
+      padding-bottom: 2em;
+    }
+    a {
+      color: $color-white;
+      font-size: $fontSize--meddium;
+      font-weight: $text-medium;
+      text-decoration: none;
+    }
+  }
+}

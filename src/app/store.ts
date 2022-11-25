@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import mouseReducer from "../components/mainSection/scrollSectionSlice";
+import scrollReducer from "../components/mainSection/ScrollSection/scrollSectionSlice";
 
 const store = configureStore({
-  reducer: { mouseDrag: mouseReducer },
+  reducer: { scroll: scrollReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

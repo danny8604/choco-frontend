@@ -1,9 +1,9 @@
-@use "../../styles/" as *;
+@use "../../../styles/" as *;
 
 .introSection {
   padding: 3.75em 0;
   color: $color-white;
-  background-color: $color-black;
+  background-color: $color-warmGray;
   .introSectionText {
     display: flex;
     flex-direction: column;

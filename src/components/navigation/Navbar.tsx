@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "./MainNavbar.module.scss";
+import styles from "./Navbar.module.scss";
 import carIcon from "../../assets/cart-outline.svg";
 import searchIcon from "../../assets/search-outline.svg";
 
-const MainNavbar = () => {
+const Navbar = () => {
   return (
     <header className={styles.header}>
       {/* <div className={styles.navInfor}></div> */}
@@ -49,4 +49,4 @@ const MainNavbar = () => {
   );
 };
 
-export default MainNavbar;
+export default Navbar;

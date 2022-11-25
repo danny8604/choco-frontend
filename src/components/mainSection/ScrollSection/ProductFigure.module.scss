@@ -1,0 +1,37 @@
+@use "../../../styles/" as *;
+
+.figure {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75em;
+
+    img {
+      max-height: 500px;
+      max-width: 400px;
+      object-fit: cover;
+    }
+
+    .productName {
+      font-size: 1.25rem;
+      color: $color-warmGray;
+      letter-spacing: 1px;
+    }
+
+    .productLink {
+      border-bottom: solid 1px $color-black;
+      a {
+        color: $color-black;
+        text-decoration: none;
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover,
+        &:active {
+          color: $color-warmGray;
+          border-bottom: solid 1px $color-warmGray;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
-import styles from "./MainIntroSection.module.scss";
+import styles from "./IntroSection.module.scss";
 
-const MainIntroSection = () => {
+const IntroSection = () => {
   return (
     <section className={styles.introSection}>
       <div className={styles.introSectionText}>
@@ -16,4 +16,4 @@ const MainIntroSection = () => {
   );
 };
 
-export default MainIntroSection;
+export default IntroSection;

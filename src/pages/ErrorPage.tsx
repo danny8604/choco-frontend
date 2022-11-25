@@ -1,4 +1,4 @@
-import MainNavbar from "../components/navigation/MainNavbar";
+import MainNavbar from "../components/navigation/Navbar";
 import styles from "./ErrorPage.module.scss";
 
 const ErrorPage = () => {

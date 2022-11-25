@@ -1,6 +1,6 @@
-import styles from "./MainTopSection.module.scss";
+import styles from "./TopSection.module.scss";
 
-const MainTopSection = () => {
+const TopSection = () => {
   return (
     <section className={styles.topSection}>
       <div className={styles.leadText}>
@@ -12,4 +12,4 @@ const MainTopSection = () => {
   );
 };
 
-export default MainTopSection;
+export default TopSection;

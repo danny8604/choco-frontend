@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "../../../app/hooks";
 import styles from "./ProductFigure.module.scss";
 
 interface ProductFigureProps {
@@ -8,14 +8,14 @@ interface ProductFigureProps {
 }
 
 const ProductFigure = ({ img, id }: ProductFigureProps) => {
-  const mouse = useAppSelector((state) => state.mouseDrag);
+  const mouse = useAppSelector((state) => state.scroll);
   console.log(mouse.isDown);
 
   return (
     <figure className={`${styles.figure} ${!mouse.isDown && styles.test}`}>
-      <div>
+      <div className={styles.container}>
         <img src={img} />
-        <figcaption>{id}</figcaption>
+        <figcaption className={styles.productName}>{id}</figcaption>
         <div className={styles.productLink}>
           <Link to="/">EXPLORE</Link>
         </div>

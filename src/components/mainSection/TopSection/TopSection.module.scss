@@ -1,8 +1,8 @@
-@use "../../styles/" as *;
+@use "../../../styles/" as *;
 
 .topSection {
   background-size: cover;
-  background-image: url(../../assets/chair-03.jpg);
+  background-image: url(../../../assets/mainSectionIMG/chair-03.jpg);
   height: 100vh;
 
   .leadText {

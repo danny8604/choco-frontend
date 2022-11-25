@@ -1,9 +1,9 @@
-import styles from "./MainAddToCartSection.module.scss";
-import chair01 from "../../assets/chair-01.jpg";
-import chair02 from "../../assets/chair-02.jpg";
-import chair07 from "../../assets/chair-07.jpg";
+import styles from "./AddToCartSection.module.scss";
+import chair01 from "../../../assets/mainSectionIMG/chair-01.jpg";
+import chair02 from "../../../assets/mainSectionIMG/chair-02.jpg";
+import chair07 from "../../../assets/mainSectionIMG/chair-07.jpg";
 
-const MainAddToCartSection = () => {
+const AddToCartSection = () => {
   return (
     <section className={styles.sofaSection}>
       <div className={styles.sofaCardLeft}>
@@ -36,4 +36,4 @@ const MainAddToCartSection = () => {
   );
 };
 
-export default MainAddToCartSection;
+export default AddToCartSection;

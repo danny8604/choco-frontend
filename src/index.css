@@ -1,17 +1,17 @@
 @font-face {
   font-family: "DMSansBold";
   src: local("DMSansBold"),
-    url("./fonts/DMsans/DMSans-Bold.ttf") format("truetype");
+    url("./assets/fonts/DMsans/DMSans-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "DMSansMedium";
   src: local("DMSansMedium"),
-    url("./fonts/DMsans/DMSans-Medium.ttf") format("truetype");
+    url("./assets/fonts/DMsans/DMSans-Medium.ttf") format("truetype");
 }
 @font-face {
   font-family: "DMSansRegular";
   src: local("DMSansRegular"),
-    url("./fonts/DMsans/DMSans-Regular.ttf") format("truetype");
+    url("./assets/fonts/DMsans/DMSans-Regular.ttf") format("truetype");
 }
 
 *,

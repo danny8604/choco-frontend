@@ -1,9 +1,9 @@
-import styles from "./MainSofaSection.module.scss";
+import styles from "./MainAddToCartSection.module.scss";
 import chair01 from "../../assets/chair-01.jpg";
 import chair02 from "../../assets/chair-02.jpg";
 import chair07 from "../../assets/chair-07.jpg";
 
-const MainSofaSection = () => {
+const MainAddToCartSection = () => {
   return (
     <section className={styles.sofaSection}>
       <div className={styles.sofaCardLeft}>
@@ -36,4 +36,4 @@ const MainSofaSection = () => {
   );
 };
 
-export default MainSofaSection;
+export default MainAddToCartSection;

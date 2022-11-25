@@ -1,21 +1,27 @@
-import styles from "./productFigure.module.scss";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../../app/hooks";
+import styles from "./ProductFigure.module.scss";
 
-interface productFigureProps {
+interface ProductFigureProps {
   img: string;
   id: string;
 }
 
-const productFigure = ({ img, id }: productFigureProps) => {
-  console.log(img);
+const ProductFigure = ({ img, id }: ProductFigureProps) => {
+  const mouse = useAppSelector((state) => state.mouseDrag);
+  console.log(mouse.isDown);
+
   return (
-    <figure className={styles.figure}>
-      <div className={styles.weapper}>
+    <figure className={`${styles.figure} ${!mouse.isDown && styles.test}`}>
+      <div>
         <img src={img} />
         <figcaption>{id}</figcaption>
-        <button className={styles.button}>EXPLORE</button>
+        <div className={styles.productLink}>
+          <Link to="/">EXPLORE</Link>
+        </div>
       </div>
     </figure>
   );
 };
 
-export default productFigure;
+export default ProductFigure;

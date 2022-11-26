@@ -1,0 +1,45 @@
+@use "../../styles/" as *;
+
+.topSection {
+  display: grid;
+  gap: 0.5px;
+  grid-template-columns: repeat(4, 1fr);
+  padding-top: 4.125em;
+  height: 100vh;
+
+  .container {
+    @include centerTextBackground;
+    background-color: $color-darkBlack;
+    background-blend-mode: multiply;
+    transition: all 0.5s;
+    text-decoration: none;
+
+    h4 {
+      font-size: $fontSize--h4;
+      font-weight: $text-bold;
+      letter-spacing: 3px;
+      color: $color-white;
+    }
+
+    &:hover {
+      background-color: $color-white;
+
+      & h4 {
+        color: $color-darkBlack;
+      }
+    }
+  }
+
+  .LivingRoom {
+    background-image: url(../../assets//shopImg/shop01.jpg);
+  }
+  .homeOffice {
+    background-image: url(../../assets//shopImg/shop01.jpg);
+  }
+  .diningRoom {
+    background-image: url(../../assets//shopImg/shop01.jpg);
+  }
+  .others {
+    background-image: url(../../assets//shopImg/shop01.jpg);
+  }
+}

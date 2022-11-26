@@ -1,0 +1,8 @@
+// Used: ShopTop ,
+
+@mixin centerTextBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}

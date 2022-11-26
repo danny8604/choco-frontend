@@ -12,7 +12,9 @@ const ProductFigure = ({ img, id }: ProductFigureProps) => {
   console.log(mouse.isDown);
 
   return (
-    <figure className={`${styles.figure} ${!mouse.isDown && styles.test}`}>
+    <figure
+      className={`${styles.scrollFigure} ${!mouse.isDown && styles.test}`}
+    >
       <div className={styles.container}>
         <img src={img} />
         <figcaption className={styles.productName}>{id}</figcaption>

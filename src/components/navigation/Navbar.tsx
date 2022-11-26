@@ -15,9 +15,7 @@ const Navbar = () => {
         </div>
         <ul className={styles.pageLink}>
           <li>
-            <Link to="/" reloadDocument>
-              HOME
-            </Link>
+            <Link to="/">HOME</Link>
           </li>
           <li>
             <Link to="/shop">SHOP</Link>

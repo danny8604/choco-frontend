@@ -1,0 +1,32 @@
+@use "../../styles/" as *;
+
+.topSection {
+  background-size: cover;
+  background-image: url();
+  background-color: $color-gray;
+  background-blend-mode: multiply;
+  padding-top: 4.125em;
+  height: 100vh;
+
+  .leadText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 80%;
+    height: 100%;
+    h1 {
+      font-size: $fontSize--h1;
+      font-weight: $text-bold;
+      letter-spacing: 4px;
+      color: $color-white;
+    }
+    p {
+      font-size: $fontSize--p;
+      font-weight: $text-regular;
+      letter-spacing: 0.6px;
+      color: $color-white;
+    }
+  }
+}

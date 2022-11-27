@@ -9,7 +9,6 @@ interface ProductFigureProps {
 
 const ProductFigure = ({ img, id }: ProductFigureProps) => {
   const mouse = useAppSelector((state) => state.scroll);
-  console.log(mouse.isDown);
 
   return (
     <figure

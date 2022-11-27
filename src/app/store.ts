@@ -1,12 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import scrollReducer from "../components/mainSection/ScrollSection/scrollSectionSlice";
+import navbarReducer from "../components/navigation/NavbarSlice";
+import { pokemonApi } from "./api";
 
 const store = configureStore({
-  reducer: { scroll: scrollReducer },
+  reducer: {
+    scroll: scrollReducer,
+    navbar: navbarReducer,
+    [pokemonApi.reducerPath]: pokemonApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(pokemonApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+console.log(pokemonApi.reducerPath);
+console.log(pokemonApi.reducer);
 
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export default store;

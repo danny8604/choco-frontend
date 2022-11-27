@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../../app/store";
 
 interface mouseDragState {
@@ -26,7 +26,7 @@ const scrollSectionSlice = createSlice({
     mouseLeave(state) {
       state.isDown = false;
     },
-    mouseUp(state, action) {
+    mouseUp(state) {
       state.isDown = false;
       state.isDragged = false;
     },

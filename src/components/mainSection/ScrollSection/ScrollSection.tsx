@@ -24,7 +24,6 @@ const ScrollSection = () => {
 
   const mouseDownHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
-    console.log("Click once", e.clientX);
     dispatch(mouseDown({ clickX: e.clientX }));
   };
   const mouseLeaveHandler = () => {
@@ -32,12 +31,11 @@ const ScrollSection = () => {
   };
   const mouseUpHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
-    dispatch(mouseUp({ prevX: e.clientX }));
+    dispatch(mouseUp());
   };
   const mouseMoveHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (!mouse.isDown) return;
-    console.log("eclientX - prev", e.clientX - mouse.clickX);
     dispatch(
       mouseMove({
         startX: e.clientX - mouse.clickX,

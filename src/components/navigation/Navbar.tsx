@@ -1,12 +1,32 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-import carIcon from "../../assets/cart-outline.svg";
+import cartIcon from "../../assets/cart-outline.svg";
 import searchIcon from "../../assets/search-outline.svg";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { cartClick, searchClick, showModalToggle } from "./NavbarSlice";
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
+  const navbar = useAppSelector((state) => state.navbar);
+
+  const searchClickHandler = () => {
+    dispatch(showModalToggle());
+    if (navbar.showModalToggle) {
+      dispatch(showModalToggle());
+    }
+    dispatch(searchClick());
+  };
+
+  const cartClickHandler = () => {
+    dispatch(showModalToggle());
+    if (navbar.showModalToggle) {
+      dispatch(showModalToggle());
+    }
+    dispatch(cartClick());
+  };
+
   return (
     <header className={styles.header}>
-      {/* <div className={styles.navInfor}></div> */}
       <nav className={styles.nav}>
         <div className={styles.logoLink}>
           <Link to="/" reloadDocument>
@@ -21,25 +41,25 @@ const Navbar = () => {
             <Link to="/shop">SHOP</Link>
           </li>
           <li>
-            <Link to="/">ABOUT</Link>
+            <Link to="/about">ABOUT</Link>
           </li>
           <li>
-            <Link to="/">CONTACT</Link>
+            <Link to="/contact">CONTACT</Link>
           </li>
           <li>
-            <Link to="/">LOGIN</Link>
+            <Link to="/login">LOGIN</Link>
           </li>
         </ul>
         <ul className={styles.shopIcon}>
           <li>
-            <Link to="/">
+            <button onClick={searchClickHandler}>
               <img src={searchIcon} className={styles.Icon} alt="rwar" />
-            </Link>
+            </button>
           </li>
           <li>
-            <Link to="/">
-              <img src={carIcon} className={styles.Icon} alt="rwar" />
-            </Link>
+            <button onClick={cartClickHandler}>
+              <img src={cartIcon} className={styles.Icon} alt="rwar" />
+            </button>
           </li>
         </ul>
       </nav>

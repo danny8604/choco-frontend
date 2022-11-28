@@ -1,0 +1,62 @@
+@use "../../styles/" as *;
+
+.productDetails {
+  max-width: 85%;
+  margin: 0 auto;
+  .productFigure {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-row: 1fr;
+    padding: 4em 0;
+
+    .productImg {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-row: 1/2;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .detailsFigcaption {
+      grid-row: 1/-1;
+      padding: 6em;
+      .productTextContainer {
+        padding: 1em 0;
+        border-top: solid 1px $color-lightGray-1;
+
+        &:last-child {
+          border-bottom: solid 1px $color-lightGray-1;
+        }
+
+        .productTextTitle {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          h5 {
+            font-size: $fontSize--h5;
+            font-weight: $text-medium;
+            color: $color-darkBlack;
+            letter-spacing: 1.2px;
+          }
+        }
+
+        .productMoreDescript {
+          h6 {
+            padding-top: 2em;
+            font-size: $fontSize--p--Small;
+            font-weight: $text-medium;
+            color: $color-black;
+          }
+          p {
+            padding: 1em 0;
+            color: $color-black;
+            font-size: $fontSize--p--Small;
+          }
+        }
+      }
+    }
+  }
+}

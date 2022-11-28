@@ -7,6 +7,7 @@ $fontSize--h2: 3rem;
 $fontSize--h3: 2.25rem;
 $fontSize--h4: 1.625rem;
 $fontSize--h5: 1.5rem;
+$fontSize--h6: 1.125rem;
 $fontSize--p: 1.125rem;
 $fontSize--p--Small: 1rem;
 
@@ -22,4 +23,10 @@ $text-regular: 400;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
+}
+
+@mixin flex-directionColumn-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

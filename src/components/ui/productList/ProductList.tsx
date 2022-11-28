@@ -1,7 +1,12 @@
 import styles from "./ProductList.module.scss";
 import Figure from "../../ui/figure/Figure";
+import { ProductsType } from "../../../app/type";
 
-const ProductList = () => {
+type ProductListProps = {
+  props: ProductsType[];
+};
+
+const ProductList = ({ props }: ProductListProps) => {
   return (
     <section className={styles.productSection}>
       <ul className={styles.listContainer}>
@@ -19,7 +24,17 @@ const ProductList = () => {
         </li>
       </ul>
       <div className={styles.productContainer}>
-        <Figure />
+        {props.map((map) => (
+          <Figure
+            key={map.id}
+            id={map.id}
+            descript={map.descript}
+            src={map.src}
+            series={map.series}
+            price={map.price}
+            category={map.category}
+          />
+        ))}
       </div>
     </section>
   );

@@ -3,13 +3,16 @@
 .figureContainer {
   border-bottom: solid 1px $color-black;
   padding: 2.5em 0;
+
   a {
     text-decoration: none;
   }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .imgContainer {
+    img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
   }
   .textContainer {
     color: $color-black;

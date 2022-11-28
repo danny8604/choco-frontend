@@ -5,12 +5,15 @@ import DiningRoomPage from "./pages/DiningRoomPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomeRoomPage from "./pages/HomeRoomPage";
 import LivingRoomPage from "./pages/LivingRoomPage";
-import LivingRoomProductPage from "./pages/LivingRoomProductPage";
+import LivingRoomProductPage from "./pages/ProductPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import OthersPage from "./pages/OthersPage";
 import Root from "./pages/Root";
 import ShopPage from "./pages/ShopPage";
+import { useEffect } from "react";
+import { databaseURL } from "./app/firebase-config";
+import ProductPage from "./pages/ProductPage";
 
 const router = createBrowserRouter([
   {
@@ -27,13 +30,14 @@ const router = createBrowserRouter([
         element: <ShopPage />,
       },
       {
+        path: "product/:id",
+        element: <ProductPage />,
+      },
+      {
         path: "shop/Living-Room",
         element: <LivingRoomPage />,
       },
-      {
-        path: "shop/Living-Room/:id",
-        element: <LivingRoomProductPage />,
-      },
+
       {
         path: "shop/Home-Room",
         element: <HomeRoomPage />,
@@ -60,17 +64,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
-  // {
-  //   path: "main",
-  //   element: <MainPage />,
-  //   errorElement: <ErrorPage />,
-  // },
-  // {
-  //   path: "shop",
-  //   element: <ShopPage />,
-  //   errorElement: <ErrorPage />,
-  // },
 ]);
 
 function App() {

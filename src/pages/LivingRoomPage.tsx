@@ -1,16 +1,17 @@
 import { useProducts } from "../app/hooks";
 import LivingRoomTop from "../components/shop/livingRoom/LivingRoomTop";
-import ProductList from "../components/ui/productList/ProductList";
+import ShopList from "../components/ui/shopList/ShopList";
 
 const LivingRoomPage = () => {
-  const { productsData: livingProducts } = useProducts(
-    "products/livingRoom.json"
+  const { productsData } = useProducts("products.json");
+  const livingProducts = productsData.filter(
+    (map) => map.category === "livingRoom"
   );
 
   return (
     <main>
       <LivingRoomTop />
-      <ProductList props={livingProducts} />
+      <ShopList props={livingProducts} />
     </main>
   );
 };

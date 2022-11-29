@@ -20,43 +20,10 @@
         object-fit: cover;
       }
     }
-    .detailsFigcaption {
+    .detailsContainer {
+      list-style: none;
       grid-row: 1/-1;
       padding: 6em;
-      .productTextContainer {
-        padding: 1em 0;
-        border-top: solid 1px $color-lightGray-1;
-
-        &:last-child {
-          border-bottom: solid 1px $color-lightGray-1;
-        }
-
-        .productTextTitle {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          h5 {
-            font-size: $fontSize--h5;
-            font-weight: $text-medium;
-            color: $color-darkBlack;
-            letter-spacing: 1.2px;
-          }
-        }
-
-        .productMoreDescript {
-          h6 {
-            padding-top: 2em;
-            font-size: $fontSize--p--Small;
-            font-weight: $text-medium;
-            color: $color-black;
-          }
-          p {
-            padding: 1em 0;
-            color: $color-black;
-            font-size: $fontSize--p--Small;
-          }
-        }
-      }
     }
   }
 }

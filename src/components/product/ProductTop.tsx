@@ -1,12 +1,13 @@
 import styles from "./ProductTop.module.scss";
 import dummyImg from "../../assets/productImg/874.jpg";
+import dummyImg222 from "../../assets/productImg/111111.png";
 
 const ProductTop = () => {
   return (
     <section className={styles.productTop}>
       <figure className={styles.productFigure}>
         <div className={styles.productImg}>
-          <img src={dummyImg} />
+          <img src={dummyImg222} />
         </div>
         <figcaption className={styles.productFigcaption}>
           <div className={styles.textContainer}>

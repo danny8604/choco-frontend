@@ -1,0 +1,61 @@
+@use "../../../styles/" as *;
+
+.detailsTextContainer {
+  padding: 1em 0;
+  border-top: solid 1px $color-lightGray-1;
+  transition: all 0.5s;
+
+  &:last-child {
+    border-bottom: solid 1px $color-lightGray-1;
+  }
+
+  .detailsTextTitle {
+    display: flex;
+    align-items: center;
+    border: none;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+    background-color: white;
+
+    h5 {
+      font-size: $fontSize--h5;
+      font-weight: $text-medium;
+      color: $color-darkBlack;
+      letter-spacing: 1px;
+    }
+    svg {
+      height: 5%;
+      width: 5%;
+      transition: all 0.6s;
+    }
+  }
+
+  .detailsMoreDescript {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.6s;
+    h6 {
+      padding-top: 2em;
+      font-size: $fontSize--p--Small;
+      font-weight: $text-medium;
+      color: $color-black;
+    }
+    p {
+      padding: 1em 0;
+      color: $color-black;
+      font-size: $fontSize--p--Small;
+    }
+  }
+
+  &.detailsActive .detailsMoreDescript {
+    opacity: 1;
+    max-height: 450px;
+  }
+  &.detailsActive .detailsTextTitle {
+    svg {
+      transform: scaleY(-1);
+    }
+  }
+}

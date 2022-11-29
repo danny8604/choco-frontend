@@ -52,12 +52,12 @@ const Navbar = () => {
         </ul>
         <ul className={styles.shopIcon}>
           <li>
-            <button onClick={searchClickHandler}>
+            <button onClick={() => searchClickHandler()}>
               <img src={searchIcon} className={styles.Icon} alt="rwar" />
             </button>
           </li>
           <li>
-            <button onClick={cartClickHandler}>
+            <button onClick={() => cartClickHandler()}>
               <img src={cartIcon} className={styles.Icon} alt="rwar" />
             </button>
           </li>

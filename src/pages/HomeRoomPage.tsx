@@ -1,13 +1,16 @@
-import ProductList from "../components/ui/productList/ProductList";
+import ShopList from "../components/ui/shopList/ShopList";
 import HomeRoomTop from "../components/shop/homeRoom/HomeRoomTop";
 import { useProducts } from "../app/hooks";
 
 const HomeRoomPage = () => {
-  const { productsData: homeProducts } = useProducts("products/homeRoom.json");
+  const { productsData } = useProducts("products.json");
+  const homeProducts = productsData.filter(
+    (map) => map.category === "homeRoom"
+  );
   return (
     <main>
       <HomeRoomTop />
-      <ProductList props={homeProducts} />
+      <ShopList props={homeProducts} />
     </main>
   );
 };

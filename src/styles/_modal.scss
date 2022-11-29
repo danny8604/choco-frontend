@@ -1,0 +1,16 @@
+@use "./setting" as *;
+@use "./colors" as *;
+
+@mixin modalAnimation {
+  margin-top: $navbar__headerHeight;
+  padding: 5em;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  background-color: $color-white;
+  transform: translateX(200%);
+  opacity: 0;
+  transition: all 0.6s;
+}

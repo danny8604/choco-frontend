@@ -18,7 +18,7 @@
     .productFigcaption {
       @include flex-directionColumn-between;
       gap: 1.5em;
-      padding: 4em;
+      padding: 5em;
       .textContainer {
         .productDescript {
           border-top: solid 1px $color-lightGray-1;

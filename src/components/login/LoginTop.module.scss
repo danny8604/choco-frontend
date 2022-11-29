@@ -18,44 +18,5 @@
       letter-spacing: 2px;
       color: $color-black;
     }
-    .userForm {
-      max-width: 22%;
-      display: flex;
-      flex-direction: column;
-      padding-top: 1.25em;
-      text-align: center;
-      border-bottom: solid 1.2px $color-lightGray-1;
-      .userInput {
-        padding-bottom: 4em;
-        input {
-          padding: 1em;
-          border: none;
-          border: solid 1px $color-lightGray-1;
-          width: 100%;
-          font-size: $fontSize--p--Small;
-          letter-spacing: 0.5px;
-          &:first-child {
-            border-bottom: none;
-          }
-        }
-      }
-      .rememberCheck {
-        padding-bottom: 2em;
-        label {
-          padding-left: 1em;
-          color: $color-black;
-          font-size: $fontSize--p--Small;
-          letter-spacing: 0.5px;
-        }
-      }
-    }
-    .linkContainer {
-      padding-top: 2em;
-      a {
-        color: $color-gray;
-        border-bottom: solid 1px $color-lightGray-1;
-        text-decoration: none;
-      }
-    }
   }
 }

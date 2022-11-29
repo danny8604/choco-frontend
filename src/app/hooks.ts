@@ -28,3 +28,17 @@ export const useProducts = (sort: string) => {
 
   return { productsData, error, isLoading };
 };
+
+// ProductPage Detailsmessage.
+
+export const useDetailsMessage = (
+  title: string,
+  descriptTitle: string,
+  descript: string
+) => {
+  return {
+    title: title,
+    descriptTitle: descriptTitle,
+    descript: descript,
+  };
+};

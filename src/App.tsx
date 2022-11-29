@@ -5,15 +5,13 @@ import DiningRoomPage from "./pages/DiningRoomPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomeRoomPage from "./pages/HomeRoomPage";
 import LivingRoomPage from "./pages/LivingRoomPage";
-import LivingRoomProductPage from "./pages/ProductPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import OthersPage from "./pages/OthersPage";
 import Root from "./pages/Root";
 import ShopPage from "./pages/ShopPage";
-import { useEffect } from "react";
-import { databaseURL } from "./app/firebase-config";
 import ProductPage from "./pages/ProductPage";
+// import "./App.css";
 
 const router = createBrowserRouter([
   {

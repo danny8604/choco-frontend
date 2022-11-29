@@ -1,13 +1,17 @@
-import ProductList from "../components/ui/productList/ProductList";
+import ShopList from "../components/ui/shopList/ShopList";
 import OthersTop from "../components/shop/others/OthersTop";
 import { useProducts } from "../app/hooks";
 
 const OthersPage = () => {
-  const { productsData: OthersProducts } = useProducts("products/Others.json");
+  const { productsData } = useProducts("products.json");
+  const OthersProducts = productsData.filter(
+    (map) => map.category === "others"
+  );
+
   return (
     <main>
       <OthersTop />
-      <ProductList props={OthersProducts} />
+      <ShopList props={OthersProducts} />
     </main>
   );
 };

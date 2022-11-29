@@ -1,15 +1,16 @@
-import ProductList from "../components/ui/productList/ProductList";
+import ShopList from "../components/ui/shopList/ShopList";
 import DiningRoomTop from "../components/shop/diningRoom/DiningRoomTop";
 import { useProducts } from "../app/hooks";
 
 const DiningRoomPage = () => {
-  const { productsData: DiningProducts } = useProducts(
-    "products/DiningRoom.json"
+  const { productsData } = useProducts("products.json");
+  const DiningProducts = productsData.filter(
+    (map) => map.category === "diningRoom"
   );
   return (
     <main>
       <DiningRoomTop />
-      <ProductList props={DiningProducts} />
+      <ShopList props={DiningProducts} />
     </main>
   );
 };

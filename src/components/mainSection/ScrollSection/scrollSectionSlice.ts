@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../../app/store";
 
-interface mouseDragState {
+interface MouseDragState {
   isDown: boolean;
   isDragged: boolean;
   startX: number;
   clickX: number;
 }
 
-const initialState: mouseDragState = {
+const initialState: MouseDragState = {
   isDown: false,
   isDragged: false,
   startX: 0,

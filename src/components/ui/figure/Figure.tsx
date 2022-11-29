@@ -14,7 +14,6 @@ const Figure = ({
     return new URL(`../../../assets/productImg/${name}.jpg`, import.meta.url)
       .href;
   }
-  console.log(src);
 
   return (
     <figure className={styles.figureContainer}>

@@ -4,8 +4,6 @@ import chair08 from "../../../assets/mainSectionIMG/chair-08.jpg";
 import chair09 from "../../../assets/mainSectionIMG/chair-09.jpg";
 import styles from "./ScrollSection.module.scss";
 
-// import leftArrow from "../../../assets/chevron-back-outline.svg";
-import rightArrow from "../../../assets/chevron-forward-outline.svg";
 import { useEffect, useRef } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";

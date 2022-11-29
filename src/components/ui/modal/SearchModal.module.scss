@@ -1,0 +1,38 @@
+@use "../../../styles/" as *;
+
+.contentContainer {
+  @include modalAnimation;
+  .searchInput {
+    input {
+      width: 100%;
+      font-size: $fontSize--h4;
+      border: none;
+      border-bottom: solid 1px $color-black;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .searchFigure {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4em;
+
+    .messageContaiter {
+      padding: 3em;
+      text-align: center;
+      h4 {
+        font-size: $fontSize--h4;
+        font-weight: $text-medium;
+        color: $color-warmGray;
+        letter-spacing: 1.2px;
+      }
+    }
+  }
+}
+
+.active {
+  overflow-y: auto;
+  opacity: 1;
+  transform: translateX(100%);
+}

@@ -11,6 +11,7 @@ import OthersPage from "./pages/OthersPage";
 import Root from "./pages/Root";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
+import Register from "./components/register/Register";
 // import "./App.css";
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },

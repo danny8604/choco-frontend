@@ -19,3 +19,5 @@ const app = initializeApp(firebaseConfig);
 
 export const databaseURL =
   "https://react-ecom-cfcb1-default-rtdb.firebaseio.com";
+
+export const apiKey = "AIzaSyDb4xyceOHnRKNdbMkfIf7hVKT_jW_k0mI";

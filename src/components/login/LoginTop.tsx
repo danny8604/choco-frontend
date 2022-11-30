@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
-import LoginForm from "../ui/form/LoginForm";
+import LoginForm from "../ui/form/loginForm/LoginForm";
 import styles from "./LoginTop.module.scss";
 
 const LoginTop = () => {
+  const test = () => {
+    console.log("🦔🦔🦔🦔🦔");
+  };
   return (
     <section className={styles.topSection}>
       <div className={styles.leadText}>

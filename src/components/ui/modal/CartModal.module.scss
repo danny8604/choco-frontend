@@ -1,9 +1,0 @@
-@use "../../../styles/" as *;
-
-.contentContainer {
-  @include modalAnimation;
-}
-.active {
-  opacity: 1;
-  transform: translateX(100%);
-}

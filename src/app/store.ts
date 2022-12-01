@@ -2,8 +2,11 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import scrollReducer from "../components/mainSection/ScrollSection/scrollSectionSlice";
 import navbarReducer from "../components/navigation/NavbarSlice";
 import formInputReducer from "../components/ui/form/formInput/FormInputSlice";
-import postFormReducer from "../components/ui/form/loginForm/PostFormSlice";
-import searchInputReducer from "../components/ui/modal/SearchModalSlice";
+import loginFormReducer from "../components/login/loginForm/LoginFormSlice";
+
+import signUpFormReducer from "../components/register/signUpForm/SignUpFormSlice";
+import searchInputReducer from "../components/search/SearchModalSlice";
+import postDataReducer from "../components/register/signUpForm/PostDataSlice";
 import { productsApi } from "./apiSlice";
 
 const store = configureStore({
@@ -12,7 +15,9 @@ const store = configureStore({
     navbar: navbarReducer,
     searchInput: searchInputReducer,
     formInput: formInputReducer,
-    postForm: postFormReducer,
+    loginForm: loginFormReducer,
+    signUpForm: signUpFormReducer,
+    postData: postDataReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

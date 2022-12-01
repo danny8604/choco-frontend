@@ -3,6 +3,7 @@ export interface ProductsType {
   descript: string;
   price: number;
   series: number;
-  src: string;
+  path: string;
+  img: { imgA: string; imgB: string; imgC: string; imgD: string; imgE: string };
   category: string;
 }

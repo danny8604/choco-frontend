@@ -1,0 +1,14 @@
+@use "../../styles/" as *;
+
+.buttonContainer {
+  button {
+    cursor: pointer;
+    font-size: $fontSize--p--Small;
+    color: $color-black;
+    width: 100%;
+    border: none;
+    background-color: white;
+    border: solid 1px $color-lightGray-1;
+    padding: 1em;
+  }
+}

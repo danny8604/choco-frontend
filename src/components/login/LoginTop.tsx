@@ -1,4 +1,4 @@
-import LoginForm from "../ui/form/loginForm/LoginForm";
+import LoginForm from "./loginForm/LoginForm";
 import styles from "./LoginTop.module.scss";
 
 const LoginTop = () => {

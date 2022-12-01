@@ -1,4 +1,4 @@
-import SignUpForm from "../ui/form/signUpForm/SignUpForm";
+import SignUpForm from "./signUpForm/SignUpForm";
 import styles from "./Register.module.scss";
 
 const Register = () => {

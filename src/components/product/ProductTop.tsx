@@ -1,42 +1,33 @@
 import styles from "./ProductTop.module.scss";
-import dummyImg from "../../assets/productImg/874.jpg";
-import dummyImg222 from "../../assets/productImg/111111.png";
+import { useAppDispatch, useAppSelector, useProducts } from "../../app/hooks";
+import ProductText from "./ProductText";
+import { useParams } from "react-router-dom";
+import ProductImg from "./ProductImg";
+import ProductAddToCartBtn from "./ProductAddToCartBtn";
+import ProductDescript from "./ProductDescript";
 
 const ProductTop = () => {
+  const { productId } = useParams();
+  const { productsData } = useProducts();
+  const [currentProduct] = productsData.filter((map) => map.path === productId);
+
+  if (!currentProduct) return;
+
   return (
     <section className={styles.productTop}>
       <figure className={styles.productFigure}>
-        <div className={styles.productImg}>
-          <img src={dummyImg222} />
-        </div>
+        <ProductImg imgA={currentProduct.img.imgA} />
         <figcaption className={styles.productFigcaption}>
-          <div className={styles.textContainer}>
-            <div className={styles.productDescript}>
-              <h3>PRODUCT ID</h3>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores, adipisci eius architecto unde suscipit itaque ipsam
-                saepe, facere magni omnis ab voluptates enim facilis beatae.
-                Expedita, aliquam suscipit?
-              </p>
-            </div>
-            <div className={styles.productText}>
-              <h6>Model</h6>
-              <p>Model 3</p>
-            </div>
-            <div className={styles.productText}>
-              <h6>Series</h6>
-              <p>3100</p>
-            </div>
-            <div className={styles.productText}>
-              <h6>Price</h6>
-              <p>$247.99</p>
-            </div>
+          <div>
+            <ProductDescript />
+            <ProductText type={"Model"} typeText={`${currentProduct.id}`} />
+            <ProductText
+              type={"Series"}
+              typeText={`${currentProduct.series}`}
+            />
+            <ProductText type={"Price"} typeText={`${currentProduct.price}`} />
           </div>
-          <div className={styles.buttonContainer}>
-            <button>ADD TO CART</button>
-            <button>FIND STORE</button>
-          </div>
+          <ProductAddToCartBtn />
         </figcaption>
       </figure>
     </section>

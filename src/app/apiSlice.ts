@@ -9,12 +9,13 @@ export const productsApi = createApi({
   }),
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: (name: string) => `${name}`,
+      query: (name: string) => `${name}.json`,
     }),
+    getUserInfor: builder.query({ query: (name: string) => `${name}.json` }),
   }),
 });
 
-export const { useGetAllProductsQuery } = productsApi;
+export const { useGetAllProductsQuery, useGetUserInforQuery } = productsApi;
 
 // TEST
 export const pokemonApi = createApi({

@@ -1,0 +1,17 @@
+@use "../../styles/" as *;
+
+.productDescript {
+  border-top: solid 1px $color-lightGray-1;
+  padding: 1em 0;
+  h3 {
+    font-size: $fontSize--h3;
+    color: $color-darkBlack;
+    letter-spacing: 1px;
+  }
+  p {
+    font-size: $fontSize--p--Small;
+    color: $color-black;
+    padding-top: 1em;
+    padding-bottom: 3em;
+  }
+}

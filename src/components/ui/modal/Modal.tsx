@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import Backdrop from "./backdrop/Backdrop";
-import CartModal from "./CartModal";
+import CartModal from "../../cart/CartModal";
 import styles from "./Modal.module.scss";
-import SearchModal from "./SearchModal";
+import SearchModal from "../../search/SearchModal";
 
 const Modal = () => {
   const navbar = useAppSelector((state) => state.navbar);

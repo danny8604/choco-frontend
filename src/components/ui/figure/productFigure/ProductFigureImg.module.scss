@@ -1,0 +1,11 @@
+@use "../../../../styles/" as *;
+
+.imgContainer {
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: auto;
+    transform: scale(1.1);
+    object-fit: cover;
+  }
+}

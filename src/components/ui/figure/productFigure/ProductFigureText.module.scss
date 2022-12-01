@@ -1,0 +1,17 @@
+@use "../../../../styles/" as *;
+
+.textContainer {
+  color: $color-black;
+  display: flex;
+  padding-top: 2em;
+  flex-direction: column;
+  .productDescript {
+    h4 {
+      font-size: $fontSize--h5;
+      padding-bottom: 0.5em;
+    }
+  }
+  .moreLink {
+    padding-top: 3em;
+  }
+}

@@ -1,0 +1,22 @@
+@use "../../styles/" as *;
+
+.productText {
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: solid 1px $color-lightGray-1;
+
+  &:last-child {
+    padding-bottom: 0.5em;
+    border-bottom: solid 1px $color-lightGray-1;
+  }
+  h6 {
+    font-size: $fontSize--h6;
+    color: $color-black;
+    letter-spacing: 1px;
+  }
+  p {
+    font-size: $fontSize--p--Small;
+  }
+}

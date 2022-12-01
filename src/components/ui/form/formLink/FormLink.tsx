@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { resetFormState } from "../formInput/FormInputSlice";
 import styles from "./FormLink.module.scss";
 
 interface FormLinkProps {
@@ -7,8 +9,13 @@ interface FormLinkProps {
 }
 
 const FormLink = ({ link, content }: FormLinkProps) => {
+  const dispatch = useDispatch();
+  const resetFormHandler = () => {
+    dispatch(resetFormState());
+  };
+
   return (
-    <div className={styles.linkContainer}>
+    <div onClick={() => resetFormHandler()} className={styles.linkContainer}>
       <Link to={`/${link}`}>{content}</Link>
     </div>
   );

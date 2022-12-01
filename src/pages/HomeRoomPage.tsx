@@ -1,9 +1,9 @@
-import ShopList from "../components/ui/shopList/ShopList";
-import HomeRoomTop from "../components/shop/homeRoom/HomeRoomTop";
+import ShopList from "../components/shop/ShopList";
+import HomeRoomTop from "../components/homeRoom/HomeRoomTop";
 import { useProducts } from "../app/hooks";
 
 const HomeRoomPage = () => {
-  const { productsData } = useProducts("products.json");
+  const { productsData } = useProducts();
   const homeProducts = productsData.filter(
     (map) => map.category === "homeRoom"
   );

@@ -7,9 +7,9 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-// Fetch productApi(chair data) from Firebase.
-export const useProducts = (sort: string) => {
-  const { data, error, isLoading } = useGetAllProductsQuery(sort);
+// Fetch productApi get all product data from Firebase.
+export const useProducts = () => {
+  const { data, error, isLoading } = useGetAllProductsQuery("products");
 
   const products = { ...data };
 
@@ -21,16 +21,45 @@ export const useProducts = (sort: string) => {
       price: products[key].price,
       descript: products[key].descript,
       series: products[key].series,
-      src: products[key].src,
+      path: products[key].path,
       category: products[key].category,
+      img: products[key].img,
     });
   }
 
   return { productsData, error, isLoading };
 };
 
-// ProductPage Detailsmessage.
+// useUser Infor
+export const useUser = (userId: string | null) => {
+  const {
+    data,
+    error: userError,
+    isLoading: userIsLoading,
+  } = useGetAllProductsQuery(`users/${userId}`);
 
+  if (!data) return console.log("tete");
+  const userData = { ...data };
+
+  return { userData, userError, userIsLoading };
+};
+
+// useUserCart Infor
+export const useUserCart = (userId: string | null) => {
+  const {
+    data,
+    error: cartError,
+    isLoading: crtIsLoading,
+  } = useGetAllProductsQuery(`users/${userId}`);
+
+  if (!data) return;
+  const userData = { ...data };
+  const [userCartData] = Object.values(userData);
+
+  return { userCartData, cartError, crtIsLoading };
+};
+
+// ProductPage Detailsmessage.
 export const useDetailsMessage = (
   title: string,
   descriptTitle: string,
@@ -42,3 +71,5 @@ export const useDetailsMessage = (
     descript: descript,
   };
 };
+
+//serImageUrl;

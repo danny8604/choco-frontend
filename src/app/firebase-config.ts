@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getDatabase, push, ref } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,3 +22,7 @@ export const databaseURL =
   "https://react-ecom-cfcb1-default-rtdb.firebaseio.com";
 
 export const apiKey = "AIzaSyDb4xyceOHnRKNdbMkfIf7hVKT_jW_k0mI";
+
+const db = getDatabase();
+
+// const testPush = push(ref(db), "posts");

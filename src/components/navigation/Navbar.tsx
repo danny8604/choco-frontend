@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-import cartIcon from "../../assets/cart-outline.svg";
-import searchIcon from "../../assets/search-outline.svg";
+import cartIcon from "../../assets/svg/cart-outline.svg";
+import searchIcon from "../../assets/svg/search-outline.svg";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { cartClick, searchClick, showModalToggle } from "./NavbarSlice";
-import { logout } from "../ui/form/loginForm/PostFormSlice";
+import { logout } from "../login/loginForm/LoginFormSlice";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const navbar = useAppSelector((state) => state.navbar);
-  const postForm = useAppSelector((state) => state.postForm);
+  const { isLoading, signInToken, isLogin } = useAppSelector(
+    (state) => state.loginForm
+  );
 
   const searchClickHandler = () => {
     dispatch(showModalToggle());
@@ -28,12 +30,11 @@ const Navbar = () => {
   };
 
   const LogoutHandler = () => {
-    if (postForm.signInToken) {
+    if (signInToken) {
       alert("You have been logged out. 🐄🐄");
       dispatch(logout());
     }
   };
-  console.log(postForm.entities);
 
   return (
     <header className={styles.header}>
@@ -58,7 +59,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link onClick={() => LogoutHandler()} to="/login">
-              {postForm.isLoging ? "LOGOUT" : "LOGIN"}
+              {isLogin ? "LOGOUT" : "LOGIN"}
             </Link>
           </li>
         </ul>

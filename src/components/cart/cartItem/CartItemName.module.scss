@@ -1,0 +1,6 @@
+@use "../../../styles/" as *;
+
+.cartItemName {
+  font-size: $fontSize--h5;
+  letter-spacing: 1px;
+}

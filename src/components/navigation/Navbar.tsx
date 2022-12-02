@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import cartIcon from "../../assets/svg/cart-outline.svg";
 import searchIcon from "../../assets/svg/search-outline.svg";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import { cartClick, searchClick, showModalToggle } from "./NavbarSlice";
 import { logout } from "../login/loginForm/LoginFormSlice";
 

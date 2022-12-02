@@ -1,6 +1,6 @@
 import ShopList from "../components/shop/ShopList";
 import OthersTop from "../components/others/OthersTop";
-import { useProducts } from "../app/hooks";
+import { useProducts } from "../app/hooks/hooks";
 
 const OthersPage = () => {
   const { productsData } = useProducts();

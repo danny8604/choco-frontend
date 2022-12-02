@@ -3,17 +3,14 @@ import ProductDetailList from "./ProductDetailsList";
 import ProductDetailsImg from "./ProductDetailsImg";
 import { messageData } from "../../../app/data";
 import { useParams } from "react-router-dom";
-import { useProducts } from "../../../app/hooks";
+import { useProducts } from "../../../app/hooks/hooks";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const { productsData } = useProducts();
   const [currentProduct] = productsData.filter((map) => map.path === productId);
 
-  if (!currentProduct) return;
-  console.log(currentProduct, "🐧🐧");
-  console.log(currentProduct.img, "🐧🐧🦔🦔");
-  console.log(productId, "🐄🐄");
+  if (!currentProduct) return <></>;
 
   return (
     <section className={styles.productDetails}>

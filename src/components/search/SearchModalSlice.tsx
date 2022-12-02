@@ -17,10 +17,10 @@ const SearchModalSlice = createSlice({
   name: "searchModal",
   initialState,
   reducers: {
-    inputValue(state, action) {
+    searchInputValue(state, action) {
       state.value = action.payload;
     },
-    valueIsValid(state) {
+    searchValueIsValid(state) {
       state.valueNotEmpty = state.value.length >= 1;
     },
     filterSearchData(state, action) {
@@ -29,7 +29,7 @@ const SearchModalSlice = createSlice({
   },
 });
 
-export const { inputValue, filterSearchData, valueIsValid } =
+export const { searchInputValue, filterSearchData, searchValueIsValid } =
   SearchModalSlice.actions;
 
 export default SearchModalSlice.reducer;

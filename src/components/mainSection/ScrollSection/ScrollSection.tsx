@@ -6,7 +6,7 @@ import styles from "./ScrollSection.module.scss";
 
 import { useEffect, useRef } from "react";
 
-import { useAppSelector, useAppDispatch } from "../../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../app/hooks/hooks";
 import {
   mouseDown,
   mouseLeave,

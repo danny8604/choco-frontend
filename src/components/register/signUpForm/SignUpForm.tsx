@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks/hooks";
 import FormInput from "../../ui/form/formInput/FormInput";
 import { resetFormState } from "../../ui/form/formInput/FormInputSlice";
 import FormLink from "../../ui/form/formLink/FormLink";
@@ -7,7 +7,7 @@ import { resetSignUpToken } from "./SignUpFormSlice";
 import styles from "./SignUpForm.module.scss";
 import { SignUpFormData } from "./SignUpFormSlice";
 import { useNavigate } from "react-router-dom";
-import { PostData } from "./PostDataSlice";
+import { PostData } from "../../../app/PostDataSlice";
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
@@ -38,18 +38,6 @@ const SignUpForm = () => {
     if (signUpToken) {
       alert("Register succeed!!");
       navigate("/login");
-      console.log(signUpUserId, "signUpUserId");
-      dispatch(
-        PostData({
-          userId: signUpUserId,
-          postData: {
-            cart: {
-              test: "🦔🦔",
-            },
-          },
-        })
-      );
-
       dispatch(resetSignUpToken());
     }
   }, [signUpToken]);

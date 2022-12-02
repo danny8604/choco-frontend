@@ -1,17 +1,17 @@
 import styles from "./ProductTop.module.scss";
-import { useAppDispatch, useAppSelector, useProducts } from "../../app/hooks";
+import { useProducts } from "../../app/hooks/hooks";
 import ProductText from "./ProductText";
 import { useParams } from "react-router-dom";
 import ProductImg from "./ProductImg";
 import ProductAddToCartBtn from "./ProductAddToCartBtn";
 import ProductDescript from "./ProductDescript";
+import Loading from "../loading/Loading";
 
 const ProductTop = () => {
   const { productId } = useParams();
-  const { productsData } = useProducts();
+  const { productsData, error, isLoading } = useProducts();
   const [currentProduct] = productsData.filter((map) => map.path === productId);
-
-  if (!currentProduct) return;
+  if (isLoading) return <Loading />;
 
   return (
     <section className={styles.productTop}>
@@ -25,9 +25,9 @@ const ProductTop = () => {
               type={"Series"}
               typeText={`${currentProduct.series}`}
             />
-            <ProductText type={"Price"} typeText={`${currentProduct.price}`} />
+            <ProductText type={"Price"} typeText={`$${currentProduct.price}`} />
           </div>
-          <ProductAddToCartBtn />
+          <ProductAddToCartBtn props={currentProduct} />
         </figcaption>
       </figure>
     </section>

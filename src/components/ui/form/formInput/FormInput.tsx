@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";
 import {
   getEmail,
   getPassword,
@@ -17,6 +17,7 @@ interface FormInputProps {
 
 const FormInput = ({ buttonText }: FormInputProps) => {
   const formInput = useAppSelector((state) => state.formInput);
+  const navbar = useAppSelector((state) => state.navbar);
   const dispatch = useAppDispatch();
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
@@ -71,7 +72,7 @@ const FormInput = ({ buttonText }: FormInputProps) => {
           formIsValid && styles.inputActive
         } ${emailTouchedButNotValid && styles.emailNotValid}  ${
           passwordTouchedButNotValid && styles.passwordNotValid
-        }`}
+        } ${navbar.showModalToggle && styles.modalActive}`}
       >
         <input
           className={styles.emailInput}

@@ -1,6 +1,6 @@
 import ShopList from "../components/shop/ShopList";
 import HomeRoomTop from "../components/homeRoom/HomeRoomTop";
-import { useProducts } from "../app/hooks";
+import { useProducts } from "../app/hooks/hooks";
 
 const HomeRoomPage = () => {
   const { productsData } = useProducts();

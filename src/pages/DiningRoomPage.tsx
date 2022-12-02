@@ -1,6 +1,6 @@
 import ShopList from "../components/shop/ShopList";
 import DiningRoomTop from "../components/diningRoom/DiningRoomTop";
-import { useProducts } from "../app/hooks";
+import { useProducts } from "../app/hooks/hooks";
 
 const DiningRoomPage = () => {
   const { productsData } = useProducts();

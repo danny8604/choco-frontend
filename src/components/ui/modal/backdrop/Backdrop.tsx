@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";
 import { backdropClick } from "../../../navigation/NavbarSlice";
 import styles from "./Backdrop.module.scss";
 

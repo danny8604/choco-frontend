@@ -1,4 +1,4 @@
-import { useProducts } from "../app/hooks";
+import { useProducts } from "../app/hooks/hooks";
 import LivingRoomTop from "../components/livingRoom/LivingRoomTop";
 import ShopList from "../components/shop/ShopList";
 

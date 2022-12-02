@@ -1,0 +1,13 @@
+@use "../../styles/" as *;
+
+.messageContaiter {
+  grid-column: 1/-1;
+  padding: 3em;
+  text-align: center;
+  h4 {
+    font-size: $fontSize--h4;
+    font-weight: $text-medium;
+    color: $color-warmGray;
+    letter-spacing: 1.2px;
+  }
+}

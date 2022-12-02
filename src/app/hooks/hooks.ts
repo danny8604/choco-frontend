@@ -1,7 +1,7 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { useGetAllProductsQuery } from "./apiSlice";
-import type { RootState, AppDispatch } from "./store";
-import { ProductsType } from "../app/type";
+import { useGetAllProductsQuery } from "../apiSlice";
+import type { RootState, AppDispatch } from "../store";
+import { ProductsType } from "../type";
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
@@ -71,5 +71,3 @@ export const useDetailsMessage = (
     descript: descript,
   };
 };
-
-//serImageUrl;

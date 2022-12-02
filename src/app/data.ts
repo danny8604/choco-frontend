@@ -37,3 +37,5 @@ export const messageData = [
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quas earum inventore illum recusandae tenetur voluptatibus similique, tempore reiciendis autem at eligendi eveniet quos ipsam deleniti vero reprehenderit atque ipsa.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quas earum inventore illum recusandae tenetur voluptatibus similique, tempore reiciendis autem at eligendi eveniet quos ipsam deleniti vero reprehenderit atque ipsa.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quas earum inventore illum recusandae tenetur voluptatibus similique, tempore reiciendis autem at eligendi eveniet quos ipsam deleniti vero reprehenderit atque ipsa.",
   },
 ];
+
+export const initinalCart = {};

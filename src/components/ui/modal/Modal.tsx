@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppSelector } from "../../../app/hooks/hooks";
 import Backdrop from "./backdrop/Backdrop";
 import CartModal from "../../cart/CartModal";
 import styles from "./Modal.module.scss";

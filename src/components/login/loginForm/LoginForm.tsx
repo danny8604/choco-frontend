@@ -1,6 +1,8 @@
+import { getDatabase, ref, set } from "firebase/database";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks/hooks";
+import { PostData } from "../../../app/PostDataSlice";
 import FormInput from "../../ui/form/formInput/FormInput";
 import {
   emailValid,
@@ -18,9 +20,24 @@ const LoginForm = () => {
   const formInput = useAppSelector((state) => state.formInput);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { isLogin, isLogout, isLoading, signInToken } = useAppSelector(
+  const { isLogin, isLogout, isLoading, signInToken, userId } = useAppSelector(
     (state) => state.loginForm
   );
+  const cart = useAppSelector((state) => state.cart);
+
+  useEffect(() => {
+    if (signInToken) {
+      alert("Login succeed");
+      navigate("/shop");
+      dispatch(login());
+      const db = getDatabase();
+
+      // Updata firebase shopping cart
+      set(ref(db, `users/${userId}/`), {
+        shoppingCart: cart.shoppingCart,
+      });
+    }
+  }, [signInToken]);
 
   const LoginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,14 +52,6 @@ const LoginForm = () => {
 
     dispatch(resetFormState());
   };
-
-  useEffect(() => {
-    if (signInToken) {
-      alert("Login succeed");
-      navigate("/shop");
-      dispatch(login());
-    }
-  }, [signInToken]);
 
   return (
     <form onSubmit={LoginSubmitHandler} className={styles.formContainer}>

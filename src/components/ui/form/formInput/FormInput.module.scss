@@ -37,18 +37,22 @@
     position: relative;
     &:focus {
       outline: 1px solid $color-red;
-      position: relative;
     }
   }
 }
+
+.emailNotValid.modalActive {
+  .emailInput {
+    position: static;
+  }
+}
+
 .passwordNotValid {
   .passwordInput {
     border: solid 1px $color-red;
     background-color: rgba($color-red, 0.1);
-    position: relative;
     &:focus {
       outline: 1px solid $color-red;
-      position: relative;
     }
   }
 }

@@ -1,13 +1,17 @@
-import { useAppSelector, useUser, useUserCart } from "../../app/hooks";
+import { useAppSelector } from "../../app/hooks/hooks";
 import styles from "./CartModal.module.scss";
-import CartItem from "./CartItem";
+import CartItem from "./cartItem/CartItem";
+import CartTotalPrice from "./CartTotalPrice";
+import { useEffect } from "react";
 
 const CartModal = () => {
-  const loginForm = useAppSelector((state) => state.loginForm);
-  const userCart = useUserCart(loginForm.userId);
   const navbar = useAppSelector((state) => state.navbar);
+  const cart = useAppSelector((state) => state.cart);
+  const login = useAppSelector((state) => state.loginForm);
 
-  console.log(userCart?.userCartData);
+  useEffect(() => {
+    localStorage.setItem("shopping-cart", JSON.stringify(cart.shoppingCart));
+  }, [cart.shoppingCart]);
 
   return (
     <section
@@ -16,11 +20,17 @@ const CartModal = () => {
       }`}
     >
       <div className={styles.cartContainer}>
-        <CartItem />
+        {cart.shoppingCart.map((item) => (
+          <CartItem
+            key={item.id}
+            id={item.id}
+            img={item.img}
+            price={item.price}
+            quantity={item.quantity}
+          />
+        ))}
       </div>
-      <div className={styles.cartTotalPrice}>
-        <h3>TOTAL PRICE: $249.99</h3>
-      </div>
+      <CartTotalPrice totalPrice={cart.shoppingCartTotalPrice} />
     </section>
   );
 };

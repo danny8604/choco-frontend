@@ -23,6 +23,7 @@ export const useProducts = () => {
       series: products[key].series,
       path: products[key].path,
       category: products[key].category,
+      designer: products[key].designer,
       img: products[key].img,
     });
   }
@@ -32,9 +33,10 @@ export const useProducts = () => {
 
 // useUser Infor
 export const useUser = (userId: string | null) => {
-  const { data, error, isLoading } = useGetUserInforQuery(`users/${userId}`);
+  const { data, error, isLoading } = useGetUserInforQuery(`${userId}`);
 
   const userData = { ...data };
+  console.log(data, "Data🐄");
 
   return { userData, error, isLoading };
 };

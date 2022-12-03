@@ -6,6 +6,7 @@ export interface ProductsType {
   path: string;
   img: { imgA: string; imgB: string; imgC: string; imgD: string; imgE: string };
   category: string;
+  designer: string;
 }
 
 export interface ShoppingCartItem {

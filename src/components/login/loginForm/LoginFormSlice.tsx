@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { initinalAuth } from "../../../app/data";
 import { apiKey } from "../../../app/firebase-config";
 
 interface LoginForm {
@@ -37,6 +36,10 @@ interface loginFormState {
   isLogout: boolean;
   isLoading: boolean;
 }
+
+const initinalAuth = localStorage.getItem("auth")
+  ? JSON.parse(localStorage.getItem("auth") || "")
+  : [];
 
 const initialState: loginFormState = {
   userId: initinalAuth.userId,

@@ -1,0 +1,14 @@
+@use "../../styles/" as *;
+
+.logoLink {
+  max-width: 100%;
+  display: flex;
+  grid-column: 1;
+  a {
+    font-size: $mainNavbar__fontsize--logoLink;
+    font-weight: $text-bold;
+    letter-spacing: 2px;
+    color: $color-darkBlack;
+    text-decoration: none;
+  }
+}

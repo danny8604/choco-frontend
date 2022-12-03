@@ -1,0 +1,14 @@
+@use "../../styles/" as *;
+
+.cartIcon {
+  button {
+    border: none;
+    cursor: pointer;
+  }
+  .Icon {
+    margin-top: 3px;
+    height: $mainNavbar__fontsize--carIcon;
+    width: $mainNavbar__fontsize--carIcon;
+    filter: invert(30%);
+  }
+}

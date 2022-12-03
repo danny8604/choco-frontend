@@ -40,12 +40,4 @@ export const messageData = [
   },
 ];
 
-export const initinalShoppingCart = localStorage.getItem("shopping-cart")
-  ? JSON.parse(localStorage.getItem("shopping-cart") || "")
-  : [];
 
-export const initinalAuth = localStorage.getItem("auth")
-  ? JSON.parse(localStorage.getItem("auth") || "")
-  : [];
-
-console.log(initinalAuth, "test initinalAuth");

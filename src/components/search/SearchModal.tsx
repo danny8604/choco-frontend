@@ -26,6 +26,7 @@ const SearchModal = () => {
               path={map.path}
               series={map.series}
               price={map.price}
+              designer={map.designer}
               img={map.img}
               category={map.category}
             />

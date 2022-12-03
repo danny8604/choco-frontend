@@ -25,4 +25,6 @@ export const apiKey = "AIzaSyDb4xyceOHnRKNdbMkfIf7hVKT_jW_k0mI";
 
 const db = getDatabase();
 
+export const dbRef = ref(getDatabase());
+
 // const testPush = push(ref(db), "posts");

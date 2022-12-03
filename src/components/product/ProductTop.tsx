@@ -19,13 +19,16 @@ const ProductTop = () => {
         <ProductImg imgA={currentProduct.img.imgA} />
         <figcaption className={styles.productFigcaption}>
           <div>
-            <ProductDescript />
-            <ProductText type={"Model"} typeText={`${currentProduct.id}`} />
+            <ProductDescript id={currentProduct.id} />
+            <ProductText type={"Price"} typeText={`$${currentProduct.price}`} />
             <ProductText
               type={"Series"}
               typeText={`${currentProduct.series}`}
             />
-            <ProductText type={"Price"} typeText={`$${currentProduct.price}`} />
+            <ProductText
+              type={"Designer"}
+              typeText={`${currentProduct.designer}`}
+            />
           </div>
           <ProductAddToCartBtn props={currentProduct} />
         </figcaption>

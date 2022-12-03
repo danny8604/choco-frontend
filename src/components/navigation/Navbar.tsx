@@ -1,50 +1,16 @@
-import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-import cartIcon from "../../assets/svg/cart-outline.svg";
-import searchIcon from "../../assets/svg/search-outline.svg";
-import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import { cartClick, searchClick, showModalToggle } from "./NavbarSlice";
-import { logout } from "../login/loginForm/LoginFormSlice";
+
+import { Link } from "react-router-dom";
+import NavbarLogoLink from "./NavbarLogoLink";
+import NavbarSearch from "./NavbarSearch";
+import NavbarCart from "./NavbarCart";
+import NavbarLogin from "./NavbarLogin";
 
 const Navbar = () => {
-  const dispatch = useAppDispatch();
-  const navbar = useAppSelector((state) => state.navbar);
-  const { signInToken, isLogin, userId, isLogout, isLoading } = useAppSelector(
-    (state) => state.loginForm
-  );
-  console.log(isLogin, "test isLogin");
-
-  const searchClickHandler = () => {
-    dispatch(showModalToggle());
-    if (navbar.showModalToggle) {
-      dispatch(showModalToggle());
-    }
-    dispatch(searchClick());
-  };
-
-  const cartClickHandler = () => {
-    dispatch(showModalToggle());
-    if (navbar.showModalToggle) {
-      dispatch(showModalToggle());
-    }
-    dispatch(cartClick());
-  };
-
-  const LogoutHandler = () => {
-    if (signInToken) {
-      alert("You have been logged out. 🐄🐄");
-      dispatch(logout());
-    }
-  };
-
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <div className={styles.logoLink}>
-          <Link to="/" reloadDocument>
-            CHOCO
-          </Link>
-        </div>
+        <NavbarLogoLink />
         <ul className={styles.pageLink}>
           <li>
             <Link to="/">HOME</Link>
@@ -58,23 +24,11 @@ const Navbar = () => {
           <li>
             <Link to="/contact">CONTACT</Link>
           </li>
-          <li>
-            <Link onClick={() => LogoutHandler()} to="/login">
-              {isLogin ? "LOGOUT" : "LOGIN"}
-            </Link>
-          </li>
+          <NavbarLogin />
         </ul>
         <ul className={styles.shopIcon}>
-          <li>
-            <button onClick={() => searchClickHandler()}>
-              <img src={searchIcon} className={styles.Icon} alt="rwar" />
-            </button>
-          </li>
-          <li>
-            <button onClick={() => cartClickHandler()}>
-              <img src={cartIcon} className={styles.Icon} alt="rwar" />
-            </button>
-          </li>
+          <NavbarSearch />
+          <NavbarCart />
         </ul>
       </nav>
     </header>

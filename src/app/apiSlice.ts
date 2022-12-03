@@ -11,7 +11,9 @@ export const productsApi = createApi({
     getAllProducts: builder.query({
       query: (name: string) => `${name}.json`,
     }),
-    getUserInfor: builder.query({ query: (name: string) => `${name}.json` }),
+    getUserInfor: builder.query({
+      query: (name: string) => `/users/${name}.json`,
+    }),
   }),
 });
 

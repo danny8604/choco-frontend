@@ -1,7 +1,8 @@
-import { getDatabase, ref, set } from "firebase/database";
+import { child, get, getDatabase, ref, set } from "firebase/database";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { productsApi, useGetUserInforQuery } from "../../../app/apiSlice";
+import { dbRef } from "../../../app/firebase-config";
 import {
   useAppDispatch,
   useAppSelector,
@@ -49,6 +50,7 @@ const LoginForm = () => {
       })
     );
 
+    console.log("Login times");
     dispatch(resetFormState());
   };
 

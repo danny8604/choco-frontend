@@ -13,7 +13,7 @@ const ProductFigureText = ({ id, series }: ProductFigureTextProps) => {
         <p>{series}</p>
       </div>
       <div>
-        <p className={styles.moreLink}>More variants</p>
+        <p className={styles.moreLink}>More Infor</p>
       </div>
     </figcaption>
   );

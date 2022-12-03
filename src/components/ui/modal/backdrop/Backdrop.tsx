@@ -8,7 +8,6 @@ const Backdrop = () => {
   const backdropClickHandeler = () => {
     dispatch(backdropClick());
   };
-
   return (
     <div
       onClick={backdropClickHandeler}

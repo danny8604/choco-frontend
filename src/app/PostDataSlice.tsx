@@ -31,13 +31,10 @@ export const PostData = createAsyncThunk(
   async (data: userData) => {
     try {
       console.log(data);
-      const response = await fetch(`${databaseURL}/users/${data.userId}.json`, {
-        body: JSON.stringify(data.postData),
-        method: "POST",
-        headers: { "content-type": "application/json" },
+      const response = axios.post(`${databaseURL}/users/${data.userId}.json`, {
+        shoppingCart: data.postData,
       });
 
-      console.log(response, "23123");
       return null;
     } catch (err) {
       alert(err);

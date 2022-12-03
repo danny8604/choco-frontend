@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { initinalShoppingCart } from "../../../app/data";
+import { child, get, getDatabase, ref } from "firebase/database";
+import { useEffect } from "react";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useUser,
+} from "../../../app/hooks/hooks";
 import { ItemQuantity, ShoppingCartItem } from "../../../app/type";
 
 interface CartState {
@@ -7,6 +13,10 @@ interface CartState {
   shoppingCartTotalQuantity: number;
   shoppingCartTotalPrice: number;
 }
+
+const initinalShoppingCart = localStorage.getItem("shopping-cart")
+  ? JSON.parse(localStorage.getItem("shopping-cart") || "")
+  : [];
 
 const initialState: CartState = {
   shoppingCart: initinalShoppingCart,
@@ -23,12 +33,9 @@ const CartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
 
-      if (itemInCart) {
-        itemInCart.quantity += action.payload.quantity;
-      }
-      if (!itemInCart) {
-        state.shoppingCart.push(action.payload);
-      }
+      itemInCart
+        ? (itemInCart.quantity += action.payload.quantity)
+        : state.shoppingCart.push(action.payload);
     },
     updateTotalPriceAndQuantity(state) {
       state.shoppingCartTotalPrice = state.shoppingCart.reduce(
@@ -44,17 +51,19 @@ const CartSlice = createSlice({
       const itemInCart = state.shoppingCart.find(
         (item) => item.id === action.payload.id
       );
-      if (itemInCart) {
-        itemInCart.quantity = action.payload.quantity;
-      }
+
+      itemInCart && (itemInCart.quantity = action.payload.quantity);
     },
     removeCartItem(state, action) {
       state.shoppingCart = state.shoppingCart.filter(
         (item) => item.id !== action.payload
       );
     },
-    local(state, action) {
-      state.shoppingCart.push(action.payload);
+    resetShoppingCart(state) {
+      state.shoppingCart = [];
+    },
+    userShoppingCart(state, action) {
+      state.shoppingCart = action.payload;
     },
   },
 });
@@ -64,7 +73,8 @@ export const {
   removeCartItem,
   updateItemQuantity,
   updateTotalPriceAndQuantity,
-  local,
+  userShoppingCart,
+  resetShoppingCart,
 } = CartSlice.actions;
 
 export default CartSlice.reducer;

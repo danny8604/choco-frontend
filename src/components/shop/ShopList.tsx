@@ -1,13 +1,35 @@
 import styles from "./ShopList.module.scss";
 import ProductFigure from "../ui/figure/productFigure/ProductFigure";
 import { ProductsType } from "../../app/type";
+import { useLocation, useSearchParams } from "react-router-dom";
+import Backdrop from "../ui/modal/backdrop/Backdrop";
 
 type ShopListProps = {
   props: ProductsType[];
 };
 
 const ShopList = ({ props }: ShopListProps) => {
-  console.log(props);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const showReverse = searchParams.get("filter") === "reverse";
+  const showDesigner = searchParams.get("filter") === "designer";
+
+  const productsArr = () => {
+    if (showReverse) return [...props.map((map) => map).reverse()];
+    return props;
+  };
+  console.log(showDesigner);
+
+  const reverseHandler = () => {
+    if (showReverse) {
+      return setSearchParams({});
+    }
+    setSearchParams({ filter: "reverse" });
+  };
+
+  const designerHandler = () => {
+    setSearchParams({ filter: "designer" });
+  };
+
   return (
     <section className={styles.productSection}>
       <ul className={styles.listContainer}>
@@ -15,17 +37,14 @@ const ShopList = ({ props }: ShopListProps) => {
           <p>Filter by :</p>
         </li>
         <li>
-          <button>Type of Chair</button>
+          <button onClick={() => reverseHandler()}>Reverse</button>
         </li>
         <li>
-          <button>Product Series</button>
-        </li>
-        <li>
-          <button>Designers</button>
+          <button onClick={() => designerHandler()}>Designer</button>
         </li>
       </ul>
       <div className={styles.productContainer}>
-        {props.map((map) => (
+        {productsArr().map((map) => (
           <ProductFigure
             key={map.id}
             id={map.id}
@@ -33,6 +52,7 @@ const ShopList = ({ props }: ShopListProps) => {
             path={map.path}
             series={map.series}
             price={map.price}
+            designer={map.designer}
             img={map.img}
             category={map.category}
           />

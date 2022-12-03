@@ -1,9 +1,18 @@
-import { useAppSelector, useUser } from "../../app/hooks/hooks";
+import { useAppDispatch, useAppSelector, useUser } from "../../app/hooks/hooks";
 import styles from "./CartModal.module.scss";
 import CartItem from "./cartItem/CartItem";
 import CartTotalPrice from "./CartTotalPrice";
 import { useEffect } from "react";
-import { getDatabase, ref, set } from "firebase/database";
+import { child, get, getDatabase, ref, set } from "firebase/database";
+import { ShoppingCart, ShoppingCartItem } from "../../app/type";
+import { useDispatch } from "react-redux";
+import {
+  addToCart,
+  updateItemQuantity,
+  updateTotalPriceAndQuantity,
+  userShoppingCart,
+} from "./cartItem/CartSlice";
+import { dbRef } from "../../app/firebase-config";
 
 const CartModal = () => {
   const navbar = useAppSelector((state) => state.navbar);
@@ -11,18 +20,38 @@ const CartModal = () => {
   const { signInToken, userId, isLogin, isLogout, isLoading } = useAppSelector(
     (state) => state.loginForm
   );
-  const { userData } = useUser(userId);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (signInToken) {
+      const fetchUserCartData = async () => {
+        try {
+          const response = await get(child(dbRef, `users/${userId}/`));
+
+          if (response.exists()) {
+            dispatch(userShoppingCart(response.val().shoppingCart));
+            console.log("fefefefefefefe");
+            dispatch(updateTotalPriceAndQuantity());
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      fetchUserCartData();
+    }
+  }, [signInToken]);
 
   useEffect(() => {
     if (signInToken) {
       // Updata firebase shopping cart
-      console.log("post 🐧🐧 ");
       const db = getDatabase();
       set(ref(db, `users/${userId}/`), {
         shoppingCart: cart.shoppingCart,
       });
-      // Updata localStorage auth
     }
+
+    // Updata localStorage auth
     localStorage.setItem(
       "auth",
       JSON.stringify({
@@ -33,7 +62,10 @@ const CartModal = () => {
         isLoading: isLoading,
       })
     );
+
+    // Updata localStorage shopping-cart
     localStorage.setItem("shopping-cart", JSON.stringify(cart.shoppingCart));
+    dispatch(updateTotalPriceAndQuantity());
   }, [userId, signInToken, isLogin, isLogout, isLoading, cart.shoppingCart]);
 
   return (

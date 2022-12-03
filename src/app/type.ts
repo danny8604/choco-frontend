@@ -23,3 +23,9 @@ export interface ItemQuantity {
   id: string;
   quantity: number;
 }
+
+export interface userInfor {
+  userId: {
+    shoppingCart: ShoppingCartItem[];
+  };
+}

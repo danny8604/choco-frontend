@@ -1,7 +1,12 @@
 import { getDatabase, ref, set } from "firebase/database";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks/hooks";
+import { productsApi, useGetUserInforQuery } from "../../../app/apiSlice";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useUser,
+} from "../../../app/hooks/hooks";
 import { PostData } from "../../../app/PostDataSlice";
 import FormInput from "../../ui/form/formInput/FormInput";
 import {
@@ -30,12 +35,6 @@ const LoginForm = () => {
       alert("Login succeed");
       navigate("/shop");
       dispatch(login());
-      const db = getDatabase();
-
-      // Updata firebase shopping cart
-      set(ref(db, `users/${userId}/`), {
-        shoppingCart: cart.shoppingCart,
-      });
     }
   }, [signInToken]);
 

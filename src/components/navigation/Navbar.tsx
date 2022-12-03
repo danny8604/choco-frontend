@@ -9,9 +9,10 @@ import { logout } from "../login/loginForm/LoginFormSlice";
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const navbar = useAppSelector((state) => state.navbar);
-  const { isLoading, signInToken, isLogin } = useAppSelector(
+  const { signInToken, isLogin, userId, isLogout, isLoading } = useAppSelector(
     (state) => state.loginForm
   );
+  console.log(isLogin, "test isLogin");
 
   const searchClickHandler = () => {
     dispatch(showModalToggle());

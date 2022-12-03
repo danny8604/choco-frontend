@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { initinalShoppingCart } from "../../../app/data";
 import { ItemQuantity, ShoppingCartItem } from "../../../app/type";
 
 interface CartState {
@@ -8,9 +9,7 @@ interface CartState {
 }
 
 const initialState: CartState = {
-  shoppingCart: localStorage.getItem("shopping-cart")
-    ? JSON.parse(localStorage.getItem("shopping-cart") || "")
-    : [],
+  shoppingCart: initinalShoppingCart,
   shoppingCartTotalQuantity: 0,
   shoppingCartTotalPrice: 0,
 };

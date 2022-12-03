@@ -24,6 +24,7 @@ const ProductAddToCartBtn = ({ props }: ProductAddToCartBtnProps) => {
     dispatch(addToCart(addToCartItem));
     dispatch(updateTotalPriceAndQuantity());
   };
+
   return (
     <div className={styles.buttonContainer}>
       <button onClick={() => addToCartHandler()}>ADD TO CART</button>

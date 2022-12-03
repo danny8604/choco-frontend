@@ -1,7 +1,7 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { useGetAllProductsQuery } from "../apiSlice";
+import { useGetAllProductsQuery, useGetUserInforQuery } from "../apiSlice";
 import type { RootState, AppDispatch } from "../store";
-import { ProductsType } from "../type";
+import { ProductsType, ShoppingCart, userInfor } from "../type";
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
@@ -32,16 +32,11 @@ export const useProducts = () => {
 
 // useUser Infor
 export const useUser = (userId: string | null) => {
-  const {
-    data,
-    error: userError,
-    isLoading: userIsLoading,
-  } = useGetAllProductsQuery(`users/${userId}`);
+  const { data, error, isLoading } = useGetUserInforQuery(`users/${userId}`);
 
-  if (!data) return console.log("tete");
   const userData = { ...data };
 
-  return { userData, userError, userIsLoading };
+  return { userData, error, isLoading };
 };
 
 // useUserCart Infor

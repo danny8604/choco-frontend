@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { initinalAuth } from "../../../app/data";
 import { apiKey } from "../../../app/firebase-config";
 
 interface LoginForm {
@@ -38,12 +39,19 @@ interface loginFormState {
 }
 
 const initialState: loginFormState = {
-  userId: null,
-  signInToken: null,
-  isLogin: false,
-  isLogout: false,
-  isLoading: false,
+  userId: initinalAuth.userId,
+  signInToken: initinalAuth.signInToken,
+  isLogin: initinalAuth.isLogin,
+  isLogout: initinalAuth.isLogout,
+  isLoading: initinalAuth.isLoading,
 };
+// const initialState: loginFormState = {
+//   userId: null,
+//   signInToken: null,
+//   isLogin: false,
+//   isLogout: false,
+//   isLoading: false,
+// };
 
 const loginFormSlice = createSlice({
   name: "loginForm",
@@ -51,8 +59,10 @@ const loginFormSlice = createSlice({
   reducers: {
     login(state) {
       state.isLogin = true;
+      state.isLogout = false;
     },
     logout(state) {
+      state.isLoading = false;
       state.isLogin = false;
       state.isLogout = true;
       state.signInToken = null;

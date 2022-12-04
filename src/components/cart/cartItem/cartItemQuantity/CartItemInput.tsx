@@ -21,6 +21,8 @@ const CartItemInput = ({ id, quantity }: ItemQuantity) => {
       type="number"
       name="number"
       value={quantity}
+      min="1"
+      max="100"
       placeholder="Quantity"
     />
   );

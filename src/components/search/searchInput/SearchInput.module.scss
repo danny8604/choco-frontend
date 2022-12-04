@@ -1,0 +1,13 @@
+@use "../../../styles/" as *;
+
+.searchInput {
+  input {
+    width: 100%;
+    font-size: $fontSize--h4;
+    border: none;
+    border-bottom: solid 1px $color-black;
+    &:focus {
+      outline: none;
+    }
+  }
+}

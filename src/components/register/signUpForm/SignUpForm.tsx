@@ -7,15 +7,12 @@ import { resetSignUpToken } from "./SignUpFormSlice";
 import styles from "./SignUpForm.module.scss";
 import { SignUpFormData } from "./SignUpFormSlice";
 import { useNavigate } from "react-router-dom";
-import { PostData } from "../../../app/PostDataSlice";
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
   const formInput = useAppSelector((state) => state.formInput);
   const navigate = useNavigate();
-  const { isLoading, signUpToken, signUpUserId } = useAppSelector(
-    (state) => state.signUpForm
-  );
+  const { signUpToken } = useAppSelector((state) => state.signUpForm);
 
   const SignUpSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

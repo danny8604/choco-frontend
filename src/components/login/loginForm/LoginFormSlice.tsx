@@ -31,7 +31,6 @@ export const loginFormData = createAsyncThunk(
 
 interface loginFormState {
   userId: null | string;
-  signInToken: null | string;
   isLogin: boolean;
   isLogout: boolean;
   isLoading: boolean;
@@ -43,7 +42,6 @@ const initinalAuth = localStorage.getItem("auth")
 
 const initialState: loginFormState = {
   userId: initinalAuth.userId,
-  signInToken: initinalAuth.signInToken,
   isLogin: initinalAuth.isLogin,
   isLogout: initinalAuth.isLogout,
   isLoading: initinalAuth.isLoading,
@@ -62,13 +60,12 @@ const loginFormSlice = createSlice({
   reducers: {
     login(state) {
       state.isLogin = true;
-      state.isLogout = false;
+      state.isLogout = !state.isLogin;
     },
     logout(state) {
       state.isLoading = false;
       state.isLogin = false;
-      state.isLogout = true;
-      state.signInToken = null;
+      state.isLogout = !state.isLogin;
       state.userId = null;
     },
   },
@@ -79,8 +76,6 @@ const loginFormSlice = createSlice({
     builder.addCase(loginFormData.fulfilled, (state, action) => {
       state.isLoading = false;
       if (!action.payload) return;
-      console.log("login message", action.payload);
-      state.signInToken = action.payload.idToken;
       state.userId = action.payload.localId;
     });
     builder.addCase(loginFormData.rejected, (state) => {

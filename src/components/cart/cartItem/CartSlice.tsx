@@ -1,11 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { child, get, getDatabase, ref } from "firebase/database";
-import { useEffect } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-  useUser,
-} from "../../../app/hooks/hooks";
+
 import { ItemQuantity, ShoppingCartItem } from "../../../app/type";
 
 interface CartState {
@@ -14,12 +8,10 @@ interface CartState {
   shoppingCartTotalPrice: number;
 }
 
-const initinalShoppingCart = localStorage.getItem("shopping-cart")
-  ? JSON.parse(localStorage.getItem("shopping-cart") || "")
-  : [];
-
 const initialState: CartState = {
-  shoppingCart: initinalShoppingCart,
+  shoppingCart: localStorage.getItem("shopping-cart")
+    ? JSON.parse(localStorage.getItem("shopping-cart") || "")
+    : [],
   shoppingCartTotalQuantity: 0,
   shoppingCartTotalPrice: 0,
 };
@@ -62,7 +54,7 @@ const CartSlice = createSlice({
     resetShoppingCart(state) {
       state.shoppingCart = [];
     },
-    userShoppingCart(state, action) {
+    userShoppingCart(state, action: PayloadAction<ShoppingCartItem[]>) {
       state.shoppingCart = action.payload;
     },
   },

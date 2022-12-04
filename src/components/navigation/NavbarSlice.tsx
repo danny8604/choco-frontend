@@ -17,11 +17,11 @@ const navbarSlice = createSlice({
   initialState,
   reducers: {
     searchClick(state) {
-      state.searchIsClick = !state.searchIsClick;
+      state.searchIsClick = true;
       state.cartIsClick = false;
     },
     cartClick(state) {
-      state.cartIsClick = !state.cartIsClick;
+      state.cartIsClick = true;
       state.searchIsClick = false;
     },
     backdropClick(state) {

@@ -1,7 +1,7 @@
 import styles from "./SearchModal.module.scss";
 import { useAppSelector } from "../../app/hooks/hooks";
 import ProductFigure from "../ui/figure/productFigure/ProductFigure";
-import SearchInput from "./SearchInput";
+import SearchInput from "./searchInput/SearchInput";
 import SearchNoInputMes from "./SearchNoInputMes";
 import SearchNoResultMes from "./SearchNoResultMes";
 

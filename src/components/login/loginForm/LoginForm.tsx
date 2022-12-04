@@ -26,18 +26,15 @@ const LoginForm = () => {
   const formInput = useAppSelector((state) => state.formInput);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { isLogin, isLogout, isLoading, signInToken, userId } = useAppSelector(
-    (state) => state.loginForm
-  );
-  const cart = useAppSelector((state) => state.cart);
+  const { isLoading, userId } = useAppSelector((state) => state.loginForm);
 
   useEffect(() => {
-    if (signInToken) {
+    if (userId) {
       alert("Login succeed");
       navigate("/shop");
       dispatch(login());
     }
-  }, [signInToken]);
+  }, [userId]);
 
   const LoginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,7 +47,6 @@ const LoginForm = () => {
       })
     );
 
-    console.log("Login times");
     dispatch(resetFormState());
   };
 
@@ -59,7 +55,7 @@ const LoginForm = () => {
       <FormInput buttonText={"LOGIN ➝"} />
       <RememberCheckBox />
       <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
-      {isLoading && <h3>LOADING...... 🐄🐄🐄</h3>}
+      {isLoading && <h3>LOADING......</h3>}
     </form>
   );
 };

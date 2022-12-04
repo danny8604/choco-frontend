@@ -1,19 +1,16 @@
 import styles from "./NavbarSearch.module.scss";
-
 import searchSvgIcon from "../../assets/svg/search-outline.svg";
-import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import { searchClick, showModalToggle } from "./NavbarSlice";
+
+import { useAppDispatch } from "../../app/hooks/hooks";
+import { openSearchModal } from "../../features/searchModal/searchModalSlice";
+import { openBackdrop } from "../../features/backdrop/backdropSlice";
 
 const NavbarSearch = () => {
-  const navbar = useAppSelector((state) => state.navbar);
   const dispatch = useAppDispatch();
 
   const searchClickHandler = () => {
-    dispatch(showModalToggle());
-    if (navbar.showModalToggle) {
-      dispatch(showModalToggle());
-    }
-    dispatch(searchClick());
+    dispatch(openSearchModal());
+    dispatch(openBackdrop());
   };
 
   return (

@@ -1,0 +1,19 @@
+@use "../../../styles/" as *;
+
+.productTop {
+  padding-top: $navbar__headerHeight;
+
+  max-width: 80%;
+  margin: 0 auto;
+  .productFigure {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(2, 1fr);
+
+    .productFigcaption {
+      @include flex-directionColumn-between;
+      gap: 1.5em;
+      padding: 8em 4em;
+    }
+  }
+}

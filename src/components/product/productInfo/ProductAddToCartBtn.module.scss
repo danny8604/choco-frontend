@@ -1,0 +1,21 @@
+@use "../../../styles/" as *;
+
+.buttonContainer {
+  button {
+    cursor: pointer;
+    font-size: $fontSize--p--Small;
+    color: $color-white;
+    font-weight: $text-bold;
+    width: 100%;
+    border: none;
+    background-color: $color-black;
+    border: solid 1px $color-lightGray-1;
+    padding: 0.825em;
+    transition: all 0.3s;
+    &:hover {
+      color: $color-black;
+      background-color: $color-white;
+      border: solid 1px $color-black;
+    }
+  }
+}

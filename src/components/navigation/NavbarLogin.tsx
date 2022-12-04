@@ -3,12 +3,11 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import {
   resetShoppingCart,
   updateTotalPriceAndQuantity,
-} from "../cart/cartItem/CartSlice";
-import { logout } from "../login/loginForm/LoginFormSlice";
+} from "../../features/cart/cartItem/cartSlice";
+import { logout } from "../../features/login/loginForm/loginFormSlice";
 
 const NavbarLogin = () => {
   const { isLogin } = useAppSelector((state) => state.loginForm);
-
   const dispatch = useAppDispatch();
 
   const LogoutHandler = () => {

@@ -2,7 +2,6 @@
 @use "./colors" as *;
 
 @mixin modalAnimation {
-  margin-top: $navbar__headerHeight;
   padding: 5em;
   top: 0;
   left: 0;

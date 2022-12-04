@@ -1,5 +1,5 @@
 import React from "react";
-import ProductFigure from "./ProductFigure";
+import ProductFigure from "./ScrollFigure";
 import chair08 from "../../../assets/mainSectionIMG/chair-08.jpg";
 import chair09 from "../../../assets/mainSectionIMG/chair-09.jpg";
 import styles from "./ScrollSection.module.scss";

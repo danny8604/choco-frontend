@@ -1,4 +1,4 @@
-import LoginTop from "../components/login/LoginTop";
+import LoginTop from "../features/login/LoginTop";
 
 const LoginPage = () => {
   return (

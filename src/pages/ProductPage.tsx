@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import ProductDetails from "../components/product/productDetails/ProductDetails";
-import ProductTop from "../components/product/ProductTop";
+import ProductInfo from "../components/product/productInfo/ProductInfo";
 
 const ProductPage = () => {
   return (
     <main>
-      <ProductTop />
+      <ProductInfo />
       <ProductDetails />
     </main>
   );

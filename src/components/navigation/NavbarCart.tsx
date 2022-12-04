@@ -1,20 +1,16 @@
 import styles from "./NavbarCart.module.scss";
-
 import cartSvgIcon from "../../assets/svg/cart-outline.svg";
 
-import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import { cartClick, showModalToggle } from "./NavbarSlice";
+import { useAppDispatch } from "../../app/hooks/hooks";
+import { openCartModal } from "../../features/cartModal/cartModalSlice";
+import { openBackdrop } from "../../features/backdrop/backdropSlice";
 
 const NavbarCart = () => {
-  const navbar = useAppSelector((state) => state.navbar);
   const dispatch = useAppDispatch();
 
   const cartClickHandler = () => {
-    dispatch(showModalToggle());
-    if (navbar.showModalToggle) {
-      dispatch(showModalToggle());
-    }
-    dispatch(cartClick());
+    dispatch(openCartModal());
+    dispatch(openBackdrop());
   };
 
   return (

@@ -1,8 +1,7 @@
 import styles from "./ShopList.module.scss";
-import ProductFigure from "../ui/figure/productFigure/ProductFigure";
+import ProductFigure from "../product/productFigure/ProductFigure";
 import { ProductsType } from "../../app/type";
-import { useLocation, useSearchParams } from "react-router-dom";
-import Backdrop from "../ui/modal/backdrop/Backdrop";
+import { useSearchParams } from "react-router-dom";
 
 type ShopListProps = {
   props: ProductsType[];

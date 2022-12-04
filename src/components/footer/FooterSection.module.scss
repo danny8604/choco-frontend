@@ -1,0 +1,49 @@
+@use "../../styles/" as *;
+
+.footerSection {
+  .container {
+    padding: 6% 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8%;
+    border-top: solid 1.5px $color-black;
+    background-color: $color-lightGray;
+
+    .brandNews {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25em;
+      h3 {
+        color: $color-black;
+        font-size: $fontSize--h3;
+        letter-spacing: 2px;
+      }
+
+      p {
+        color: $color-warmGray;
+        font-size: $fontSize--p--Small;
+      }
+    }
+
+    .linkContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      li {
+        list-style: none;
+        a {
+          color: $color-black;
+          font-size: $fontSize--meddium;
+          font-weight: $text-medium;
+          text-decoration: none;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+  .footerNav {
+    padding: 0.625em 5%;
+    background-color: $color-black;
+    color: white;
+  }
+}

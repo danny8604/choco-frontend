@@ -1,22 +1,19 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import scrollReducer from "../components/mainSection/ScrollSection/scrollSectionSlice";
-import navbarReducer from "../components/navigation/NavbarSlice";
-import formInputReducer from "../components/ui/form/formInput/FormInputSlice";
-import loginFormReducer from "../components/login/loginForm/LoginFormSlice";
-
-import signUpFormReducer from "../components/register/signUpForm/SignUpFormSlice";
-import searchInputReducer from "../components/search/searchInput/searchInputSlice";
+import formInputReducer from "../features/formAuth/formAuthSlice";
+import loginFormReducer from "../features/login/loginForm/loginFormSlice";
+import signUpFormReducer from "../features/register/signUpForm/signUpFormSlice";
+import searchInputReducer from "../features/search/searchInput/searchInputSlice";
 import postDataReducer from "./PostDataSlice";
 import { productsApi } from "./apiSlice";
-import cartReducer from "../components/cart/cartItem/CartSlice";
-import searchModalReducer from "../components/search/searchModalSlice";
-import backdropReducer from "../components/ui/modal/backdrop/backdropSlice";
-import cartModalReducer from "../components/cart/cartModalSlice";
+import cartReducer from "../features/cart/cartItem/cartSlice";
+import searchModalReducer from "../features/searchModal/searchModalSlice";
+import backdropReducer from "../features/backdrop/backdropSlice";
+import cartModalReducer from "../features/cartModal/cartModalSlice";
 
 const store = configureStore({
   reducer: {
     scroll: scrollReducer,
-    navbar: navbarReducer,
     searchInput: searchInputReducer,
     formInput: formInputReducer,
     loginForm: loginFormReducer,

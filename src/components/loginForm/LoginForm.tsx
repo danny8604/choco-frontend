@@ -1,10 +1,7 @@
 import Login from "../../features/login/Login";
 import styles from "./LoginForm.module.scss";
 
-const LoginTop = () => {
-  const test = () => {
-    console.log("🦔🦔🦔🦔🦔");
-  };
+const LoginForm = () => {
   return (
     <section className={styles.topSection}>
       <div className={styles.leadText}>
@@ -15,4 +12,4 @@ const LoginTop = () => {
   );
 };
 
-export default LoginTop;
+export default LoginForm;

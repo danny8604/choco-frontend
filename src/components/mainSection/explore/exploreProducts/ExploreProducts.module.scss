@@ -1,0 +1,26 @@
+@use "../../../../styles/" as *;
+
+.scrollSection {
+  // ::-webkit-scrollbar {
+  //   width: 0px;
+  // }
+
+  & .wrapper {
+    // scroll-snap-type: x proximity;
+    // transition: all 0.5s;
+    position: relative;
+    max-width: 100%;
+    & .figureContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      // z-index: -1;
+      display: flex;
+      overflow: hidden;
+      scroll-behavior: smooth;
+      cursor: pointer;
+      padding: 3em;
+      gap: 2em;
+    }
+  }
+}

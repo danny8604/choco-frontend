@@ -35,7 +35,7 @@ const FooterSection = () => {
         </ul>
       </section>
       <section className={styles.footerNav}>
-        <p>gege</p>
+        <p>©2022 CHOCO.</p>
       </section>
     </footer>
   );

@@ -1,6 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import scrollReducer from "../components/mainSection/ScrollSection/scrollSectionSlice";
-import formInputReducer from "../features/formAuth/formAuthSlice";
+import formAuthReducer from "../features/formAuth/formAuthSlice";
 import loginReducer from "../features/login/loginSlice";
 import registerReducer from "../features/register/registerSlice";
 import searchReducer from "../features/search/searchSlice";
@@ -10,14 +9,15 @@ import cartReducer from "../features/cart/cartItem/cartSlice";
 import searchModalReducer from "../features/searchModal/searchModalSlice";
 import backdropReducer from "../features/backdrop/backdropSlice";
 import cartModalReducer from "../features/cartModal/cartModalSlice";
+import sliderReducer from "../features/slider/sliderSlice";
 
 const store = configureStore({
   reducer: {
-    scroll: scrollReducer,
-    searchInput: searchReducer,
-    formInput: formInputReducer,
-    loginForm: loginReducer,
-    registerForm: registerReducer,
+    slider: sliderReducer,
+    search: searchReducer,
+    formAuth: formAuthReducer,
+    login: loginReducer,
+    register: registerReducer,
     postData: postDataReducer,
     searchModal: searchModalReducer,
     cartModal: cartModalReducer,

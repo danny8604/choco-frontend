@@ -19,10 +19,10 @@ import { postLoginData } from "./loginSlice";
 import { login } from "./loginSlice";
 
 const Login = () => {
-  const formInput = useAppSelector((state) => state.formInput);
+  const formAuth = useAppSelector((state) => state.formAuth);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { isLoading, userId } = useAppSelector((state) => state.loginForm);
+  const { isLoading, userId } = useAppSelector((state) => state.login);
 
   useEffect(() => {
     if (userId) {
@@ -35,8 +35,8 @@ const Login = () => {
     e.preventDefault();
     dispatch(
       postLoginData({
-        email: formInput.emailValue,
-        password: formInput.passwordValue,
+        email: formAuth.emailValue,
+        password: formAuth.passwordValue,
         returnSecureToken: true,
         errorMessage: "Login Error!!",
       })

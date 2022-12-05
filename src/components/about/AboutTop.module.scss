@@ -4,15 +4,13 @@
   background-size: cover;
   background-color: rgba(black, 0.55);
   background-blend-mode: multiply;
-  padding-top: 4.125em;
   @include navbar__Height;
-  position: relative;
 
   .backVideo {
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
-    z-index: -2;
+    z-index: -200;
     width: 100%;
     height: auto;
   }

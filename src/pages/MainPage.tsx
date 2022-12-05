@@ -2,7 +2,7 @@ import TopSection from "../components/mainSection/TopSection/TopSection";
 import MiddleSection from "../components/mainSection/MiddleSection/MiddleSection";
 import IntroSection from "../components/mainSection/IntroSection/IntroSection";
 import AddToCartSection from "../components/mainSection/AddToCartSection/AddToCartSection";
-import ScrollSection from "../components/mainSection/ScrollSection/ScrollSection";
+import ScrollSection from "../components/mainSection/explore/exploreProducts/ExploreProducts";
 import FindStoreSection from "../components/mainSection/FindStoreSection/FindStoreSection";
 import CardSection from "../components/mainSection/CardSection/CardSection";
 

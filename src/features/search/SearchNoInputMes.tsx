@@ -2,9 +2,9 @@ import { useAppSelector } from "../../app/hooks/hooks";
 import styles from "./SearchNoInputMes.module.scss";
 
 const SearchNoInputMes = () => {
-  const searchInput = useAppSelector((state) => state.searchInput);
+  const search = useAppSelector((state) => state.search);
 
-  const noInput = searchInput.value.length === 0;
+  const noInput = search.value.length === 0;
 
   if (!noInput) return <></>;
 

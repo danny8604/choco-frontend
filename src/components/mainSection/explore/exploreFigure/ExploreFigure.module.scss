@@ -1,11 +1,11 @@
-@use "../../../styles/" as *;
+@use "../../../../styles/" as *;
 
 .scrollFigure {
   .container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75em;
+    gap: 1em;
 
     img {
       max-height: 500px;
@@ -14,9 +14,12 @@
     }
 
     .productName {
-      font-size: 1.25rem;
-      color: $color-warmGray;
-      letter-spacing: 1px;
+      & h5 {
+        font-size: $fontSize--h5;
+        font-weight: $text-regular;
+        color: $color-warmGray;
+        letter-spacing: 1.4px;
+      }
     }
 
     .productLink {

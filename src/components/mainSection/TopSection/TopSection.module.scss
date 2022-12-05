@@ -31,5 +31,5 @@
 }
 
 .shopNowbutton {
-  @include button($color-warmGray, $color-white, $color-lightGray);
+  @include button($color-warmGray, $color-white, $color-white);
 }

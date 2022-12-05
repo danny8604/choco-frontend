@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface FormState {
+interface FormAuthSlice {
   emailValue: string;
   passwordValue: string;
   emailIsValid: boolean;
@@ -9,7 +9,7 @@ interface FormState {
   passwordIsTouched: boolean;
 }
 
-const initialState: FormState = {
+const initialState: FormAuthSlice = {
   emailValue: "",
   passwordValue: "",
   emailIsValid: false,
@@ -18,8 +18,8 @@ const initialState: FormState = {
   passwordIsTouched: false,
 };
 
-const formInputSlice = createSlice({
-  name: "formInput",
+const formAuthSlice = createSlice({
+  name: "form",
   initialState,
   reducers: {
     getEmail(state, action) {
@@ -57,6 +57,6 @@ export const {
   emailTouched,
   passwordTouched,
   resetFormState,
-} = formInputSlice.actions;
+} = formAuthSlice.actions;
 
-export default formInputSlice.reducer;
+export default formAuthSlice.reducer;

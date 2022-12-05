@@ -16,7 +16,7 @@ import { closeCartModal } from "./cartModalSlice";
 const CartModal = () => {
   const { shoppingCart, shoppingCartTotalPrice, shoppingCartTotalQuantity } =
     useAppSelector((state) => state.cart);
-  const { userId, isLogin } = useAppSelector((state) => state.loginForm);
+  const { userId, isLogin } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const { cartModalIsOpen } = useAppSelector((state) => state.cartModal);
 

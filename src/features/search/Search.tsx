@@ -14,8 +14,8 @@ import {
   searchValueIsValid,
 } from "./searchSlice";
 
-const SearchInput = () => {
-  const searchInput = useAppSelector((state) => state.searchInput);
+const Search = () => {
+  const search = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
   const { productsData } = useProducts();
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,18 +25,18 @@ const SearchInput = () => {
 
   useEffect(() => {
     dispatch(searchValueIsValid());
-    if (searchInput.value.length < 1) return;
+    if (search.value.length < 1) return;
     dispatch(
       filterSearchData(
         productsData.filter((map) =>
           map.id
             .trim()
             .toLowerCase()
-            .includes(searchInput.value.toLowerCase().trim())
+            .includes(search.value.toLowerCase().trim())
         )
       )
     );
-  }, [searchInput.value]);
+  }, [search.value]);
 
   const closeSearchModalHandler = () => {
     dispatch(closeBackdrop());
@@ -61,4 +61,4 @@ const SearchInput = () => {
   );
 };
 
-export default SearchInput;
+export default Search;

@@ -16,7 +16,7 @@ interface FormInputProps {
 }
 
 const FormInput = ({ buttonText }: FormInputProps) => {
-  const formInput = useAppSelector((state) => state.formInput);
+  const formAuth = useAppSelector((state) => state.formAuth);
   const { backdropIsOpen } = useAppSelector((state) => state.backdrop);
   const dispatch = useAppDispatch();
   const emailInputRef = useRef<HTMLInputElement>(null);
@@ -45,11 +45,11 @@ const FormInput = ({ buttonText }: FormInputProps) => {
   };
 
   // check Form
-  const formIsValid = formInput.emailIsValid && formInput.passwordIsValid;
+  const formIsValid = formAuth.emailIsValid && formAuth.passwordIsValid;
   const emailTouchedButNotValid =
-    formInput.emailIsTouched && !formInput.emailIsValid;
+    formAuth.emailIsTouched && !formAuth.emailIsValid;
   const passwordTouchedButNotValid =
-    formInput.passwordIsTouched && !formInput.passwordIsValid;
+    formAuth.passwordIsTouched && !formAuth.passwordIsValid;
 
   // Form blur
   const emailTouchHandler = () => {

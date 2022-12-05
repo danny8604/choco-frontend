@@ -2,10 +2,10 @@ import { useAppSelector } from "../../app/hooks/hooks";
 import styles from "./SearchNoResultMes.module.scss";
 
 const SearchNoResultMes = () => {
-  const searchInput = useAppSelector((state) => state.searchInput);
+  const search = useAppSelector((state) => state.search);
 
   const noResult =
-    searchInput.value.length !== 0 && searchInput.searchResult.length === 0;
+    search.value.length !== 0 && search.searchResult.length === 0;
 
   if (!noResult) return <></>;
 

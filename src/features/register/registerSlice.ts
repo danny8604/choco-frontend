@@ -29,19 +29,19 @@ export const postSignUpData = createAsyncThunk(
   }
 );
 
-interface RegisterFormState {
+interface RegisterState {
   signUpUserId: null | string;
   signUpToken: null | string;
   isLoading: boolean;
 }
 
-const initialState: RegisterFormState = {
+const initialState: RegisterState = {
   signUpUserId: null,
   signUpToken: null,
   isLoading: false,
 };
 
-const registerFormSlice = createSlice({
+const registerSlice = createSlice({
   name: "registerForm",
   initialState,
   reducers: {
@@ -65,6 +65,6 @@ const registerFormSlice = createSlice({
   },
 });
 
-export const { resetSignUpToken } = registerFormSlice.actions;
+export const { resetSignUpToken } = registerSlice.actions;
 
-export default registerFormSlice.reducer;
+export default registerSlice.reducer;

@@ -1,0 +1,42 @@
+@use "../../../../styles/" as *;
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 80%;
+
+  margin: 0 auto;
+  align-items: center;
+  & h3 {
+    letter-spacing: 2px;
+    text-align: center;
+    color: $color-black;
+    font-size: $fontSize--h3;
+  }
+
+  .arrowIconContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.125em;
+
+    & .leftIcon,
+    & .rightIcon {
+      height: 5%;
+      width: 5%;
+      border: none;
+      background-color: white;
+      transition: all 0.3s;
+      cursor: pointer;
+      & svg {
+        color: $color-black;
+      }
+    }
+
+    .leftIcon:hover {
+      transform: translateX(-10px);
+    }
+    .rightIcon:hover {
+      transform: translateX(10px);
+    }
+  }
+}

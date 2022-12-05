@@ -7,7 +7,7 @@ import {
 import { logout } from "../../features/login/loginSlice";
 
 const NavbarLogin = () => {
-  const { isLogin } = useAppSelector((state) => state.loginForm);
+  const { isLogin } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
 
   const LogoutHandler = () => {

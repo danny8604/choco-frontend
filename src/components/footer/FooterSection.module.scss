@@ -2,12 +2,12 @@
 
 .footerSection {
   .container {
-    padding: 6% 5%;
+    padding: 5em 8em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8%;
-    border-top: solid 1.5px $color-black;
-    background-color: $color-lightGray;
+    border-top: solid 1.5px $color-lightGray-1;
+    background-color: $color-white;
 
     .brandNews {
       display: flex;
@@ -42,7 +42,8 @@
     }
   }
   .footerNav {
-    padding: 0.625em 5%;
+    padding: 0.5em 5em;
+    text-align: end;
     background-color: $color-black;
     color: white;
   }

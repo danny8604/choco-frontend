@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useAppDispatch();
-  const formInput = useAppSelector((state) => state.formInput);
+  const formAuth = useAppSelector((state) => state.formAuth);
   const navigate = useNavigate();
-  const { signUpToken } = useAppSelector((state) => state.registerForm);
+  const { signUpToken } = useAppSelector((state) => state.register);
 
   const SignUpSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,8 +20,8 @@ const Register = () => {
     // Sign Up account
     dispatch(
       postSignUpData({
-        email: formInput.emailValue,
-        password: formInput.passwordValue,
+        email: formAuth.emailValue,
+        password: formAuth.passwordValue,
         returnSecureToken: true,
         errorMessage: "Register Error!!",
       })

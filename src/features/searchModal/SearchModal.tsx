@@ -6,7 +6,7 @@ import SearchNoInputMes from "../search/SearchNoInputMes";
 import SearchNoResultMes from "../search/SearchNoResultMes";
 
 const SearchModal = () => {
-  const searchInput = useAppSelector((state) => state.searchInput);
+  const search = useAppSelector((state) => state.search);
   const { searchModalIsOpen } = useAppSelector((state) => state.searchModal);
 
   return (
@@ -17,8 +17,8 @@ const SearchModal = () => {
     >
       <Search />
       <div className={styles.searchFigure}>
-        {searchInput.valueNotEmpty &&
-          searchInput.searchResult.map((map) => (
+        {search.valueNotEmpty &&
+          search.searchResult.map((map) => (
             <ProductFigure
               key={map.id}
               id={map.id}

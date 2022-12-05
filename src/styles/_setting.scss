@@ -1,1 +1,6 @@
-$navbar__headerHeight: 4.125em;
+$navbar__headerHeight: 5em;
+$navbar__otherInforHeight: 30px;
+
+@mixin navbar__Height {
+  height: calc(100vh - $navbar__headerHeight - $navbar__otherInforHeight);
+}

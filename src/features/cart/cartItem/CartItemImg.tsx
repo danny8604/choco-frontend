@@ -11,7 +11,7 @@ const CartItemImg = ({ img }: CartItemNameProps) => {
   }
   return (
     <div className={styles.cartItemImg}>
-      <img src={getImageUrl(img)} alt="test img" />
+      <img src={getImageUrl(img)} alt="chair photo" loading="lazy" />
     </div>
   );
 };

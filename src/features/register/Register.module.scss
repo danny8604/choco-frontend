@@ -1,22 +1,9 @@
 @use "../../styles/" as *;
 
-.topSection {
-  padding-top: $navbar__headerHeight;
-  height: 100vh;
-
-  .leadText {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 80%;
-    height: 90%;
-    h3 {
-      font-size: $fontSize--h3;
-      font-weight: $text-bold;
-      letter-spacing: 2px;
-      color: $color-black;
-    }
-  }
+.formContainer {
+  max-width: 22%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.25em;
+  text-align: center;
 }

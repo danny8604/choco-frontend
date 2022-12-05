@@ -4,7 +4,7 @@ import {
   resetShoppingCart,
   updateTotalPriceAndQuantity,
 } from "../../features/cart/cartItem/cartSlice";
-import { logout } from "../../features/login/loginForm/loginFormSlice";
+import { logout } from "../../features/login/loginSlice";
 
 const NavbarLogin = () => {
   const { isLogin } = useAppSelector((state) => state.loginForm);

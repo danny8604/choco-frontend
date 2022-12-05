@@ -1,9 +1,9 @@
-import LoginTop from "../features/login/LoginTop";
+import LoginForm from "../components/loginForm/LoginForm";
 
 const LoginPage = () => {
   return (
     <main>
-      <LoginTop />
+      <LoginForm />
     </main>
   );
 };

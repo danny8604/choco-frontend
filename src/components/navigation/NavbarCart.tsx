@@ -16,7 +16,12 @@ const NavbarCart = () => {
   return (
     <li className={styles.cartIcon}>
       <button onClick={() => cartClickHandler()}>
-        <img src={cartSvgIcon} className={styles.Icon} alt="rwar" />
+        <img
+          src={cartSvgIcon}
+          className={styles.Icon}
+          alt="rwar"
+          loading="lazy"
+        />
       </button>
     </li>
   );

@@ -1,0 +1,24 @@
+@use "../../styles/" as *;
+
+.searchNav {
+  @include flex__justify-between__align-center;
+  padding-bottom: 4em;
+  h3 {
+    @include modalNavH3;
+  }
+  button {
+    @include removeIconButton;
+  }
+}
+
+.searchInput {
+  input {
+    width: 100%;
+    font-size: $fontSize--h4;
+    border: none;
+    border-bottom: solid 1px $color-black;
+    &:focus {
+      outline: none;
+    }
+  }
+}

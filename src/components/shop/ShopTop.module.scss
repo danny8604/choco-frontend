@@ -4,8 +4,8 @@
   display: grid;
   gap: 0.5px;
   grid-template-columns: repeat(4, 1fr);
-  padding-top: 4.125em;
-  height: 100vh;
+
+  @include navbar__Height;
 
   .container {
     @include centerTextBackground;
@@ -19,6 +19,7 @@
       font-weight: $text-bold;
       letter-spacing: 3px;
       color: $color-white;
+      padding-bottom: 1.5em;
     }
 
     &:hover {

@@ -9,9 +9,13 @@ import {
   userShoppingCart,
 } from "../cart/cartItem/cartSlice";
 import { dbRef } from "../../app/firebase-config";
+import RemoveIconBtn from "../../components/ui/icon/removeIconBtn/RemoveIconBtn";
+import { closeBackdrop } from "../backdrop/backdropSlice";
+import { closeCartModal } from "./cartModalSlice";
 
 const CartModal = () => {
-  const cart = useAppSelector((state) => state.cart);
+  const { shoppingCart, shoppingCartTotalPrice, shoppingCartTotalQuantity } =
+    useAppSelector((state) => state.cart);
   const { userId, isLogin } = useAppSelector((state) => state.loginForm);
   const dispatch = useAppDispatch();
   const { cartModalIsOpen } = useAppSelector((state) => state.cartModal);
@@ -41,6 +45,7 @@ const CartModal = () => {
       );
 
       localStorage.removeItem("shopping-cart");
+      console.log("sfsf");
 
       fetchUserCartData();
     }
@@ -51,43 +56,53 @@ const CartModal = () => {
       // Updata firebase shopping cart
       const db = getDatabase();
       set(ref(db, `users/${userId}/`), {
-        shoppingCart: cart.shoppingCart,
+        shoppingCart: shoppingCart,
       });
       localStorage.removeItem("shopping-cart");
     }
 
     if (!isLogin) {
-      localStorage.setItem("shopping-cart", JSON.stringify(cart.shoppingCart));
+      localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
     }
-  }, [userId, isLogin, cart.shoppingCart]);
+
+    dispatch(updateTotalPriceAndQuantity());
+  }, [userId, isLogin, shoppingCart]);
+
+  const closeCartModalHandler = () => {
+    dispatch(closeBackdrop());
+    dispatch(closeCartModal());
+  };
 
   return (
-    <>
-      <section
-        className={`${styles.contentContainer}   ${
-          cartModalIsOpen && styles.active
-        }`}
-      >
-        <div className={styles.cartNav}>
-          <h3>3 items in your cart</h3>
-          <button></button>
-        </div>
-        <div className={styles.cartContainer}>
-          {cart.shoppingCart.map((item) => (
-            <CartItem
-              key={item.id}
-              id={item.id}
-              img={item.img}
-              price={item.price}
-              quantity={item.quantity}
-            />
-          ))}
-        </div>
-        <div className={styles.priceContainer}>
-          <CartTotalPrice totalPrice={cart.shoppingCartTotalPrice} />
-        </div>
-      </section>
-    </>
+    <section
+      className={`${styles.contentContainer}   ${
+        cartModalIsOpen && styles.active
+      }`}
+    >
+      <div className={styles.cartNav}>
+        {shoppingCartTotalQuantity ? (
+          <h3>{shoppingCartTotalQuantity} items in your cart</h3>
+        ) : (
+          <h3>Your shopping cart is empty</h3>
+        )}
+
+        <RemoveIconBtn onClick={closeCartModalHandler} />
+      </div>
+      <div className={styles.cartContainer}>
+        {shoppingCart.map((item) => (
+          <CartItem
+            key={item.id}
+            id={item.id}
+            img={item.img}
+            price={item.price}
+            quantity={item.quantity}
+          />
+        ))}
+      </div>
+      <div className={styles.priceContainer}>
+        <CartTotalPrice totalPrice={shoppingCartTotalPrice} />
+      </div>
+    </section>
   );
 };
 

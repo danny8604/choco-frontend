@@ -11,7 +11,7 @@ import OthersPage from "./pages/OthersPage";
 import Root from "./pages/Root";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
-import Register from "./features/register/Register";
+import Register from "./components/registerForm/RegisterForm";
 import { useEffect } from "react";
 import { useAppSelector } from "./app/hooks/hooks";
 // import "./App.css";
@@ -72,8 +72,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const { backdropIsOpen } = useAppSelector((state) => state.backdrop);
-
   return <RouterProvider router={router} />;
 }
 

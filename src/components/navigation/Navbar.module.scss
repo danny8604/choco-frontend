@@ -1,51 +1,89 @@
 @use "../../styles/" as *;
 
+.otherInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $fontSize--p--Small-1;
+  height: $navbar__otherInforHeight;
+  color: white;
+  background-color: $color-darkBlack;
+  transition: all 0.6s;
+  &.login {
+    background-color: $color-blue;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: fixed;
-  min-height: $navbar__headerHeight;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
   background-color: $color-lightGray;
-  // border-bottom: solid 1.5px $color-gray;
-  box-shadow: 0 2px 5px rgba($color-warmGray, 0.4);
-  z-index: 1000;
+  position: relative;
 
-  .navInfor {
-    width: 100%;
-    height: 100%;
-    background-color: $color-black;
-  }
   .nav {
-    height: 100%;
-    width: 90%;
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: repeat(8, 1fr);
-    margin: 0 auto;
+    border-bottom: solid 0.3px $color-gray;
+    grid-template-columns: repeat(10, 1fr);
+    .logoLink {
+      grid-column: 1/3;
+      @include flex__justify-center__align-center;
+    }
 
     .pageLink {
       display: flex;
-      padding-right: 20px;
+      margin: 0 auto;
       gap: 25px;
-      grid-column: 7;
+
+      grid-column: 8;
       list-style: none;
       li {
+        height: 100%;
         a {
           font-size: $mainNavbar__fontsize--pageLink;
           font-weight: $text-regular;
-          color: $color-gray;
-          padding-bottom: 2px;
+          color: $color-warmGray;
+          padding: 2em 0;
+
           border-bottom: solid 1px rgba(0, 0, 0, 0);
           text-decoration: none;
           transition: all 0.3s;
           &:hover,
           &:active {
-            color: $color-white;
-            border-bottom: solid 1px $color-white;
+            border-bottom: solid 1px $color-warmGray;
           }
+        }
+      }
+      .shopLink {
+        .shopDropdown {
+          background-color: white;
+          transform: translateY($navbar__headerHeight);
+          width: 100%;
+          left: 0;
+          top: 0;
+          position: absolute;
+          transition: all 0.4s;
+          padding: 2em;
+          opacity: 1;
+          pointer-events: none;
+
+          li {
+            list-style: none;
+            padding-bottom: 1em;
+          }
+        }
+
+        &:hover .shopDropdown {
+          opacity: 1;
+          pointer-events: auto;
+          padding-top: 4em;
+          cursor: pointer;
         }
       }
     }
@@ -54,7 +92,7 @@
       align-items: center;
       justify-content: center;
       gap: 2em;
-      grid-column: 8;
+      grid-column: 9/-1;
       list-style: none;
       position: relative;
 
@@ -68,3 +106,96 @@
     }
   }
 }
+
+// .header {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   position: sticky;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   background-color: $color-lightGray;
+//   position: relative;
+
+//   .nav {
+//     display: grid;
+//     align-items: center;
+//     justify-content: center;
+//     border-bottom: solid 0.3px $color-gray;
+//     grid-template-columns: repeat(10, 1fr);
+//     .logoLink {
+//       grid-column: 1/3;
+//       @include flex__justify-center__align-center;
+//     }
+
+//     .pageLink {
+//       display: flex;
+//       margin: 0 auto;
+//       gap: 25px;
+
+//       grid-column: 8;
+//       list-style: none;
+//       li {
+//         height: 100%;
+//         a {
+//           font-size: $mainNavbar__fontsize--pageLink;
+//           font-weight: $text-regular;
+//           color: $color-warmGray;
+//           padding: 2em 0;
+
+//           border-bottom: solid 1px rgba(0, 0, 0, 0);
+//           text-decoration: none;
+//           transition: all 0.3s;
+//           &:hover,
+//           &:active {
+//             border-bottom: solid 1px $color-warmGray;
+//           }
+//         }
+//       }
+//       .shopLink {
+//         .shopDropdown {
+//           background-color: white;
+//           transform: translateY($navbar__headerHeight);
+//           width: 100%;
+//           left: 0;
+//           top: 0;
+//           position: absolute;
+//           transition: all 0.4s;
+//           padding: 2em;
+//           opacity: 1;
+//           pointer-events: none;
+
+//           li {
+//             list-style: none;
+//             padding-bottom: 1em;
+//           }
+//         }
+
+//         &:hover .shopDropdown {
+//           opacity: 1;
+//           pointer-events: auto;
+//           padding-top: 4em;
+//           cursor: pointer;
+//         }
+//       }
+//     }
+//     .shopIcon {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       gap: 2em;
+//       grid-column: 9/-1;
+//       list-style: none;
+//       position: relative;
+
+//       &::after {
+//         position: absolute;
+//         content: "";
+//         height: 25px;
+//         width: 1px;
+//         background-color: $color-warmGray;
+//       }
+//     }
+//   }
+// }

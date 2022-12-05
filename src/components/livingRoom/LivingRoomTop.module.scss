@@ -5,8 +5,8 @@
   background-image: url(../../assets//livingRoomImg/livingRoom01.jpg);
   background-color: $color-gray;
   background-blend-mode: multiply;
-  padding-top: 4.125em;
-  height: 100vh;
+
+  @include navbar__Height;
 
   .leadText {
     display: flex;

@@ -12,7 +12,7 @@ const ProductFigureImg = ({ imgA, descript }: ProductFigureImgProps) => {
   }
   return (
     <div className={styles.imgContainer}>
-      <img src={getImageUrl(imgA)} alt={descript} />
+      <img src={getImageUrl(imgA)} alt={descript} loading="lazy" />
     </div>
   );
 };

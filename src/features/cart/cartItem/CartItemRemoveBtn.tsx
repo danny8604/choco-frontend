@@ -2,6 +2,7 @@ import styles from "./CartItemRemoveBtn.module.scss";
 import removeIcon from "../../../assets/svg/close-outline.svg";
 import { useAppDispatch } from "../../../app/hooks/hooks";
 import { removeCartItem, updateTotalPriceAndQuantity } from "./cartSlice";
+import RemoveIconBtn from "../../../components/ui/icon/removeIconBtn/RemoveIconBtn";
 
 type CartItemRemoveBtnProps = {
   id: string;
@@ -14,9 +15,9 @@ const CartItemRemoveBtn = ({ id }: CartItemRemoveBtnProps) => {
     dispatch(updateTotalPriceAndQuantity());
   };
   return (
-    <button onClick={removeItemHandler} className={styles.removeItemButton}>
-      <img src={removeIcon} />
-    </button>
+    <div className={styles.removeItemButton}>
+      <RemoveIconBtn onClick={removeItemHandler} />
+    </div>
   );
 };
 

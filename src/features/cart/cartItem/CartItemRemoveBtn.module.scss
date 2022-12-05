@@ -1,9 +1,11 @@
 @use "../../../styles/" as *;
 
 .removeItemButton {
-  border: none;
-  cursor: pointer;
-  background-color: white;
+  button {
+    border: none;
+    cursor: pointer;
+    background-color: white;
+  }
   img {
     width: 2em;
     height: 2em;

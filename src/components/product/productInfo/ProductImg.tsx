@@ -12,7 +12,7 @@ const ProductImg = ({ imgA }: ProductImgProps) => {
 
   return (
     <div className={styles.productImg}>
-      <img src={getImageUrl(imgA)} />
+      <img src={getImageUrl(imgA)} loading="lazy" alt="chair photo" />
     </div>
   );
 };

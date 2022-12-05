@@ -1,7 +1,7 @@
 import styles from "./SearchModal.module.scss";
 import { useAppSelector } from "../../app/hooks/hooks";
 import ProductFigure from "../../components/product/productFigure/ProductFigure";
-import SearchInput from "../search/searchInput/SearchInput";
+import Search from "../search/Search";
 import SearchNoInputMes from "../search/SearchNoInputMes";
 import SearchNoResultMes from "../search/SearchNoResultMes";
 
@@ -15,7 +15,7 @@ const SearchModal = () => {
         searchModalIsOpen && styles.active
       }`}
     >
-      <SearchInput />
+      <Search />
       <div className={styles.searchFigure}>
         {searchInput.valueNotEmpty &&
           searchInput.searchResult.map((map) => (

@@ -4,7 +4,7 @@ import IntroSection from "../components/mainSection/IntroSection/IntroSection";
 import AddToCartSection from "../components/mainSection/AddToCartSection/AddToCartSection";
 import ScrollSection from "../components/mainSection/explore/exploreProducts/ExploreProducts";
 import FindStoreSection from "../components/mainSection/FindStoreSection/FindStoreSection";
-import CardSection from "../components/mainSection/CardSection/CardSection";
+import CardSection from "../components/mainSection/Card/CardSection";
 
 const MainPage = () => {
   return (

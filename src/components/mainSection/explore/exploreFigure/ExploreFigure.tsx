@@ -5,20 +5,28 @@ import styles from "./ExploreFigure.module.scss";
 interface ExploreFigureProps {
   img: string;
   id: string;
+  path: string;
 }
 
-const ExploreFigure = ({ img, id }: ExploreFigureProps) => {
+const ExploreFigure = ({ img, id, path }: ExploreFigureProps) => {
+  function getImageUrl(name: string) {
+    return new URL(`../../../../assets/productImg/${name}.jpg`, import.meta.url)
+      .href;
+  }
+
   return (
     <figure className={`${styles.scrollFigure}`}>
-      <div className={styles.container}>
-        <img src={img} />
-        <figcaption className={styles.productName}>
-          <h5>{id}</h5>
-        </figcaption>
-        <div className={styles.productLink}>
-          <Link to="/">EXPLORE ➝</Link>
+      <Link to={`/product/${path}`}>
+        <div className={styles.container}>
+          <div className={styles.imgContainer}>
+            <img src={getImageUrl(img)} />
+          </div>
+          <figcaption className={styles.productName}>
+            <h5>{id}</h5>
+            <p>More Info ➝</p>
+          </figcaption>
         </div>
-      </div>
+      </Link>
     </figure>
   );
 };

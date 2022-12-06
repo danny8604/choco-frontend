@@ -8,7 +8,7 @@
   height: $navbar__otherInforHeight;
   color: white;
   background-color: $color-darkBlack;
-  z-index: 9000;
+  z-index: 1000;
   transition: all 0.6s;
 
   &.login {
@@ -17,7 +17,7 @@
 }
 
 .header {
-  z-index: 9000;
+  z-index: 1000;
   position: sticky;
   top: 0;
   left: 0;

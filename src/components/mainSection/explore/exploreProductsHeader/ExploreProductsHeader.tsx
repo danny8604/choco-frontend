@@ -1,15 +1,23 @@
 import styles from "./ExploreProductsHeader.module.scss";
 import { ArrowLeft, ArrowRight } from "../../../ui/icon/Arrow";
 
-const ExploroProductHeader = () => {
+type ExploroProductHeaderProps = {
+  clickLeft(): void;
+  clickRight(): void;
+};
+
+const ExploroProductHeader = ({
+  clickLeft,
+  clickRight,
+}: ExploroProductHeaderProps) => {
   return (
     <header className={styles.header}>
-      <h3>EXPLORE PRODUCTS BY CATEGORY</h3>
+      <h3>EXPLORE ALL NEW PRODUCTS</h3>
       <div className={styles.arrowIconContainer}>
-        <button className={styles.leftIcon}>
+        <button className={styles.leftIcon} onClick={() => clickLeft()}>
           <ArrowLeft />
         </button>
-        <button className={styles.rightIcon}>
+        <button className={styles.rightIcon} onClick={() => clickRight()}>
           <ArrowRight />
         </button>
       </div>

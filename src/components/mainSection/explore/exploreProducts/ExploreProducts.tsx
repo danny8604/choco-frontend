@@ -3,33 +3,45 @@ import chair08 from "../../../../assets/mainSectionIMG/chair-08.jpg";
 import chair09 from "../../../../assets/mainSectionIMG/chair-09.jpg";
 import styles from "./ExploreProducts.module.scss";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { useAppSelector, useAppDispatch } from "../../../../app/hooks/hooks";
+import {
+  useAppSelector,
+  useAppDispatch,
+  useProducts,
+} from "../../../../app/hooks/hooks";
 import {
   sliderMouseDown,
   sliderMouseLeave,
   sliderMouseDrag,
   sliderMouseUp,
+  sliderClickLeft,
+  sliderClickRight,
 } from "../../../../features/slider/sliderSlice";
 import ExploroProductHeader from "../exploreProductsHeader/ExploreProductsHeader";
-import {
-  scrollLeft,
-  scrollRight,
-} from "../../../../features/clickScroll/clickScroll";
+import { ProductsType } from "../../../../app/type";
 
 const ExploreProducts = () => {
   const { sliderDown, mouseDownX, mouseMoveX } = useAppSelector(
     (state) => state.slider
   );
-
-  const { clickLeft, clickRight, test } = useAppSelector(
-    (state) => state.clickScroll
-  );
+  const { productsData } = useProducts();
+  const [productArr, setProductArr] = useState<ProductsType[]>([]);
 
   const dispatch = useAppDispatch();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (productArr.length > 0) return;
+    // only get once
+    setProductArr(
+      productsData
+        .slice()
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8)
+    );
+  }, [productsData]);
 
   useEffect(() => {
     wrapperRef.current!.style.left = `${mouseMoveX}px`;
@@ -44,7 +56,7 @@ const ExploreProducts = () => {
         wrapperRect.width - sectionRect.width
       }px`;
     }
-  }, [mouseMoveX, clickLeft, clickRight]);
+  }, [mouseMoveX]);
 
   const mouseDownHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     dispatch(sliderMouseDown(e.pageX - wrapperRef.current!.offsetLeft));
@@ -61,14 +73,16 @@ const ExploreProducts = () => {
     dispatch(sliderMouseDrag(e.pageX - mouseDownX));
   };
 
-  const leftHandler = () => {};
-  const rightHandler = () => {};
+  const leftHandler = () => {
+    dispatch(sliderClickLeft(-300));
+  };
+  const rightHandler = () => {
+    dispatch(sliderClickRight(300));
+  };
 
   return (
     <>
-      <ExploroProductHeader />
-      <button onClick={leftHandler}>LEFT</button>
-      <button onClick={rightHandler}>RIGHT</button>
+      <ExploroProductHeader clickLeft={leftHandler} clickRight={rightHandler} />
       <section className={styles.scrollSection} ref={sectionRef}>
         <div
           className={styles.wrapper}
@@ -78,15 +92,14 @@ const ExploreProducts = () => {
           onMouseMove={mouseMoveHandler}
           ref={wrapperRef}
         >
-          <ExploreFigure img={chair08} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair09} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair08} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair09} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair08} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair09} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair08} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair09} id={"LIVING ROOM"} />
-          <ExploreFigure img={chair08} id={"LIVING ROOM"} />
+          {productArr.map((item) => (
+            <ExploreFigure
+              path={item.path}
+              key={item.id}
+              img={item.img.imgA}
+              id={item.id}
+            />
+          ))}
         </div>
       </section>
     </>

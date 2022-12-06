@@ -13,21 +13,41 @@ import {
   sliderMouseUp,
 } from "../../../../features/slider/sliderSlice";
 import ExploroProductHeader from "../exploreProductsHeader/ExploreProductsHeader";
+import {
+  scrollLeft,
+  scrollRight,
+} from "../../../../features/clickScroll/clickScroll";
 
 const ExploreProducts = () => {
-  const { sliderDown, sliderDragged, sliderStartX, sliderClickX } =
-    useAppSelector((state) => state.slider);
+  const { sliderDown, mouseDownX, mouseMoveX } = useAppSelector(
+    (state) => state.slider
+  );
+
+  const { clickLeft, clickRight, test } = useAppSelector(
+    (state) => state.clickScroll
+  );
+
   const dispatch = useAppDispatch();
-  const mouseRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    mouseRef.current!.style.left = `${sliderStartX - sliderClickX}px`;
-  }, [sliderStartX, sliderClickX]);
+    wrapperRef.current!.style.left = `${mouseMoveX}px`;
+
+    const sectionRect = sectionRef.current!.getBoundingClientRect();
+    const wrapperRect = wrapperRef.current!.getBoundingClientRect();
+
+    if (parseInt(wrapperRef.current!.style.left) > 0) {
+      wrapperRef.current!.style.left = "0px";
+    } else if (wrapperRect.right < sectionRect.right) {
+      wrapperRef.current!.style.left = `-${
+        wrapperRect.width - sectionRect.width
+      }px`;
+    }
+  }, [mouseMoveX, clickLeft, clickRight]);
 
   const mouseDownHandler = (e: React.MouseEvent<HTMLInputElement>) => {
-    dispatch(
-      sliderMouseDown(e.nativeEvent.offsetX - mouseRef.current!.offsetLeft)
-    );
+    dispatch(sliderMouseDown(e.pageX - wrapperRef.current!.offsetLeft));
   };
   const mouseLeaveHandler = () => {
     dispatch(sliderMouseLeave());
@@ -38,20 +58,25 @@ const ExploreProducts = () => {
   const mouseMoveHandler = (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (!sliderDown) return;
-    dispatch(sliderMouseDrag(e.pageX));
+    dispatch(sliderMouseDrag(e.pageX - mouseDownX));
   };
 
+  const leftHandler = () => {};
+  const rightHandler = () => {};
+
   return (
-    <section className={styles.scrollSection}>
+    <>
       <ExploroProductHeader />
-      <div className={styles.wrapper}>
+      <button onClick={leftHandler}>LEFT</button>
+      <button onClick={rightHandler}>RIGHT</button>
+      <section className={styles.scrollSection} ref={sectionRef}>
         <div
+          className={styles.wrapper}
           onMouseDown={mouseDownHandler}
           onMouseLeave={mouseLeaveHandler}
           onMouseUp={mouseUpHandler}
           onMouseMove={mouseMoveHandler}
-          className={styles.figureContainer}
-          ref={mouseRef}
+          ref={wrapperRef}
         >
           <ExploreFigure img={chair08} id={"LIVING ROOM"} />
           <ExploreFigure img={chair09} id={"LIVING ROOM"} />
@@ -63,8 +88,8 @@ const ExploreProducts = () => {
           <ExploreFigure img={chair09} id={"LIVING ROOM"} />
           <ExploreFigure img={chair08} id={"LIVING ROOM"} />
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

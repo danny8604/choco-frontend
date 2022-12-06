@@ -7,12 +7,14 @@ import postDataReducer from "./PostDataSlice";
 import { productsApi } from "./apiSlice";
 import cartReducer from "../features/cart/cartItem/cartSlice";
 import searchModalReducer from "../features/searchModal/searchModalSlice";
+import clickScrollReducer from "../features/clickScroll/clickScroll";
 import backdropReducer from "../features/backdrop/backdropSlice";
 import cartModalReducer from "../features/cartModal/cartModalSlice";
 import sliderReducer from "../features/slider/sliderSlice";
 
 const store = configureStore({
   reducer: {
+    clickScroll: clickScrollReducer,
     slider: sliderReducer,
     search: searchReducer,
     formAuth: formAuthReducer,

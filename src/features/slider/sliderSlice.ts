@@ -3,15 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 interface SliderState {
   sliderDown: boolean;
   sliderDragged: boolean;
-  sliderStartX: number;
-  sliderClickX: number;
+  mouseDownX: number;
+  mouseMoveX: number;
 }
 
 const initialState: SliderState = {
   sliderDown: false,
   sliderDragged: false,
-  sliderStartX: 0,
-  sliderClickX: 0,
+  mouseDownX: 0,
+  mouseMoveX: 0,
 };
 
 const sliderSlice = createSlice({
@@ -20,7 +20,7 @@ const sliderSlice = createSlice({
   reducers: {
     sliderMouseDown(state, action) {
       state.sliderDown = true;
-      state.sliderClickX = action.payload;
+      state.mouseDownX = action.payload;
     },
     // sliderMouseDown(state, action) {
     //   state.sliderDown = true;
@@ -36,7 +36,7 @@ const sliderSlice = createSlice({
     },
     sliderMouseDrag(state, action) {
       state.sliderDragged = true;
-      state.sliderStartX = action.payload;
+      state.mouseMoveX = action.payload;
     },
   },
 });

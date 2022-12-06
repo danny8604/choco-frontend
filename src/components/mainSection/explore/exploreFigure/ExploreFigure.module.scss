@@ -8,27 +8,34 @@
     cursor: pointer;
   }
   &:hover {
-    .container {
+    .scrollContainer {
       img {
         transform: scale(1.05);
       }
+      p {
+        border-bottom: solid 1px $color-warmGray;
+      }
     }
   }
-  .container {
+  .scrollContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1em;
     .imgContainer {
       overflow: hidden;
-      max-height: 500px;
-
+      height: 450px;
+      width: 350px;
       img {
-        max-height: 500px;
-        max-width: 400px;
+        height: 100%;
+        width: 100%;
         object-fit: cover;
         transition: all 0.3s ease-in;
       }
+    }
+    p {
+      transition: all 0.3s;
+      border-bottom: solid 1px white;
     }
 
     .productName {

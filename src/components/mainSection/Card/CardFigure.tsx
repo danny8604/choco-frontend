@@ -10,21 +10,25 @@ type CardFigureProps = {
 const CardFigure = ({ src, title, path }: CardFigureProps) => {
   return (
     <figure className={styles.cardFigure}>
-      <div className={styles.container}>
-        <div>
-          <img src={src} />
-        </div>
-        <figcaption className={styles.textContainer}>
-          <div className={styles.text}>
-            <h4>{title}</h4>
-            <p>
-              Surround your little ones with long-lasting beauty and organic
-              shapes.
-            </p>
+      <Link to={path}>
+        <div className={styles.cardContainer}>
+          <div className={styles.imgContainer}>
+            <img src={src} alt="chair" />
           </div>
-          <Link to={path}>EXPLORE PRODUCTS ➝</Link>
-        </figcaption>
-      </div>
+          <figcaption className={styles.textContainer}>
+            <div className={styles.text}>
+              <h4>{title}</h4>
+              <p>
+                Surround your little ones with long-lasting beauty and organic
+                shapes.
+              </p>
+            </div>
+            <div className={styles.exploreText}>
+              <p>EXPLORE PRODUCTS ➝</p>
+            </div>
+          </figcaption>
+        </div>
+      </Link>
     </figure>
   );
 };

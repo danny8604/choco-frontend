@@ -2,7 +2,6 @@ import styles from "./CardSection.module.scss";
 import chair14 from "../../../assets/mainSectionIMG/chair-14.jpg";
 import chair12 from "../../../assets/mainSectionIMG/chair-12.jpg";
 import chair13 from "../../../assets/mainSectionIMG/chair-13.jpg";
-import { Link } from "react-router-dom";
 import CardFigure from "./CardFigure";
 
 const CardSection = () => {

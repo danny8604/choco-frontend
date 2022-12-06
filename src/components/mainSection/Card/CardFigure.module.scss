@@ -1,26 +1,56 @@
 @use "../../../styles/" as *;
 
 .cardFigure {
-  height: 100%;
-  width: 100%;
-  text-align: center;
   box-shadow: 5px 5px 15px rgba($color-warmGray, 0.4);
+  text-align: center;
 
-  .container {
-    display: grid;
-    grid-template-rows: 1fr auto;
+  a {
+    text-decoration: none;
+  }
 
-    img {
+  &:hover {
+    .cardContainer {
+      .imgContainer {
+        img {
+          transform: scale(1.1);
+        }
+      }
+      .textContainer {
+        .exploreText {
+          p {
+            border-bottom: solid 1px $color-warmGray;
+          }
+        }
+      }
+    }
+  }
+
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .imgContainer {
+      overflow: hidden;
       height: 35vh;
       width: 100%;
-      object-fit: cover;
+
+      img {
+        transition: all 0.3s;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
     }
 
     .textContainer {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 3.5em;
       padding: 2em 3.25em;
+      color: $color-warmGray;
+      font-size: $fontSize--p--Small;
 
       .text {
         h4 {
@@ -29,16 +59,12 @@
           padding-bottom: 0.25em;
           letter-spacing: 1.5px;
         }
-        p {
-          font-size: $fontSize--p--Small;
-          color: $color-warmGray;
-        }
       }
-      a {
-        font-size: $fontSize--small;
-        font-weight: $text-bold;
-        color: $color-black;
-        text-decoration: none;
+      .exploreText {
+        p {
+          border-bottom: solid 1px $color-white;
+          transition: all 0.3s;
+        }
       }
     }
   }

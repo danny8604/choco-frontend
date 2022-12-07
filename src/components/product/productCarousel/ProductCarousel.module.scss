@@ -1,0 +1,16 @@
+@use "../../../styles/" as *;
+
+.productCarouselContainer {
+  align-items: center;
+  padding-top: 10em;
+
+  .productCarouselHeader {
+    text-align: center;
+    color: $color-gray;
+    h3 {
+      font-size: $fontSize--h3;
+      font-weight: $text-medium;
+      letter-spacing: 1.6px;
+    }
+  }
+}

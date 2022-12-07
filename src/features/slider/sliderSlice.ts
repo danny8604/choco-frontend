@@ -39,14 +39,14 @@ const sliderSlice = createSlice({
       state.mouseMoveX = action.payload;
     },
     sliderClickLeft(state, action) {
-      if (state.mouseMoveX < -2300) {
-        state.mouseMoveX = -2300;
+      if (state.mouseMoveX < -2400) {
+        return;
       }
       state.mouseMoveX += action.payload;
     },
     sliderClickRight(state, action) {
       if (state.mouseMoveX > 0) {
-        state.mouseMoveX = 0;
+        return;
       }
       state.mouseMoveX += action.payload;
     },

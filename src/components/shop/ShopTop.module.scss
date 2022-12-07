@@ -11,7 +11,7 @@
     @include centerTextBackground;
     background-color: $color-darkBlack;
     background-blend-mode: multiply;
-    transition: all 0.5s;
+    transition: all 0.4s;
     text-decoration: none;
 
     h4 {
@@ -20,27 +20,29 @@
       letter-spacing: 3px;
       color: $color-white;
       padding-bottom: 1.5em;
+      opacity: 1;
+      transition: all 0.4s;
     }
 
     &:hover {
       background-color: $color-white;
 
       & h4 {
-        color: $color-darkBlack;
+        opacity: 0;
       }
     }
   }
 
   .LivingRoom {
-    background-image: url(../../assets//shopImg/shop01.jpg);
+    background-image: url(../../assets/mainSectionIMG//chair-11.jpg);
   }
   .homeOffice {
-    background-image: url(../../assets//shopImg/shop01.jpg);
+    background-image: url(../../assets/mainSectionIMG//chair-14.jpg);
   }
   .diningRoom {
-    background-image: url(../../assets//shopImg/shop01.jpg);
+    background-image: url(../../assets/mainSectionIMG//chair-12.jpg);
   }
   .others {
-    background-image: url(../../assets//shopImg/shop01.jpg);
+    background-image: url(../../assets/mainSectionIMG//chair-15.jpg);
   }
 }

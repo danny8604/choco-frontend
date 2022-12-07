@@ -1,97 +1,50 @@
 @use "../../styles/" as *;
 
-.carouselContainer {
-  align-items: center;
-  padding-top: 10em;
+.carousel {
+  position: relative;
+  transition: all 0.4s;
 
-  .carouselHeader {
-    text-align: center;
-    color: $color-gray;
-    h3 {
-      font-size: $fontSize--h3;
-      font-weight: $text-medium;
-      letter-spacing: 1.6px;
-    }
-  }
-  .carousel {
+  .slideContainer {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    width: 85%;
+    height: 1000px;
+    margin: 0 auto;
     position: relative;
-    .carouselButton {
-      top: 50%;
-      transform: translateY(-50%);
+    transition: all 0.4s;
+    .slide {
       position: absolute;
-      border: none;
-      height: 70px;
-      width: 70px;
-      z-index: 4;
-      background-color: rgba(0, 0, 0, 0);
-
-      cursor: pointer;
-      svg {
-        height: 45px;
-        width: 45px;
-        color: $color-darkBlack;
-        transition: all 0.4s;
-      }
-      &:hover.prev {
-        svg {
-          transform: translateX(-30%);
-        }
-      }
-      &:hover.next {
-        svg {
-          transform: translateX(30%);
-        }
-      }
+      width: 15%;
+      transform: translateX(-50%) translateY(-50%);
+      transition: all 0.3s;
     }
-
-    .prev {
-      left: 32.5em;
+    .slideImg1 {
+      left: 25%;
+      opacity: 0.25;
     }
-    .next {
-      right: 32.5em;
+    .slideImg2 {
+      left: 35%;
+      width: 25%;
+      opacity: 0.55;
+      z-index: 2;
     }
-    .slideContainer {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      width: 85%;
-      height: 1000px;
-      margin: 0 auto;
-      position: relative;
-
-      img {
-        position: absolute;
-        width: 15%;
-        transform: translateX(-50%) translateY(-50%);
-      }
-
-      .slideImg1 {
-        left: 25%;
-        opacity: 0.3;
-      }
-      .slideImg2 {
-        left: 35%;
-        width: 25%;
-        opacity: 0.6;
-        z-index: 2;
-      }
-      .slideImg3 {
-        left: 50%;
-        width: 30%;
-        box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
-        opacity: 1;
-        z-index: 3;
-      }
-      .slideImg4 {
-        width: 25%;
-        left: 65%;
-        opacity: 0.6;
-        z-index: 2;
-      }
-      .slideImg5 {
-        left: 75%;
-        opacity: 0.3;
-      }
+    .slideImg3 {
+      left: 50%;
+      width: 30%;
+      box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+      opacity: 1;
+      z-index: 3;
+    }
+    .slideImg4 {
+      width: 25%;
+      left: 65%;
+      opacity: 0.55;
+      z-index: 2;
+    }
+    .slideImg5 {
+      left: 75%;
+      opacity: 0.25;
     }
   }
 }

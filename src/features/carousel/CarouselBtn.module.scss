@@ -1,0 +1,38 @@
+@use "../../styles/" as *;
+
+.carouselButton {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  border: none;
+  height: 70px;
+  width: 70px;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0);
+
+  cursor: pointer;
+
+  svg {
+    height: 45px;
+    width: 45px;
+    color: $color-darkBlack;
+    transition: all 0.4s;
+  }
+  &:hover.prev {
+    svg {
+      transform: translateX(-30%);
+    }
+  }
+  &:hover.next {
+    svg {
+      transform: translateX(30%);
+    }
+  }
+}
+
+.prev {
+  left: 32.5em;
+}
+.next {
+  right: 32.5em;
+}

@@ -15,3 +15,14 @@
     padding-bottom: 3em;
   }
 }
+
+@media screen and (max-width: $media-tabletR) {
+  .productDescript {
+    h3 {
+      font-size: $fontSize--h5;
+    }
+    p {
+      font-size: $fontSize--p--Small;
+    }
+  }
+}

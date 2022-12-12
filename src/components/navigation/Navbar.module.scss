@@ -8,8 +8,9 @@
   height: $navbar__otherInforHeight;
   color: white;
   background-color: $color-darkBlack;
-  z-index: 1000;
   transition: all 0.6s;
+  position: relative;
+  z-index: 20;
 
   &.login {
     background-color: $color-blue;
@@ -17,10 +18,21 @@
 }
 
 .header {
-  z-index: 1000;
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 15;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+    border-bottom: solid 1px $color-lightGray-1;
+  }
+
   .nav {
     width: 100%;
     padding: 0 9em;
@@ -30,91 +42,143 @@
     position: relative;
 
     background-color: $color-white;
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   width: 100%;
+    //   top: 100%;
+    //   left: 0;
+    //   pointer-events: none;
+    //   border-bottom: solid 1px $color-lightGray-1;
+    // }
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 100%;
+    .navBtn {
+      opacity: 0;
+      top: 50%;
       left: 0;
-      width: 100%;
+      height: 72px;
+      width: 72px;
+      transform: translate(0%, -50%);
+      position: absolute;
+      border: none;
       pointer-events: none;
-      border-bottom: solid 1px $color-lightGray-1;
-    }
+      background-color: white;
+      cursor: pointer;
 
-    .logoLink {
-      @include flex__justify-center__align-center;
-    }
-
-    .pageLink {
-      @include flex__justify-center__align-center;
-      list-style: none;
-      height: 100%;
-
-      & > li {
-        padding: 1.5em 0.75em;
-        & a {
-          font-size: $mainNavbar__fontsize--pageLink;
-          font-weight: $text-regular;
-          color: $color-warmGray;
-
-          border-bottom: solid 1px rgba(0, 0, 0, 0);
-          text-decoration: none;
-          transition: all 0.3s;
-          &:hover,
-          &:active {
-            border-bottom: solid 1px $color-warmGray;
-          }
-        }
-      }
-
-      .shopLink {
-        .shopDropdown {
-          background-color: white;
-          transform: translateY($navbar__headerHeight);
-          width: 100%;
-          left: 0;
-          top: 0;
-          position: absolute;
-          transition: all 0.4s;
-          pointer-events: none;
-          opacity: 0;
-          padding: 0 20em 3em;
-          color: $color-warmGray;
-          letter-spacing: 1.1px;
-
-          & li {
-            list-style: none;
-            padding-bottom: 1.5em;
-            grid-column: 9;
-          }
-
-          & li:last-child {
-            padding-bottom: 0;
-          }
-        }
-
-        &:hover .shopDropdown {
-          opacity: 1;
-          padding-top: 3em;
-          pointer-events: auto;
-        }
-        &:hover .dropdownBackdrop {
-          opacity: 1;
-          backdrop-filter: blur(4px);
-        }
-      }
-
-      & .dropdownBackdrop {
-        position: fixed;
-        top: 0;
+      &::after {
+        content: "";
+        height: 2px;
+        width: 25px;
+        top: 55%;
         left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: -1000;
-        pointer-events: none;
-        opacity: 0;
+        position: absolute;
+        transform: translate(100%, 50%);
+        background-color: $color-darkBlack;
         transition: all 0.3s;
-        background-color: rgba(black, 0.5);
+      }
+      &::before {
+        content: "";
+        height: 2px;
+        width: 25px;
+        position: absolute;
+        top: 45%;
+        left: 0;
+        transform: translate(100%, -50%);
+        background-color: $color-darkBlack;
+        transition: all 0.3s;
+      }
+      &.navBtnActive {
+        &::after {
+          top: 45%;
+          transform: translate(100%, 0) rotate(-45deg);
+        }
+        &::before {
+          top: 45%;
+          transform: translate(100%, 0) rotate(45deg);
+        }
+      }
+    }
+
+    .logoPageWrapper {
+      @include flex__justify-center__align-center;
+      .logoLink {
+        @include flex__justify-center__align-center;
+      }
+
+      .pageLink {
+        @include flex__justify-center__align-center;
+        display: flex;
+        list-style: none;
+        height: 100%;
+        padding-left: 1em;
+
+        & > li {
+          padding: 1.5em 0.75em;
+          & a {
+            font-size: $mainNavbar__fontsize--pageLink;
+            font-weight: $text-regular;
+            color: $color-warmGray;
+
+            border-bottom: solid 1px rgba(0, 0, 0, 0);
+            text-decoration: none;
+            transition: all 0.3s;
+            &:hover,
+            &:active {
+              border-bottom: solid 1px $color-warmGray;
+            }
+          }
+        }
+
+        .shopLink {
+          .shopDropdown {
+            background-color: white;
+            transform: translateY($navbar__headerHeight);
+            width: 100%;
+            left: 0;
+            top: 0;
+            position: absolute;
+            transition: all 0.4s;
+            pointer-events: none;
+            opacity: 0;
+            padding: 0 20em 3em;
+            color: $color-warmGray;
+            letter-spacing: 1.1px;
+
+            & li {
+              list-style: none;
+              padding-bottom: 1.5em;
+              grid-column: 9;
+            }
+
+            & li:last-child {
+              padding-bottom: 0;
+            }
+          }
+
+          & .dropdownBackdrop {
+            z-index: -10;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            margin-top: 2em;
+            height: 100vh;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.3s;
+            background-color: rgba(black, 0.5);
+          }
+
+          &:hover .shopDropdown {
+            opacity: 1;
+            padding-top: 3em;
+            pointer-events: auto;
+          }
+          &:hover .dropdownBackdrop {
+            opacity: 1;
+            backdrop-filter: blur(4px);
+          }
+        }
       }
     }
 
@@ -132,6 +196,65 @@
         height: 25px;
         width: 1px;
         background-color: $color-warmGray;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-laptopM) {
+  .header {
+    .nav {
+      padding: 0 4em;
+    }
+  }
+}
+
+@media screen and (max-width: $media-landscape) {
+  .header {
+    .nav {
+      overflow: hidden;
+
+      .logoContainer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .navBtn {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .pageLink {
+        opacity: 0;
+        pointer-events: none;
+        display: none;
+      }
+      .shopIcon {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        gap: 1em;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-tabletS) {
+  .header {
+    .nav {
+      .navBtn {
+        opacity: 1;
+        pointer-events: auto;
+
+        &::after {
+          height: 2px;
+          width: 17px;
+        }
+        &::before {
+          height: 2px;
+          width: 17px;
+        }
       }
     }
   }

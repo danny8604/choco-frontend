@@ -23,3 +23,24 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+@media screen and (max-width: $media-tablet) {
+  .productSection {
+    padding: 4em 0;
+    .productContainer {
+      gap: 2em;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width: $media-tabletS) {
+  .productSection {
+    padding: 2em 0.5em;
+
+    .productContainer {
+      gap: 0em;
+      grid-template-columns: 1fr;
+    }
+  }
+}

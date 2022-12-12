@@ -16,16 +16,44 @@
     h2 {
       color: $color-lightGray;
       letter-spacing: 3px;
-      font-size: 2.75rem;
+      font-size: $fontSize--h2;
     }
 
     p {
       color: $color-lightGray;
-      font-size: 1rem;
+      font-size: $fontSize--p--Small;
     }
   }
 }
 
 .aboutbutton {
   @include button($color-white, $color-warmGray, $color-warmGray);
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .introSection {
+    margin-top: 0.125em;
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .introSection {
+    .introSectionText {
+      max-width: 75%;
+      h2 {
+        font-size: $fontSize--h5;
+      }
+
+      p {
+        font-size: $fontSize--p--Small-1;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .introSection {
+    .aboutbutton {
+      padding: 0.325em 1.75em;
+      font-size: $fontSize--p--Small-2;
+    }
+  }
 }

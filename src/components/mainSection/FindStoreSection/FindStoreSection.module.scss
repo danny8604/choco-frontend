@@ -39,3 +39,46 @@
     }
   }
 }
+
+@media screen and (max-width: $media-laptopM) {
+  .findStoreSection {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: $media-tablet) {
+  .findStoreSection {
+    grid-template-columns: 1fr;
+    text-align: center;
+    .storeInfor {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1em 2em;
+      background-color: $color-darkWarmGray;
+      h3 {
+        font-size: $fontSize--h5;
+      }
+      p {
+        font-size: $fontSize--p--Small-1;
+      }
+      a {
+        font-size: $fontSize--p--Small-1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-tabletS) {
+  .findStoreSection {
+    .storeInfor {
+      h3 {
+        font-size: $fontSize--p--Small-2;
+      }
+      p {
+        font-size: $fontSize--p--Small-3;
+      }
+    }
+  }
+}

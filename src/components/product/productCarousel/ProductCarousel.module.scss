@@ -3,6 +3,7 @@
 .productCarouselContainer {
   align-items: center;
   padding-top: 10em;
+  overflow: hidden;
 
   .productCarouselHeader {
     text-align: center;
@@ -11,6 +12,44 @@
       font-size: $fontSize--h3;
       font-weight: $text-medium;
       letter-spacing: 1.6px;
+    }
+  }
+}
+
+@media screen and (max-width: $media-laptop) {
+  .productCarouselContainer {
+    padding-top: 6em;
+    .productCarouselHeader {
+      h3 {
+        font-size: $fontSize--h4;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .productCarouselContainer {
+    .productCarouselHeader {
+      h3 {
+        font-size: $fontSize--h6;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .productCarouselContainer {
+    .productCarouselHeader {
+      h3 {
+        font-size: $fontSize--p--Small;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .productCarouselContainer {
+    .productCarouselHeader {
+      h3 {
+        font-size: $fontSize--p--Small-1;
+      }
     }
   }
 }

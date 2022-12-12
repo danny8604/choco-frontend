@@ -7,7 +7,7 @@ type CartItemNameProps = {
 const CartItemName = ({ id }: CartItemNameProps) => {
   return (
     <div className={styles.cartItemName}>
-      <h5>{id}</h5>
+      <label htmlFor={id}>{id}</label>
     </div>
   );
 };

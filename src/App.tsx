@@ -1,20 +1,26 @@
+import React, { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import DiningRoomPage from "./pages/DiningRoomPage";
 import ErrorPage from "./pages/ErrorPage";
-import HomeRoomPage from "./pages/HomeRoomPage";
-import LivingRoomPage from "./pages/LivingRoomPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
-import OthersPage from "./pages/OthersPage";
 import Root from "./pages/Root";
-import ShopPage from "./pages/ShopPage";
-import ProductPage from "./pages/ProductPage";
-import Register from "./components/registerForm/RegisterForm";
-import { useEffect } from "react";
-import { useAppSelector } from "./app/hooks/hooks";
-// import "./App.css";
+import CheckoutPage from "./pages/CheckoutPage";
+import RegisterPage from "./pages/RegisterPage";
+// import AboutPage from "./pages/AboutPage";
+// import DiningRoomPage from "./pages/DiningRoomPage";
+// import HomeRoomPage from "./pages/HomeRoomPage";
+// import LivingRoomPage from "./pages/LivingRoomPage";
+// import OthersPage from "./pages/OthersPage";
+// import ShopPage from "./pages/ShopPage";
+// import ProductPage from "./pages/ProductPage";
+
+const HomeRoomPage = React.lazy(() => import("./pages/HomeRoomPage"));
+const LivingRoomPage = React.lazy(() => import("./pages/LivingRoomPage"));
+const DiningRoomPage = React.lazy(() => import("./pages/DiningRoomPage"));
+const OthersPage = React.lazy(() => import("./pages/OthersPage"));
+const ShopPage = React.lazy(() => import("./pages/ShopPage"));
+const ProductPage = React.lazy(() => import("./pages/ProductPage"));
+const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 
 const router = createBrowserRouter([
   {
@@ -62,14 +68,22 @@ const router = createBrowserRouter([
       },
       {
         path: "register",
-        element: <Register />,
+        element: <RegisterPage />,
+      },
+      {
+        path: "checkout",
+        element: <CheckoutPage />,
       },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;

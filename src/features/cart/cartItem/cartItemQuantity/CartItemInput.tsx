@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../../../../app/hooks/hooks";
 import { ItemQuantity } from "../../../../app/type";
 import { updateItemQuantity, updateTotalPriceAndQuantity } from "../cartSlice";
-import styles from "./CartItemSelect.module.scss";
+import styles from "./CartItemInput.module.scss";
 
 const CartItemInput = ({ id, quantity }: ItemQuantity) => {
   const dispatch = useAppDispatch();
@@ -16,14 +16,14 @@ const CartItemInput = ({ id, quantity }: ItemQuantity) => {
 
   return (
     <input
+      className={styles.quantityInput}
       onChange={inputChangeHandler}
-      id="number"
+      id={id}
       type="number"
-      name="number"
+      name={id}
       value={quantity}
       min="1"
-      max="100"
-      placeholder="Quantity"
+      max="20"
     />
   );
 };

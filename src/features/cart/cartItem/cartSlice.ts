@@ -6,6 +6,9 @@ interface CartState {
   shoppingCart: ShoppingCartItem[];
   shoppingCartTotalQuantity: number;
   shoppingCartTotalPrice: number;
+  orderItems: ShoppingCartItem[];
+  orderItemsTotalQuantity: number;
+  orderItemsTotalPrice: number;
 }
 
 const initialState: CartState = {
@@ -14,6 +17,9 @@ const initialState: CartState = {
     : [],
   shoppingCartTotalQuantity: 0,
   shoppingCartTotalPrice: 0,
+  orderItems: [],
+  orderItemsTotalQuantity: 0,
+  orderItemsTotalPrice: 0,
 };
 
 const cartSlice = createSlice({
@@ -57,6 +63,11 @@ const cartSlice = createSlice({
     userShoppingCart(state, action: PayloadAction<ShoppingCartItem[]>) {
       state.shoppingCart = action.payload;
     },
+    checkoutCart(state) {
+      state.orderItems = state.shoppingCart;
+      state.orderItemsTotalPrice = state.shoppingCartTotalPrice;
+      state.orderItemsTotalQuantity = state.shoppingCartTotalQuantity;
+    },
   },
 });
 
@@ -67,6 +78,7 @@ export const {
   updateTotalPriceAndQuantity,
   userShoppingCart,
   resetShoppingCart,
+  checkoutCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

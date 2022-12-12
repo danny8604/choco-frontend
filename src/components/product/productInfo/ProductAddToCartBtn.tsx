@@ -18,6 +18,7 @@ const ProductAddToCartBtn = ({ props }: ProductAddToCartBtnProps) => {
     id: props.id,
     img: props.img.imgA,
     price: props.price,
+    path: props.path,
     quantity: 1,
   };
 

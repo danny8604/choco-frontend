@@ -20,3 +20,14 @@
     font-size: $fontSize--p--Small;
   }
 }
+
+@media screen and (max-width: $media-tabletR) {
+  .productText {
+    h6 {
+      font-size: $fontSize--p--Small-1;
+    }
+    p {
+      font-size: $fontSize--p--Small-2;
+    }
+  }
+}

@@ -11,3 +11,18 @@
     letter-spacing: 1.2px;
   }
 }
+@media screen and (max-width: $media-tabletS) {
+  .messageContaiter {
+    h4 {
+      font-size: $fontSize--p--Small;
+    }
+  }
+}
+
+@media screen and (max-width: $media-mobilesL) {
+  .messageContaiter {
+    h4 {
+      font-size: $fontSize--p--Small-2;
+    }
+  }
+}

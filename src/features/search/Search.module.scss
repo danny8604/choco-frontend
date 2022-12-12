@@ -22,3 +22,28 @@
     }
   }
 }
+
+@media screen and (max-width: $media-tabletR) {
+  .searchNav {
+    h3 {
+      font-size: $fontSize--h5;
+    }
+  }
+  .searchInput {
+    input {
+      font-size: $fontSize--h6;
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .searchNav {
+    h3 {
+      font-size: $fontSize--p--Small-1;
+    }
+  }
+  .searchInput {
+    input {
+      font-size: $fontSize--p--Small-2;
+    }
+  }
+}

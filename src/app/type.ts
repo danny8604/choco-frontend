@@ -14,6 +14,7 @@ export interface ShoppingCartItem {
   img: string;
   price: number;
   quantity: number;
+  path: string;
 }
 
 export interface ShoppingCart {

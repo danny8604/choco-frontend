@@ -4,7 +4,7 @@ import {
   useAppSelector,
   useProducts,
 } from "../../app/hooks/hooks";
-import RemoveIconBtn from "../../components/ui/icon/removeIconBtn/RemoveIconBtn";
+import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeSearchModal } from "../searchModal/searchModalSlice";
 import styles from "./Search.module.scss";

@@ -7,7 +7,7 @@ import ProductFigureText from "./ProductFigureText";
 const ProductFigure = ({ id, path, series, descript, img }: ProductsType) => {
   return (
     <figure className={styles.figureContainer}>
-      <Link to={`/product/${path}`}>
+      <Link to={`/product/${path}`} reloadDocument>
         <ProductFigureImg imgA={img.imgA} descript={descript} />
         <ProductFigureText id={id} series={series} />
       </Link>

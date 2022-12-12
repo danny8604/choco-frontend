@@ -2,6 +2,9 @@ import styles from "./ShopList.module.scss";
 import ProductFigure from "../product/productFigure/ProductFigure";
 import { ProductsType } from "../../app/type";
 import { useSearchParams } from "react-router-dom";
+import { useAppDispatch } from "../../app/hooks/hooks";
+import { openDesignerModal } from "../../features/designerModal/designerModalSlicel";
+import { openBackdrop } from "../../features/backdrop/backdropSlice";
 
 type ShopListProps = {
   props: ProductsType[];
@@ -9,14 +12,32 @@ type ShopListProps = {
 
 const ShopList = ({ props }: ShopListProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useAppDispatch();
   const showReverse = searchParams.get("filter") === "reverse";
-  const showDesigner = searchParams.get("filter") === "designer";
+  const showDesignerFrank =
+    searchParams.get("filter") === "designer__Frank-Gehry";
+  const showDesignerZaha =
+    searchParams.get("filter") === "designer__Zaha-Hadid";
+  const showDesignerMies =
+    searchParams.get("filter") === "designer__Mies-van-der-Rohe";
 
   const productsArr = () => {
-    if (showReverse) return [...props.map((map) => map).reverse()];
+    if (showReverse) return props.map((item) => item).reverse();
+    if (showDesignerFrank)
+      return props
+        .map((item) => item)
+        .filter((item) => item.designer === "Frank Gehry");
+    if (showDesignerZaha)
+      return props
+        .map((item) => item)
+        .filter((item) => item.designer === "Dame Zaha Mohammad Hadid");
+    if (showDesignerMies)
+      return props
+        .map((item) => item)
+        .filter((item) => item.designer === "Ludwig Mies van der Rohe");
+
     return props;
   };
-  console.log(showDesigner);
 
   const reverseHandler = () => {
     if (showReverse) {
@@ -26,7 +47,8 @@ const ShopList = ({ props }: ShopListProps) => {
   };
 
   const designerHandler = () => {
-    setSearchParams({ filter: "designer" });
+    dispatch(openDesignerModal());
+    dispatch(openBackdrop());
   };
 
   return (

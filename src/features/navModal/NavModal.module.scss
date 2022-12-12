@@ -1,0 +1,77 @@
+@use "../../styles/" as *;
+
+.navModalContainer {
+  top: 0;
+  left: 0;
+  position: fixed;
+  pointer-events: none;
+  width: 100%;
+  height: 0%;
+  background-color: $color-darkBlack;
+  opacity: 0;
+  z-index: 5;
+  transition: all 0.5s;
+
+  ul {
+    @include flex__justify-center__align-center;
+    flex-direction: column;
+    list-style: none;
+    gap: 2em;
+    height: 100%;
+    li {
+      a {
+        text-decoration: none;
+        font-size: $fontSize--h3;
+        transition: all 0.3s;
+        color: $color-white;
+        border-bottom: solid 1px $color-darkBlack;
+        &:hover {
+          border-bottom: solid 1px $color-white;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  opacity: 1;
+  height: 100vh;
+  margin-top: $navbar__headerHeight;
+  padding-bottom: $navbar__otherInforHeight;
+  pointer-events: auto;
+}
+
+@media screen and (max-width: $media-landscapeM) {
+  .navModalContainer {
+    ul {
+      li {
+        a {
+          font-size: $fontSize--h5;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .navModalContainer {
+    ul {
+      li {
+        a {
+          font-size: $fontSize--h4;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .navModalContainer {
+    ul {
+      gap: 1em;
+      li {
+        a {
+          font-size: $fontSize--p--Small;
+        }
+      }
+    }
+  }
+}

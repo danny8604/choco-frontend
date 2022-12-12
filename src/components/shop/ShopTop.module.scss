@@ -2,7 +2,7 @@
 
 .topSection {
   display: grid;
-  gap: 0.5px;
+  gap: 1px;
   grid-template-columns: repeat(4, 1fr);
 
   @include navbar__Height;
@@ -34,15 +34,53 @@
   }
 
   .LivingRoom {
-    background-image: url(../../assets/mainSectionIMG//chair-11.jpg);
+    background-image: url(../../assets/mainSectionIMG//chair-12.jpg);
   }
   .homeOffice {
-    background-image: url(../../assets/mainSectionIMG//chair-14.jpg);
+    background-image: url(../../assets/mainSectionIMG//chair-11.jpg);
   }
   .diningRoom {
-    background-image: url(../../assets/mainSectionIMG//chair-12.jpg);
+    background-image: url(../../assets/mainSectionIMG//chair-14.jpg);
   }
   .others {
     background-image: url(../../assets/mainSectionIMG//chair-15.jpg);
+  }
+}
+
+@media screen and (max-width: $media-laptopM) {
+  .topSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .LivingRoom {
+    background-position: center;
+  }
+  .homeOffice {
+    background-position: center;
+  }
+  .diningRoom {
+    background-position: center;
+  }
+  .others {
+    background-position: center;
+  }
+}
+
+@media screen and (max-width: $media-tabletM) {
+  .topSection {
+    grid-template-columns: 1fr;
+    .container {
+      h4 {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .topSection {
+    .container {
+      h4 {
+        font-size: $fontSize--h6;
+      }
+    }
   }
 }

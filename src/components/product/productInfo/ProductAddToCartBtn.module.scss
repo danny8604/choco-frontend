@@ -10,12 +10,22 @@
     border: none;
     background-color: $color-black;
     border: solid 1px $color-lightGray-1;
+    border-radius: 5px;
     padding: 0.825em;
     transition: all 0.3s;
+    margin-top: 2em;
     &:hover {
       color: $color-black;
       background-color: $color-white;
       border: solid 1px $color-black;
+    }
+  }
+}
+
+@media screen and (max-width: $media-tabletR) {
+  .buttonContainer {
+    button {
+      font-size: $fontSize--p--Small-1;
     }
   }
 }

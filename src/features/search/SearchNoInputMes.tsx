@@ -10,7 +10,7 @@ const SearchNoInputMes = () => {
 
   return (
     <div className={styles.messageContaiter}>
-      <h4>FINDE SOMTHING ... 🐧🐧🐧🐧</h4>
+      <h4>FINDE SOMTHING ...</h4>
     </div>
   );
 };

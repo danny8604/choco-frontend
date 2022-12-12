@@ -5,59 +5,85 @@ import NavbarLogoLink from "./NavbarLogoLink";
 import NavbarSearch from "./NavbarSearch";
 import NavbarCart from "./NavbarCart";
 import NavbarLogin from "./NavbarLogin";
-import { useAppSelector } from "../../app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
+import { useEffect } from "react";
+import NavModal from "../../features/navModal/NavModal";
+import { navModalToggle } from "../../features/navModal/navModalSlice";
 
 const Navbar = () => {
-  const { isLogin } = useAppSelector((state) => state.login);
+  const { isLogin, userEmail } = useAppSelector((state) => state.login);
+  const { navModalIsOpen } = useAppSelector((state) => state.navModal);
+  const dispatch = useAppDispatch();
 
-  const text = () => {
-    if (isLogin) return <p>Hi, wellcome back.</p>;
+  const navInfo = () => {
+    if (isLogin) return <p>Hi {userEmail}, wellcome back.</p>;
     return <p>FOREVER RELEVANT IN TIME</p>;
+  };
+  const navModalHandler = () => {
+    dispatch(navModalToggle());
   };
 
   return (
     <>
+      <div className={`${styles.otherInfo} ${isLogin && styles.login}`}>
+        {navInfo()}
+      </div>
       <header className={styles.header}>
-        <div className={`${styles.otherInfo} ${isLogin && styles.login}`}>
-          {text()}
-        </div>
         <nav className={styles.nav}>
-          <ul className={styles.pageLink}>
-            <NavbarLogoLink />
-            <li>
-              <Link to="/">HOME</Link>
-            </li>
-            <li className={styles.shopLink}>
-              <Link to="/shop">SHOP</Link>
-              <ul className={styles.shopDropdown}>
-                <li>
-                  <Link to="/shop/Living-Room">LIVING ROOM CHAIR</Link>
-                </li>
-                <li>
-                  <Link to="/shop/Home-Room">HOME ROOM CHAIR</Link>
-                </li>
-                <li>
-                  <Link to="/shop/Dining-Room">DINING ROOM CHAIR</Link>
-                </li>
-                <li>
-                  <Link to="/shop/Others">OTHERS CHAIR</Link>
-                </li>
-              </ul>
-              <div className={styles.dropdownBackdrop}></div>
-            </li>
-            <li>
-              <Link to="/about">ABOUT</Link>
-            </li>
+          <button
+            className={`${styles.navBtn} ${
+              navModalIsOpen && styles.navBtnActive
+            }`}
+            onClick={() => navModalHandler()}
+          ></button>
+          <div className={styles.logoPageWrapper}>
+            <div className={styles.logoContainer}>
+              <NavbarLogoLink />
+            </div>
 
-            <NavbarLogin />
-          </ul>
+            <ul className={styles.pageLink}>
+              <li>
+                <Link to="/">HOME</Link>
+              </li>
+              <li className={styles.shopLink}>
+                <Link to="/shop">SHOP</Link>
+                <ul className={styles.shopDropdown}>
+                  <li>
+                    <Link to="/shop/Living-Room" reloadDocument>
+                      LIVING ROOM CHAIR
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/shop/Home-Room" reloadDocument>
+                      HOME ROOM CHAIR
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/shop/Dining-Room" reloadDocument>
+                      DINING ROOM CHAIR
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/shop/Others" reloadDocument>
+                      OTHERS CHAIR
+                    </Link>
+                  </li>
+                </ul>
+                <div className={styles.dropdownBackdrop}></div>
+              </li>
+              <li>
+                <Link to="/about">ABOUT</Link>
+              </li>
+              <NavbarLogin />
+            </ul>
+          </div>
           <ul className={styles.shopIcon}>
             <NavbarSearch />
             <NavbarCart />
           </ul>
         </nav>
-        {/* <div className={styles.dropdownBackdrop}></div> */}
       </header>
+      <NavModal />
     </>
   );
 };

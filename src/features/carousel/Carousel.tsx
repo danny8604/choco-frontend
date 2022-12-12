@@ -9,13 +9,14 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import { carouselNext, carouselPrev } from "./carouselSlice";
 import { useEffect } from "react";
 import CarouselBtn from "./CarouselBtn";
+import { Link } from "react-router-dom";
 
 const Carousel = () => {
   const dispatch = useAppDispatch();
   const { slidesIndexArr } = useAppSelector((state) => state.carousel);
 
   useEffect(() => {
-    const autoCarousel = setInterval(() => dispatch(carouselNext()), 4000);
+    const autoCarousel = setInterval(() => dispatch(carouselNext()), 3000);
     return () => clearInterval(autoCarousel);
   }, [slidesIndexArr]);
 
@@ -31,34 +32,59 @@ const Carousel = () => {
       <CarouselBtn clickLeft={leftHandler} clickRight={rightHandler} />
       <ul className={styles.slideContainer}>
         <li>
-          <img
-            className={`${styles[`${slidesIndexArr[0]}`]} ${styles.slide}`}
-            src={testPhoto}
-          />
+          <Link to={"/shop/Dining-Room"}>
+            <img
+              className={`${styles[`${slidesIndexArr[0]}`]} ${styles.slide}`}
+              src={testPhoto}
+            />
+            <div className={styles.carouselTextContainer}>
+              <h4>DINING ROOM</h4>
+            </div>{" "}
+          </Link>
         </li>
         <li>
-          <img
-            className={`${styles[`${slidesIndexArr[1]}`]} ${styles.slide}`}
-            src={testPhoto2}
-          />
+          <Link to={"/shop/Home-Room"}>
+            <img
+              className={`${styles[`${slidesIndexArr[1]}`]} ${styles.slide}`}
+              src={testPhoto2}
+            />
+            <div className={styles.carouselTextContainer}>
+              <h4>HOOM ROOM</h4>
+            </div>
+          </Link>
         </li>
         <li>
-          <img
-            className={`${styles[`${slidesIndexArr[2]}`]} ${styles.slide}`}
-            src={testPhoto3}
-          />
+          <Link to={"/shop/Living-Room"}>
+            <img
+              className={`${styles[`${slidesIndexArr[2]}`]} ${styles.slide}`}
+              src={testPhoto3}
+            />
+            <div className={styles.carouselTextContainer}>
+              <h4>LIVING ROOM</h4>
+            </div>
+          </Link>
         </li>
         <li>
-          <img
-            className={`${styles[`${slidesIndexArr[3]}`]} ${styles.slide}`}
-            src={testPhoto4}
-          />
+          <Link to={"/shop/Dining-Room"}>
+            <img
+              className={`${styles[`${slidesIndexArr[3]}`]} ${styles.slide}`}
+              src={testPhoto4}
+            />
+            <div className={styles.carouselTextContainer}>
+              <h4>DINING ROOM</h4>
+            </div>
+          </Link>
         </li>
         <li>
-          <img
-            className={`${styles[`${slidesIndexArr[4]}`]} ${styles.slide}`}
-            src={testPhoto5}
-          />
+          <Link to={"/shop/Others"}>
+            <img
+              className={`${styles[`${slidesIndexArr[4]}`]} ${styles.slide}`}
+              src={testPhoto5}
+            />
+            <div className={styles.carouselTextContainer}>
+              <h4>OTHERS ROOM</h4>
+            </div>
+          </Link>
         </li>
       </ul>
     </div>

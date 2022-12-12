@@ -33,8 +33,8 @@ const ExploreProducts = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (productArr.length > 0) return;
     // only get once
+    if (productsData.length === 0 || productArr.length > 0) return;
     setProductArr(
       productsData
         .slice()
@@ -44,12 +44,12 @@ const ExploreProducts = () => {
   }, [productsData]);
 
   useEffect(() => {
-    if (mouseMoveX < -2400) {
-      dispatch(sliderMouseDrag(-2400));
-    }
-    if (mouseMoveX > 0) {
-      dispatch(sliderMouseDrag(0));
-    }
+    // if (mouseMoveX < -2200) {
+    //   dispatch(sliderMouseDrag(-2200));
+    // }
+    // if (mouseMoveX > 0) {
+    //   dispatch(sliderMouseDrag(0));
+    // }
     wrapperRef.current!.style.left = `${mouseMoveX}px`;
 
     const sectionRect = sectionRef.current!.getBoundingClientRect();
@@ -78,8 +78,6 @@ const ExploreProducts = () => {
     if (!sliderDown) return;
     dispatch(sliderMouseDrag(e.pageX - mouseDownX));
   };
-
-  console.log(mouseMoveX, "mouseMoveX");
 
   const leftHandler = () => {
     dispatch(sliderClickLeft(-200));

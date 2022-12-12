@@ -8,7 +8,7 @@ type CarouselBtnProps = {
 
 const CarouselBtn = ({ clickLeft, clickRight }: CarouselBtnProps) => {
   return (
-    <>
+    <div className={styles.buttonContainer}>
       <button
         className={`${styles.carouselButton}  ${styles.prev}`}
         onClick={() => clickLeft()}
@@ -21,7 +21,7 @@ const CarouselBtn = ({ clickLeft, clickRight }: CarouselBtnProps) => {
       >
         <ArrowRight />
       </button>
-    </>
+    </div>
   );
 };
 

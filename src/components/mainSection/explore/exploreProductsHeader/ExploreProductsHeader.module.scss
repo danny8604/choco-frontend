@@ -21,8 +21,8 @@
 
     & .leftIcon,
     & .rightIcon {
-      height: 5%;
-      width: 5%;
+      height: 35px;
+      width: 35px;
       border: none;
       background-color: white;
       transition: all 0.3s;
@@ -37,6 +37,44 @@
     }
     .rightIcon:hover {
       transform: translateX(10px);
+    }
+  }
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 2em;
+    .arrowIconContainer {
+      justify-content: center;
+    }
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .header {
+    & h3 {
+      font-size: $fontSize--h3--M;
+    }
+  }
+}
+@media screen and (max-width: $media-tabletR) {
+  .header {
+    & h3 {
+      font-size: $fontSize--h5;
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .header {
+    & h3 {
+      font-size: $fontSize--p--Small;
+    }
+    .arrowIconContainer {
+      & .leftIcon,
+      & .rightIcon {
+        height: 25px;
+        width: 25px;
+      }
     }
   }
 }

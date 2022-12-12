@@ -1,38 +1,72 @@
 @use "../../styles/" as *;
 
-.carouselButton {
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
-  border: none;
-  height: 70px;
-  width: 70px;
-  z-index: 4;
-  background-color: rgba(0, 0, 0, 0);
+.buttonContainer {
+  width: 100%;
+  .carouselButton {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    border: none;
+    height: 70px;
+    width: 70px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
 
-  cursor: pointer;
-
-  svg {
-    height: 45px;
-    width: 45px;
-    color: $color-darkBlack;
-    transition: all 0.4s;
-  }
-  &:hover.prev {
     svg {
-      transform: translateX(-30%);
+      height: 45px;
+      width: 45px;
+      color: $color-darkBlack;
+      transition: all 0.4s;
+    }
+    &:hover.prev {
+      svg {
+        transform: translateX(-30%);
+      }
+    }
+    &:hover.next {
+      svg {
+        transform: translateX(30%);
+      }
     }
   }
-  &:hover.next {
-    svg {
-      transform: translateX(30%);
-    }
+
+  .prev {
+    left: 25%;
+  }
+  .next {
+    right: 25%;
   }
 }
 
-.prev {
-  left: 32.5em;
+@media screen and (max-width: $media-tablet) {
+  .buttonContainer {
+    .prev {
+      left: 10%;
+    }
+    .next {
+      right: 10%;
+    }
+  }
 }
-.next {
-  right: 32.5em;
+@media screen and (max-width: $media-tabletS) {
+  .buttonContainer {
+    .carouselButton {
+      height: 50px;
+      width: 50px;
+
+      svg {
+        height: 35px;
+        width: 35px;
+        color: $color-darkBlack;
+        transition: all 0.4s;
+      }
+    }
+    .prev {
+      left: 3%;
+    }
+    .next {
+      right: 3%;
+    }
+  }
 }

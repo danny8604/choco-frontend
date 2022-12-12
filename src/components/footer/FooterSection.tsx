@@ -6,7 +6,9 @@ const FooterSection = () => {
     <footer className={styles.footerSection}>
       <section className={styles.container}>
         <div className={styles.brandNews}>
-          <h3>CHOCO</h3>
+          <Link to="/" reloadDocument>
+            <h3>CHOCO</h3>
+          </Link>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             consectetur ad nesciunt modi. Est aliquid, facere recusandae
@@ -16,21 +18,31 @@ const FooterSection = () => {
         </div>
         <ul className={styles.linkContainer}>
           <li>
-            <Link to="/">CUSTOMER SERVICE</Link>
+            <Link to="/" reloadDocument>
+              CUSTOMER SERVICE
+            </Link>
           </li>
           <li>
-            <Link to="/">COMPANY</Link>
+            <Link to="/about" reloadDocument>
+              COMPANY
+            </Link>
           </li>
           <li>
-            <Link to="/">FIND STORE</Link>
+            <Link to="/shop" reloadDocument>
+              SHOP NOW
+            </Link>
           </li>
         </ul>
         <ul className={styles.linkContainer}>
           <li>
-            <Link to="/">CONTACT US</Link>
+            <Link to="/login" reloadDocument>
+              LOGIN
+            </Link>
           </li>
           <li>
-            <Link to="/">FOLLOW US</Link>
+            <Link to="/about" reloadDocument>
+              FOLLOW US
+            </Link>
           </li>
         </ul>
       </section>

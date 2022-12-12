@@ -22,10 +22,7 @@ const sliderSlice = createSlice({
       state.sliderDown = true;
       state.mouseDownX = action.payload;
     },
-    // sliderMouseDown(state, action) {
-    //   state.sliderDown = true;
-    //   state.sliderClickX = action.payload;
-    // },
+
     sliderMouseLeave(state) {
       state.sliderDown = false;
       state.sliderDragged = false;
@@ -39,7 +36,7 @@ const sliderSlice = createSlice({
       state.mouseMoveX = action.payload;
     },
     sliderClickLeft(state, action) {
-      if (state.mouseMoveX < -2400) {
+      if (state.mouseMoveX < -2200) {
         return;
       }
       state.mouseMoveX += action.payload;

@@ -8,3 +8,9 @@
     object-fit: cover;
   }
 }
+
+@media screen and (max-width: $media-tabletR) {
+  .cartItemImg {
+    width: 80%;
+  }
+}

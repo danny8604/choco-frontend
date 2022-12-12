@@ -7,7 +7,7 @@ type CartItemPriceProps = {
 
 const CartItemPrice = ({ price, quantity }: CartItemPriceProps) => {
   return (
-    <span>
+    <span className={styles.itemPrice}>
       <p>${price * quantity}</p>
     </span>
   );

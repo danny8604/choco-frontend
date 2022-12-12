@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { useGetAllProductsQuery, useGetUserInforQuery } from "../apiSlice";
 import type { RootState, AppDispatch } from "../store";
@@ -36,7 +37,6 @@ export const useUser = (userId: string | null) => {
   const { data, error, isLoading } = useGetUserInforQuery(`${userId}`);
 
   const userData = { ...data };
-  console.log(data, "Data🐄");
 
   return { userData, error, isLoading };
 };

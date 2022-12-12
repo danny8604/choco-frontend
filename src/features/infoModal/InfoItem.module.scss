@@ -1,0 +1,27 @@
+@use "../../styles/" as *;
+
+.cartItemContainer {
+  padding: 1em;
+  display: flex;
+  width: 90%;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: solid 1px $color-gray;
+  color: $color-darkBlack;
+
+  .cartItemText {
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: $media-tabletR) {
+  .cartItemContainer {
+    flex-direction: column;
+  }
+}

@@ -5,6 +5,11 @@
   overflow: hidden;
   width: 100%;
   height: 650px;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   & .wrapper {
     position: absolute;
@@ -16,5 +21,41 @@
     padding: 4em 0;
     padding-left: 60em;
     gap: 2em;
+  }
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .scrollSection {
+    & .wrapper {
+      padding-left: 50em;
+    }
+  }
+}
+@media screen and (max-width: $media-laptopM) {
+  .scrollSection {
+    & .wrapper {
+      padding-left: 40em;
+    }
+  }
+}
+@media screen and (max-width: $media-landscape) {
+  .scrollSection {
+    & .wrapper {
+      padding-left: 20em;
+    }
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .scrollSection {
+    & .wrapper {
+      padding-left: 5em;
+    }
+  }
+}
+@media screen and (max-width: $media-tabletR) {
+  .scrollSection {
+    & .wrapper {
+      padding-left: 0em;
+    }
   }
 }

@@ -1,0 +1,29 @@
+@use "../../../../styles/" as *;
+
+.formInput {
+  padding: 1em;
+  border: none;
+  border: 1px solid $color-lightGray-1;
+  width: 80%;
+  font-size: $fontSize--p--Small;
+  letter-spacing: 0.5px;
+  margin-top: -1px;
+
+  &:focus {
+    outline: 1px solid $color-blue;
+    position: relative;
+  }
+}
+
+.addressNotValid {
+  border: solid 1px $color-red;
+  background-color: rgba($color-red, 0.1);
+  position: relative;
+  &:focus {
+    outline: 1px solid $color-red;
+  }
+}
+
+.addressValid {
+  background-color: rgba($color-blue-2, 0.1);
+}

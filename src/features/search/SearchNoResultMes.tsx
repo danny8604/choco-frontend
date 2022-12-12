@@ -11,7 +11,7 @@ const SearchNoResultMes = () => {
 
   return (
     <div className={styles.messageContaiter}>
-      <h4>NO RESULT ... 🦔🦔🦔🦔🦔</h4>
+      <h4>NO RESULT ... ( Try Model or Choco ) </h4>
     </div>
   );
 };

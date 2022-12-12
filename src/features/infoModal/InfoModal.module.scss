@@ -1,0 +1,108 @@
+@use "../../styles/" as *;
+
+.infoModal {
+  display: grid;
+  position: fixed;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  border-radius: 8px;
+  width: 90%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background-color: $color-white;
+  transition: all 0.3s;
+  opacity: 0;
+  overflow-y: auto;
+
+  .infoContainer {
+    padding: 1em 3em;
+    height: 90%;
+    border-right: solid 1px $color-gray;
+    h4 {
+      font-size: $fontSize--h4;
+      letter-spacing: 1.6px;
+      padding-bottom: 1em;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      gap: 0.5em;
+      font-size: $fontSize--p;
+    }
+  }
+  .infoItemContainer {
+    height: 100%;
+  }
+}
+
+.infoModalActive {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .infoModal {
+    .infoContainer {
+      padding: 1em 2.5em;
+      height: 90%;
+      border-right: solid 1px $color-gray;
+      h4 {
+        font-size: $fontSize--h5;
+      }
+      ul {
+        font-size: $fontSize--p--Small;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-laptopM) {
+  .infoModal {
+    .infoContainer {
+      padding: 1em 2.5em;
+      height: 90%;
+      border-right: solid 1px $color-gray;
+      h4 {
+        font-size: $fontSize--p;
+      }
+      ul {
+        font-size: $fontSize--p--Small;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-laptop) {
+  .infoModal {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    .infoContainer {
+      padding: 2em;
+      height: 100%;
+      width: 90%;
+      text-align: center;
+      margin: 0 auto;
+      border: none;
+      border-bottom: solid 1px $color-gray;
+    }
+    .infoItemContainer {
+      padding-bottom: 3em;
+    }
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .infoModal {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    .infoContainer {
+      h4 {
+        font-size: $fontSize--p--Small;
+      }
+      ul {
+        font-size: $fontSize--p--Small-1;
+      }
+    }
+  }
+}

@@ -3,21 +3,38 @@
 .carousel {
   position: relative;
   transition: all 0.4s;
+  margin: 0 auto;
+  width: 90%;
 
   .slideContainer {
     display: flex;
     align-items: center;
     list-style: none;
-    width: 85%;
-    height: 1000px;
+    height: 1050px;
     margin: 0 auto;
-    position: relative;
     transition: all 0.4s;
+    .carouselTextContainer {
+      text-align: center;
+      h4 {
+        width: 30%;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        z-index: 4;
+        font-size: 0;
+        opacity: 0;
+        color: $color-darkBlack;
+        transform: translateX(-50%);
+        transition: all 0.4s;
+        letter-spacing: 2px;
+      }
+    }
     .slide {
       position: absolute;
       width: 15%;
       transform: translateX(-50%) translateY(-50%);
-      transition: all 0.3s;
+      transition: all 0.4s;
+      pointer-events: none;
     }
     .slideImg1 {
       left: 25%;
@@ -30,11 +47,20 @@
       z-index: 2;
     }
     .slideImg3 {
+      pointer-events: auto;
       left: 50%;
       width: 30%;
       box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
       opacity: 1;
       z-index: 3;
+
+      & + div h4 {
+        width: 30%;
+        padding: 0.25em;
+        font-size: $fontSize--h4;
+        background-color: rgba(255, 255, 255, 0.7);
+        opacity: 1;
+      }
     }
     .slideImg4 {
       width: 25%;
@@ -45,6 +71,151 @@
     .slideImg5 {
       left: 75%;
       opacity: 0.25;
+    }
+  }
+}
+
+@media screen and (max-width: $media-laptopM) {
+  .carousel {
+    width: 100%;
+    .slideContainer {
+      .slideImg3 {
+        & + div h4 {
+          width: 30%;
+          padding: 0.25em;
+          font-size: $fontSize--h6;
+          background-color: rgba(255, 255, 255, 0.7);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .carousel {
+    .slideContainer {
+      height: 750px;
+    }
+  }
+}
+@media screen and (max-width: $media-laptopM) {
+  .carousel {
+    width: 100%;
+    .slideContainer {
+      height: 700px;
+      .carouselTextContainer {
+        h4 {
+          top: 35%;
+        }
+      }
+      .slideImg3 {
+        & + div h4 {
+          width: 30%;
+          padding: 0.25em;
+          font-size: $fontSize--h6;
+          background-color: rgba(255, 255, 255, 0.7);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+// @media screen and (max-width: $media-laptop) {
+//   .carousel {
+//     .slideContainer {
+//       height: 600px;
+//     }
+//   }
+// }
+@media screen and (max-width: $media-laptop) {
+  .carousel {
+    width: 100%;
+    .slideContainer {
+      height: 850px;
+      .carouselTextContainer {
+        h4 {
+          top: 40%;
+        }
+      }
+      .slide {
+        width: 35%;
+      }
+
+      .slideImg2 {
+        width: 45%;
+      }
+      .slideImg3 {
+        width: 50%;
+
+        & + div h4 {
+          width: 50%;
+        }
+      }
+      .slideImg4 {
+        width: 45%;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .carousel {
+    .slideContainer {
+      height: 650px;
+    }
+  }
+}
+@media screen and (max-width: $media-tabletR) {
+  .carousel {
+    width: 100%;
+    .slideContainer {
+      .slide {
+        width: 50%;
+      }
+
+      .slideImg2 {
+        width: 60%;
+      }
+      .slideImg3 {
+        width: 65%;
+
+        & + div h4 {
+          width: 65%;
+          font-size: $fontSize--p--Small-2;
+        }
+      }
+      .slideImg4 {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-tabletS) {
+  .carousel {
+    .slideContainer {
+      height: 600px;
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .carousel {
+    .slideContainer {
+      height: 550px;
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesL) {
+  .carousel {
+    .slideContainer {
+      height: 500px;
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesM) {
+  .carousel {
+    .slideContainer {
+      height: 400px;
     }
   }
 }

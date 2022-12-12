@@ -1,7 +1,7 @@
 @use "../../../styles/" as *;
 
 .productDetails {
-  max-width: 85%;
+  max-width: 90%;
   margin: 0 auto;
   .productFigure {
     display: grid;
@@ -13,7 +13,29 @@
     .detailsContainer {
       list-style: none;
       grid-row: 1/-1;
-      padding: 6em;
+      padding: 4em;
+    }
+  }
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .productDetails {
+    max-width: 90%;
+    .productFigure {
+      padding: 2em 0;
+    }
+  }
+}
+@media screen and (max-width: $media-laptop) {
+  .productDetails {
+    .productFigure {
+      gap: 1.5em;
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 1fr;
+      .detailsContainer {
+        grid-row: 2;
+        padding: 0em;
+      }
     }
   }
 }

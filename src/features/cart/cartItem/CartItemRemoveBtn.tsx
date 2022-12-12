@@ -2,7 +2,7 @@ import styles from "./CartItemRemoveBtn.module.scss";
 import removeIcon from "../../../assets/svg/close-outline.svg";
 import { useAppDispatch } from "../../../app/hooks/hooks";
 import { removeCartItem, updateTotalPriceAndQuantity } from "./cartSlice";
-import RemoveIconBtn from "../../../components/ui/icon/removeIconBtn/RemoveIconBtn";
+import RemoveIconBtn from "../../../components/ui/button/removeIconBtn/RemoveIconBtn";
 
 type CartItemRemoveBtnProps = {
   id: string;

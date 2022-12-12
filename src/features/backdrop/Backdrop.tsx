@@ -1,5 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import { closeCartModal } from "../cartModal/cartModalSlice";
+import { closeDesignerModal } from "../designerModal/designerModalSlicel";
+import { closeInfoModal } from "../infoModal/infoModalSlice";
 import { closeSearchModal } from "../searchModal/searchModalSlice";
 import styles from "./Backdrop.module.scss";
 import { closeBackdrop } from "./backdropSlice";
@@ -12,6 +14,8 @@ const Backdrop = () => {
     dispatch(closeBackdrop());
     dispatch(closeCartModal());
     dispatch(closeSearchModal());
+    dispatch(closeDesignerModal());
+    dispatch(closeInfoModal());
   };
 
   return (

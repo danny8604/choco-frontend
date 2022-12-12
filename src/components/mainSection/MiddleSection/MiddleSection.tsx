@@ -1,15 +1,25 @@
 import styles from "./MiddleSection.module.scss";
 import chart05 from "../../../assets/mainSectionIMG/chair-05.jpg";
 import chart06 from "../../../assets/mainSectionIMG/chair-06.jpg";
+import { useNavigate } from "react-router-dom";
 
 const MiddleSection = () => {
+  const navigate = useNavigate();
+  const shopHandler = () => {
+    navigate("/shop");
+  };
   return (
     <>
       <section className={styles.middleSection}>
         <div className={styles.middleSectionText}>
           <h2>ANYTHING BUT ORDINARY</h2>
           <p>FOREVER RELEVANT IN TIME</p>
-          <button className={styles.shopNowbutton}>SHOP NOW ➝</button>
+          <button
+            className={styles.shopNowbutton}
+            onClick={() => shopHandler()}
+          >
+            SHOP NOW ➝
+          </button>
         </div>
         <div className={styles.imgSide}>
           <img
@@ -32,7 +42,12 @@ const MiddleSection = () => {
         <div className={styles.middleSectionText}>
           <h2>ANYTHING BUT ORDINARY</h2>
           <p>FOREVER RELEVANT IN TIME</p>
-          <button className={styles.shopNowbutton}>SHOP NOW ➝</button>
+          <button
+            className={styles.shopNowbutton}
+            onClick={() => shopHandler()}
+          >
+            SHOP NOW ➝
+          </button>
         </div>
       </section>
     </>

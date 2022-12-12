@@ -1,39 +1,33 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import styles from "./CartModal.module.scss";
 import CartItem from "../cart/cartItem/CartItem";
-import CartTotalPrice from "../cart/cartTotalPrice/CartTotalPrice";
+import CartTotalPrice from "./CartTotalPrice";
 import { useEffect } from "react";
 import { child, get, getDatabase, ref, set } from "firebase/database";
 import {
   updateTotalPriceAndQuantity,
   userShoppingCart,
 } from "../cart/cartItem/cartSlice";
-import { dbRef } from "../../app/firebase-config";
-import RemoveIconBtn from "../../components/ui/icon/removeIconBtn/RemoveIconBtn";
+import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeCartModal } from "./cartModalSlice";
+import CartLeadCheckout from "./CartLeadCheckout";
 
 const CartModal = () => {
   const { shoppingCart, shoppingCartTotalPrice, shoppingCartTotalQuantity } =
     useAppSelector((state) => state.cart);
-  const { userId, isLogin } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const { cartModalIsOpen } = useAppSelector((state) => state.cartModal);
+  const { isLogin, userId, userEmail } = useAppSelector((state) => state.login);
 
   useEffect(() => {
-    if (isLogin) {
-      const fetchUserCartData = async () => {
-        try {
-          const response = await get(child(dbRef, `users/${userId}/`));
+    localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
 
-          if (response.exists()) {
-            dispatch(userShoppingCart(response.val().shoppingCart));
-            dispatch(updateTotalPriceAndQuantity());
-          }
-        } catch (err) {
-          console.error(err);
-        }
-      };
+    if (isLogin) {
+      const db = getDatabase();
+      set(ref(db, `users/${userId}/`), {
+        shoppingCart: shoppingCart,
+      });
 
       localStorage.setItem(
         "auth",
@@ -41,32 +35,12 @@ const CartModal = () => {
           userId: userId,
           isLogin: isLogin,
           isLogout: !isLogin,
+          userEmail: userEmail,
         })
       );
-
-      localStorage.removeItem("shopping-cart");
-      console.log("sfsf");
-
-      fetchUserCartData();
     }
-  }, [isLogin]);
-
-  useEffect(() => {
-    if (isLogin) {
-      // Updata firebase shopping cart
-      const db = getDatabase();
-      set(ref(db, `users/${userId}/`), {
-        shoppingCart: shoppingCart,
-      });
-      localStorage.removeItem("shopping-cart");
-    }
-
-    if (!isLogin) {
-      localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
-    }
-
     dispatch(updateTotalPriceAndQuantity());
-  }, [userId, isLogin, shoppingCart]);
+  }, [isLogin, shoppingCart]);
 
   const closeCartModalHandler = () => {
     dispatch(closeBackdrop());
@@ -80,11 +54,13 @@ const CartModal = () => {
       }`}
     >
       <div className={styles.cartNav}>
-        {shoppingCartTotalQuantity ? (
-          <h3>{shoppingCartTotalQuantity} items in your cart</h3>
-        ) : (
-          <h3>Your shopping cart is empty</h3>
-        )}
+        <div>
+          {shoppingCartTotalQuantity ? (
+            <h3>{shoppingCartTotalQuantity} items in your cart</h3>
+          ) : (
+            <h3>Your shopping cart is empty</h3>
+          )}
+        </div>
 
         <RemoveIconBtn onClick={closeCartModalHandler} />
       </div>
@@ -95,12 +71,14 @@ const CartModal = () => {
             id={item.id}
             img={item.img}
             price={item.price}
+            path={item.path}
             quantity={item.quantity}
           />
         ))}
       </div>
       <div className={styles.priceContainer}>
         <CartTotalPrice totalPrice={shoppingCartTotalPrice} />
+        {shoppingCart.length > 0 && <CartLeadCheckout />}
       </div>
     </section>
   );

@@ -3,7 +3,32 @@
 .cardSection {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5%;
-  max-width: 65%;
+  gap: 4em;
+  max-width: 70%;
+  height: 100%;
   margin: 10em auto;
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .cardSection {
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: $media-laptopM) {
+  .cardSection {
+    grid-template-columns: 1fr;
+    margin: 25em auto;
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .cardSection {
+    grid-template-columns: 1fr;
+    margin: 15em auto;
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .cardSection {
+    grid-template-columns: 1fr;
+    margin: 10em auto;
+  }
 }

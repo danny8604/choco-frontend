@@ -3,8 +3,8 @@ import styles from "./RegisterForm.module.scss";
 
 const RegisterForm = () => {
   return (
-    <section className={styles.topSection}>
-      <div className={styles.leadText}>
+    <section className={styles.formWrapper}>
+      <div className={styles.formTitle}>
         <h3>REGISTER CHOCO STORE</h3>
         <Register />
       </div>

@@ -1,1 +1,11 @@
 @use "../../../styles/" as *;
+
+.itemPrice {
+  font-size: $fontSize--p;
+}
+
+@media screen and (max-width: $media-mobilesG) {
+  .itemPrice {
+    font-size: $fontSize--p--Small-1;
+  }
+}

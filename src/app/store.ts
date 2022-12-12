@@ -11,19 +11,25 @@ import backdropReducer from "../features/backdrop/backdropSlice";
 import cartModalReducer from "../features/cartModal/cartModalSlice";
 import sliderReducer from "../features/slider/sliderSlice";
 import carouselReducer from "../features/carousel/carouselSlice";
+import designerModalReducer from "../features/designerModal/designerModalSlicel";
+import navModalReducer from "../features/navModal/navModalSlice";
+import infoModalReducer from "../features/infoModal/infoModalSlice";
 
 const store = configureStore({
   reducer: {
+    backdrop: backdropReducer,
+    infoModal: infoModalReducer,
+    navModal: navModalReducer,
+    designerModal: designerModalReducer,
+    searchModal: searchModalReducer,
+    cartModal: cartModalReducer,
     carousel: carouselReducer,
     slider: sliderReducer,
     search: searchReducer,
+    cart: cartReducer,
     formAuth: formAuthReducer,
     login: loginReducer,
     register: registerReducer,
-    searchModal: searchModalReducer,
-    cartModal: cartModalReducer,
-    backdrop: backdropReducer,
-    cart: cartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

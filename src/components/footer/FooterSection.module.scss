@@ -5,7 +5,7 @@
     padding: 5em 8em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8%;
+    gap: 6em;
     border-top: solid 1.5px $color-lightGray-1;
     background-color: $color-white;
 
@@ -13,6 +13,9 @@
       display: flex;
       flex-direction: column;
       gap: 1.25em;
+      a {
+        text-decoration: none;
+      }
       h3 {
         color: $color-black;
         font-size: $fontSize--h3;
@@ -46,5 +49,77 @@
     text-align: end;
     background-color: $color-black;
     color: white;
+  }
+}
+
+@media screen and (max-width: $media-laptopL) {
+  .footerSection {
+    .container {
+      padding: 3em 6em;
+    }
+  }
+}
+@media screen and (max-width: $media-laptopM) {
+  .footerSection {
+    .container {
+      padding: 3em 4em;
+    }
+  }
+}
+@media screen and (max-width: $media-laptop) {
+  .footerSection {
+    .container {
+      padding: 0 2em;
+      gap: 0;
+      grid-template-columns: 1fr;
+      text-align: center;
+      .brandNews {
+        padding: 2em 0;
+        border-bottom: solid 1px $color-lightGray-1;
+
+        h3 {
+          color: $color-gray;
+        }
+      }
+
+      .linkContainer {
+        padding: 2em 0;
+        border-bottom: solid 1px $color-lightGray-1;
+      }
+      .linkContainer:last-child {
+        border-bottom: none;
+      }
+    }
+    .footerNav {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: $media-tablet) {
+  .footerSection {
+    .container {
+      padding: 0 2em;
+      gap: 0;
+      grid-template-columns: 1fr;
+      text-align: center;
+      .brandNews {
+        h3 {
+          font-size: $fontSize--h4;
+        }
+
+        p {
+          font-size: $fontSize--p--Small-1;
+        }
+      }
+
+      .linkContainer {
+        li {
+          a {
+            font-size: $fontSize--h6;
+          }
+        }
+      }
+    }
   }
 }

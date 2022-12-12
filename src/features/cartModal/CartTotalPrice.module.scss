@@ -1,0 +1,26 @@
+@use "../../styles/" as *;
+
+.cartTotalPrice {
+  color: $color-black;
+  letter-spacing: 1.2px;
+}
+
+@media screen and (max-width: $media-tablet) {
+  .cartTotalPrice {
+    h3 {
+      font-size: $fontSize--p--Small;
+    }
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .cartTotalPrice {
+    text-align: end;
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .cartTotalPrice {
+    h3 {
+      font-size: $fontSize--p--Small-1;
+    }
+  }
+}

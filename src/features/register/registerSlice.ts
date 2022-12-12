@@ -33,12 +33,14 @@ interface RegisterState {
   signUpUserId: null | string;
   signUpToken: null | string;
   isLoading: boolean;
+  registerError: boolean;
 }
 
 const initialState: RegisterState = {
   signUpUserId: null,
   signUpToken: null,
   isLoading: false,
+  registerError: false,
 };
 
 const registerSlice = createSlice({
@@ -52,15 +54,18 @@ const registerSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(postSignUpData.pending, (state) => {
       state.isLoading = true;
+      state.registerError = false;
     });
     builder.addCase(postSignUpData.fulfilled, (state, action) => {
       state.isLoading = false;
+      state.registerError = false;
       if (!action.payload) return;
       state.signUpToken = action.payload.idToken;
       state.signUpUserId = action.payload.localId;
     });
     builder.addCase(postSignUpData.rejected, (state) => {
       state.isLoading = false;
+      state.registerError = true;
     });
   },
 });

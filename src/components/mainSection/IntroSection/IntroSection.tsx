@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./IntroSection.module.scss";
 
 const IntroSection = () => {
+  const navigate = useNavigate();
+  const aboutHandler = () => {
+    navigate("/about");
+  };
   return (
     <section className={styles.introSection}>
       <div className={styles.introSectionText}>
@@ -10,7 +15,9 @@ const IntroSection = () => {
           of the finest quality and unmatched design reflect the way we live
           now.
         </p>
-        <button className={styles.aboutbutton}>ABOUT US ➝</button>
+        <button className={styles.aboutbutton} onClick={() => aboutHandler()}>
+          ABOUT US ➝
+        </button>
       </div>
     </section>
   );

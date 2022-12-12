@@ -1,0 +1,45 @@
+@use "../../styles/" as *;
+
+.cartInfoContainer {
+  .cartInfoTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .cartQuantity {
+      h3 {
+        font-size: $fontSize--h4;
+        color: $color-black;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-tabletR) {
+  .cartInfoContainer {
+    .cartInfoTitle {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25em;
+      .cartQuantity {
+        h3 {
+          font-size: $fontSize--h5;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .cartInfoContainer {
+    .cartInfoTitle {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      .cartQuantity {
+        h3 {
+          font-size: $fontSize--p;
+          color: $color-black;
+        }
+      }
+    }
+  }
+}

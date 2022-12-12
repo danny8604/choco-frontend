@@ -17,3 +17,33 @@
     }
   }
 }
+
+@media screen and (max-width: $media-laptopL) {
+  .productTop {
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: $media-laptop) {
+  .productTop {
+    max-width: 90%;
+    padding-top: 0;
+    .productFigure {
+      grid-template-columns: 1fr;
+
+      .productFigcaption {
+        padding: 8em 0em;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tabletR) {
+  .productTop {
+    max-width: 95%;
+
+    .productFigure {
+      .productFigcaption {
+        padding: 3em 1.5em;
+      }
+    }
+  }
+}

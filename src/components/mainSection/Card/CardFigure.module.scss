@@ -69,3 +69,67 @@
     }
   }
 }
+
+@media screen and (max-width: $media-laptopM) {
+  .cardFigure {
+    .cardContainer {
+      .imgContainer {
+        height: 85vh;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tablet) {
+  .cardFigure {
+    .cardContainer {
+      .imgContainer {
+        height: 55vh;
+      }
+      .textContainer {
+        .text {
+          h4 {
+            font-size: $fontSize--h5;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .cardFigure {
+    .cardContainer {
+      .imgContainer {
+        height: 35vh;
+      }
+      .textContainer {
+        gap: 2.5em;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesL) {
+  .cardFigure {
+    .cardContainer {
+      .imgContainer {
+        height: 35vh;
+      }
+      .textContainer {
+        gap: 1.5em;
+        padding: 1em 1.625em;
+        .text {
+          h4 {
+            font-size: $fontSize--p;
+          }
+          p {
+            font-size: $fontSize--p--Small-1;
+          }
+        }
+        .exploreText {
+          p {
+            font-size: $fontSize--p--Small-1;
+          }
+        }
+      }
+    }
+  }
+}

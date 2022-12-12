@@ -2,5 +2,19 @@
 
 .cartItemName {
   font-size: $fontSize--h5;
+  width: 150px;
   letter-spacing: 1px;
+}
+
+@media screen and (max-width: $media-tabletS) {
+  .cartItemName {
+    width: 100px;
+    font-size: $fontSize--p--Small;
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .cartItemName {
+    width: 80px;
+    font-size: $fontSize--p--Small-1;
+  }
 }

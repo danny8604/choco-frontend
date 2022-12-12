@@ -31,52 +31,65 @@ export const postLoginData = createAsyncThunk(
 
 interface LoginState {
   userId: null | string;
+  userEmail: null | string;
   isLogin: boolean;
   isLogout: boolean;
-  isLoading: boolean;
+  loginIsLoading: boolean;
+  userCartIsLoading: boolean;
+  isRememberEmail: boolean;
 }
 
 const initinalAuth = localStorage.getItem("auth")
   ? JSON.parse(localStorage.getItem("auth") || "")
   : [];
+const initinalRememberEmail = localStorage.getItem("rememberEmail")
+  ? JSON.parse(localStorage.getItem("rememberEmail") || "")
+  : [];
 
 const initialState: LoginState = {
   userId: initinalAuth.userId,
+  userEmail: initinalAuth.userEmail,
   isLogin: initinalAuth.isLogin,
   isLogout: initinalAuth.isLogout,
-  isLoading: initinalAuth.isLoading,
+  loginIsLoading: initinalAuth.loginIsLoading,
+  userCartIsLoading: false,
+  isRememberEmail: initinalRememberEmail.isRememberEmail,
 };
 
 const loginSlice = createSlice({
-  name: "loginForm",
+  name: "login",
   initialState,
   reducers: {
-    login(state) {
+    userLogin(state) {
       state.isLogin = true;
-      state.isLogout = !state.isLogin;
+      state.isLogout = false;
     },
-    logout(state) {
-      state.isLoading = false;
+    userLogout(state) {
+      state.loginIsLoading = false;
       state.isLogin = false;
-      state.isLogout = !state.isLogin;
+      state.isLogout = true;
       state.userId = null;
+    },
+    rememberEmail(state, action) {
+      state.isRememberEmail = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(postLoginData.pending, (state) => {
-      state.isLoading = true;
+      state.loginIsLoading = true;
     });
     builder.addCase(postLoginData.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.loginIsLoading = false;
       if (!action.payload) return;
+      state.userEmail = action.payload.email;
       state.userId = action.payload.localId;
     });
     builder.addCase(postLoginData.rejected, (state) => {
-      state.isLoading = false;
+      state.loginIsLoading = false;
     });
   },
 });
 
-export const { login, logout } = loginSlice.actions;
+export const { userLogin, userLogout, rememberEmail } = loginSlice.actions;
 
 export default loginSlice.reducer;

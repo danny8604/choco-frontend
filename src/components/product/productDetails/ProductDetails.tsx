@@ -15,7 +15,9 @@ const ProductDetails = () => {
   return (
     <section className={styles.productDetails}>
       <figure className={styles.productFigure}>
-        <ProductDetailsImg img={currentProduct.img} />
+        <div className={styles.imgContainer}>
+          <ProductDetailsImg img={currentProduct.img} />
+        </div>
         <ul className={styles.detailsContainer}>
           {messageData.map((map) => (
             <ProductDetailList

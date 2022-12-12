@@ -7,12 +7,13 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto 1fr;
-    grid-row: 1fr;
     padding: 4em 0;
+    .imgContainer {
+      grid-column: 1;
+    }
 
     .detailsContainer {
       list-style: none;
-      grid-row: 1/-1;
       padding: 4em;
     }
   }
@@ -30,10 +31,11 @@
   .productDetails {
     .productFigure {
       gap: 1.5em;
-      grid-template-rows: auto 1fr;
       grid-template-columns: 1fr;
+      .imgContainer {
+        height: 100%;
+      }
       .detailsContainer {
-        grid-row: 2;
         padding: 0em;
       }
     }

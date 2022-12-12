@@ -44,12 +44,12 @@ const ExploreProducts = () => {
   }, [productsData]);
 
   useEffect(() => {
-    // if (mouseMoveX < -2200) {
-    //   dispatch(sliderMouseDrag(-2200));
-    // }
-    // if (mouseMoveX > 0) {
-    //   dispatch(sliderMouseDrag(0));
-    // }
+    if (mouseMoveX < -2400) {
+      dispatch(sliderMouseDrag(-2400));
+    }
+    if (mouseMoveX > 0) {
+      dispatch(sliderMouseDrag(0));
+    }
     wrapperRef.current!.style.left = `${mouseMoveX}px`;
 
     const sectionRect = sectionRef.current!.getBoundingClientRect();

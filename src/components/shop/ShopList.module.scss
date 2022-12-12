@@ -8,7 +8,7 @@
   .listContainer {
     display: flex;
     list-style: none;
-    gap: 1em;
+    gap: 14px;
     padding-bottom: 2.5em;
     border-bottom: solid 1px $color-warmGray;
     button {
@@ -39,7 +39,7 @@
     padding: 2em 0.5em;
 
     .productContainer {
-      gap: 0em;
+      gap: 0;
       grid-template-columns: 1fr;
     }
   }

@@ -42,15 +42,6 @@
     position: relative;
 
     background-color: $color-white;
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   width: 100%;
-    //   top: 100%;
-    //   left: 0;
-    //   pointer-events: none;
-    //   border-bottom: solid 1px $color-lightGray-1;
-    // }
 
     .navBtn {
       opacity: 0;
@@ -186,7 +177,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2em;
+      gap: 25px;
       list-style: none;
       position: relative;
 
@@ -233,7 +224,7 @@
         position: absolute;
         top: 50%;
         right: 0;
-        gap: 1em;
+        gap: 16px;
         transform: translate(-50%, -50%);
       }
     }

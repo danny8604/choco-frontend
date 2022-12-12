@@ -72,6 +72,13 @@
 
 @media screen and (max-width: $media-tabletS) {
   .findStoreSection {
+    .storePhoto {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
     .storeInfor {
       h3 {
         font-size: $fontSize--p--Small-2;

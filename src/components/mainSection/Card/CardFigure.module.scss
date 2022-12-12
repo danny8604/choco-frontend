@@ -47,12 +47,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3.5em;
-      padding: 2em 3.25em;
+      padding: 2em 2.5em;
       color: $color-warmGray;
       font-size: $fontSize--p--Small;
 
       .text {
+        padding-bottom: 2.5em;
         h4 {
           font-size: $fontSize--h4;
           color: $color-black;
@@ -101,9 +101,6 @@
       .imgContainer {
         height: 35vh;
       }
-      .textContainer {
-        gap: 2.5em;
-      }
     }
   }
 }
@@ -114,9 +111,9 @@
         height: 35vh;
       }
       .textContainer {
-        gap: 1.5em;
         padding: 1em 1.625em;
         .text {
+          padding-bottom: 1.5em;
           h4 {
             font-size: $fontSize--p;
           }

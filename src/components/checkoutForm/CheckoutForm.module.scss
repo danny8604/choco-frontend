@@ -19,7 +19,6 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    gap: 2em;
     color: $color-black;
     letter-spacing: 1.4px;
     input {
@@ -29,6 +28,8 @@
       @include flex__justify-center__align-center;
       width: 100%;
       flex-direction: column;
+      padding-bottom: 2em;
+
       h3 {
         font-size: $fontSize--h4;
         padding-bottom: 1em;
@@ -38,6 +39,8 @@
       @include flex__justify-center__align-center;
       width: 100%;
       flex-direction: column;
+      padding-bottom: 2em;
+
       h5 {
         font-size: $fontSize--h6;
         font-weight: $text-regular;

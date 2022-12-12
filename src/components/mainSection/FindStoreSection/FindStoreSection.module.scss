@@ -4,7 +4,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   max-width: 90%;
-  margin: 5% auto;
+  padding: 5em 0;
+  margin: 0 auto;
 
   .storePhoto {
     img {
@@ -51,6 +52,7 @@
   .findStoreSection {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 3em 0;
     .storeInfor {
       display: flex;
       flex-direction: column;
@@ -72,13 +74,6 @@
 
 @media screen and (max-width: $media-tabletS) {
   .findStoreSection {
-    .storePhoto {
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
     .storeInfor {
       h3 {
         font-size: $fontSize--p--Small-2;

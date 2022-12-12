@@ -177,7 +177,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 25px;
       list-style: none;
       position: relative;
 
@@ -224,7 +223,6 @@
         position: absolute;
         top: 50%;
         right: 0;
-        gap: 16px;
         transform: translate(-50%, -50%);
       }
     }

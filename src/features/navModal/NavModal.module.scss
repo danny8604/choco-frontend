@@ -16,12 +16,12 @@
     @include flex__justify-center__align-center;
     flex-direction: column;
     list-style: none;
-    gap: 22px;
     height: 100%;
     li {
+      padding-bottom: 0.75em;
       a {
         text-decoration: none;
-        font-size: $fontSize--h3;
+        font-size: $fontSize--h4;
         transition: all 0.3s;
         color: $color-white;
         border-bottom: solid 1px $color-darkBlack;
@@ -41,32 +41,9 @@
   pointer-events: auto;
 }
 
-@media screen and (max-width: $media-landscapeM) {
-  .navModalContainer {
-    ul {
-      li {
-        a {
-          font-size: $fontSize--h5;
-        }
-      }
-    }
-  }
-}
-@media screen and (max-width: $media-tablet) {
-  .navModalContainer {
-    ul {
-      li {
-        a {
-          font-size: $fontSize--h4;
-        }
-      }
-    }
-  }
-}
 @media screen and (max-width: $media-tabletS) {
   .navModalContainer {
     ul {
-      gap: 12px;
       li {
         a {
           font-size: $fontSize--p--Small;

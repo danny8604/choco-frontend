@@ -1,6 +1,5 @@
 import ExploreFigure from "../exploreFigure/ExploreFigure";
-import chair08 from "../../../../assets/mainSectionIMG/chair-08.jpg";
-import chair09 from "../../../../assets/mainSectionIMG/chair-09.jpg";
+
 import styles from "./ExploreProducts.module.scss";
 
 import { useEffect, useRef, useState } from "react";
@@ -15,8 +14,6 @@ import {
   sliderMouseLeave,
   sliderMouseDrag,
   sliderMouseUp,
-  sliderClickLeft,
-  sliderClickRight,
 } from "../../../../features/slider/sliderSlice";
 import ExploroProductHeader from "../exploreProductsHeader/ExploreProductsHeader";
 import { ProductsType } from "../../../../app/type";
@@ -44,16 +41,21 @@ const ExploreProducts = () => {
   }, [productsData]);
 
   useEffect(() => {
-    if (mouseMoveX < -2400) {
-      dispatch(sliderMouseDrag(-2400));
+    const sectionRect = sectionRef.current!.getBoundingClientRect();
+    const wrapperRect = wrapperRef.current!.getBoundingClientRect();
+
+    console.log(wrapperRect.right, "wrapperRect.right");
+    console.log(sectionRect.right, "sectionRect.right");
+    console.log(wrapperRect.width, " wrapperRect.width ");
+    console.log(sectionRect.width, " sectionRect.width ");
+
+    if (mouseMoveX < -wrapperRect.width) {
+      dispatch(sliderMouseDrag(-wrapperRect.width));
     }
     if (mouseMoveX > 0) {
       dispatch(sliderMouseDrag(0));
     }
     wrapperRef.current!.style.left = `${mouseMoveX}px`;
-
-    const sectionRect = sectionRef.current!.getBoundingClientRect();
-    const wrapperRect = wrapperRef.current!.getBoundingClientRect();
 
     if (parseInt(wrapperRef.current!.style.left) > 0) {
       wrapperRef.current!.style.left = "0px";
@@ -79,16 +81,9 @@ const ExploreProducts = () => {
     dispatch(sliderMouseDrag(e.pageX - mouseDownX));
   };
 
-  const leftHandler = () => {
-    dispatch(sliderClickLeft(-200));
-  };
-  const rightHandler = () => {
-    dispatch(sliderClickRight(200));
-  };
-
   return (
     <>
-      <ExploroProductHeader clickLeft={leftHandler} clickRight={rightHandler} />
+      <ExploroProductHeader />
       <section className={styles.scrollSection} ref={sectionRef}>
         <div
           className={styles.wrapper}

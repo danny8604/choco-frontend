@@ -8,9 +8,11 @@
   .listContainer {
     display: flex;
     list-style: none;
-    gap: 14px;
     padding-bottom: 2.5em;
     border-bottom: solid 1px $color-warmGray;
+    li {
+      padding-right: 1em;
+    }
     button {
       cursor: pointer;
       border: none;

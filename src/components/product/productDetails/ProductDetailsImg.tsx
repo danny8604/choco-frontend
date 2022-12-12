@@ -13,10 +13,18 @@ const ProductDetailsImg = ({ img }: ProductDetailsImgProps) => {
 
   return (
     <div className={styles.productImg}>
-      <img src={getImageUrl(img.imgB)} />
-      <img src={getImageUrl(img.imgC)} />
-      <img src={getImageUrl(img.imgD)} />
-      <img src={getImageUrl(img.imgE)} />
+      <div>
+        <img src={getImageUrl(img.imgB)} />
+      </div>
+      <div>
+        <img src={getImageUrl(img.imgC)} />
+      </div>
+      <div>
+        <img src={getImageUrl(img.imgD)} />
+      </div>
+      <div>
+        <img src={getImageUrl(img.imgE)} />
+      </div>
     </div>
   );
 };

@@ -35,18 +35,6 @@ const sliderSlice = createSlice({
       state.sliderDragged = true;
       state.mouseMoveX = action.payload;
     },
-    sliderClickLeft(state, action) {
-      if (state.mouseMoveX < -2200) {
-        return;
-      }
-      state.mouseMoveX += action.payload;
-    },
-    sliderClickRight(state, action) {
-      if (state.mouseMoveX > 0) {
-        return;
-      }
-      state.mouseMoveX += action.payload;
-    },
   },
 });
 
@@ -55,8 +43,6 @@ export const {
   sliderMouseLeave,
   sliderMouseUp,
   sliderMouseDrag,
-  sliderClickLeft,
-  sliderClickRight,
 } = sliderSlice.actions;
 
 export default sliderSlice.reducer;

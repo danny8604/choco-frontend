@@ -21,6 +21,10 @@ const EmailInput = () => {
   const emailInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    emailInputRef.current!.value = "";
+  }, [formClean]);
+
+  useEffect(() => {
     if (userEmail && isRememberEmail) {
       emailInputRef.current!.value = userEmail;
       dispatch(getEmail(userEmail));
@@ -33,7 +37,7 @@ const EmailInput = () => {
       emailInputRef.current!.value = userEmail;
       dispatch(emailValid(true));
     }
-  }, [userEmail, isRememberEmail, formClean]);
+  }, []);
 
   const emailInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(getEmail(e.target.value));

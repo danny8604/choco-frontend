@@ -44,11 +44,6 @@ const ExploreProducts = () => {
     const sectionRect = sectionRef.current!.getBoundingClientRect();
     const wrapperRect = wrapperRef.current!.getBoundingClientRect();
 
-    console.log(wrapperRect.right, "wrapperRect.right");
-    console.log(sectionRect.right, "sectionRect.right");
-    console.log(wrapperRect.width, " wrapperRect.width ");
-    console.log(sectionRect.width, " sectionRect.width ");
-
     if (mouseMoveX < -wrapperRect.width) {
       dispatch(sliderMouseDrag(-wrapperRect.width));
     }

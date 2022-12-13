@@ -7,19 +7,12 @@ import Root from "./pages/Root";
 import CheckoutPage from "./pages/CheckoutPage";
 import RegisterPage from "./pages/RegisterPage";
 import AboutPage from "./pages/AboutPage";
-// import DiningRoomPage from "./pages/DiningRoomPage";
-// import HomeRoomPage from "./pages/HomeRoomPage";
-// import LivingRoomPage from "./pages/LivingRoomPage";
-// import OthersPage from "./pages/OthersPage";
-// import ShopPage from "./pages/ShopPage";
-// import ProductPage from "./pages/ProductPage";
-
-const HomeRoomPage = React.lazy(() => import("./pages/HomeRoomPage"));
-const LivingRoomPage = React.lazy(() => import("./pages/LivingRoomPage"));
-const DiningRoomPage = React.lazy(() => import("./pages/DiningRoomPage"));
-const OthersPage = React.lazy(() => import("./pages/OthersPage"));
-const ShopPage = React.lazy(() => import("./pages/ShopPage"));
-const ProductPage = React.lazy(() => import("./pages/ProductPage"));
+import DiningRoomPage from "./pages/DiningRoomPage";
+import HomeRoomPage from "./pages/HomeRoomPage";
+import LivingRoomPage from "./pages/LivingRoomPage";
+import OthersPage from "./pages/OthersPage";
+import ShopPage from "./pages/ShopPage";
+import ProductPage from "./pages/ProductPage";
 
 const router = createBrowserRouter([
   {

@@ -6,13 +6,15 @@
   .productFigure {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
     padding: 4em 0;
     .imgContainer {
-      grid-column: 1;
+      grid-row: 1;
     }
 
     .detailsContainer {
       list-style: none;
+      grid-row: 1/-1;
       padding: 4em;
     }
   }
@@ -36,6 +38,7 @@
       }
       .detailsContainer {
         padding: 0em;
+        grid-row: 2;
       }
     }
   }

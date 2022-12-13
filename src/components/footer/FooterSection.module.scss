@@ -45,10 +45,15 @@
     }
   }
   .footerNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 0.5em 5em;
-    text-align: end;
     background-color: $color-black;
     color: white;
+    img {
+      height: 30px;
+    }
   }
 }
 
@@ -90,9 +95,6 @@
         border-bottom: none;
       }
     }
-    .footerNav {
-      text-align: center;
-    }
   }
 }
 
@@ -120,6 +122,9 @@
           }
         }
       }
+    }
+    .footerNav {
+      padding: 0.5em 2.5em;
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./FooterSection.module.scss";
+import github from "../../assets/mainSectionIMG/github.png";
 
 const FooterSection = () => {
   return (
@@ -47,7 +48,15 @@ const FooterSection = () => {
         </ul>
       </section>
       <section className={styles.footerNav}>
-        <p>©2022 CHOCO.</p>
+        <div>
+          <a href="https://github.com/u0454/react-ecom">
+            <img src={github} alt="github" />
+          </a>
+        </div>
+
+        <div>
+          <p>©2022 CHOCO.</p>
+        </div>
       </section>
     </footer>
   );

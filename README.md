@@ -8,7 +8,7 @@ Test account
 
 Email: test@test.com
 
-password: 123123123
+Password: 123123123
 
 ## Tools 
 

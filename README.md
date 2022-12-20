@@ -2,7 +2,7 @@
 
 Live demo: <a href="https://react-ecom-cfcb1.web.app/">CHOCO</a>
 
-Simple ecommerce with React ts and Redux and Firebase .
+Simple ecommerce with React and Redux and Firebase .
 
 Test account
 

@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { useGetAllProductsQuery, useGetUserInforQuery } from "../apiSlice";
 import type { RootState, AppDispatch } from "../store";
-import { ProductsType, ShoppingCart, userInfor } from "../type";
+import { ProductsType } from "../type";
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface SearchModalState {
+export interface SearchModalState {
   searchModalIsOpen: boolean;
 }
 

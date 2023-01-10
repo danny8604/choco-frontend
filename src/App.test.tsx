@@ -4,6 +4,7 @@ import "@testing-library/jest-dom";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./app/store";
+
 it("should render choco link", () => {
   render(
     <Provider store={store}>

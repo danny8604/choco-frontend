@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
@@ -13,6 +13,15 @@ import LivingRoomPage from "./pages/LivingRoomPage";
 import OthersPage from "./pages/OthersPage";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
+import { useAppDispatch, useAppSelector } from "./app/hooks/hooks";
+import { userLogin } from "./features/login/loginSlice";
+import {
+  updateTotalPriceAndQuantity,
+  userShoppingCart,
+} from "./features/cart/cartItem/cartSlice";
+import OrderPage from "./pages/OrderPage";
+import UserPage from "./pages/UserPage";
+import UserChangePasswordPage from "./pages/UserChangePasswordPage";
 
 const router = createBrowserRouter([
   {
@@ -53,10 +62,21 @@ const router = createBrowserRouter([
         path: "about",
         element: <AboutPage />,
       },
-
+      {
+        path: "order",
+        element: <OrderPage />,
+      },
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "user",
+        element: <UserPage />,
+      },
+      {
+        path: "changePassword",
+        element: <UserChangePasswordPage />,
       },
       {
         path: "register",
@@ -70,7 +90,43 @@ const router = createBrowserRouter([
   },
 ]);
 
+const cart = JSON.parse(localStorage.getItem("cart") || "");
+
 function App() {
+  const dispatch = useAppDispatch();
+  const { shoppingCart } = useAppSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(userShoppingCart(cart.userCart));
+    dispatch(updateTotalPriceAndQuantity());
+
+    if (!localStorage.getItem("userData")) {
+      return;
+    }
+    const userData = JSON.parse(localStorage.getItem("userData") || "");
+
+    if (userData && new Date(userData.expiration) > new Date()) {
+      dispatch(
+        userLogin({
+          userId: userData.userId,
+          userEmail: userData.userEmail,
+          userToken: userData.userToken,
+          login: userData.login,
+        })
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "cart",
+      JSON.stringify({
+        userCart: shoppingCart,
+      })
+    );
+    dispatch(updateTotalPriceAndQuantity());
+  }, [shoppingCart]);
+
   return (
     <Suspense>
       <RouterProvider router={router} />

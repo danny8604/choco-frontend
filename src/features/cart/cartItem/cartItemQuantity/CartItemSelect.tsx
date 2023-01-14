@@ -1,16 +1,49 @@
-import { useAppDispatch } from "../../../../app/hooks/hooks";
+import axios from "axios";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";
 import { ItemQuantity } from "../../../../app/type";
-import { updateItemQuantity, updateTotalPriceAndQuantity } from "../cartSlice";
+import {
+  updateItemQuantity,
+  updateTotalPriceAndQuantity,
+  userShoppingCart,
+} from "../cartSlice";
 import styles from "./CartItemSelect.module.scss";
 
-const CartItemSelect = ({ id, quantity }: ItemQuantity) => {
+const CartItemSelect = ({ _id, productName, quantity }: ItemQuantity) => {
   const dispatch = useAppDispatch();
+  const { userToken, login } = useAppSelector((state) => state.login);
 
-  const selectChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const selectChangeHandler = async (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const selectValue = e.target.value;
-    if (selectValue) {
-      dispatch(updateItemQuantity({ id: id, quantity: +selectValue }));
-      dispatch(updateTotalPriceAndQuantity());
+    if (!selectValue) {
+      return;
+    }
+
+    if (login) {
+      try {
+        const response = await axios.patch(
+          `http://localhost:5000/api/users/editItemQuantity/`,
+          {
+            productId: _id,
+            quantity: selectValue,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+        dispatch(userShoppingCart(response.data.cart));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    if (!login) {
+      dispatch(
+        updateItemQuantity({ productName: productName, quantity: +selectValue })
+      );
     }
   };
 

@@ -4,11 +4,11 @@ import styles from "./ExploreFigure.module.scss";
 
 interface ExploreFigureProps {
   img: string;
-  id: string;
+  productName: string;
   path: string;
 }
 
-const ExploreFigure = ({ img, id, path }: ExploreFigureProps) => {
+const ExploreFigure = ({ img, productName, path }: ExploreFigureProps) => {
   function getImageUrl(name: string) {
     return new URL(`../../../../assets/productImg/${name}.jpg`, import.meta.url)
       .href;
@@ -22,7 +22,7 @@ const ExploreFigure = ({ img, id, path }: ExploreFigureProps) => {
             <img src={getImageUrl(img)} />
           </div>
           <figcaption className={styles.productName}>
-            <h5>{id}</h5>
+            <h5>{productName}</h5>
             <p>More Info ➝</p>
           </figcaption>
         </div>

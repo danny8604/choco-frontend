@@ -4,7 +4,7 @@ import CartItemSelect from "./CartItemSelect";
 import CartItemInput from "./CartItemInput";
 import { useEffect, useState } from "react";
 
-const CartItemQuantity = ({ id, quantity }: ItemQuantity) => {
+const CartItemQuantity = ({ _id, productName, quantity }: ItemQuantity) => {
   const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
@@ -15,9 +15,19 @@ const CartItemQuantity = ({ id, quantity }: ItemQuantity) => {
   return (
     <>
       {quantity < 10 && !showInput && (
-        <CartItemSelect id={id} quantity={quantity} />
+        <CartItemSelect
+          _id={_id}
+          productName={productName}
+          quantity={quantity}
+        />
       )}
-      {showInput && <CartItemInput id={id} quantity={quantity} />}
+      {showInput && (
+        <CartItemInput
+          _id={_id}
+          productName={productName}
+          quantity={quantity}
+        />
+      )}
     </>
   );
 };

@@ -1,0 +1,32 @@
+@use "../../styles/" as *;
+
+.featureContainer {
+  display: grid;
+  padding: 3em 0;
+  gap: 4em;
+  grid-template-columns: repeat(2, 1fr);
+  a {
+    text-decoration: none;
+  }
+  .feature {
+    padding: 2.5em;
+    border: solid 1px $color-black;
+    border-radius: 5px;
+    background-color: $color-black;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    p {
+      color: $color-white;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    &:hover {
+      background-color: $color-white;
+      p {
+        color: $color-black;
+      }
+    }
+  }
+}

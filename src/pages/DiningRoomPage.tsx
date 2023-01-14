@@ -1,16 +1,22 @@
 import ShopList from "../components/shop/ShopList";
 import DiningRoomTop from "../components/diningRoom/DiningRoomTop";
-import { useProducts } from "../app/hooks/hooks";
+import useChairsData from "../app/hooks/useChairsData";
+import Loading from "../components/loading/Loading";
+import Error from "../components/error/Error";
 
 const DiningRoomPage = () => {
-  const { productsData } = useProducts();
-  const DiningProducts = productsData.filter(
-    (map) => map.category === "diningRoom"
-  );
+  const { data, error } = useChairsData("category/diningRoom");
+
   return (
     <main>
-      <DiningRoomTop />
-      <ShopList props={DiningProducts} />
+      {!data && !error && <Loading />}
+      {data && !error && (
+        <>
+          <DiningRoomTop />
+          <ShopList props={data.products} />
+        </>
+      )}
+      {error && <Error />}
     </main>
   );
 };

@@ -32,11 +32,8 @@ const CheckoutFormCart = () => {
 
       {shoppingCart.map((item) => (
         <CartItem
-          key={item.id}
-          id={item.id}
-          img={item.img}
-          price={item.price}
-          path={item.path}
+          key={item.productId._id}
+          productId={item.productId}
           quantity={item.quantity}
         />
       ))}

@@ -1,13 +1,13 @@
 import styles from "./ProductDescript.module.scss";
 
 type ProductDescriptProps = {
-  id: string;
+  productName: string;
 };
 
-const ProductDescript = ({ id }: ProductDescriptProps) => {
+const ProductDescript = ({ productName }: ProductDescriptProps) => {
   return (
     <div className={styles.productDescript}>
-      <h3>{id}</h3>
+      <h3>{productName}</h3>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores,
         adipisci eius architecto unde suscipit itaque ipsam saepe, facere magni

@@ -4,6 +4,7 @@ import {
   useAppSelector,
   useProducts,
 } from "../../app/hooks/hooks";
+import useChairsData from "../../app/hooks/useChairsData";
 import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeSearchModal } from "../searchModal/searchModalSlice";
@@ -17,7 +18,7 @@ import {
 const Search = () => {
   const search = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
-  const { productsData } = useProducts();
+  const { data, error } = useChairsData("");
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     dispatch(searchInputValue(e.target.value));
@@ -28,8 +29,8 @@ const Search = () => {
     if (search.value.length < 1) return;
     dispatch(
       filterSearchData(
-        productsData.filter((map) =>
-          map.id
+        data.products.filter((item) =>
+          item.productName
             .trim()
             .toLowerCase()
             .includes(search.value.toLowerCase().trim())

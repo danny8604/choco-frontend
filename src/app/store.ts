@@ -1,7 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import formAuthReducer from "../features/formAuth/formAuthSlice";
 import loginReducer from "../features/login/loginSlice";
-import registerReducer from "../features/register/registerSlice";
 import searchReducer from "../features/search/searchSlice";
 import { productsApi } from "./apiSlice";
 import cartReducer from "../features/cart/cartItem/cartSlice";
@@ -14,10 +13,12 @@ import carouselReducer from "../features/carousel/carouselSlice";
 import designerModalReducer from "../features/designerModal/designerModalSlicel";
 import navModalReducer from "../features/navModal/navModalSlice";
 import infoModalReducer from "../features/infoModal/infoModalSlice";
+import utilModalReducer from "../features/utilModal/utilModalSlice";
 
 const store = configureStore({
   reducer: {
     backdrop: backdropReducer,
+    utilModal: utilModalReducer,
     infoModal: infoModalReducer,
     navModal: navModalReducer,
     designerModal: designerModalReducer,
@@ -29,7 +30,6 @@ const store = configureStore({
     cart: cartReducer,
     formAuth: formAuthReducer,
     login: loginReducer,
-    register: registerReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

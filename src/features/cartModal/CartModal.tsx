@@ -2,45 +2,19 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import styles from "./CartModal.module.scss";
 import CartItem from "../cart/cartItem/CartItem";
 import CartTotalPrice from "./CartTotalPrice";
-import { useEffect } from "react";
-import { child, get, getDatabase, ref, set } from "firebase/database";
-import {
-  updateTotalPriceAndQuantity,
-  userShoppingCart,
-} from "../cart/cartItem/cartSlice";
 import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeCartModal } from "./cartModalSlice";
 import CartLeadCheckout from "./CartLeadCheckout";
+import { useEffect } from "react";
+import { userShoppingCart } from "../cart/cartItem/cartSlice";
 
 const CartModal = () => {
   const { shoppingCart, shoppingCartTotalPrice, shoppingCartTotalQuantity } =
     useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const { cartModalIsOpen } = useAppSelector((state) => state.cartModal);
-  const { isLogin, userId, userEmail } = useAppSelector((state) => state.login);
-
-  useEffect(() => {
-    localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
-
-    if (isLogin) {
-      const db = getDatabase();
-      set(ref(db, `users/${userId}/`), {
-        shoppingCart: shoppingCart,
-      });
-
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({
-          userId: userId,
-          isLogin: isLogin,
-          isLogout: !isLogin,
-          userEmail: userEmail,
-        })
-      );
-    }
-    dispatch(updateTotalPriceAndQuantity());
-  }, [isLogin, shoppingCart]);
+  const { userCart, login } = useAppSelector((state) => state.login);
 
   const closeCartModalHandler = () => {
     dispatch(closeBackdrop());
@@ -67,11 +41,8 @@ const CartModal = () => {
       <div className={styles.cartContainer}>
         {shoppingCart.map((item) => (
           <CartItem
-            key={item.id}
-            id={item.id}
-            img={item.img}
-            price={item.price}
-            path={item.path}
+            key={item.productId._id}
+            productId={item.productId}
             quantity={item.quantity}
           />
         ))}

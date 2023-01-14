@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getDatabase, ref, set } from "firebase/database";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import {
   resetShoppingCart,
   updateItemQuantity,
   updateTotalPriceAndQuantity,
+  userShoppingCart,
 } from "../../features/cart/cartItem/cartSlice";
 import {
   formCleaner,
@@ -23,6 +25,9 @@ import CheckoutFormCart from "./CheckoutFormCart";
 
 const CheckoutForm = () => {
   const dispatch = useAppDispatch();
+  const { login, userToken } = useAppSelector((state) => state.login);
+  const { shoppingCart, orderItems } = useAppSelector((state) => state.cart);
+
   const navigate = useNavigate();
   const {
     phoneIsValid,
@@ -35,8 +40,29 @@ const CheckoutForm = () => {
     addressValue,
   } = useAppSelector((state) => state.formAuth);
 
-  const checkoutHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const checkoutHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (login) {
+      try {
+        await axios.post(
+          "http://localhost:5000/api/users/checkout/",
+          {
+            emailValue: emailValue,
+            nameValue: nameValue,
+            addressValue: addressValue,
+            phoneValue: +phoneValue,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
     if (phoneIsValid && nameIsValid && emailIsValid && addressIsValid) {
       alert("order succeed!");
@@ -46,15 +72,12 @@ const CheckoutForm = () => {
       dispatch(checkoutCart());
       dispatch(resetFormState());
       dispatch(resetShoppingCart());
-      dispatch(updateTotalPriceAndQuantity());
+      dispatch(formCleaner());
     }
 
     if (!(phoneIsValid && nameIsValid && emailIsValid && addressIsValid)) {
       alert("Form not valid!!");
-      dispatch(resetFormState());
     }
-
-    dispatch(formCleaner());
   };
 
   return (

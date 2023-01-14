@@ -9,23 +9,28 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import { useEffect } from "react";
 import NavModal from "../../features/navModal/NavModal";
 import { navModalToggle } from "../../features/navModal/navModalSlice";
+import NavbarOrder from "./NavbarOrder";
+import NavbarUser from "./NavbarUser";
 
 const Navbar = () => {
-  const { isLogin, userEmail } = useAppSelector((state) => state.login);
+  const { login, userEmail } = useAppSelector((state) => state.login);
   const { navModalIsOpen } = useAppSelector((state) => state.navModal);
   const dispatch = useAppDispatch();
 
   const navInfo = () => {
-    if (isLogin) return <p>Hi {userEmail}, wellcome back.</p>;
+    if (login) {
+      return <p>Hi {userEmail}, wellcome back.</p>;
+    }
     return <p>FOREVER RELEVANT IN TIME</p>;
   };
+
   const navModalHandler = () => {
     dispatch(navModalToggle());
   };
 
   return (
     <>
-      <div className={`${styles.otherInfo} ${isLogin && styles.login}`}>
+      <div className={`${styles.otherInfo} ${login && styles.login}`}>
         {navInfo()}
       </div>
       <header className={styles.header}>
@@ -74,7 +79,9 @@ const Navbar = () => {
               <li>
                 <Link to="/about">ABOUT</Link>
               </li>
+              <NavbarOrder />
               <NavbarLogin />
+              {login && <NavbarUser />}
             </ul>
           </div>
           <ul className={styles.shopIcon}>

@@ -1,17 +1,22 @@
-import { useProducts } from "../app/hooks/hooks";
+import useChairsData from "../app/hooks/useChairsData";
+import Error from "../components/error/Error";
 import LivingRoomTop from "../components/livingRoom/LivingRoomTop";
+import Loading from "../components/loading/Loading";
 import ShopList from "../components/shop/ShopList";
 
 const LivingRoomPage = () => {
-  const { productsData } = useProducts();
-  const livingProducts = productsData.filter(
-    (map) => map.category === "livingRoom"
-  );
+  const { data, error } = useChairsData("/category/livingRoom");
 
   return (
     <main>
-      <LivingRoomTop />
-      <ShopList props={livingProducts} />
+      {!data && !error && <Loading />}
+      {data && !error && (
+        <>
+          <LivingRoomTop />
+          <ShopList props={data.products} />
+        </>
+      )}
+      {error && <Error />}
     </main>
   );
 };

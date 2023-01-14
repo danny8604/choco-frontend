@@ -4,12 +4,18 @@ import styles from "./ProductFigure.module.scss";
 import ProductFigureImg from "./ProductFigureImg";
 import ProductFigureText from "./ProductFigureText";
 
-const ProductFigure = ({ id, path, series, descript, img }: ProductsType) => {
+const ProductFigure = ({
+  productName,
+  path,
+  series,
+  descript,
+  img,
+}: ProductsType) => {
   return (
     <figure className={styles.figureContainer}>
       <Link to={`/product/${path}`} reloadDocument>
         <ProductFigureImg imgA={img.imgA} descript={descript} />
-        <ProductFigureText id={id} series={series} />
+        <ProductFigureText productName={productName} series={series} />
       </Link>
     </figure>
   );

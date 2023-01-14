@@ -1,39 +1,47 @@
 import styles from "./ProductInfo.module.scss";
-import { useProducts } from "../../../app/hooks/hooks";
 import ProductText from "./ProductText";
 import { useParams } from "react-router-dom";
 import ProductImg from "./ProductImg";
 import ProductAddToCartBtn from "./ProductAddToCartBtn";
 import ProductDescript from "./ProductDescript";
 import Loading from "../../loading/Loading";
+import useChairsData from "../../../app/hooks/useChairsData";
+import Error from "../../error/Error";
 
 const ProductTop = () => {
   const { productId } = useParams();
-  const { productsData, isLoading } = useProducts();
-  const [currentProduct] = productsData.filter((map) => map.path === productId);
-  if (isLoading) return <Loading />;
+  const { data, error } = useChairsData(productId);
 
   return (
-    <section className={styles.productTop}>
-      <figure className={styles.productFigure}>
-        <ProductImg imgA={currentProduct.img.imgA} />
-        <figcaption className={styles.productFigcaption}>
-          <div>
-            <ProductDescript id={currentProduct.id} />
-            <ProductText type={"Price"} typeText={`$${currentProduct.price}`} />
-            <ProductText
-              type={"Series"}
-              typeText={`${currentProduct.series}`}
-            />
-            <ProductText
-              type={"Designer"}
-              typeText={`${currentProduct.designer}`}
-            />
-          </div>
-          <ProductAddToCartBtn props={currentProduct} />
-        </figcaption>
-      </figure>
-    </section>
+    <>
+      {!data && !error && <Loading />}
+      {data && (
+        <section className={styles.productTop}>
+          <figure className={styles.productFigure}>
+            <ProductImg imgA={data.product.img.imgA} />
+            <figcaption className={styles.productFigcaption}>
+              <div>
+                <ProductDescript productName={data.product.productName} />
+                <ProductText
+                  type={"Price"}
+                  typeText={`$${data.product.price}`}
+                />
+                <ProductText
+                  type={"Series"}
+                  typeText={`${data.product.series}`}
+                />
+                <ProductText
+                  type={"Designer"}
+                  typeText={`${data.product.designer}`}
+                />
+              </div>
+              <ProductAddToCartBtn props={data.product} />
+            </figcaption>
+          </figure>
+        </section>
+      )}
+      {error && <Error />}
+    </>
   );
 };
 

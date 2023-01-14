@@ -1,0 +1,49 @@
+@use "../../styles/" as *;
+
+.orderContainer {
+  padding: 8em 0;
+  height: 100%;
+  text-align: center;
+
+  div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input {
+      font-size: $fontSize--h5;
+      width: 50%;
+      border: none;
+      border-bottom: solid 1px;
+    }
+    button {
+      position: absolute;
+      border: none;
+      background-color: white;
+      right: 25.5%;
+      cursor: pointer;
+      content: "";
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .messageContaiter {
+    padding-top: 4em;
+    h5 {
+      color: $color-gray;
+      font-weight: $text-regular;
+      font-size: $fontSize--h5;
+    }
+  }
+  .infoContainer {
+    padding: 4em;
+    display: flex;
+    flex-direction: column;
+    .orderInfor {
+      display: flex;
+      padding-top: 5em;
+      width: 60%;
+      justify-content: space-around;
+    }
+  }
+}

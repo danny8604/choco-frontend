@@ -10,6 +10,7 @@ const InfoModal = () => {
   const { orderItems, orderItemsTotalPrice, orderItemsTotalQuantity } =
     useAppSelector((state) => state.cart);
   const { infoModalIsOpen } = useAppSelector((state) => state.infoModal);
+
   return (
     <div
       className={`${styles.infoModal} ${
@@ -31,12 +32,9 @@ const InfoModal = () => {
         {orderItems.length > 0 &&
           orderItems.map((item) => (
             <InfoItem
-              key={item.id}
-              id={item.id}
-              price={item.price}
-              img={item.img}
+              key={item.productId._id}
+              productId={item.productId}
               quantity={item.quantity}
-              path={item.path}
             />
           ))}
       </div>

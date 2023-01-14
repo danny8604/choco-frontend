@@ -67,8 +67,8 @@ const ShopList = ({ props }: ShopListProps) => {
       <div className={styles.productContainer}>
         {productsArr().map((map) => (
           <ProductFigure
-            key={map.id}
-            id={map.id}
+            key={map.productName}
+            productName={map.productName}
             descript={map.descript}
             path={map.path}
             series={map.series}

@@ -17,7 +17,7 @@ export const useProducts = () => {
 
   for (const key in products) {
     productsData.push({
-      id: products[key].id,
+      productName: products[key].productName,
       price: products[key].price,
       descript: products[key].descript,
       series: products[key].series,

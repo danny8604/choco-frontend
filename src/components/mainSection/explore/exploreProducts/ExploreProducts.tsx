@@ -4,11 +4,7 @@ import styles from "./ExploreProducts.module.scss";
 
 import { useEffect, useRef, useState } from "react";
 
-import {
-  useAppSelector,
-  useAppDispatch,
-  useProducts,
-} from "../../../../app/hooks/hooks";
+import { useAppSelector, useAppDispatch } from "../../../../app/hooks/hooks";
 import {
   sliderMouseDown,
   sliderMouseLeave,
@@ -17,12 +13,14 @@ import {
 } from "../../../../features/slider/sliderSlice";
 import ExploroProductHeader from "../exploreProductsHeader/ExploreProductsHeader";
 import { ProductsType } from "../../../../app/type";
+import useChairsData from "../../../../app/hooks/useChairsData";
 
 const ExploreProducts = () => {
   const { sliderDown, mouseDownX, mouseMoveX } = useAppSelector(
     (state) => state.slider
   );
-  const { productsData } = useProducts();
+  const { data } = useChairsData("");
+
   const [productArr, setProductArr] = useState<ProductsType[]>([]);
 
   const dispatch = useAppDispatch();
@@ -31,14 +29,16 @@ const ExploreProducts = () => {
 
   useEffect(() => {
     // only get once
-    if (productsData.length === 0 || productArr.length > 0) return;
+    if (!data || data.products.length === 0 || productArr.length > 0) {
+      return;
+    }
     setProductArr(
-      productsData
+      data.products
         .slice()
         .sort(() => Math.random() - 0.5)
         .slice(0, 8)
     );
-  }, [productsData]);
+  }, [data]);
 
   useEffect(() => {
     const sectionRect = sectionRef.current!.getBoundingClientRect();
@@ -91,9 +91,9 @@ const ExploreProducts = () => {
           {productArr.map((item) => (
             <ExploreFigure
               path={item.path}
-              key={item.id}
+              key={item.productName}
               img={item.img.imgA}
-              id={item.id}
+              productName={item.productName}
             />
           ))}
         </div>

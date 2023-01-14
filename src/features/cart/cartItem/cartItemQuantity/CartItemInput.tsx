@@ -1,16 +1,47 @@
-import { useAppDispatch } from "../../../../app/hooks/hooks";
+import axios from "axios";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";
 import { ItemQuantity } from "../../../../app/type";
-import { updateItemQuantity, updateTotalPriceAndQuantity } from "../cartSlice";
+import {
+  updateItemQuantity,
+  updateTotalPriceAndQuantity,
+  userShoppingCart,
+} from "../cartSlice";
 import styles from "./CartItemInput.module.scss";
 
-const CartItemInput = ({ id, quantity }: ItemQuantity) => {
+const CartItemInput = ({ _id, productName, quantity }: ItemQuantity) => {
   const dispatch = useAppDispatch();
+  const { userToken, login } = useAppSelector((state) => state.login);
 
-  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputChangeHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    if (inputValue) {
-      dispatch(updateItemQuantity({ id: id, quantity: +inputValue }));
-      dispatch(updateTotalPriceAndQuantity());
+    if (!inputValue) {
+      return;
+    }
+    if (login) {
+      try {
+        const response = await axios.patch(
+          `http://localhost:5000/api/users/editItemQuantity/`,
+          {
+            productId: _id,
+            quantity: inputValue,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+
+        dispatch(userShoppingCart(response.data.cart));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    if (!login) {
+      dispatch(
+        updateItemQuantity({ productName: productName, quantity: +inputValue })
+      );
     }
   };
 
@@ -18,9 +49,9 @@ const CartItemInput = ({ id, quantity }: ItemQuantity) => {
     <input
       className={styles.quantityInput}
       onChange={inputChangeHandler}
-      id={id}
+      id={productName}
       type="number"
-      name={id}
+      name={productName}
       value={quantity}
       min="1"
       max="20"

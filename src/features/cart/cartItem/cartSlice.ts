@@ -12,9 +12,7 @@ interface CartState {
 }
 
 const initialState: CartState = {
-  shoppingCart: localStorage.getItem("shopping-cart")
-    ? JSON.parse(localStorage.getItem("shopping-cart") || "")
-    : [],
+  shoppingCart: [],
   shoppingCartTotalQuantity: 0,
   shoppingCartTotalPrice: 0,
   orderItems: [],
@@ -26,18 +24,20 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart(state, action: PayloadAction<ShoppingCartItem>) {
+    addToCart(state, action) {
       const itemInCart = state.shoppingCart.find(
-        (item) => item.id === action.payload.id
+        (item) =>
+          item.productId.productName === action.payload.productId.productName
       );
 
       itemInCart
         ? (itemInCart.quantity += action.payload.quantity)
         : state.shoppingCart.push(action.payload);
     },
+
     updateTotalPriceAndQuantity(state) {
       state.shoppingCartTotalPrice = state.shoppingCart.reduce(
-        (accum, item) => accum + item.quantity * item.price,
+        (accum, item) => accum + item.quantity * item.productId.price,
         0
       );
       state.shoppingCartTotalQuantity = state.shoppingCart.reduce(
@@ -45,16 +45,17 @@ const cartSlice = createSlice({
         0
       );
     },
-    updateItemQuantity(state, action: PayloadAction<ItemQuantity>) {
+    updateItemQuantity(state, action) {
       const itemInCart = state.shoppingCart.find(
-        (item) => item.id === action.payload.id
+        (item) => item.productId.productName === action.payload.productName
       );
 
       itemInCart && (itemInCart.quantity = action.payload.quantity);
     },
     removeCartItem(state, action) {
+      console.log(action.payload, "action.payload");
       state.shoppingCart = state.shoppingCart.filter(
-        (item) => item.id !== action.payload
+        (item) => item.productId.productName !== action.payload
       );
     },
     resetShoppingCart(state) {

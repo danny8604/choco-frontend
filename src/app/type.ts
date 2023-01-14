@@ -1,5 +1,5 @@
 export interface ProductsType {
-  id: string;
+  productName: string;
   descript: string;
   price: number;
   series: number;
@@ -7,14 +7,24 @@ export interface ProductsType {
   img: { imgA: string; imgB: string; imgC: string; imgD: string; imgE: string };
   category: string;
   designer: string;
+  _id: string;
 }
 
 export interface ShoppingCartItem {
-  id: string;
-  img: string;
-  price: number;
+  productId: {
+    productName: string;
+    img: {
+      imgA: string;
+      imgB: string;
+      imgC: string;
+      imgD: string;
+      imgE: string;
+    };
+    price: number;
+    path: string;
+    _id: string;
+  };
   quantity: number;
-  path: string;
 }
 
 export interface ShoppingCart {
@@ -22,7 +32,8 @@ export interface ShoppingCart {
 }
 
 export interface ItemQuantity {
-  id: string;
+  _id: string;
+  productName: string;
   quantity: number;
 }
 

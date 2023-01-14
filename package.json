@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
     "@types/react-router-dom": "^5.3.3",
+    "@types/react-transition-group": "^4.4.5",
     "axios": "^1.2.0",
     "firebase": "^9.14.0",
     "localforage": "^1.10.0",
@@ -20,6 +21,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
+    "react-transition-group": "^4.4.5",
     "sort-by": "^1.2.0",
     "vite-plugin-svgr": "^2.2.2"
   },

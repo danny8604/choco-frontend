@@ -9,28 +9,24 @@ import { getEmail } from "../../features/formAuth/formAuthSlice";
 import { userLogout } from "../../features/login/loginSlice";
 
 const NavbarLogin = () => {
-  const { isLogin, isLogout } = useAppSelector((state) => state.login);
+  const { login, logout } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (!isLogin) {
-      localStorage.removeItem("auth");
-    }
-  }, [isLogout]);
-
   const LogoutHandler = () => {
-    if (isLogin) {
+    if (login) {
       alert("You have been logged out...");
       dispatch(userLogout());
       dispatch(resetShoppingCart());
       dispatch(updateTotalPriceAndQuantity());
+      localStorage.removeItem("userData");
+      localStorage.removeItem("cart");
     }
   };
 
   return (
     <li>
-      <Link onClick={() => LogoutHandler()} to={`${isLogin ? "/" : "/login"}`}>
-        {isLogin ? "LOGOUT" : "LOGIN"}
+      <Link onClick={() => LogoutHandler()} to={`${login ? "/" : "/login"}`}>
+        {login ? "LOGOUT" : "LOGIN"}
       </Link>
     </li>
   );

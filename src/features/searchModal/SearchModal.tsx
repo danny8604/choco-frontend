@@ -20,8 +20,8 @@ const SearchModal = () => {
         {search.valueNotEmpty &&
           search.searchResult.map((map) => (
             <ProductFigure
-              key={map.id}
-              id={map.id}
+              key={map.productName}
+              productName={map.productName}
               descript={map.descript}
               path={map.path}
               series={map.series}
@@ -29,6 +29,7 @@ const SearchModal = () => {
               designer={map.designer}
               img={map.img}
               category={map.category}
+              _id={map._id}
             />
           ))}
         <SearchNoInputMes />

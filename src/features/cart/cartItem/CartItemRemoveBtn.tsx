@@ -1,18 +1,52 @@
 import styles from "./CartItemRemoveBtn.module.scss";
 import removeIcon from "../../../assets/svg/close-outline.svg";
-import { useAppDispatch } from "../../../app/hooks/hooks";
-import { removeCartItem, updateTotalPriceAndQuantity } from "./cartSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks/hooks";
+import {
+  removeCartItem,
+  updateTotalPriceAndQuantity,
+  userShoppingCart,
+} from "./cartSlice";
 import RemoveIconBtn from "../../../components/ui/button/removeIconBtn/RemoveIconBtn";
+import axios from "axios";
 
 type CartItemRemoveBtnProps = {
-  id: string;
+  productName: string;
+  productId: string;
 };
 
-const CartItemRemoveBtn = ({ id }: CartItemRemoveBtnProps) => {
+const CartItemRemoveBtn = ({
+  productName,
+  productId,
+}: CartItemRemoveBtnProps) => {
+  const { userToken, login } = useAppSelector((state) => state.login);
+  const { shoppingCart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
-  const removeItemHandler = () => {
-    dispatch(removeCartItem(id));
-    dispatch(updateTotalPriceAndQuantity());
+
+  const removeItemHandler = async () => {
+    if (login) {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/users/removeFromCart",
+          {
+            productId: productId,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+
+        dispatch(userShoppingCart(response.data.cart));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    if (!login) {
+      dispatch(removeCartItem(productName));
+    }
+    // dispatch(updateTotalPriceAndQuantity());
   };
   return (
     <div className={styles.removeItemButton}>

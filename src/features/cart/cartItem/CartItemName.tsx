@@ -1,13 +1,13 @@
 import styles from "./CartItemName.module.scss";
 
 type CartItemNameProps = {
-  id: string;
+  productName: string;
 };
 
-const CartItemName = ({ id }: CartItemNameProps) => {
+const CartItemName = ({ productName }: CartItemNameProps) => {
   return (
     <div className={styles.cartItemName}>
-      <label htmlFor={id}>{id}</label>
+      <label htmlFor={productName}>{productName}</label>
     </div>
   );
 };

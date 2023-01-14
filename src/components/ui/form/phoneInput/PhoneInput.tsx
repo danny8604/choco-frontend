@@ -21,10 +21,10 @@ const PhoneInput = () => {
 
   const phoneInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(getPhone(e.target.value));
-    if (e.target.value.length === 10) {
+    if (e.target.value.length >= 10) {
       dispatch(phoneValid(true));
     }
-    if (!(e.target.value.length === 10)) {
+    if (!(e.target.value.length >= 10)) {
       dispatch(phoneValid(false));
     }
   };

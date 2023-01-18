@@ -7,19 +7,24 @@ import {
 } from "../../features/cart/cartItem/cartSlice";
 import { getEmail } from "../../features/formAuth/formAuthSlice";
 import { userLogout } from "../../features/login/loginSlice";
+import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 
 const NavbarLogin = () => {
-  const { login, logout } = useAppSelector((state) => state.login);
+  const { login, userEmail } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
 
   const LogoutHandler = () => {
     if (login) {
-      alert("You have been logged out...");
       dispatch(userLogout());
       dispatch(resetShoppingCart());
-      dispatch(updateTotalPriceAndQuantity());
       localStorage.removeItem("userData");
       localStorage.removeItem("cart");
+      dispatch(
+        openUtilModal({
+          message: "You have been logged out.",
+          isSucceed: true,
+        })
+      );
     }
   };
 

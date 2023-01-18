@@ -1,5 +1,8 @@
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";
+import { useNavigate } from "react-router-dom";
+import { openUtilModal } from "../../../utilModal/utilModalSlice";
+
 import { ItemQuantity } from "../../../../app/type";
 import {
   updateItemQuantity,
@@ -9,6 +12,7 @@ import {
 import styles from "./CartItemSelect.module.scss";
 
 const CartItemSelect = ({ _id, productName, quantity }: ItemQuantity) => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { userToken, login } = useAppSelector((state) => state.login);
 
@@ -17,7 +21,12 @@ const CartItemSelect = ({ _id, productName, quantity }: ItemQuantity) => {
   ) => {
     const selectValue = e.target.value;
     if (!selectValue) {
-      return;
+      return dispatch(openUtilModal({ message: "input error." }));
+    }
+
+    if (!login) {
+      dispatch(openUtilModal({ message: "Please log in first." }));
+      return navigate("/login");
     }
 
     if (login) {
@@ -38,12 +47,6 @@ const CartItemSelect = ({ _id, productName, quantity }: ItemQuantity) => {
       } catch (err) {
         console.log(err);
       }
-    }
-
-    if (!login) {
-      dispatch(
-        updateItemQuantity({ productName: productName, quantity: +selectValue })
-      );
     }
   };
 

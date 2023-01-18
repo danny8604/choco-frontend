@@ -1,0 +1,16 @@
+@use "../../styles/" as *;
+
+.checkoutContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 85%;
+  margin: 0 auto;
+  gap: 6em;
+  padding: 6em 0;
+}
+
+@media screen and (max-width: $media-laptopM) {
+  .checkoutContainer {
+    grid-template-columns: 1fr;
+  }
+}

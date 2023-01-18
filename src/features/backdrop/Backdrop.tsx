@@ -3,6 +3,7 @@ import { closeCartModal } from "../cartModal/cartModalSlice";
 import { closeDesignerModal } from "../designerModal/designerModalSlicel";
 import { closeInfoModal } from "../infoModal/infoModalSlice";
 import { closeSearchModal } from "../searchModal/searchModalSlice";
+import { closeUtilModal } from "../utilModal/utilModalSlice";
 import styles from "./Backdrop.module.scss";
 import { closeBackdrop } from "./backdropSlice";
 

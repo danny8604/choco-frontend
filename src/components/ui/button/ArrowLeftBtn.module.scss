@@ -1,0 +1,15 @@
+@use "../../../styles/" as *;
+
+.arrowLeftBtn {
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: $color-white;
+  transition: all 0.3s;
+  color: $color-black;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateX(-10%);
+  }
+}

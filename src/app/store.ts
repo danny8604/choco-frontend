@@ -14,10 +14,12 @@ import designerModalReducer from "../features/designerModal/designerModalSlicel"
 import navModalReducer from "../features/navModal/navModalSlice";
 import infoModalReducer from "../features/infoModal/infoModalSlice";
 import utilModalReducer from "../features/utilModal/utilModalSlice";
+import checkModalReducer from "../features/checkModal/checkModalSlice";
 
 const store = configureStore({
   reducer: {
     backdrop: backdropReducer,
+    checkModal: checkModalReducer,
     utilModal: utilModalReducer,
     infoModal: infoModalReducer,
     navModal: navModalReducer,

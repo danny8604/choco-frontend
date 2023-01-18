@@ -30,7 +30,9 @@ const ShopList = ({ props }: ShopListProps) => {
     if (showDesignerZaha)
       return props
         .map((item) => item)
-        .filter((item) => item.designer === "Dame Zaha Mohammad Hadid");
+        .filter(
+          (item) => item.designer === "Dame Zaha Mohammad HadproductName"
+        );
     if (showDesignerMies)
       return props
         .map((item) => item)
@@ -68,6 +70,7 @@ const ShopList = ({ props }: ShopListProps) => {
         {productsArr().map((map) => (
           <ProductFigure
             key={map.productName}
+            _id={map._id}
             productName={map.productName}
             descript={map.descript}
             path={map.path}

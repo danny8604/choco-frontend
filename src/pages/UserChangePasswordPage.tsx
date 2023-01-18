@@ -5,7 +5,7 @@ import UserChangePassword from "../components/user/UserChangePassword";
 const UserChangePasswordPage = () => {
   return (
     <main>
-      <User>
+      <User headerText="CHANGE PASSWORD">
         <UserChangePassword />
       </User>
     </main>

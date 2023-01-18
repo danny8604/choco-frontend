@@ -9,6 +9,8 @@ import { openCartModal } from "../../../features/cartModal/cartModalSlice";
 import { openBackdrop } from "../../../features/backdrop/backdropSlice";
 import styles from "./ProductAddToCartBtn.module.scss";
 import axios from "axios";
+import { openUtilModal } from "../../../features/utilModal/utilModalSlice";
+import { useNavigate } from "react-router-dom";
 
 type ProductAddToCartBtnProps = {
   props: ProductsType;
@@ -16,11 +18,15 @@ type ProductAddToCartBtnProps = {
 
 const ProductAddToCartBtn = ({ props }: ProductAddToCartBtnProps) => {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const { userToken, login } = useAppSelector((state) => state.login);
-  const { shoppingCart } = useAppSelector((state) => state.cart);
 
   const addToCartHandler = async () => {
+    if (!login) {
+      dispatch(openUtilModal({ message: "Please log in first." }));
+      return navigate("/login");
+    }
+
     if (login) {
       try {
         const response = await axios.post(
@@ -35,20 +41,12 @@ const ProductAddToCartBtn = ({ props }: ProductAddToCartBtnProps) => {
           }
         );
         dispatch(userShoppingCart(response.data.cart));
+        dispatch(openBackdrop());
+        dispatch(openCartModal());
       } catch (err) {
         console.log(err);
       }
     }
-    if (!login) {
-      const item = {
-        productId: props,
-        quantity: 1,
-      };
-      dispatch(addToCart(item));
-    }
-
-    dispatch(openBackdrop());
-    dispatch(openCartModal());
   };
 
   return (

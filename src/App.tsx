@@ -22,6 +22,7 @@ import {
 import OrderPage from "./pages/OrderPage";
 import UserPage from "./pages/UserPage";
 import UserChangePasswordPage from "./pages/UserChangePasswordPage";
+import UserOrderPage from "./pages/UserOrderPage";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "changePassword",
         element: <UserChangePasswordPage />,
+      },
+      {
+        path: "userOrder",
+        element: <UserOrderPage />,
       },
       {
         path: "register",

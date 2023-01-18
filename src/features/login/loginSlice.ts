@@ -8,7 +8,6 @@ interface LoginState {
   userCart: ShoppingCartItem[];
   login: boolean;
   logout: boolean;
-  isRememberEmail: boolean;
 }
 
 const initialState: LoginState = {
@@ -18,7 +17,6 @@ const initialState: LoginState = {
   userCart: [],
   login: false,
   logout: true,
-  isRememberEmail: false,
 };
 
 const loginSlice = createSlice({
@@ -39,12 +37,9 @@ const loginSlice = createSlice({
       state.login = false;
       state.logout = true;
     },
-    rememberEmail(state, action) {
-      state.isRememberEmail = action.payload;
-    },
   },
 });
 
-export const { userLogin, userLogout, rememberEmail } = loginSlice.actions;
+export const { userLogin, userLogout } = loginSlice.actions;
 
 export default loginSlice.reducer;

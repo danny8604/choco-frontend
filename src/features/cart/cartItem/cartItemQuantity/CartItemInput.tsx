@@ -1,6 +1,8 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";
 import { ItemQuantity } from "../../../../app/type";
+import { openUtilModal } from "../../../utilModal/utilModalSlice";
 import {
   updateItemQuantity,
   updateTotalPriceAndQuantity,
@@ -11,12 +13,19 @@ import styles from "./CartItemInput.module.scss";
 const CartItemInput = ({ _id, productName, quantity }: ItemQuantity) => {
   const dispatch = useAppDispatch();
   const { userToken, login } = useAppSelector((state) => state.login);
+  const navigate = useNavigate();
 
   const inputChangeHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     if (!inputValue) {
-      return;
+      return dispatch(openUtilModal({ message: "input error." }));
     }
+
+    if (!login) {
+      dispatch(openUtilModal({ message: "Please log in first." }));
+      return navigate("/login");
+    }
+
     if (login) {
       try {
         const response = await axios.patch(
@@ -36,12 +45,6 @@ const CartItemInput = ({ _id, productName, quantity }: ItemQuantity) => {
       } catch (err) {
         console.log(err);
       }
-    }
-
-    if (!login) {
-      dispatch(
-        updateItemQuantity({ productName: productName, quantity: +inputValue })
-      );
     }
   };
 

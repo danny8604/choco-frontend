@@ -4,17 +4,17 @@ import styles from "./User.module.scss";
 import UserFeatures from "./UserFeatures";
 
 type UserProps = {
+  headerText: string;
   children: JSX.Element;
 };
 
-const User = (props: UserProps) => {
-  const { userEmail } = useAppSelector((state) => state.login);
+const User = ({ headerText, children }: UserProps) => {
   return (
     <div className={styles.userContainer}>
       <div className={styles.userHeader}>
-        <h4>Hi , {userEmail}</h4>
+        <h4>{headerText}</h4>
       </div>
-      {props.children}
+      {children}
     </div>
   );
 };

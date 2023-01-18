@@ -1,87 +1,25 @@
 @use "../../styles/" as *;
 
-.checkoutContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 85%;
-  margin: 0 auto;
-  gap: 6em;
-  padding: 6em 0;
+.checkoutFormContainer {
+  text-align: center;
+  color: $color-black;
+  letter-spacing: 1.4px;
+  .inputContainer {
+    width: 100%;
+    padding-bottom: 2em;
 
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  .checkoutFormContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    color: $color-black;
-    letter-spacing: 1.4px;
-    input {
-      width: 100%;
-    }
-    .nameContainer {
-      @include flex__justify-center__align-center;
-      width: 100%;
-      flex-direction: column;
-      padding-bottom: 2em;
-
-      h3 {
-        font-size: $fontSize--h4;
-        padding-bottom: 1em;
-      }
-    }
-    .addressContainer {
-      @include flex__justify-center__align-center;
-      width: 100%;
-      flex-direction: column;
-      padding-bottom: 2em;
-
-      h5 {
-        font-size: $fontSize--h6;
-        font-weight: $text-regular;
-        padding-bottom: 1em;
-      }
-    }
-
-    .checkoutBtn {
-      color: $color-white;
-      border: none;
-      background-color: $color-black;
-      width: 100%;
-      padding: 1em 0;
-      cursor: pointer;
-      transition: all 0.3s;
-      letter-spacing: 1px;
-      &:hover,
-      &:active {
-        background-color: $color-gray;
-      }
+    h3 {
+      font-size: $fontSize--h4;
+      padding-bottom: 1em;
     }
   }
 }
 
-@media screen and (max-width: $media-laptopM) {
-  .checkoutContainer {
-    grid-template-columns: 1fr;
-  }
-}
 @media screen and (max-width: $media-landscapeM) {
-  .checkoutContainer {
-    .checkoutFormContainer {
-      .nameContainer {
-        h3 {
-          font-size: $fontSize--h6;
-        }
-      }
-      .addressContainer {
-        h5 {
-          font-size: $fontSize--p;
-        }
+  .checkoutFormContainer {
+    .nameContainer {
+      h3 {
+        font-size: $fontSize--h6;
       }
     }
   }

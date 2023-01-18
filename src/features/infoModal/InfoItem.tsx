@@ -6,10 +6,8 @@ import CartItemImg from "../cart/cartItem/CartItemImg";
 import { ShoppingCartItem } from "../../app/type";
 import InfoItemQuantity from "./InfoItemQuantity";
 
-const InfoItem = ({
-  productId: { productName, img, price, path, _id },
-  quantity,
-}: ShoppingCartItem) => {
+const InfoItem = ({ productId, quantity }: ShoppingCartItem) => {
+  const { img, path, productName, price } = productId;
   return (
     <figure className={styles.cartItemContainer}>
       <CartItemImg img={img.imgA} path={path} />

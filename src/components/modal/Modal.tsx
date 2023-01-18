@@ -7,6 +7,7 @@ import SearchModal from "../../features/searchModal/SearchModal";
 import DesignerModal from "../../features/designerModal/DesignerModal";
 import NavModal from "../../features/navModal/NavModal";
 import InfoModal from "../../features/infoModal/InfoModal";
+import UtilModal from "../../features/utilModal/UtilModal";
 
 const Modal = () => {
   const { backdropIsOpen } = useAppSelector((state) => state.backdrop);
@@ -25,6 +26,7 @@ const Modal = () => {
       <CartModal />
       <DesignerModal />
       <InfoModal />
+      <UtilModal />
     </aside>
   );
 };

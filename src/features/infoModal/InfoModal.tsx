@@ -7,8 +7,12 @@ const InfoModal = () => {
   const { emailValue, addressValue, nameValue, phoneValue } = useAppSelector(
     (state) => state.formAuth
   );
-  const { orderItems, orderItemsTotalPrice, orderItemsTotalQuantity } =
-    useAppSelector((state) => state.cart);
+  const {
+    orderItems,
+    orderItemsTotalPrice,
+    orderItemsTotalQuantity,
+    orderNumber,
+  } = useAppSelector((state) => state.cart);
   const { infoModalIsOpen } = useAppSelector((state) => state.infoModal);
 
   return (
@@ -26,6 +30,7 @@ const InfoModal = () => {
           <li>Phone : {phoneValue}</li>
           <li>Total Quantity : {orderItemsTotalQuantity}</li>
           <li>Total Price : ${orderItemsTotalPrice}</li>
+          <li>order : {orderNumber}</li>
         </ul>
       </div>
       <div className={styles.infoItemContainer}>

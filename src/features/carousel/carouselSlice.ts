@@ -19,28 +19,28 @@ const carouselSlice = createSlice({
   reducers: {
     carouselNext(state) {
       state.slidesIndexArr = state.slidesIndexArr.map((item) => {
-        let test = +item.slice(-1);
-        if (test === 5) {
-          test = 1;
-          return "slideImg" + test;
+        let page = +item.slice(-1);
+        if (page === 5) {
+          page = 1;
+          return "slideImg" + page;
         }
-        if (!(test === 5)) {
-          test++;
-          return "slideImg" + test;
+        if (!(page === 5)) {
+          page++;
+          return "slideImg" + page;
         }
         return item;
       });
     },
     carouselPrev(state) {
       state.slidesIndexArr = state.slidesIndexArr.map((item) => {
-        let test = +item.slice(-1);
-        if (test === 1) {
-          test = 5;
-          return "slideImg" + test;
+        let page = +item.slice(-1);
+        if (page === 1) {
+          page = 5;
+          return "slideImg" + page;
         }
-        if (!(test === 1)) {
-          test--;
-          return "slideImg" + test;
+        if (!(page === 1)) {
+          page--;
+          return "slideImg" + page;
         }
         return item;
       });

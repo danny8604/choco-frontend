@@ -42,3 +42,24 @@ export interface userInfor {
     shoppingCart: ShoppingCartItem[];
   };
 }
+
+export interface Order {
+  _id: string;
+  products: ShoppingCartItem[];
+  totalQuantity: number;
+  totalPrice: number;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Orders {
+  orders: [
+    {
+      _id: string;
+      products: ShoppingCartItem[];
+      totalQuantity: number;
+      totalPrice: number;
+      createdAt: string;
+      updatedAt: string;
+    }
+  ];
+}

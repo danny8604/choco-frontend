@@ -1,38 +1,51 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./UtilModal.module.scss";
 import ReactDOM from "react-dom";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
+import { closeUtilModal } from "./utilModalSlice";
 
-type UtilModalPorps = {
-  modalClass: string;
-  show: boolean;
-  children: JSX.Element;
-};
-
-const UtilModal = (props: UtilModalPorps) => {
+const UtilModal = () => {
   const nodeRef = useRef(null);
-  return ReactDOM.createPortal(
-    <CSSTransition
-      nodeRef={nodeRef}
-      in={props.show}
-      mountOnEnter
-      unmountOnExit
-      timeout={300}
-      classNames={{
-        enter: styles.modalEnter,
-        enterActive: styles.modalEnterActive,
-        exit: styles.modalExit,
-        exitActive: styles.modalExitActive,
-      }}
-    >
-      <div
-        ref={nodeRef}
-        className={`${styles.modal} ${styles[props.modalClass]}`}
+  const { utilModalIsOpen, utilModalMessage, isSucceed } = useAppSelector(
+    (state) => state.utilModal
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (utilModalIsOpen) {
+      const timer = setTimeout(() => {
+        dispatch(closeUtilModal());
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [utilModalIsOpen]);
+
+  return (
+    <>
+      <CSSTransition
+        nodeRef={nodeRef}
+        in={utilModalIsOpen}
+        mountOnEnter
+        unmountOnExit
+        timeout={400}
+        classNames={{
+          enter: styles.modalEnter,
+          enterActive: styles.modalEnterActive,
+          exit: styles.modalExit,
+          exitActive: styles.modalExitActive,
+        }}
       >
-        {props.children}
-      </div>
-    </CSSTransition>,
-    document.getElementById("utilModal")!
+        <div
+          ref={nodeRef}
+          className={`${styles.modal} ${isSucceed && styles.succeed}`}
+        >
+          <div>
+            <p>{utilModalMessage}</p>
+          </div>
+        </div>
+      </CSSTransition>
+    </>
   );
 };
 

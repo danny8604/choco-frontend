@@ -1,0 +1,10 @@
+@use "../../styles/" as *;
+
+.orderInfor {
+  width: 90%;
+  padding: 3em 0;
+  gap: 2em;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+}

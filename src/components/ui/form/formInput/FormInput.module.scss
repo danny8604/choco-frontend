@@ -1,8 +1,28 @@
 @use "../../../../styles/" as *;
 
 .formInput {
+  display: flex;
+  flex-direction: column;
+  label {
+    color: $color-gray;
+  }
+
   input {
     margin: 1em 0;
     padding: 1em;
+    letter-spacing: 1px;
   }
+  span {
+    font-size: $fontSize--p--Small;
+    color: $color-red;
+    padding-bottom: 2em;
+    display: none;
+  }
+}
+
+input:invalid[data-focused="true"] ~ span {
+  display: block;
+}
+input:invalid[data-focused="true"] {
+  border: 1px solid $color-red;
 }

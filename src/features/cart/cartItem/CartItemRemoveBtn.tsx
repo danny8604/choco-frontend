@@ -8,6 +8,13 @@ import {
 } from "./cartSlice";
 import RemoveIconBtn from "../../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import axios from "axios";
+import { closeUtilModal, openUtilModal } from "../../utilModal/utilModalSlice";
+import { openCartModal } from "../../cartModal/cartModalSlice";
+import {
+  closeCheckModal,
+  openCheckModal,
+} from "../../checkModal/checkModalSlice";
+import CheckModal from "../../checkModal/CheckModal";
 
 type CartItemRemoveBtnProps = {
   productName: string;
@@ -18,40 +25,50 @@ const CartItemRemoveBtn = ({
   productName,
   productId,
 }: CartItemRemoveBtnProps) => {
-  const { userToken, login } = useAppSelector((state) => state.login);
-  const { shoppingCart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
+  const { userToken, login } = useAppSelector((state) => state.login);
 
-  const removeItemHandler = async () => {
-    if (login) {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/users/removeFromCart",
-          {
-            productId: productId,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-
-        dispatch(userShoppingCart(response.data.cart));
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
+  const confirmRemoveItem = async () => {
     if (!login) {
-      dispatch(removeCartItem(productName));
+      return dispatch(openUtilModal({ message: "Please log in first." }));
     }
-    // dispatch(updateTotalPriceAndQuantity());
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/removeFromCart",
+        {
+          productId: productId,
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + userToken,
+          },
+        }
+      );
+
+      dispatch(userShoppingCart(response.data.cart));
+    } catch (err) {
+      return dispatch(
+        openUtilModal({
+          message: "Something went wrong, can't delete this item.",
+        })
+      );
+    }
+
+    dispatch(closeCheckModal());
   };
+
+  const removeItemHandler = () => {
+    dispatch(openCheckModal("Are you sure you want to delete this item?"));
+  };
+
   return (
-    <div className={styles.removeItemButton}>
-      <RemoveIconBtn onClick={removeItemHandler} />
-    </div>
+    <>
+      <CheckModal okAction={confirmRemoveItem} />
+      <div className={styles.removeItemButton}>
+        <RemoveIconBtn onClick={removeItemHandler} />
+      </div>
+    </>
   );
 };
 

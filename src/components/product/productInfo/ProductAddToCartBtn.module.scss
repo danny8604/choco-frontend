@@ -13,11 +13,20 @@
     border-radius: 5px;
     padding: 0.825em;
     transition: all 0.3s;
+    letter-spacing: 1.4px;
     margin-top: 2em;
     &:hover {
       color: $color-black;
       background-color: $color-white;
       border: solid 1px $color-black;
+    }
+
+    &:disabled {
+      color: $color-gray;
+      background-color: $color-white;
+      &:hover {
+        color: $color-black;
+      }
     }
   }
 }

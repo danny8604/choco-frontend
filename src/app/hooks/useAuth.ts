@@ -15,7 +15,7 @@ type authUserLoginProps = {
 
 const useAuth = () => {
   const dispatch = useAppDispatch();
-  const { login } = useAppSelector((state) => state.login);
+  const { login, userToken } = useAppSelector((state) => state.login);
   const navigate = useNavigate();
 
   const authUserLogin = async ({ email, password }: authUserLoginProps) => {
@@ -109,10 +109,49 @@ const useAuth = () => {
     }
   };
 
+  const authUserChangePassword = async (values: {
+    originPassword: string;
+    newPassword: string;
+    confirmPassword: string;
+  }) => {
+    if (!login) {
+      dispatch(openUtilModal({ message: "Please log in first." }));
+      return navigate("/login");
+    }
+
+    try {
+      await axios.post(
+        "http://localhost:5000/api/users/changePassword",
+        values,
+        {
+          headers: {
+            Authorization: "Bearer " + userToken,
+          },
+        }
+      );
+      dispatch(userLogout());
+      dispatch(resetShoppingCart());
+      localStorage.removeItem("userData");
+      localStorage.removeItem("cart");
+      dispatch(
+        openUtilModal({ message: "Change password success.", isSucceed: true })
+      );
+      navigate("/login");
+    } catch (err) {
+      dispatch(
+        openUtilModal({
+          message: "Change password failed. please check your origin password.",
+        })
+      );
+    }
+    return;
+  };
+
   return {
     authUserLogin,
     authUserLogout,
     authUserSignup,
+    authUserChangePassword,
   };
 };
 

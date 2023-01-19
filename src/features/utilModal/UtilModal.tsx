@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./UtilModal.module.scss";
-import ReactDOM from "react-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import { closeUtilModal } from "./utilModalSlice";
 
@@ -13,6 +12,7 @@ const UtilModal = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log(utilModalIsOpen, "utilModalIsOpen");
     if (utilModalIsOpen) {
       const timer = setTimeout(() => {
         dispatch(closeUtilModal());

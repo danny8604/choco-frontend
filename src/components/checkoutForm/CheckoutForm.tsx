@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
+import useCart from "../../app/hooks/useCart";
 import useStripeCheckout from "../../app/hooks/useStripeCheckout";
 import { openBackdrop } from "../../features/backdrop/backdropSlice";
 import {
@@ -15,55 +16,20 @@ import FormInput from "../ui/form/formInput/FormInput";
 import styles from "./CheckoutForm.module.scss";
 
 const CheckoutForm = () => {
-  const dispatch = useAppDispatch();
-  const { login, userToken } = useAppSelector((state) => state.login);
+  const { login } = useAppSelector((state) => state.login);
   const navigate = useNavigate();
-  const { shoppingCart } = useAppSelector((state) => state.cart);
   const { stripeCardCheckout } = useStripeCheckout();
   const [values, setValues] = useState({
     name: "Anya Forger",
     address: "Burlington West No. 108 , Park E. Rd.",
     phone: "0987007007",
   });
+  const { cartCheckout } = useCart();
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("success")) {
-      const checkout = async () => {
-        if (login) {
-          try {
-            const response = await axios.post(
-              "http://localhost:5000/api/users/userCheckout/",
-              {
-                name: values.name,
-                address: values.address,
-                phone: +values.phone,
-              },
-              {
-                headers: {
-                  Authorization: "Bearer " + userToken,
-                },
-              }
-            );
-            dispatch(
-              checkoutCart({
-                orderNumber: response.data.orderNumber,
-                orderName: values.name,
-                orderAddress: values.address,
-                orderPhone: values.phone,
-                orderDate: response.data.orderDate,
-              })
-            );
-            dispatch(openInfoModal());
-            dispatch(openBackdrop());
-            dispatch(resetShoppingCart());
-            navigate("/");
-          } catch (err) {
-            dispatch(openUtilModal({ message: "Form not valid!!" }));
-          }
-        }
-      };
-      checkout();
+      cartCheckout(values);
     }
     if (query.get("canceled")) {
       navigate("/checkout");

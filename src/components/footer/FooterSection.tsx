@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import styles from "./FooterSection.module.scss";
 import github from "../../assets/mainSectionIMG/github.png";
+import { useAppSelector } from "../../app/hooks/hooks";
+import useAuth from "../../app/hooks/useAuth";
 
 const FooterSection = () => {
+  const { authUserLogout } = useAuth();
+  const { login } = useAppSelector((state) => state.login);
+
+  const logoutHandler = () => {
+    login && authUserLogout();
+  };
+
   return (
     <footer className={styles.footerSection}>
       <section className={styles.container}>
@@ -36,8 +45,8 @@ const FooterSection = () => {
         </ul>
         <ul className={styles.linkContainer}>
           <li>
-            <Link to="/login" reloadDocument>
-              LOGIN
+            <Link to="/login" onClick={logoutHandler}>
+              {login ? "LOGOUT" : "LOGIN"}
             </Link>
           </li>
           <li>

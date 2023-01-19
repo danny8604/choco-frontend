@@ -1,18 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import { resetShoppingCart } from "../../features/cart/cartItem/cartSlice";
-import { userLogout } from "../../features/login/loginSlice";
-import { openUtilModal } from "../../features/utilModal/utilModalSlice";
+import useAuth from "../../app/hooks/useAuth";
 import FormInput from "../ui/form/formInput/FormInput";
 import styles from "./UserChangePassword.module.scss";
 
 const UserChangePassword = () => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const { login } = useAppSelector((state) => state.login);
-  const { userToken } = useAppSelector((state) => state.login);
+  const { authUserChangePassword } = useAuth();
   const [values, setValues] = useState({
     originPassword: "",
     newPassword: "",
@@ -24,7 +16,7 @@ const UserChangePassword = () => {
       id: 1,
       errorMessage: "Password must be at least 8 characters.",
       input: {
-        type: "text",
+        type: "password",
         name: "originPassword",
         label: "originPassword",
         placeholder: "ORIGIN PASSWORD",
@@ -36,7 +28,7 @@ const UserChangePassword = () => {
       id: 2,
       errorMessage: "Password must be at least 8 characters.",
       input: {
-        type: "text",
+        type: "password",
         name: "newPassword",
         label: "newPassword",
         placeholder: "NEW PASSWORD",
@@ -48,7 +40,7 @@ const UserChangePassword = () => {
       id: 3,
       errorMessage: "The password does not match your new password.",
       input: {
-        type: "text",
+        type: "password",
         name: "confirmPassword",
         label: "confirmPassword",
         placeholder: "CONFIRM PASSWORD",
@@ -60,37 +52,7 @@ const UserChangePassword = () => {
 
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!login) {
-      dispatch(openUtilModal({ message: "Please log in first." }));
-      return navigate("/login");
-    }
-
-    try {
-      await axios.post(
-        "http://localhost:5000/api/users/changePassword",
-        values,
-        {
-          headers: {
-            Authorization: "Bearer " + userToken,
-          },
-        }
-      );
-      dispatch(userLogout());
-      dispatch(resetShoppingCart());
-      localStorage.removeItem("userData");
-      localStorage.removeItem("cart");
-      dispatch(
-        openUtilModal({ message: "Change password success.", isSucceed: true })
-      );
-      navigate("/login");
-    } catch (err) {
-      dispatch(
-        openUtilModal({
-          message: "Change password failed. please check your origin password.",
-        })
-      );
-    }
+    authUserChangePassword(values);
   };
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

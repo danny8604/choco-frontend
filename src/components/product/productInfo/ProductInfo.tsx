@@ -1,43 +1,34 @@
 import styles from "./ProductInfo.module.scss";
 import ProductText from "./ProductText";
-import { useParams } from "react-router-dom";
 import ProductImg from "./ProductImg";
 import ProductAddToCartBtn from "./ProductAddToCartBtn";
 import ProductDescript from "./ProductDescript";
 import Loading from "../../loading/Loading";
-import useChairsData from "../../../app/hooks/useChairsData";
 import usDollar from "../../util/usDollar";
+import { ChairDataProps } from "../../../app/type";
 
-const ProductInfo = () => {
-  const { productPath } = useParams();
-  const { pathChairsData } = useChairsData(productPath);
-
+const ProductInfo = ({ chairData }: ChairDataProps) => {
   return (
     <>
-      {!pathChairsData && <Loading />}
-      {pathChairsData && (
+      {!chairData && <Loading />}
+      {chairData && (
         <section className={styles.productTop}>
           <figure className={styles.productFigure}>
-            <ProductImg imgA={pathChairsData.product.img.imgA} />
+            <ProductImg imgA={chairData.img.imgA} />
             <figcaption className={styles.productFigcaption}>
               <div>
-                <ProductDescript
-                  productName={pathChairsData.product.productName}
-                />
+                <ProductDescript productName={chairData.productName} />
                 <ProductText
                   type={"Price"}
-                  typeText={`${usDollar(pathChairsData.product.price)}`}
+                  typeText={`${usDollar(chairData.price)}`}
                 />
-                <ProductText
-                  type={"Series"}
-                  typeText={`${pathChairsData.product.series}`}
-                />
+                <ProductText type={"Series"} typeText={`${chairData.series}`} />
                 <ProductText
                   type={"Designer"}
-                  typeText={`${pathChairsData.product.designer}`}
+                  typeText={`${chairData.designer}`}
                 />
               </div>
-              <ProductAddToCartBtn props={pathChairsData.product} />
+              <ProductAddToCartBtn props={chairData} />
             </figcaption>
           </figure>
         </section>

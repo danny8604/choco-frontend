@@ -154,8 +154,8 @@ function App() {
           userCart: shoppingCart,
         })
       );
-      dispatch(updateTotalPriceAndQuantity());
     }
+    dispatch(updateTotalPriceAndQuantity());
   }, [shoppingCart, login]);
 
   return (

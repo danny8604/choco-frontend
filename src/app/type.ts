@@ -63,3 +63,7 @@ export interface Orders {
     }
   ];
 }
+
+export interface ChairDataProps {
+  chairData: ProductsType;
+}

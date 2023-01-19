@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import {
-  resetShoppingCart,
-  updateTotalPriceAndQuantity,
-} from "../cart/cartItem/cartSlice";
-import { userLogout } from "../login/loginSlice";
+import useAuth from "../../app/hooks/useAuth";
 import styles from "./NavModal.module.scss";
 import { navModalToggle } from "./navModalSlice";
 
@@ -12,6 +8,7 @@ const NavModal = () => {
   const { navModalIsOpen } = useAppSelector((state) => state.navModal);
   const { login } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
+  const { authUserLogout } = useAuth();
   const navModalHandler = () => {
     dispatch(navModalToggle());
   };
@@ -19,10 +16,7 @@ const NavModal = () => {
   const logoutHandler = () => {
     dispatch(navModalToggle());
     if (login) {
-      alert("You have been logged out.");
-      dispatch(userLogout());
-      dispatch(resetShoppingCart());
-      dispatch(updateTotalPriceAndQuantity());
+      authUserLogout();
     }
   };
 

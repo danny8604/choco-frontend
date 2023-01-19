@@ -1,8 +1,9 @@
 @use "../../styles/" as *;
 
 .loadingPage {
-  height: 100vh;
+  height: 80vh;
   background-color: $color-white;
+
   .loadingText {
     font-size: 2rem;
     letter-spacing: 3px;
@@ -11,5 +12,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    h2 {
+      padding-left: 0.5em;
+      animation: loading 2s linear infinite;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(30%);
   }
 }

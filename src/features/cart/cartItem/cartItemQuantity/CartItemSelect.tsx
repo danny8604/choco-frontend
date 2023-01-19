@@ -1,53 +1,14 @@
-import axios from "axios";
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks/hooks";
-import { useNavigate } from "react-router-dom";
-import { openUtilModal } from "../../../utilModal/utilModalSlice";
-
 import { ItemQuantity } from "../../../../app/type";
-import {
-  updateItemQuantity,
-  updateTotalPriceAndQuantity,
-  userShoppingCart,
-} from "../cartSlice";
 import styles from "./CartItemSelect.module.scss";
+import useCart from "../../../../app/hooks/useCart";
 
-const CartItemSelect = ({ _id, productName, quantity }: ItemQuantity) => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const { userToken, login } = useAppSelector((state) => state.login);
+const CartItemSelect = ({ _id, quantity }: ItemQuantity) => {
+  const { cartSelectQuantity } = useCart();
 
   const selectChangeHandler = async (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const selectValue = e.target.value;
-    if (!selectValue) {
-      return dispatch(openUtilModal({ message: "input error." }));
-    }
-
-    if (!login) {
-      dispatch(openUtilModal({ message: "Please log in first." }));
-      return navigate("/login");
-    }
-
-    if (login) {
-      try {
-        const response = await axios.patch(
-          `http://localhost:5000/api/users/editItemQuantity/`,
-          {
-            productId: _id,
-            quantity: selectValue,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-        dispatch(userShoppingCart(response.data.cart));
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    cartSelectQuantity(e.target.value, _id);
   };
 
   return (

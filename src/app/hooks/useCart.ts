@@ -1,9 +1,15 @@
 import axios from "axios";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { openBackdrop } from "../../features/backdrop/backdropSlice";
-import { userShoppingCart } from "../../features/cart/cartItem/cartSlice";
+import {
+  checkoutCart,
+  resetShoppingCart,
+  userShoppingCart,
+} from "../../features/cart/cartItem/cartSlice";
 import { openCartModal } from "../../features/cartModal/cartModalSlice";
 import { closeCheckModal } from "../../features/checkModal/checkModalSlice";
+import { openInfoModal } from "../../features/infoModal/infoModalSlice";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
@@ -11,6 +17,14 @@ const useCart = () => {
   const { login, userToken } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { shoppingCart } = useAppSelector((state) => state.cart);
+
+  const cartFindById = (productId: string) => {
+    const product = shoppingCart.find(
+      (item) => item.productId._id.toString() === productId.toString()
+    );
+    return product;
+  };
 
   const cartRemoveItem = async (productId: string) => {
     if (!login) {
@@ -47,7 +61,6 @@ const useCart = () => {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
-
     if (login) {
       try {
         const response = await axios.post(
@@ -70,7 +83,120 @@ const useCart = () => {
     }
   };
 
-  return { cartRemoveItem, cartAddToCart };
+  const cartCheckout = async ({
+    name,
+    address,
+    phone,
+  }: {
+    name: string;
+    address: string;
+    phone: string;
+  }) => {
+    if (login) {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/users/userCheckout/",
+          {
+            name: name,
+            address: address,
+            phone: +phone,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+        dispatch(
+          checkoutCart({
+            orderNumber: response.data.orderNumber,
+            orderName: name,
+            orderAddress: address,
+            orderPhone: phone,
+            orderDate: response.data.orderDate,
+          })
+        );
+        dispatch(openInfoModal());
+        dispatch(openBackdrop());
+        dispatch(resetShoppingCart());
+        navigate("/");
+      } catch (err) {
+        dispatch(openUtilModal({ message: "Form not valid!!" }));
+      }
+    }
+  };
+
+  const cartSelectQuantity = async (selectValue: string, productId: string) => {
+    if (!selectValue) {
+      return dispatch(openUtilModal({ message: "input error." }));
+    }
+
+    if (!login) {
+      dispatch(openUtilModal({ message: "Please log in first." }));
+      return navigate("/login");
+    }
+
+    if (login) {
+      try {
+        const response = await axios.patch(
+          `http://localhost:5000/api/users/editItemQuantity/`,
+          {
+            productId: productId,
+            quantity: selectValue,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+        dispatch(userShoppingCart(response.data.cart));
+      } catch (err) {
+        dispatch(openUtilModal({ message: "Select product quantity valid!!" }));
+      }
+    }
+  };
+
+  const cartInputQuantity = async (inputValue: string, productId: string) => {
+    if (!inputValue || +inputValue > 20 || +inputValue < 0) {
+      return dispatch(openUtilModal({ message: "Input error." }));
+    }
+
+    if (!login) {
+      dispatch(openUtilModal({ message: "Please log in first." }));
+      return navigate("/login");
+    }
+
+    if (login) {
+      try {
+        const response = await axios.patch(
+          `http://localhost:5000/api/users/editItemQuantity/`,
+          {
+            productId: productId,
+            quantity: inputValue,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+
+        dispatch(userShoppingCart(response.data.cart));
+      } catch (err) {
+        dispatch(openUtilModal({ message: "Select product quantity valid!!" }));
+      }
+    }
+  };
+
+  return {
+    cartRemoveItem,
+    cartAddToCart,
+    cartCheckout,
+    cartSelectQuantity,
+    cartInputQuantity,
+    cartFindById,
+  };
 };
 
 export default useCart;

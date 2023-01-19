@@ -10,9 +10,6 @@ const useSearch = () => {
     setLoading(true);
 
     try {
-      //   const response = await axios.get(
-      //     `http://localhost:5000/api/users/getOrders/${inputRef.current?.value}`
-      //   );
       const response = await axios.get(
         `http://localhost:5000/api/users/getOrders/${searchInput}`
       );

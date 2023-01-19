@@ -47,10 +47,14 @@ const Navbar = () => {
 
             <ul className={styles.pageLink}>
               <li>
-                <Link to="/">HOME</Link>
+                <Link to="/" reloadDocument>
+                  HOME
+                </Link>
               </li>
               <li className={styles.shopLink}>
-                <Link to="/shop">SHOP</Link>
+                <Link to="/shop" reloadDocument>
+                  SHOP
+                </Link>
                 <ul className={styles.shopDropdown}>
                   <li>
                     <Link to="/shop/Living-Room" reloadDocument>
@@ -76,7 +80,9 @@ const Navbar = () => {
                 <div className={styles.dropdownBackdrop}></div>
               </li>
               <li>
-                <Link to="/about">ABOUT</Link>
+                <Link to="/about" reloadDocument>
+                  ABOUT
+                </Link>
               </li>
               <NavbarOrder />
               <NavbarLogin />

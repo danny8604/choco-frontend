@@ -84,7 +84,6 @@ const UserOrder = () => {
         <div className={styles.pageBtnContainer}>
           {currentPage === pageMax && currentPage - 2 > 0 && (
             <Button
-              className={""}
               btnMessage={currentPage - 2}
               clickAciton={() => {
                 if (currentPage === 1) {
@@ -96,7 +95,6 @@ const UserOrder = () => {
           )}
           {currentPage !== 1 && (
             <Button
-              className={""}
               btnMessage={currentPage - 1}
               clickAciton={() => {
                 if (currentPage === 1) {
@@ -118,7 +116,6 @@ const UserOrder = () => {
           />
           {currentPage !== pageMax && (
             <Button
-              className={""}
               btnMessage={currentPage + 1}
               clickAciton={() => {
                 {
@@ -129,7 +126,6 @@ const UserOrder = () => {
           )}
           {currentPage == 1 && pageMax >= 3 && (
             <Button
-              className={""}
               btnMessage={currentPage + 2}
               clickAciton={() => {
                 {

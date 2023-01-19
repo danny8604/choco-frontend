@@ -1,8 +1,5 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks/hooks";
 import CartItem from "../../features/cart/cartItem/CartItem";
-import CartCheckout from "../../features/cartModal/CartLeadCheckout";
 import CartTotalPrice from "../../features/cartModal/CartTotalPrice";
 import styles from "./CheckoutFormCart.module.scss";
 

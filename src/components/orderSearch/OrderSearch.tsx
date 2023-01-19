@@ -1,38 +1,16 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./OrderSearch.module.scss";
 import searchSvgIcon from "../../assets/svg/search-outline.svg";
-import axios from "axios";
-import { Order } from "../../app/type";
+
 import OrderInfo from "./OrderInfo";
+import useSearch from "../../app/hooks/useSearch";
 
 const OrderSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [searchResult, setSearchResult] = useState<Order | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("Please enter your order number.");
+  const { loading, searchResult, message, fetchSearchResult } = useSearch();
 
   const searchHandler = async () => {
-    setLoading(true);
-
-    try {
-      const response = await axios.get(
-        `http://localhost:5000/api/users/getOrders/${inputRef.current?.value}`
-      );
-
-      if (!response.data.order) {
-        setMessage(
-          "Can't find order for the provided order number, please check your number and try again later."
-        );
-      }
-
-      setSearchResult(response.data.order);
-    } catch (err) {
-      setMessage(
-        "Can't find order for the provided order number, please check your number and try again later."
-      );
-      setSearchResult(null);
-    }
-    setLoading(false);
+    fetchSearchResult(inputRef.current?.value);
   };
 
   return (

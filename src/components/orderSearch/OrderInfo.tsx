@@ -1,6 +1,7 @@
 import { Order } from "../../app/type";
 import InfoItem from "../../features/infoModal/InfoItem";
 import Card from "../ui/card/Card";
+import usDollar from "../util/usDollar";
 import styles from "./OrderInfo.module.scss";
 
 type OrderInfoProps = {
@@ -9,6 +10,7 @@ type OrderInfoProps = {
 };
 
 const OrderInfo = ({ order, orderNumber }: OrderInfoProps) => {
+  const usdPrice = usDollar(order.totalPrice);
   return (
     <Card>
       <>
@@ -24,7 +26,7 @@ const OrderInfo = ({ order, orderNumber }: OrderInfoProps) => {
 
         <div className={styles.orderInfor}>
           <div>
-            <p>TOTAL PRICE : ${order.totalPrice}</p>
+            <p>TOTAL PRICE : {usdPrice}</p>
           </div>
           <div>
             <p>ORDER DATE : {new Date(order.createdAt).toLocaleDateString()}</p>

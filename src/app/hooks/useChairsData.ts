@@ -1,29 +1,44 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { openUtilModal } from "../../features/utilModal/utilModalSlice";
+import { ProductsType, ShoppingCartItem } from "../type";
+import { useAppDispatch } from "./hooks";
 
 const useChairsData = (product: string | undefined) => {
-  const [data, setData] = useState<any>();
-  const [error, setError] = useState(false);
+  const [chairsData, setChairsData] = useState<any>();
+  const [pathChairsData, setPathChairsData] = useState<any>();
+  const [allChairsData, setAllChairsData] = useState<ProductsType[]>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const fetchDiningRoomData = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `http://localhost:5000/api/products/${product}`
         );
-        if (!response.ok) {
-          throw new Error("Fetch data failed.");
-        }
-
-        const data = await response.json();
-        setData(data);
+        setPathChairsData(response.data);
+        setChairsData(response.data.products);
       } catch (err) {
-        setError(true);
+        dispatch(openUtilModal({ message: "Fetch chair data failed." }));
       }
     };
     fetchDiningRoomData();
   }, []);
 
-  return { data, error };
+  useEffect(() => {
+    const fetchDiningRoomData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/products/`);
+
+        setAllChairsData(response.data.products);
+      } catch (err) {
+        dispatch(openUtilModal({ message: "Fetch chair data failed." }));
+      }
+    };
+    fetchDiningRoomData();
+  }, []);
+
+  return { chairsData, allChairsData, pathChairsData };
 };
 
 export default useChairsData;

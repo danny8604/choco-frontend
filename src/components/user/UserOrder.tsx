@@ -64,12 +64,14 @@ const UserOrder = () => {
 
   return (
     <div className={styles.userOrder}>
-      {ordersResult &&
-        ordersResult.orders
-          .slice(pageVisited, pageVisited + perPage)
-          .map((item) => (
-            <OrderInfo key={item._id} order={item} orderNumber={item._id} />
-          ))}
+      <div>
+        {ordersResult &&
+          ordersResult.orders
+            .slice(pageVisited, pageVisited + perPage)
+            .map((item) => (
+              <OrderInfo key={item._id} order={item} orderNumber={item._id} />
+            ))}
+      </div>
       <div className={styles.btnContainer}>
         {currentPage !== 1 && (
           <ArrowLeftBtn

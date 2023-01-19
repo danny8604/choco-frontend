@@ -9,13 +9,6 @@ import styles from "./CheckoutFormCart.module.scss";
 const CheckoutFormCart = () => {
   const { shoppingCart, shoppingCartTotalQuantity, shoppingCartTotalPrice } =
     useAppSelector((state) => state.cart);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (shoppingCart.length === 0) {
-      navigate("/");
-    }
-  }, [shoppingCart]);
 
   return (
     <div className={styles.cartInfoContainer}>

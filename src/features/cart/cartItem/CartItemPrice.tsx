@@ -1,3 +1,4 @@
+import usDollar from "../../../components/util/usDollar";
 import styles from "./CartItemPrice.module.scss";
 
 type CartItemPriceProps = {
@@ -6,9 +7,10 @@ type CartItemPriceProps = {
 };
 
 const CartItemPrice = ({ price, quantity }: CartItemPriceProps) => {
+  const usdPrice = usDollar(price * quantity);
   return (
     <span className={styles.itemPrice}>
-      <p>${price * quantity}</p>
+      <p>{usdPrice}</p>
     </span>
   );
 };

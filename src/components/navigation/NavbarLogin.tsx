@@ -1,31 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import {
-  resetShoppingCart,
-  updateTotalPriceAndQuantity,
-} from "../../features/cart/cartItem/cartSlice";
-import { getEmail } from "../../features/formAuth/formAuthSlice";
-import { userLogout } from "../../features/login/loginSlice";
-import { openUtilModal } from "../../features/utilModal/utilModalSlice";
+import { useAppSelector } from "../../app/hooks/hooks";
+import useAuth from "../../app/hooks/useAuth";
 
 const NavbarLogin = () => {
-  const { login, userEmail } = useAppSelector((state) => state.login);
-  const dispatch = useAppDispatch();
+  const { login } = useAppSelector((state) => state.login);
+  const { authUserLogout } = useAuth();
 
   const LogoutHandler = () => {
-    if (login) {
-      dispatch(userLogout());
-      dispatch(resetShoppingCart());
-      localStorage.removeItem("userData");
-      localStorage.removeItem("cart");
-      dispatch(
-        openUtilModal({
-          message: "You have been logged out.",
-          isSucceed: true,
-        })
-      );
-    }
+    authUserLogout();
   };
 
   return (

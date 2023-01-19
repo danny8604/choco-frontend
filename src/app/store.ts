@@ -1,5 +1,4 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import formAuthReducer from "../features/formAuth/formAuthSlice";
 import loginReducer from "../features/login/loginSlice";
 import searchReducer from "../features/search/searchSlice";
 import { productsApi } from "./apiSlice";
@@ -30,7 +29,6 @@ const store = configureStore({
     slider: sliderReducer,
     search: searchReducer,
     cart: cartReducer,
-    formAuth: formAuthReducer,
     login: loginReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },

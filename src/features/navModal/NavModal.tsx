@@ -10,7 +10,7 @@ import { navModalToggle } from "./navModalSlice";
 
 const NavModal = () => {
   const { navModalIsOpen } = useAppSelector((state) => state.navModal);
-  const { isLogin } = useAppSelector((state) => state.login);
+  const { login } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const navModalHandler = () => {
     dispatch(navModalToggle());
@@ -18,7 +18,7 @@ const NavModal = () => {
 
   const logoutHandler = () => {
     dispatch(navModalToggle());
-    if (isLogin) {
+    if (login) {
       alert("You have been logged out.");
       dispatch(userLogout());
       dispatch(resetShoppingCart());
@@ -51,9 +51,9 @@ const NavModal = () => {
         <li>
           <Link
             onClick={() => logoutHandler()}
-            to={`${isLogin ? "/" : "/login"}`}
+            to={`${login ? "/" : "/login"}`}
           >
-            {isLogin ? "LOGOUT" : "LOGIN"}
+            {login ? "LOGOUT" : "LOGIN"}
           </Link>
         </li>
       </ul>

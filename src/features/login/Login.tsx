@@ -11,69 +11,72 @@ import axios from "axios";
 import { openUtilModal } from "../utilModal/utilModalSlice";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../../components/ui/form/formInput/FormInput";
+import useAuth from "../../app/hooks/useAuth";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const [values, setValues] = useState({
     email: "test@test.com",
     password: "123123123",
   });
+  const { authUserLogin } = useAuth();
 
   const LoginSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        `http://localhost:5000/api/users/login`,
-        {
-          email: values.email,
-          password: values.password,
-        }
-      );
-      const tokenExpirationDate = new Date(
-        new Date().getTime() + 1000 * 60 * 60
-      );
-      dispatch(
-        openUtilModal({
-          message: "Logged in success.",
-          isSucceed: true,
-          showbutton: false,
-        })
-      );
-      dispatch(
-        userLogin({
-          userEmail: response.data.user.email,
-          userId: response.data.user.userId,
-          userToken: response.data.user.token,
-        })
-      );
-      dispatch(userShoppingCart(response.data.userCart));
-      localStorage.setItem(
-        "userData",
-        JSON.stringify({
-          userId: response.data.user.userId,
-          userEmail: response.data.user.email,
-          userToken: response.data.user.token,
-          login: true,
-          expiration: tokenExpirationDate.toISOString(),
-        })
-      );
-      localStorage.setItem(
-        "cart",
-        JSON.stringify({ userCart: response.data.userCart })
-      );
-      navigate("/");
-    } catch (err) {
-      dispatch(
-        openUtilModal({
-          message: "Logged in failed.",
-          isSucceed: false,
-          showbutton: false,
-        })
-      );
-    }
+    authUserLogin({ email: values.email, password: values.password });
   };
+
+  // const LoginSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const response = await axios.post(
+  //       `http://localhost:5000/api/users/login`,
+  //       {
+  //         email: values.email,
+  //         password: values.password,
+  //       }
+  //     );
+  //     const tokenExpirationDate = new Date(
+  //       new Date().getTime() + 1000 * 60 * 60
+  //     );
+  //     dispatch(
+  //       openUtilModal({
+  //         message: "Logged in success.",
+  //         isSucceed: true,
+  //       })
+  //     );
+  //     dispatch(
+  //       userLogin({
+  //         userEmail: response.data.user.email,
+  //         userId: response.data.user.userId,
+  //         userToken: response.data.user.token,
+  //         tokenExpirationDate: tokenExpirationDate.toISOString(),
+  //       })
+  //     );
+  //     dispatch(userShoppingCart(response.data.userCart));
+  //     localStorage.setItem(
+  //       "userData",
+  //       JSON.stringify({
+  //         userId: response.data.user.userId,
+  //         userEmail: response.data.user.email,
+  //         userToken: response.data.user.token,
+  //         login: true,
+  //         tokenExpirationDate: tokenExpirationDate.toISOString(),
+  //       })
+  //     );
+  //     localStorage.setItem(
+  //       "cart",
+  //       JSON.stringify({ userCart: response.data.userCart })
+  //     );
+  //     navigate("/");
+  //   } catch (err) {
+  //     dispatch(
+  //       openUtilModal({
+  //         message: "Logged in failed.",
+  //       })
+  //     );
+  //   }
+  // };
 
   const inputs = [
     {

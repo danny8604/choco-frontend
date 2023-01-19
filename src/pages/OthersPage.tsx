@@ -2,21 +2,18 @@ import ShopList from "../components/shop/ShopList";
 import OthersTop from "../components/others/OthersTop";
 import useChairsData from "../app/hooks/useChairsData";
 import Loading from "../components/loading/Loading";
-import Error from "../components/error/Error";
 
 const OthersPage = () => {
-  const { data, error } = useChairsData("/category/others");
-
+  const { chairsData } = useChairsData("category/others");
   return (
     <main>
-      {!data && !error && <Loading />}
-      {data && !error && (
+      {!chairsData && <Loading />}
+      {chairsData && (
         <>
           <OthersTop />
-          <ShopList props={data.products} />
+          <ShopList props={chairsData} />
         </>
       )}
-      {error && <Error />}
     </main>
   );
 };

@@ -6,43 +6,44 @@ import ProductAddToCartBtn from "./ProductAddToCartBtn";
 import ProductDescript from "./ProductDescript";
 import Loading from "../../loading/Loading";
 import useChairsData from "../../../app/hooks/useChairsData";
-import Error from "../../error/Error";
+import usDollar from "../../util/usDollar";
 
-const ProductTop = () => {
-  const { productId } = useParams();
-  const { data, error } = useChairsData(productId);
+const ProductInfo = () => {
+  const { productPath } = useParams();
+  const { pathChairsData } = useChairsData(productPath);
 
   return (
     <>
-      {!data && !error && <Loading />}
-      {data && (
+      {!pathChairsData && <Loading />}
+      {pathChairsData && (
         <section className={styles.productTop}>
           <figure className={styles.productFigure}>
-            <ProductImg imgA={data.product.img.imgA} />
+            <ProductImg imgA={pathChairsData.product.img.imgA} />
             <figcaption className={styles.productFigcaption}>
               <div>
-                <ProductDescript productName={data.product.productName} />
+                <ProductDescript
+                  productName={pathChairsData.product.productName}
+                />
                 <ProductText
                   type={"Price"}
-                  typeText={`$${data.product.price}`}
+                  typeText={`${usDollar(pathChairsData.product.price)}`}
                 />
                 <ProductText
                   type={"Series"}
-                  typeText={`${data.product.series}`}
+                  typeText={`${pathChairsData.product.series}`}
                 />
                 <ProductText
                   type={"Designer"}
-                  typeText={`${data.product.designer}`}
+                  typeText={`${pathChairsData.product.designer}`}
                 />
               </div>
-              <ProductAddToCartBtn props={data.product} />
+              <ProductAddToCartBtn props={pathChairsData.product} />
             </figcaption>
           </figure>
         </section>
       )}
-      {error && <Error />}
     </>
   );
 };
 
-export default ProductTop;
+export default ProductInfo;

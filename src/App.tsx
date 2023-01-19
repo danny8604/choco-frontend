@@ -1,5 +1,9 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
@@ -14,7 +18,7 @@ import OthersPage from "./pages/OthersPage";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
 import { useAppDispatch, useAppSelector } from "./app/hooks/hooks";
-import { userLogin } from "./features/login/loginSlice";
+import { userLogin, userLogout } from "./features/login/loginSlice";
 import {
   updateTotalPriceAndQuantity,
   userShoppingCart,
@@ -23,6 +27,7 @@ import OrderPage from "./pages/OrderPage";
 import UserPage from "./pages/UserPage";
 import UserChangePasswordPage from "./pages/UserChangePasswordPage";
 import UserOrderPage from "./pages/UserOrderPage";
+import useAuth from "./app/hooks/useAuth";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +44,7 @@ const router = createBrowserRouter([
         element: <ShopPage />,
       },
       {
-        path: "product/:productId",
+        path: "product/:productPath",
         element: <ProductPage />,
       },
       {
@@ -95,42 +100,63 @@ const router = createBrowserRouter([
   },
 ]);
 
-const cart = JSON.parse(localStorage.getItem("cart") || "");
+let logoutTimer: any;
 
 function App() {
   const dispatch = useAppDispatch();
   const { shoppingCart } = useAppSelector((state) => state.cart);
+  const { login, userToken, tokenExpirationDate } = useAppSelector(
+    (state) => state.login
+  );
 
   useEffect(() => {
-    dispatch(userShoppingCart(cart.userCart));
-    dispatch(updateTotalPriceAndQuantity());
-
-    if (!localStorage.getItem("userData")) {
+    if (!localStorage.getItem("userData") || !localStorage.getItem("cart")) {
       return;
     }
     const userData = JSON.parse(localStorage.getItem("userData") || "");
+    const cart = JSON.parse(localStorage.getItem("cart") || "");
 
-    if (userData && new Date(userData.expiration) > new Date()) {
+    if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
       dispatch(
         userLogin({
           userId: userData.userId,
           userEmail: userData.userEmail,
           userToken: userData.userToken,
-          login: userData.login,
+          tokenExpirationDate: new Date(
+            userData.tokenExpirationDate
+          ).toISOString(),
         })
       );
+      dispatch(userShoppingCart(cart.userCart));
+      dispatch(updateTotalPriceAndQuantity());
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(
-      "cart",
-      JSON.stringify({
-        userCart: shoppingCart,
-      })
-    );
-    dispatch(updateTotalPriceAndQuantity());
-  }, [shoppingCart]);
+    if (userToken && tokenExpirationDate) {
+      const remainingTime =
+        new Date(tokenExpirationDate).getTime() - new Date().getTime();
+      logoutTimer = setTimeout(() => {
+        return dispatch(userLogout());
+      }, remainingTime);
+
+      console.log(remainingTime, "remainingTime");
+    } else {
+      clearTimeout(logoutTimer);
+    }
+  }, [userToken, tokenExpirationDate]);
+
+  useEffect(() => {
+    if (login) {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify({
+          userCart: shoppingCart,
+        })
+      );
+      dispatch(updateTotalPriceAndQuantity());
+    }
+  }, [shoppingCart, login]);
 
   return (
     <Suspense>

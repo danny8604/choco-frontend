@@ -18,7 +18,7 @@ import {
 const Search = () => {
   const search = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
-  const { data, error } = useChairsData("");
+  const { allChairsData } = useChairsData("");
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     dispatch(searchInputValue(e.target.value));
@@ -26,10 +26,10 @@ const Search = () => {
 
   useEffect(() => {
     dispatch(searchValueIsValid());
-    if (search.value.length < 1) return;
+    if (search.value.length < 1 || !allChairsData) return;
     dispatch(
       filterSearchData(
-        data.products.filter((item) =>
+        allChairsData.filter((item) =>
           item.productName
             .trim()
             .toLowerCase()

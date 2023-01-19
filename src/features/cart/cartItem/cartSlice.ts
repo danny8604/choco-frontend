@@ -10,6 +10,10 @@ interface CartState {
   orderItemsTotalQuantity: number;
   orderItemsTotalPrice: number;
   orderNumber: string;
+  orderName: string;
+  orderAddress: string;
+  orderPhone: string;
+  orderDate: Date | undefined;
 }
 
 const initialState: CartState = {
@@ -20,6 +24,10 @@ const initialState: CartState = {
   orderItemsTotalQuantity: 0,
   orderItemsTotalPrice: 0,
   orderNumber: "",
+  orderName: "",
+  orderAddress: "",
+  orderPhone: "",
+  orderDate: undefined,
 };
 
 const cartSlice = createSlice({
@@ -54,38 +62,32 @@ const cartSlice = createSlice({
 
       itemInCart && (itemInCart.quantity = action.payload.quantity);
     },
-    removeCartItem(state, action) {
-      console.log(action.payload, "action.payload");
-      state.shoppingCart = state.shoppingCart.filter(
-        (item) => item.productId.productName !== action.payload
-      );
-    },
     resetShoppingCart(state) {
       state.shoppingCart = [];
     },
     userShoppingCart(state, action: PayloadAction<ShoppingCartItem[]>) {
       state.shoppingCart = action.payload;
     },
-    checkoutCart(state) {
+    checkoutCart(state, action) {
       state.orderItems = state.shoppingCart;
       state.orderItemsTotalPrice = state.shoppingCartTotalPrice;
       state.orderItemsTotalQuantity = state.shoppingCartTotalQuantity;
-    },
-    checkoutOrderNumber(state, action) {
-      state.orderNumber = action.payload;
+      state.orderNumber = action.payload.orderNumber;
+      state.orderName = action.payload.orderName;
+      state.orderAddress = action.payload.orderAddress;
+      state.orderPhone = action.payload.orderPhone;
+      state.orderDate = action.payload.orderDate;
     },
   },
 });
 
 export const {
   addToCart,
-  removeCartItem,
   updateItemQuantity,
   updateTotalPriceAndQuantity,
   userShoppingCart,
   resetShoppingCart,
   checkoutCart,
-  checkoutOrderNumber,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

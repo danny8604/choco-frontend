@@ -6,7 +6,6 @@ import NavbarSearch from "./NavbarSearch";
 import NavbarCart from "./NavbarCart";
 import NavbarLogin from "./NavbarLogin";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import { useEffect } from "react";
 import NavModal from "../../features/navModal/NavModal";
 import { navModalToggle } from "../../features/navModal/navModalSlice";
 import NavbarOrder from "./NavbarOrder";

@@ -16,21 +16,29 @@ type FormInputProps = {
 
 const FormInput = ({ props, onChange, errorMessage }: FormInputProps) => {
   const [focused, setFocused] = useState(false);
-
   const { placeholder } = props;
   const blurHandler = () => {
     setFocused(true);
   };
 
-  const defalutValue = () => {
-    if (props.type === "email") {
-      return "test@test.com";
+  const defalutValue = (name: string) => {
+    switch (name) {
+      case "email": {
+        return "test@test.com";
+      }
+      case "password": {
+        return "123123123";
+      }
+      case "name": {
+        return "Anya Forger";
+      }
+      case "address": {
+        return "Burlington West No. 108 , Park E. Rd.";
+      }
+      case "phone": {
+        return "0987007007";
+      }
     }
-
-    if (props.type === "password") {
-      return "123123123";
-    }
-
     return;
   };
 
@@ -38,7 +46,7 @@ const FormInput = ({ props, onChange, errorMessage }: FormInputProps) => {
     <div className={styles.formInput}>
       <label>{placeholder}</label>
       <input
-        defaultValue={defalutValue()}
+        defaultValue={defalutValue(props.name)}
         onChange={onChange}
         {...props}
         onBlur={blurHandler}

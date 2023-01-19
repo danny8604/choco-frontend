@@ -1,3 +1,4 @@
+import usDollar from "../../components/util/usDollar";
 import styles from "./CartTotalPrice.module.scss";
 
 type CartTotalPriceProps = {
@@ -7,7 +8,7 @@ type CartTotalPriceProps = {
 const CartTotalPrice = ({ totalPrice }: CartTotalPriceProps) => {
   return (
     <div className={styles.cartTotalPrice}>
-      <h3>TOTAL PRICE: ${totalPrice}</h3>
+      <h3>TOTAL PRICE: {usDollar(totalPrice)}</h3>
     </div>
   );
 };

@@ -5,18 +5,17 @@ import Loading from "../components/loading/Loading";
 import ShopList from "../components/shop/ShopList";
 
 const LivingRoomPage = () => {
-  const { data, error } = useChairsData("/category/livingRoom");
+  const { chairsData } = useChairsData("category/livingRoom");
 
   return (
     <main>
-      {!data && !error && <Loading />}
-      {data && !error && (
+      {!chairsData && <Loading />}
+      {chairsData && (
         <>
           <LivingRoomTop />
-          <ShopList props={data.products} />
+          <ShopList props={chairsData} />
         </>
       )}
-      {error && <Error />}
     </main>
   );
 };

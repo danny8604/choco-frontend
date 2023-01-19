@@ -1,67 +1,74 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import useMultistepForm from "../../app/hooks/useMultistpForm";
+import useStripeCheckout from "../../app/hooks/useStripeCheckout";
 import { openBackdrop } from "../../features/backdrop/backdropSlice";
 import {
   checkoutCart,
-  checkoutOrderNumber,
   resetShoppingCart,
-  updateTotalPriceAndQuantity,
-  userShoppingCart,
 } from "../../features/cart/cartItem/cartSlice";
 import { openInfoModal } from "../../features/infoModal/infoModalSlice";
-import { userLogin } from "../../features/login/loginSlice";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import Button from "../ui/button/Button";
 import FormInput from "../ui/form/formInput/FormInput";
 import styles from "./CheckoutForm.module.scss";
 
-const cart = JSON.parse(localStorage.getItem("cart") || "");
-
 const CheckoutForm = () => {
   const dispatch = useAppDispatch();
   const { login, userToken } = useAppSelector((state) => state.login);
   const navigate = useNavigate();
-  const { steps, currentStepIndex, isFirstStep, back, next, isLastStep } =
-    useMultistepForm([<div>One</div>, <div>Two</div>]);
+  const { shoppingCart } = useAppSelector((state) => state.cart);
+  const { stripeCardCheckout } = useStripeCheckout();
   const [values, setValues] = useState({
-    name: "",
-    address: "",
-    phone: "",
+    name: "Anya Forger",
+    address: "Burlington West No. 108 , Park E. Rd.",
+    phone: "0987007007",
   });
-
-  useEffect(() => {
-    dispatch(userShoppingCart(cart.userCart));
-    dispatch(updateTotalPriceAndQuantity());
-
-    if (!localStorage.getItem("userData")) {
-      return;
-    }
-    const userData = JSON.parse(localStorage.getItem("userData") || "");
-
-    if (userData && new Date(userData.expiration) > new Date()) {
-      dispatch(
-        userLogin({
-          userId: userData.userId,
-          userEmail: userData.userEmail,
-          userToken: userData.userToken,
-          login: userData.login,
-        })
-      );
-    }
-  }, []);
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("success")) {
-      console.log(query, "success");
+      const checkout = async () => {
+        if (login) {
+          try {
+            const response = await axios.post(
+              "http://localhost:5000/api/users/userCheckout/",
+              {
+                name: values.name,
+                address: values.address,
+                phone: +values.phone,
+              },
+              {
+                headers: {
+                  Authorization: "Bearer " + userToken,
+                },
+              }
+            );
+            dispatch(
+              checkoutCart({
+                orderNumber: response.data.orderNumber,
+                orderName: values.name,
+                orderAddress: values.address,
+                orderPhone: values.phone,
+                orderDate: response.data.orderDate,
+              })
+            );
+            dispatch(openInfoModal());
+            dispatch(openBackdrop());
+            dispatch(resetShoppingCart());
+            navigate("/");
+          } catch (err) {
+            dispatch(openUtilModal({ message: "Form not valid!!" }));
+          }
+        }
+      };
+      checkout();
     }
     if (query.get("canceled")) {
-      console.log(query, "canceled");
+      navigate("/checkout");
     }
-  }, []);
+  }, [login]);
 
   const inputs = [
     {
@@ -72,7 +79,7 @@ const CheckoutForm = () => {
         name: "name",
         label: "name",
         placeholder: "NAME",
-        pattern: "/.(.*?)}/g",
+        pattern: "^(?!s*$).+",
         required: true,
       },
     },
@@ -84,7 +91,7 @@ const CheckoutForm = () => {
         name: "address",
         label: "address",
         placeholder: "ADDRESS",
-        pattern: "/.(.*?)}/g",
+        pattern: "^(?!s*$).+",
         required: true,
       },
     },
@@ -92,7 +99,7 @@ const CheckoutForm = () => {
       id: 3,
       errorMessage: "Phone number should be 10-20 characters.",
       input: {
-        type: "text",
+        type: "number",
         name: "phone",
         label: "phone",
         placeholder: "PHONE",
@@ -102,46 +109,20 @@ const CheckoutForm = () => {
     },
   ];
 
-  const checkoutHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (login) {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/users/userCheckout/",
-          {
-            name: values.name,
-            address: values.address,
-            phone: +values.phone,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-        console.log(response.data, "test");
-        dispatch(checkoutOrderNumber(response.data.order));
-        // navigate("/");
-        dispatch(openInfoModal());
-        dispatch(openBackdrop());
-        dispatch(checkoutCart());
-        dispatch(resetShoppingCart());
-      } catch (err) {
-        dispatch(openUtilModal({ message: "Form not valid!!" }));
-      }
-    }
-  };
-
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const checkoutHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    stripeCardCheckout();
   };
 
   return (
     <>
       <form
         onSubmit={checkoutHandler}
-        className={`${styles.checkoutFormContainer} center-column`}
+        className={`${styles.checkoutFormContainer}`}
       >
         <div className={`${styles.inputContainer} `}>
           <h3>CHECKOUT</h3>

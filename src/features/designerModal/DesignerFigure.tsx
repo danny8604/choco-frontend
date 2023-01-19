@@ -17,7 +17,6 @@ const DesignerFigure = ({
 }: DesignerFigureProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
-  console.log(searchParams, "searchParams");
 
   const designerHandler = () => {
     setSearchParams({ filter: filter });

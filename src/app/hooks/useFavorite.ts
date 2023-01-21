@@ -11,7 +11,7 @@ const useFavorite = (productId?: string) => {
   const { userToken, login } = useAppSelector((state) => state.login);
 
   useEffect(() => {
-    if (login && productId) {
+    if (login) {
       const fetchFavoriteItems = async () => {
         const response = await axios.get(
           `http://localhost:5000/api/users/favoriteItem/${productId}`,

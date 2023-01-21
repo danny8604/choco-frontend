@@ -55,6 +55,40 @@ function App() {
     }
   }, [login, userToken]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("userData")) return;
+
+    const userData = JSON.parse(localStorage.getItem("userData") || "");
+
+    if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
+      dispatch(
+        userLogin({
+          userId: userData.userId,
+          userEmail: userData.userEmail,
+          userToken: userData.userToken,
+          tokenExpirationDate: new Date(
+            userData.tokenExpirationDate
+          ).toISOString(),
+        })
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    let logoutTimer;
+    if (userToken && tokenExpirationDate) {
+      const remainingTime =
+        new Date(tokenExpirationDate).getTime() - new Date().getTime();
+      logoutTimer = setTimeout(() => {
+        dispatch(resetShoppingCart());
+        return dispatch(userLogout());
+      }, remainingTime);
+      console.log(remainingTime, "remainingTime");
+    } else {
+      clearTimeout(logoutTimer);
+    }
+  }, [userToken, tokenExpirationDate]);
+
   type ProtectedRouteProps = {
     children: JSX.Element;
   };
@@ -144,11 +178,7 @@ function App() {
         },
         {
           path: "checkout",
-          element: (
-            <ProtectedRoute>
-              <CheckoutPage />
-            </ProtectedRoute>
-          ),
+          element: <CheckoutPage />,
         },
       ],
     },

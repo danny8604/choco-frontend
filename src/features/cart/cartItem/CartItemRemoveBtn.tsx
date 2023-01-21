@@ -7,10 +7,13 @@ type CartItemRemoveBtnProps = {
   productId: string;
 };
 
-const CartItemRemoveBtn = ({ productId }: CartItemRemoveBtnProps) => {
-  const { cartRemoveItem } = useCart(productId);
+const CartItemRemoveBtn = ({
+  productId,
+  productName,
+}: CartItemRemoveBtnProps) => {
+  const { cartRemoveItem } = useCart(productId, productName);
 
-  const confirmRemoveItem = () => cartRemoveItem(productId);
+  const confirmRemoveItem = () => cartRemoveItem();
 
   return (
     <div className={styles.removeItemButton}>

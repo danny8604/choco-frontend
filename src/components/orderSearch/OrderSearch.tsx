@@ -9,8 +9,7 @@ const OrderSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { loading, searchResult, message, fetchSearchResult } = useSearch();
 
-  const searchHandler = async () =>
-    await fetchSearchResult(inputRef.current?.value);
+  const searchHandler = () => fetchSearchResult(inputRef.current?.value);
 
   return (
     <section className={styles.orderContainer}>
@@ -22,7 +21,11 @@ const OrderSearch = () => {
           placeholder="ORDER NUMBER"
         />
         <button onClick={() => searchHandler()} disabled={loading}>
-          <img src={searchSvgIcon} className={styles.Icon} alt="rwar" />
+          <img
+            src={searchSvgIcon}
+            className={styles.Icon}
+            alt="searchSvgIcon"
+          />
         </button>
       </div>
       <div>

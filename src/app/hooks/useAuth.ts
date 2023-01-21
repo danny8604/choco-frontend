@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   resetShoppingCart,
@@ -19,8 +20,80 @@ type authUserLoginProps = {
 
 const useAuth = () => {
   const dispatch = useAppDispatch();
-  const { login, userToken } = useAppSelector((state) => state.login);
+  const { login, userToken, tokenExpirationDate } = useAppSelector(
+    (state) => state.login
+  );
   const navigate = useNavigate();
+
+  ////////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    if (!localStorage.getItem("userData")) return;
+
+    const userData = JSON.parse(localStorage.getItem("userData") || "");
+
+    if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
+      dispatch(
+        userLogin({
+          userId: userData.userId,
+          userEmail: userData.userEmail,
+          userToken: userData.userToken,
+          tokenExpirationDate: new Date(
+            userData.tokenExpirationDate
+          ).toISOString(),
+        })
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    if (login) {
+      const fetchUserCart = async () => {
+        const response = await axios.get(
+          `http://localhost:5000/api/users/getUserCart/`,
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+        dispatch(userShoppingCart(response.data.userCart));
+      };
+      fetchUserCart();
+    }
+  }, [login, userToken]);
+
+  useEffect(() => {
+    let logoutTimer;
+    if (userToken && tokenExpirationDate) {
+      const remainingTime =
+        new Date(tokenExpirationDate).getTime() - new Date().getTime();
+      logoutTimer = setTimeout(() => {
+        dispatch(resetShoppingCart());
+        return dispatch(userLogout());
+      }, remainingTime);
+      console.log(remainingTime, "remainingTime");
+    } else {
+      clearTimeout(logoutTimer);
+    }
+  }, [userToken, tokenExpirationDate]);
+
+  const authUserLogout = () => {
+    if (login) {
+      dispatch(userLogout());
+      dispatch(userFavoriteItems([]));
+      dispatch(userShoppingCart([]));
+      localStorage.removeItem("userData");
+      dispatch(
+        openUtilModal({
+          message: "You have been logged out.",
+          isSucceed: true,
+        })
+      );
+    }
+  };
+
+  ////////////////////////////////////////////////////////////////////////
 
   const authUserLogin = async ({ email, password }: authUserLoginProps) => {
     try {
@@ -65,21 +138,6 @@ const useAuth = () => {
       dispatch(
         openUtilModal({
           message: "Logged in failed.",
-        })
-      );
-    }
-  };
-
-  const authUserLogout = () => {
-    if (login) {
-      dispatch(userLogout());
-      dispatch(userFavoriteItems([]));
-      dispatch(userShoppingCart([]));
-      localStorage.removeItem("userData");
-      dispatch(
-        openUtilModal({
-          message: "You have been logged out.",
-          isSucceed: true,
         })
       );
     }

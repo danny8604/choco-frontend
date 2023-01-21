@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import getErrorMessage from "../../components/util/getErrorMessage";
 import { openBackdrop } from "../../features/backdrop/backdropSlice";
 import {
   checkoutCart,
@@ -13,7 +14,7 @@ import { openInfoModal } from "../../features/infoModal/infoModalSlice";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
-const useCart = (productIdd?: string) => {
+const useCart = (productId?: string, productName?: string) => {
   const { login, userToken } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -39,20 +40,21 @@ const useCart = (productIdd?: string) => {
   // }, [login, userToken]);
 
   useEffect(() => {
-    if (productIdd) {
+    if (productId) {
       const product = shoppingCart.find(
-        (item) => item.productId._id.toString() === productIdd.toString()
+        (item) => item.productId._id.toString() === productId.toString()
       );
 
       product && product.quantity >= 20
         ? setDisabledBtn(true)
         : setDisabledBtn(false);
     }
-  }, [shoppingCart, productIdd]);
+  }, [shoppingCart, productId]);
 
-  const cartRemoveItem = async (productId: string) => {
+  const cartRemoveItem = async () => {
     if (!login) {
-      return dispatch(openUtilModal({ message: "Please log in first." }));
+      dispatch(openUtilModal({ message: "Please log in first." }));
+      return navigate("/login");
     }
 
     try {
@@ -69,10 +71,16 @@ const useCart = (productIdd?: string) => {
       );
 
       dispatch(userShoppingCart(response.data.cart));
-    } catch (err) {
-      return dispatch(
+      dispatch(
         openUtilModal({
-          message: "Something went wrong, can't delete this item.",
+          message: `Delete ${productName} success.`,
+          isSucceed: true,
+        })
+      );
+    } catch (err) {
+      dispatch(
+        openUtilModal({
+          message: getErrorMessage(err),
         })
       );
     }
@@ -100,7 +108,7 @@ const useCart = (productIdd?: string) => {
         dispatch(openBackdrop());
         dispatch(openCartModal());
       } catch (err) {
-        dispatch(openUtilModal({ message: "add to cart failed." }));
+        dispatch(openUtilModal({ message: getErrorMessage }));
       }
     }
   };
@@ -140,10 +148,10 @@ const useCart = (productIdd?: string) => {
         );
         dispatch(openInfoModal());
         dispatch(openBackdrop());
-        dispatch(resetShoppingCart());
+        dispatch(userShoppingCart([]));
         navigate("/");
       } catch (err) {
-        dispatch(openUtilModal({ message: "Form not valid!!" }));
+        dispatch(openUtilModal({ message: getErrorMessage(err) }));
       }
     }
   };
@@ -174,7 +182,7 @@ const useCart = (productIdd?: string) => {
         );
         dispatch(userShoppingCart(response.data.cart));
       } catch (err) {
-        dispatch(openUtilModal({ message: "Select product quantity valid!!" }));
+        dispatch(openUtilModal({ message: getErrorMessage(err) }));
       }
     }
   };
@@ -206,7 +214,7 @@ const useCart = (productIdd?: string) => {
 
         dispatch(userShoppingCart(response.data.cart));
       } catch (err) {
-        dispatch(openUtilModal({ message: "Select product quantity valid!!" }));
+        dispatch(openUtilModal({ message: getErrorMessage(err) }));
       }
     }
   };

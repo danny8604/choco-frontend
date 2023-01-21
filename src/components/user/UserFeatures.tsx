@@ -14,6 +14,11 @@ const UserFeatures = () => {
           <p>ORDER</p>
         </div>
       </Link>
+      <Link to="/favoriteItems">
+        <div className={styles.feature}>
+          <p>FAVORITE ITEMS</p>
+        </div>
+      </Link>
     </div>
   );
 };

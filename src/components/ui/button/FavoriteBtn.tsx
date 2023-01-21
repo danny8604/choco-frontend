@@ -12,9 +12,11 @@ type StarBtnProps = {
 const FavoriteBtn = ({ productId }: StarBtnProps) => {
   const { userFavoriteItemToggle } = useFavorite(productId);
   const { favoriteItems } = useAppSelector((state) => state.login);
-  const existed = favoriteItems.find((item) => item.productId === productId);
+  const existed = favoriteItems.find(
+    (item) => item.productId._id === productId
+  );
 
-  const favoriteHandler = async () => await userFavoriteItemToggle();
+  const favoriteHandler = () => userFavoriteItemToggle();
 
   return (
     <button

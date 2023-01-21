@@ -17,86 +17,22 @@ import LivingRoomPage from "./pages/LivingRoomPage";
 import OthersPage from "./pages/OthersPage";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
-import { useAppDispatch, useAppSelector } from "./app/hooks/hooks";
-import { userLogin, userLogout } from "./features/login/loginSlice";
-import {
-  resetShoppingCart,
-  userShoppingCart,
-} from "./features/cart/cartItem/cartSlice";
+import { useAppSelector } from "./app/hooks/hooks";
 import OrderPage from "./pages/OrderPage";
 import UserPage from "./pages/UserPage";
 import UserChangePasswordPage from "./pages/UserChangePasswordPage";
 import UserOrderPage from "./pages/UserOrderPage";
-import axios from "axios";
+import UserFavoriteItemsPage from "./pages/UserFavoriteItems";
 
-let logoutTimer: any;
+type ProtectedRouteProps = {
+  children: JSX.Element;
+};
 
 function App() {
-  const dispatch = useAppDispatch();
-  const { shoppingCart } = useAppSelector((state) => state.cart);
-  const { login, userToken, tokenExpirationDate } = useAppSelector(
-    (state) => state.login
-  );
-
-  useEffect(() => {
-    if (login) {
-      const fetchUserCart = async () => {
-        const response = await axios.get(
-          `http://localhost:5000/api/users/getUserCart/`,
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-        dispatch(userShoppingCart(response.data.userCart));
-      };
-      fetchUserCart();
-    }
-  }, [login, userToken]);
-
-  useEffect(() => {
-    if (!localStorage.getItem("userData")) return;
-
-    const userData = JSON.parse(localStorage.getItem("userData") || "");
-
-    if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
-      dispatch(
-        userLogin({
-          userId: userData.userId,
-          userEmail: userData.userEmail,
-          userToken: userData.userToken,
-          tokenExpirationDate: new Date(
-            userData.tokenExpirationDate
-          ).toISOString(),
-        })
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    let logoutTimer;
-    if (userToken && tokenExpirationDate) {
-      const remainingTime =
-        new Date(tokenExpirationDate).getTime() - new Date().getTime();
-      logoutTimer = setTimeout(() => {
-        dispatch(resetShoppingCart());
-        return dispatch(userLogout());
-      }, remainingTime);
-      console.log(remainingTime, "remainingTime");
-    } else {
-      clearTimeout(logoutTimer);
-    }
-  }, [userToken, tokenExpirationDate]);
-
-  type ProtectedRouteProps = {
-    children: JSX.Element;
-  };
+  const { login } = useAppSelector((state) => state.login);
 
   const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-    if (!login) {
-      return <Navigate to="/login" />;
-    }
+    if (!login) return <Navigate to="/" />;
 
     return children;
   };
@@ -173,6 +109,14 @@ function App() {
           element: (
             <ProtectedRoute>
               <UserOrderPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "favoriteItems",
+          element: (
+            <ProtectedRoute>
+              <UserFavoriteItemsPage />
             </ProtectedRoute>
           ),
         },

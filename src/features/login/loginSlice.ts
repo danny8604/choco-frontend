@@ -7,7 +7,7 @@ interface LoginState {
   userToken: null | string;
   tokenExpirationDate: null | Date;
   userCart: ShoppingCartItem[];
-  favoriteItems: FavoriteItem[];
+  favoriteItems: ShoppingCartItem[];
   login: boolean;
   logout: boolean;
 }

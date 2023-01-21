@@ -51,16 +51,14 @@ const Register = () => {
 
   return (
     <form onSubmit={SignUpSubmitHandler} className={styles.form}>
-      {inputs.map((input) => {
-        return (
-          <FormInput
-            key={input.id}
-            errorMessage={input.errorMessage}
-            props={{ ...input.input }}
-            onChange={changeHandler}
-          />
-        );
-      })}
+      {inputs.map((input) => (
+        <FormInput
+          key={input.id}
+          errorMessage={input.errorMessage}
+          props={{ ...input.input }}
+          onChange={changeHandler}
+        />
+      ))}
       <FormLoginButton buttonText={"SIGN UP ➝"} />
       <FormLink link={"login"} content={"LOGIN HERE"} />
     </form>

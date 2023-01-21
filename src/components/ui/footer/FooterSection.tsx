@@ -8,9 +8,7 @@ const FooterSection = () => {
   const { authUserLogout } = useAuth();
   const { login } = useAppSelector((state) => state.login);
 
-  const logoutHandler = () => {
-    login && authUserLogout();
-  };
+  const logoutHandler = () => login && authUserLogout();
 
   return (
     <footer className={styles.footerSection}>

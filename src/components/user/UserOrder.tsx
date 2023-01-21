@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useOrder from "../../app/hooks/useOrder";
 import OrderInfo from "../orderSearch/OrderInfo";
 import ArrowLeftBtn from "../ui/button/ArrowLeftBtn";
@@ -8,19 +8,15 @@ import Button from "../ui/button/Button";
 import styles from "./UserOrder.module.scss";
 
 const UserOrder = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const { ordersResult } = useOrder();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const perPage = 2;
-  const currentPage = page + 1;
   const pageVisited = perPage * page;
-  const showPage = searchParams.get("page");
-  console.log(ordersResult, "🐧🐧🐧🐧🐧🐧");
-  console.log(showPage, "showPage");
-
   const pageMax = ordersResult && Math.ceil(ordersResult.orders.length / 2);
 
-  console.log(pageMax, "pageMax");
+  const nextPage = () => setPage((page) => page + 1);
+  const prevPage = () => setPage((page) => page - 1);
+
   return (
     <>
       {!ordersResult && (
@@ -36,7 +32,7 @@ const UserOrder = () => {
           <div>
             {ordersResult &&
               ordersResult.orders
-                .slice(pageVisited, pageVisited + perPage)
+                .slice(pageVisited - perPage, pageVisited)
                 .map((item) => (
                   <OrderInfo
                     key={item._id}
@@ -45,82 +41,42 @@ const UserOrder = () => {
                   />
                 ))}
           </div>
+          {/* <Pagination perPage={2} pageMax={4} /> */}
           <div className={styles.btnContainer}>
-            {currentPage !== 1 && (
-              <ArrowLeftBtn
-                clickAciton={() => {
-                  setSearchParams({ page: `${currentPage - 1}` });
-                  setPage(page - 1);
-                }}
-              />
-            )}
+            {page !== 1 && <ArrowLeftBtn clickAciton={() => prevPage()} />}
             <div className={styles.pageBtnContainer}>
-              {currentPage === pageMax && currentPage - 2 > 0 && (
+              {page === pageMax && page - 2 > 0 && (
                 <Button
-                  btnMessage={currentPage - 2}
-                  clickAciton={() => {
-                    setSearchParams({ page: `${currentPage - 2}` });
-                    if (currentPage === 1) {
-                      return;
-                    }
-                    setPage(page - 2);
-                  }}
+                  btnMessage={page - 2}
+                  clickAciton={() => setPage(page - 2)}
                 />
               )}
-              {currentPage !== 1 && (
+              {page !== 1 && (
                 <Button
-                  btnMessage={currentPage - 1}
-                  clickAciton={() => {
-                    setSearchParams({ page: `${currentPage - 1}` });
-                    if (currentPage === 1) {
-                      return;
-                    }
-                    setPage(page - 1);
-                  }}
+                  btnMessage={page - 1}
+                  clickAciton={() => setPage(page - 1)}
                 />
               )}
               <Button
-                className={`${"active"}`}
-                btnMessage={currentPage}
-                clickAciton={() => {
-                  setSearchParams({ page: `${currentPage}` });
-
-                  if (currentPage) {
-                    return;
-                  }
-                  setPage(page);
-                }}
+                className={"active"}
+                btnMessage={page}
+                clickAciton={() => setPage(page)}
               />
-              {currentPage !== pageMax && (
+              {page !== pageMax && (
                 <Button
-                  btnMessage={currentPage + 1}
-                  clickAciton={() => {
-                    {
-                      setSearchParams({ page: `${currentPage + 1}` });
-                      setPage(page + 1);
-                    }
-                  }}
+                  btnMessage={page + 1}
+                  clickAciton={() => setPage(page + 1)}
                 />
               )}
-              {currentPage == 1 && pageMax >= 3 && (
+              {page == 1 && pageMax >= 3 && (
                 <Button
-                  btnMessage={currentPage + 2}
-                  clickAciton={() => {
-                    {
-                      setSearchParams({ page: `${currentPage + 2}` });
-                      setPage(page + 2);
-                    }
-                  }}
+                  btnMessage={page + 2}
+                  clickAciton={() => setPage(page + 2)}
                 />
               )}
             </div>
-            {currentPage !== pageMax && (
-              <ArrowRightBtn
-                clickAciton={() => {
-                  setSearchParams({ page: `${currentPage + 1}` });
-                  setPage(page + 1);
-                }}
-              />
+            {page !== pageMax && (
+              <ArrowRightBtn clickAciton={() => nextPage()} />
             )}
           </div>
         </div>

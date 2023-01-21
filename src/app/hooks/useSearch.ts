@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
+import { getSearchOrder } from "../../api/axios";
 import { Order } from "../type";
 
 const useSearch = () => {
@@ -10,26 +10,22 @@ const useSearch = () => {
   const fetchSearchResult = async (searchInput: string | undefined) => {
     setLoading(true);
 
-    try {
-      const response = await axios.get(
-        `http://localhost:5000/api/users/getOrders/${searchInput}`
-      );
-
-      if (!response.data.order) {
+    getSearchOrder(searchInput)
+      .then((data) => {
+        data
+          ? setSearchResult(data)
+          : setMessage(
+              "Can't find order for the provided order number, please check your number and try again later."
+            );
+        setLoading(false);
+      })
+      .catch((err) => {
         setMessage(
           "Can't find order for the provided order number, please check your number and try again later."
         );
-      }
-
-      setSearchResult(response.data.order);
-    } catch (err) {
-      setMessage(
-        "Can't find order for the provided order number, please check your number and try again later."
-      );
-      setSearchResult(null);
-    }
-
-    setLoading(false);
+        setSearchResult(null);
+        setLoading(false);
+      });
   };
 
   return { loading, searchResult, message, fetchSearchResult };

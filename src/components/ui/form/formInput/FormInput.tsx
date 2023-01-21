@@ -17,9 +17,8 @@ type FormInputProps = {
 const FormInput = ({ props, onChange, errorMessage }: FormInputProps) => {
   const [focused, setFocused] = useState(false);
   const { placeholder } = props;
-  const blurHandler = () => {
-    setFocused(true);
-  };
+
+  const blurHandler = () => setFocused(true);
 
   const defalutValue = (name: string) => {
     switch (name) {

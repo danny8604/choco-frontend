@@ -9,9 +9,7 @@ const NavModal = () => {
   const { login } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const { authUserLogout } = useAuth();
-  const navModalHandler = () => {
-    dispatch(navModalToggle());
-  };
+  const navModalHandler = () => dispatch(navModalToggle());
 
   const logoutHandler = () => {
     dispatch(navModalToggle());

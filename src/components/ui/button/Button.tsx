@@ -19,8 +19,8 @@ const Button = ({
     <button
       onClick={() => clickAciton()}
       className={`${styles.button} ${small && styles.small} ${
-        whiteBG && styles.whiteBG
-      }`}
+        className && styles[className]
+      } ${whiteBG && styles.whiteBG}`}
     >
       {btnMessage}
     </button>

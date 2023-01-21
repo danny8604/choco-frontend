@@ -1,4 +1,5 @@
-import axios from "axios";
+import { postStripeCardCheckout } from "../../api/axios";
+import getErrorMessage from "../../components/util/getErrorMessage";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
@@ -8,29 +9,19 @@ const useStripeCheckout = () => {
   const { userToken, login } = useAppSelector((state) => state.login);
 
   const stripeCardCheckout = async () => {
-    if (login) {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/users/stripe",
-          {
-            items: shoppingCart,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-        window.location = response.data.url;
-      } catch (err) {
+    if (!(login && userToken && shoppingCart)) return;
+
+    postStripeCardCheckout(shoppingCart, userToken)
+      .then((data) => (window.location = data))
+      .catch((err) =>
         dispatch(
           openUtilModal({
-            message: "stripe checkout failed, please try again later.",
+            message: getErrorMessage(err),
           })
-        );
-      }
-    }
+        )
+      );
   };
+
   return { stripeCardCheckout };
 };
 

@@ -42,9 +42,8 @@ const ShopList = ({ props }: ShopListProps) => {
   };
 
   const reverseHandler = () => {
-    if (showReverse) {
-      return setSearchParams({});
-    }
+    if (showReverse) return setSearchParams({});
+
     setSearchParams({ filter: "reverse" });
   };
 

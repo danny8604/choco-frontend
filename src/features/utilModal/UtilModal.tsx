@@ -15,7 +15,7 @@ const UtilModal = () => {
     if (utilModalIsOpen) {
       const timer = setTimeout(() => {
         dispatch(closeUtilModal());
-      }, 2000);
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, [utilModalIsOpen]);

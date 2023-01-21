@@ -2,10 +2,6 @@ import { Link } from "react-router-dom";
 import styles from "./UserFeatures.module.scss";
 
 const UserFeatures = () => {
-  const test = () => {
-    console.log("test");
-  };
-
   return (
     <div className={styles.featureContainer}>
       <Link to="/changePassword">
@@ -13,7 +9,7 @@ const UserFeatures = () => {
           <p>CHANGE PASSWORD</p>
         </div>
       </Link>
-      <Link to="/userOrder" onClick={() => test()}>
+      <Link to="/userOrder">
         <div className={styles.feature}>
           <p>ORDER</p>
         </div>

@@ -5,7 +5,6 @@ interface ProductDetailsImgProps {
 }
 
 const ProductDetailsImg = ({ img }: ProductDetailsImgProps) => {
-  // Dynamic URL
   function getImageUrl(name: string) {
     return new URL(`../../../assets/productImg/${name}.jpg`, import.meta.url)
       .href;

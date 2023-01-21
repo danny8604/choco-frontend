@@ -1,7 +1,6 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import loginReducer from "../features/login/loginSlice";
 import searchReducer from "../features/search/searchSlice";
-import { productsApi } from "./apiSlice";
 import cartReducer from "../features/cart/cartItem/cartSlice";
 import searchModalReducer from "../features/searchModal/searchModalSlice";
 
@@ -13,12 +12,10 @@ import designerModalReducer from "../features/designerModal/designerModalSlicel"
 import navModalReducer from "../features/navModal/navModalSlice";
 import infoModalReducer from "../features/infoModal/infoModalSlice";
 import utilModalReducer from "../features/utilModal/utilModalSlice";
-import checkModalReducer from "../features/checkModal/checkModalSlice";
 
 const store = configureStore({
   reducer: {
     backdrop: backdropReducer,
-    checkModal: checkModalReducer,
     utilModal: utilModalReducer,
     infoModal: infoModalReducer,
     navModal: navModalReducer,
@@ -30,10 +27,7 @@ const store = configureStore({
     search: searchReducer,
     cart: cartReducer,
     login: loginReducer,
-    [productsApi.reducerPath]: productsApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(productsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

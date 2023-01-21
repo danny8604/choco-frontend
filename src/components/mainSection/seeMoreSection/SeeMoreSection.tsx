@@ -12,7 +12,7 @@ const AddToCartSection = () => {
           <img className={styles.sofaImageLeft} src={chair07} alt="chair" />
           <h3>Chair</h3>
           <p>$245.00</p>
-          <Link to={"/shop"} reloadDocument>
+          <Link to={"/shop"}>
             <button className={styles.sofaButton}>SEE MORE</button>
           </Link>
         </div>
@@ -23,7 +23,7 @@ const AddToCartSection = () => {
           <img className={styles.sofaImageMid} src={chair01} alt="chair" />
           <h3>Chair</h3>
           <p>$245.00</p>
-          <Link to={"/shop"} reloadDocument>
+          <Link to={"/shop"}>
             <button className={styles.sofaButton}>SEE MORE</button>
           </Link>
         </div>
@@ -34,7 +34,7 @@ const AddToCartSection = () => {
           <img className={styles.sofaImageRight} src={chair02} alt="chair" />
           <h3>Chair</h3>
           <p>$245.00</p>
-          <Link to={"/shop"} reloadDocument>
+          <Link to={"/shop"}>
             <button className={styles.sofaButton}>SEE MORE</button>
           </Link>
         </div>

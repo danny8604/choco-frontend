@@ -1,10 +1,7 @@
 import { useEffect } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-  useProducts,
-} from "../../app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import useChairsData from "../../app/hooks/useChairsData";
+import useFavorite from "../../app/hooks/useFavorite";
 import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeSearchModal } from "../searchModal/searchModalSlice";
@@ -19,10 +16,6 @@ const Search = () => {
   const search = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
   const { allChairsData } = useChairsData("");
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    dispatch(searchInputValue(e.target.value));
-  };
 
   useEffect(() => {
     dispatch(searchValueIsValid());
@@ -38,6 +31,11 @@ const Search = () => {
       )
     );
   }, [search.value]);
+
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    dispatch(searchInputValue(e.target.value));
+  };
 
   const closeSearchModalHandler = () => {
     dispatch(closeBackdrop());

@@ -12,25 +12,20 @@ import NavbarOrder from "./NavbarOrder";
 import NavbarUser from "./NavbarUser";
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
   const { login, userEmail } = useAppSelector((state) => state.login);
   const { navModalIsOpen } = useAppSelector((state) => state.navModal);
-  const dispatch = useAppDispatch();
 
-  const navInfo = () => {
-    if (login) {
-      return <p>Hi {userEmail}, wellcome back.</p>;
-    }
-    return <p>FOREVER RELEVANT IN TIME</p>;
-  };
-
-  const navModalHandler = () => {
-    dispatch(navModalToggle());
-  };
+  const navModalHandler = () => dispatch(navModalToggle());
 
   return (
     <>
       <div className={`${styles.otherInfo} ${login && styles.login}`}>
-        {navInfo()}
+        {login ? (
+          <p>Hi {userEmail}, wellcome back.</p>
+        ) : (
+          <p>FOREVER RELEVANT IN TIME</p>
+        )}
       </div>
       <header className={styles.header}>
         <nav className={styles.nav}>
@@ -47,42 +42,28 @@ const Navbar = () => {
 
             <ul className={styles.pageLink}>
               <li>
-                <Link to="/" reloadDocument>
-                  HOME
-                </Link>
+                <Link to="/">HOME</Link>
               </li>
               <li className={styles.shopLink}>
-                <Link to="/shop" reloadDocument>
-                  SHOP
-                </Link>
+                <Link to="/shop">SHOP</Link>
                 <ul className={styles.shopDropdown}>
                   <li>
-                    <Link to="/shop/Living-Room" reloadDocument>
-                      LIVING ROOM CHAIR
-                    </Link>
+                    <Link to="/shop/Living-Room">LIVING ROOM CHAIR</Link>
                   </li>
                   <li>
-                    <Link to="/shop/Home-Room" reloadDocument>
-                      HOME ROOM CHAIR
-                    </Link>
+                    <Link to="/shop/Home-Room">HOME ROOM CHAIR</Link>
                   </li>
                   <li>
-                    <Link to="/shop/Dining-Room" reloadDocument>
-                      DINING ROOM CHAIR
-                    </Link>
+                    <Link to="/shop/Dining-Room">DINING ROOM CHAIR</Link>
                   </li>
                   <li>
-                    <Link to="/shop/Others" reloadDocument>
-                      OTHERS CHAIR
-                    </Link>
+                    <Link to="/shop/Others">OTHERS CHAIR</Link>
                   </li>
                 </ul>
                 <div className={styles.dropdownBackdrop}></div>
               </li>
               <li>
-                <Link to="/about" reloadDocument>
-                  ABOUT
-                </Link>
+                <Link to="/about">ABOUT</Link>
               </li>
               <NavbarOrder />
               <NavbarLogin />

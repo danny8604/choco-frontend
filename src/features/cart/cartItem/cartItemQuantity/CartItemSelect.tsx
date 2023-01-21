@@ -5,11 +5,8 @@ import useCart from "../../../../app/hooks/useCart";
 const CartItemSelect = ({ _id, quantity }: ItemQuantity) => {
   const { cartSelectQuantity } = useCart();
 
-  const selectChangeHandler = async (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const selectChangeHandler = async (e: React.ChangeEvent<HTMLSelectElement>) =>
     cartSelectQuantity(e.target.value, _id);
-  };
 
   return (
     <select

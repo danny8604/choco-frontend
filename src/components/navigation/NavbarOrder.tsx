@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import styles from "./NavbarOrder.module.scss";
 
 const NavbarOrder = () => {
   return (

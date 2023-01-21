@@ -17,6 +17,7 @@ const InfoModal = () => {
   const { infoModalIsOpen } = useAppSelector((state) => state.infoModal);
   const totalPrice = usDollar(orderItemsTotalPrice);
   const date = orderDate && new Date(orderDate).toLocaleDateString();
+
   return (
     <div
       className={`${styles.infoModal} ${

@@ -6,9 +6,7 @@ const NavbarLogin = () => {
   const { login } = useAppSelector((state) => state.login);
   const { authUserLogout } = useAuth();
 
-  const LogoutHandler = () => {
-    authUserLogout();
-  };
+  const LogoutHandler = () => authUserLogout();
 
   return (
     <li>

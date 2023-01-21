@@ -17,6 +17,19 @@
   }
 }
 
+.button.small {
+  max-width: 23%;
+}
+.button.whiteBG {
+  color: $color-black;
+  border: solid 1px $color-black;
+  background-color: $color-white;
+  &:hover {
+    background-color: $color-black;
+    color: $color-white;
+  }
+}
+
 .active {
   background-color: $color-white;
   color: $color-black;

@@ -6,6 +6,7 @@ import ProductDescript from "./ProductDescript";
 import Loading from "../../loading/Loading";
 import usDollar from "../../util/usDollar";
 import { ChairDataProps } from "../../../app/type";
+import FavoriteBtn from "../../ui/button/FavoriteBtn";
 
 const ProductInfo = ({ chairData }: ChairDataProps) => {
   return (
@@ -13,6 +14,7 @@ const ProductInfo = ({ chairData }: ChairDataProps) => {
       {!chairData && <Loading />}
       {chairData && (
         <section className={styles.productTop}>
+          <FavoriteBtn productId={chairData._id} />
           <figure className={styles.productFigure}>
             <ProductImg imgA={chairData.img.imgA} />
             <figcaption className={styles.productFigcaption}>

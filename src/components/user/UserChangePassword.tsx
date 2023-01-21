@@ -55,9 +55,8 @@ const UserChangePassword = () => {
     authUserChangePassword(values);
   };
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValues({ ...values, [e.target.name]: e.target.value });
-  };
 
   return (
     <form className={styles.form} onSubmit={submitHandler}>

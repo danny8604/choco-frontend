@@ -8,6 +8,7 @@ type CartItemPriceProps = {
 
 const CartItemPrice = ({ price, quantity }: CartItemPriceProps) => {
   const usdPrice = usDollar(price * quantity);
+
   return (
     <span className={styles.itemPrice}>
       <p>{usdPrice}</p>

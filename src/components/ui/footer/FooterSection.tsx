@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./FooterSection.module.scss";
-import github from "../../assets/mainSectionIMG/github.png";
-import { useAppSelector } from "../../app/hooks/hooks";
-import useAuth from "../../app/hooks/useAuth";
+import github from "../../../assets/mainSectionIMG/github.png";
+import { useAppSelector } from "../../../app/hooks/hooks";
+import useAuth from "../../../app/hooks/useAuth";
 
 const FooterSection = () => {
   const { authUserLogout } = useAuth();
@@ -16,7 +16,7 @@ const FooterSection = () => {
     <footer className={styles.footerSection}>
       <section className={styles.container}>
         <div className={styles.brandNews}>
-          <Link to="/" reloadDocument>
+          <Link to="/">
             <h3>CHOCO</h3>
           </Link>
           <p>
@@ -28,19 +28,13 @@ const FooterSection = () => {
         </div>
         <ul className={styles.linkContainer}>
           <li>
-            <Link to="/" reloadDocument>
-              CUSTOMER SERVICE
-            </Link>
+            <Link to="/">CUSTOMER SERVICE</Link>
           </li>
           <li>
-            <Link to="/about" reloadDocument>
-              COMPANY
-            </Link>
+            <Link to="/about">COMPANY</Link>
           </li>
           <li>
-            <Link to="/shop" reloadDocument>
-              SHOP NOW
-            </Link>
+            <Link to="/shop">SHOP NOW</Link>
           </li>
         </ul>
         <ul className={styles.linkContainer}>
@@ -50,9 +44,7 @@ const FooterSection = () => {
             </Link>
           </li>
           <li>
-            <Link to="/about" reloadDocument>
-              FOLLOW US
-            </Link>
+            <Link to="/about">FOLLOW US</Link>
           </li>
         </ul>
       </section>

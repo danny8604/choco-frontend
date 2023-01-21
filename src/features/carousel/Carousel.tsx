@@ -1,4 +1,3 @@
-import { ArrowLeft, ArrowRight } from "../../components/ui/icon/Arrow";
 import styles from "./Carousel.module.scss";
 import testPhoto from "../../assets/mainSectionIMG/chair-16.jpg";
 import testPhoto2 from "../../assets/mainSectionIMG/chair-14.jpg";
@@ -20,12 +19,8 @@ const Carousel = () => {
     return () => clearInterval(autoCarousel);
   }, [slidesIndexArr]);
 
-  const leftHandler = () => {
-    dispatch(carouselNext());
-  };
-  const rightHandler = () => {
-    dispatch(carouselPrev());
-  };
+  const leftHandler = () => dispatch(carouselNext());
+  const rightHandler = () => dispatch(carouselPrev());
 
   return (
     <div className={styles.carousel}>

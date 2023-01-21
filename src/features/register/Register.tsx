@@ -46,9 +46,8 @@ const Register = () => {
     },
   ];
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValues({ ...values, [e.target.name]: e.target.value });
-  };
 
   return (
     <form onSubmit={SignUpSubmitHandler} className={styles.form}>

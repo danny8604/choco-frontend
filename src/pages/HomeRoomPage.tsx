@@ -1,8 +1,8 @@
 import ShopList from "../components/shop/ShopList";
-import HomeRoomTop from "../components/homeRoom/HomeRoomTop";
 import useChairsData from "../app/hooks/useChairsData";
 import Loading from "../components/loading/Loading";
-import Error from "../components/error/Error";
+import { ScrollRestoration } from "react-router-dom";
+import TopPage from "../components/ui/topPage/TopPage";
 
 const HomeRoomPage = () => {
   const { chairsData } = useChairsData("category/homeRoom");
@@ -12,7 +12,8 @@ const HomeRoomPage = () => {
       {!chairsData && <Loading />}
       {chairsData && (
         <>
-          <HomeRoomTop />
+          <ScrollRestoration />
+          <TopPage title={"HOME ROOM CHAIR"} category={"homeRoom"} />
           <ShopList props={chairsData} />
         </>
       )}

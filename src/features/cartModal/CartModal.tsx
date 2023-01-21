@@ -6,15 +6,12 @@ import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBt
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeCartModal } from "./cartModalSlice";
 import CartLeadCheckout from "./CartLeadCheckout";
-import { useEffect } from "react";
-import { userShoppingCart } from "../cart/cartItem/cartSlice";
 
 const CartModal = () => {
   const { shoppingCart, shoppingCartTotalPrice, shoppingCartTotalQuantity } =
     useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const { cartModalIsOpen } = useAppSelector((state) => state.cartModal);
-  const { userCart, login } = useAppSelector((state) => state.login);
 
   const closeCartModalHandler = () => {
     dispatch(closeBackdrop());

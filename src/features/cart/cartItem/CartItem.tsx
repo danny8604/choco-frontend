@@ -6,6 +6,7 @@ import CartItemRemoveBtn from "./CartItemRemoveBtn";
 import CartItemImg from "./CartItemImg";
 import { ShoppingCartItem } from "../../../app/type";
 import CartItemQuantity from "./cartItemQuantity/CartItemQuantity";
+import FavoriteBtn from "../../../components/ui/button/FavoriteBtn";
 
 const CartItem = ({
   productId: { productName, img, price, path, _id },
@@ -13,6 +14,7 @@ const CartItem = ({
 }: ShoppingCartItem) => {
   return (
     <figure className={styles.cartItemContainer}>
+      <FavoriteBtn productId={_id} />
       <CartItemImg img={img.imgA} path={path} />
       <figcaption className={styles.cartItemText}>
         <CartItemName productName={productName} />

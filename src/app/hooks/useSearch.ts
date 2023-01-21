@@ -6,6 +6,7 @@ const useSearch = () => {
   const [searchResult, setSearchResult] = useState<Order | null>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("Please enter your order number.");
+
   const fetchSearchResult = async (searchInput: string | undefined) => {
     setLoading(true);
 
@@ -27,8 +28,10 @@ const useSearch = () => {
       );
       setSearchResult(null);
     }
+
     setLoading(false);
   };
+
   return { loading, searchResult, message, fetchSearchResult };
 };
 

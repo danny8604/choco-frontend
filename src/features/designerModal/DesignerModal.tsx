@@ -1,10 +1,6 @@
-import { useDispatch } from "react-redux";
-import { useSearchParams } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks/hooks";
-import { closeBackdrop } from "../backdrop/backdropSlice";
 import DesignerFigure from "./DesignerFigure";
 import styles from "./DesignerModal.module.scss";
-import { closeDesignerModal } from "./designerModalSlicel";
 
 const DesignerModal = () => {
   const { designerModalIsOpen } = useAppSelector(

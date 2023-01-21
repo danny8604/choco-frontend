@@ -16,7 +16,7 @@ const ExploreFigure = ({ img, productName, path }: ExploreFigureProps) => {
 
   return (
     <figure className={`${styles.scrollFigure}`}>
-      <Link to={`/product/${path}`} reloadDocument>
+      <Link to={`/product/${path}`}>
         <div className={styles.scrollContainer}>
           <div className={styles.imgContainer}>
             <img src={getImageUrl(img)} />

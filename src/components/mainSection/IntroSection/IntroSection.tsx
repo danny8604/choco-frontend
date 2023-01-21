@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "../../ui/button/Button";
 import styles from "./IntroSection.module.scss";
 
 const IntroSection = () => {
@@ -15,9 +16,12 @@ const IntroSection = () => {
           of the finest quality and unmatched design reflect the way we live
           now.
         </p>
-        <button className={styles.aboutbutton} onClick={() => aboutHandler()}>
-          ABOUT US ➝
-        </button>
+        <Button
+          small
+          whiteBG
+          btnMessage={"ABOUT US ➝"}
+          clickAciton={aboutHandler}
+        />
       </div>
     </section>
   );

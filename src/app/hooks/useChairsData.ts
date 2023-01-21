@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
-import { ProductsType, ShoppingCartItem } from "../type";
+import { ProductsType } from "../type";
 import { useAppDispatch } from "./hooks";
 
 const useChairsData = (product: string | undefined) => {
@@ -23,7 +23,7 @@ const useChairsData = (product: string | undefined) => {
       }
     };
     fetchDiningRoomData();
-  }, []);
+  }, [product]);
 
   useEffect(() => {
     const fetchDiningRoomData = async () => {

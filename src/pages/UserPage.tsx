@@ -1,5 +1,6 @@
+import { ScrollRestoration } from "react-router-dom";
 import { useAppSelector } from "../app/hooks/hooks";
-import OrderSearch from "../components/orderSearch/OrderSearch";
+
 import User from "../components/user/User";
 import UserFeatures from "../components/user/UserFeatures";
 
@@ -8,6 +9,7 @@ const UserPage = () => {
 
   return (
     <main>
+      <ScrollRestoration />
       <User headerText={`Hi , ${userEmail}`}>
         <UserFeatures />
       </User>

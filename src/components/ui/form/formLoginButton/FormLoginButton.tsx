@@ -7,8 +7,6 @@ interface LoginButtonProps {
 }
 
 const FormLoginButton = ({ buttonText }: LoginButtonProps) => {
-  const dispatch = useAppDispatch();
-
   return (
     <div className={styles.buttonContainer}>
       <button type="submit" className={styles.loginButton}>

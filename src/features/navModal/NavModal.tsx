@@ -15,9 +15,7 @@ const NavModal = () => {
 
   const logoutHandler = () => {
     dispatch(navModalToggle());
-    if (login) {
-      authUserLogout();
-    }
+    login && authUserLogout();
   };
 
   return (

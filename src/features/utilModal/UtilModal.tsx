@@ -6,13 +6,12 @@ import { closeUtilModal } from "./utilModalSlice";
 
 const UtilModal = () => {
   const nodeRef = useRef(null);
+  const dispatch = useAppDispatch();
   const { utilModalIsOpen, utilModalMessage, isSucceed } = useAppSelector(
     (state) => state.utilModal
   );
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(utilModalIsOpen, "utilModalIsOpen");
     if (utilModalIsOpen) {
       const timer = setTimeout(() => {
         dispatch(closeUtilModal());

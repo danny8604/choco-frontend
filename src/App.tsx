@@ -1,8 +1,8 @@
-import React, { Suspense, useEffect, useState } from "react";
+import { ReactNode, Suspense, useEffect } from "react";
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
-  useNavigate,
 } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
@@ -20,85 +20,14 @@ import ProductPage from "./pages/ProductPage";
 import { useAppDispatch, useAppSelector } from "./app/hooks/hooks";
 import { userLogin, userLogout } from "./features/login/loginSlice";
 import {
-  updateTotalPriceAndQuantity,
+  resetShoppingCart,
   userShoppingCart,
 } from "./features/cart/cartItem/cartSlice";
 import OrderPage from "./pages/OrderPage";
 import UserPage from "./pages/UserPage";
 import UserChangePasswordPage from "./pages/UserChangePasswordPage";
 import UserOrderPage from "./pages/UserOrderPage";
-import useAuth from "./app/hooks/useAuth";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <MainPage />,
-      },
-      {
-        path: "shop",
-        element: <ShopPage />,
-      },
-      {
-        path: "product/:productPath",
-        element: <ProductPage />,
-      },
-      {
-        path: "shop/Living-Room",
-        element: <LivingRoomPage />,
-      },
-
-      {
-        path: "shop/Home-Room",
-        element: <HomeRoomPage />,
-      },
-      {
-        path: "shop/Dining-Room",
-        element: <DiningRoomPage />,
-      },
-      {
-        path: "shop/Others",
-        element: <OthersPage />,
-      },
-      {
-        path: "about",
-        element: <AboutPage />,
-      },
-      {
-        path: "order",
-        element: <OrderPage />,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "user",
-        element: <UserPage />,
-      },
-      {
-        path: "changePassword",
-        element: <UserChangePasswordPage />,
-      },
-      {
-        path: "userOrder",
-        element: <UserOrderPage />,
-      },
-      {
-        path: "register",
-        element: <RegisterPage />,
-      },
-      {
-        path: "checkout",
-        element: <CheckoutPage />,
-      },
-    ],
-  },
-]);
+import axios from "axios";
 
 let logoutTimer: any;
 
@@ -110,53 +39,120 @@ function App() {
   );
 
   useEffect(() => {
-    if (!localStorage.getItem("userData") || !localStorage.getItem("cart")) {
-      return;
-    }
-    const userData = JSON.parse(localStorage.getItem("userData") || "");
-    const cart = JSON.parse(localStorage.getItem("cart") || "");
-
-    if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
-      dispatch(
-        userLogin({
-          userId: userData.userId,
-          userEmail: userData.userEmail,
-          userToken: userData.userToken,
-          tokenExpirationDate: new Date(
-            userData.tokenExpirationDate
-          ).toISOString(),
-        })
-      );
-      dispatch(userShoppingCart(cart.userCart));
-      dispatch(updateTotalPriceAndQuantity());
-    }
-  }, []);
-
-  useEffect(() => {
-    if (userToken && tokenExpirationDate) {
-      const remainingTime =
-        new Date(tokenExpirationDate).getTime() - new Date().getTime();
-      logoutTimer = setTimeout(() => {
-        return dispatch(userLogout());
-      }, remainingTime);
-
-      console.log(remainingTime, "remainingTime");
-    } else {
-      clearTimeout(logoutTimer);
-    }
-  }, [userToken, tokenExpirationDate]);
-
-  useEffect(() => {
     if (login) {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify({
-          userCart: shoppingCart,
-        })
-      );
+      const fetchUserCart = async () => {
+        const response = await axios.get(
+          `http://localhost:5000/api/users/getUserCart/`,
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+            },
+          }
+        );
+        dispatch(userShoppingCart(response.data.userCart));
+      };
+      fetchUserCart();
     }
-    dispatch(updateTotalPriceAndQuantity());
-  }, [shoppingCart, login]);
+  }, [login, userToken]);
+
+  type ProtectedRouteProps = {
+    children: JSX.Element;
+  };
+
+  const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+    if (!login) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
+
+  //////////////////////////////////////////////////////////
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Root />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/",
+          element: <MainPage />,
+        },
+        {
+          path: "shop",
+          element: <ShopPage />,
+        },
+        {
+          path: "product/:productPath",
+          element: <ProductPage />,
+        },
+        {
+          path: "shop/Living-Room",
+          element: <LivingRoomPage />,
+        },
+        {
+          path: "shop/Home-Room",
+          element: <HomeRoomPage />,
+        },
+        {
+          path: "shop/Dining-Room",
+          element: <DiningRoomPage />,
+        },
+        {
+          path: "shop/Others",
+          element: <OthersPage />,
+        },
+        {
+          path: "about",
+          element: <AboutPage />,
+        },
+        {
+          path: "order",
+          element: <OrderPage />,
+        },
+        {
+          path: "login",
+          element: <LoginPage />,
+        },
+        {
+          path: "register",
+          element: <RegisterPage />,
+        },
+        {
+          path: "user",
+          element: (
+            <ProtectedRoute>
+              <UserPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "changePassword",
+          element: (
+            <ProtectedRoute>
+              <UserChangePasswordPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "userOrder",
+          element: (
+            <ProtectedRoute>
+              <UserOrderPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "checkout",
+          element: (
+            <ProtectedRoute>
+              <CheckoutPage />
+            </ProtectedRoute>
+          ),
+        },
+      ],
+    },
+  ]);
 
   return (
     <Suspense>

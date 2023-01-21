@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { ScrollRestoration, useParams } from "react-router-dom";
 import useChairsData from "../app/hooks/useChairsData";
 import Loading from "../components/loading/Loading";
 import ProductCarousel from "../components/product/productCarousel/ProductCarousel";
@@ -14,6 +14,7 @@ const ProductPage = () => {
       {!pathChairsData && <Loading />}
       {pathChairsData && (
         <>
+          <ScrollRestoration />
           <ProductInfo chairData={pathChairsData.product} />
           <ProductDetails chairData={pathChairsData.product} />
           <ProductCarousel />

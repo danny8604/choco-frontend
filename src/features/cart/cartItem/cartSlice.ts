@@ -67,6 +67,15 @@ const cartSlice = createSlice({
     },
     userShoppingCart(state, action: PayloadAction<ShoppingCartItem[]>) {
       state.shoppingCart = action.payload;
+
+      state.shoppingCartTotalPrice = state.shoppingCart.reduce(
+        (accum, item) => accum + item.quantity * item.productId.price,
+        0
+      );
+      state.shoppingCartTotalQuantity = state.shoppingCart.reduce(
+        (accum, item) => accum + item.quantity,
+        0
+      );
     },
     checkoutCart(state, action) {
       state.orderItems = state.shoppingCart;

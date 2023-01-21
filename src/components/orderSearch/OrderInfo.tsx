@@ -11,6 +11,7 @@ type OrderInfoProps = {
 
 const OrderInfo = ({ order, orderNumber }: OrderInfoProps) => {
   const usdPrice = usDollar(order.totalPrice);
+
   return (
     <Card>
       <>

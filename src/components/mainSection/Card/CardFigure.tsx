@@ -10,7 +10,7 @@ type CardFigureProps = {
 const CardFigure = ({ src, title, path }: CardFigureProps) => {
   return (
     <figure className={styles.cardFigure}>
-      <Link to={path} reloadDocument>
+      <Link to={path}>
         <div className={styles.cardContainer}>
           <div className={styles.imgContainer}>
             <img src={src} alt="chair" />

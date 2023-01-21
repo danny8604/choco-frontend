@@ -7,11 +7,9 @@ const SearchNoResultMes = () => {
   const noResult =
     search.value.length !== 0 && search.searchResult.length === 0;
 
-  if (!noResult) return <></>;
-
   return (
     <div className={styles.messageContaiter}>
-      <h4>NO RESULT ... ( Try Model or Choco ) </h4>
+      {noResult && <h4>NO RESULT ... ( Try Model or Choco ) </h4>}
     </div>
   );
 };

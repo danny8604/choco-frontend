@@ -9,9 +9,8 @@ const OrderSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { loading, searchResult, message, fetchSearchResult } = useSearch();
 
-  const searchHandler = async () => {
-    fetchSearchResult(inputRef.current?.value);
-  };
+  const searchHandler = async () =>
+    await fetchSearchResult(inputRef.current?.value);
 
   return (
     <section className={styles.orderContainer}>

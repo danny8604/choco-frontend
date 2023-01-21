@@ -10,6 +10,7 @@ const CartLeadCheckout = () => {
     dispatch(closeBackdrop());
     dispatch(closeCartModal());
   };
+
   return (
     <div className={styles.checkoutBtnContainer}>
       <Link to={"/checkout"}>

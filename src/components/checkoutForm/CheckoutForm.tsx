@@ -1,16 +1,8 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
+import { useAppSelector } from "../../app/hooks/hooks";
 import useCart from "../../app/hooks/useCart";
 import useStripeCheckout from "../../app/hooks/useStripeCheckout";
-import { openBackdrop } from "../../features/backdrop/backdropSlice";
-import {
-  checkoutCart,
-  resetShoppingCart,
-} from "../../features/cart/cartItem/cartSlice";
-import { openInfoModal } from "../../features/infoModal/infoModalSlice";
-import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import Button from "../ui/button/Button";
 import FormInput from "../ui/form/formInput/FormInput";
 import styles from "./CheckoutForm.module.scss";
@@ -65,7 +57,7 @@ const CheckoutForm = () => {
       id: 3,
       errorMessage: "Phone number should be 10-20 characters.",
       input: {
-        type: "number",
+        type: "tel",
         name: "phone",
         label: "phone",
         placeholder: "PHONE",

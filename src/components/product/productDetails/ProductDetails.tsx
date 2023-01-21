@@ -4,6 +4,7 @@ import ProductDetailsImg from "./ProductDetailsImg";
 import { messageData } from "../../../app/data";
 import { ChairDataProps } from "../../../app/type";
 import Loading from "../../loading/Loading";
+
 const ProductDetails = ({ chairData }: ChairDataProps) => {
   return (
     <>

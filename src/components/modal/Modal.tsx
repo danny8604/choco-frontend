@@ -5,7 +5,6 @@ import CartModal from "../../features/cartModal/CartModal";
 import styles from "./Modal.module.scss";
 import SearchModal from "../../features/searchModal/SearchModal";
 import DesignerModal from "../../features/designerModal/DesignerModal";
-import NavModal from "../../features/navModal/NavModal";
 import InfoModal from "../../features/infoModal/InfoModal";
 import UtilModal from "../../features/utilModal/UtilModal";
 

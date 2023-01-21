@@ -1,3 +1,4 @@
+import { ScrollRestoration } from "react-router-dom";
 import { useAppSelector } from "../app/hooks/hooks";
 import OrderSearch from "../components/orderSearch/OrderSearch";
 import User from "../components/user/User";
@@ -8,6 +9,7 @@ const UserOrderPage = () => {
 
   return (
     <main>
+      <ScrollRestoration />
       <User headerText={`${userEmail}'s order list`}>
         <UserOrder />
       </User>

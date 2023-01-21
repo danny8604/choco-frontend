@@ -2,10 +2,20 @@
 
 .cartIcon {
   padding-left: 1em;
+  position: relative;
   button {
     border: none;
     cursor: pointer;
     background-color: white;
+    .ItemQuantity {
+      position: absolute;
+      bottom: -10%;
+      right: -30%;
+      background-color: $color-black;
+      border-radius: 50%;
+      color: $color-white;
+      padding: 0.25em 0.5em;
+    }
   }
   .Icon {
     margin-top: 3px;
@@ -26,5 +36,15 @@
 @media screen and (max-width: $media-tabletS) {
   .cartIcon {
     padding-left: 0.325em;
+    .ItemQuantity {
+      position: absolute;
+      bottom: -10%;
+      right: -30%;
+      font-size: 6px;
+      background-color: $color-black;
+      border-radius: 50%;
+      color: $color-white;
+      padding: 0.25em 0.75em;
+    }
   }
 }

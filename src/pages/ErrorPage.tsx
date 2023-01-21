@@ -1,6 +1,6 @@
 import Error from "../components/error/Error";
 import Navbar from "../components/navigation/Navbar";
-import FooterSection from "../components/footer/FooterSection";
+import FooterSection from "../components/ui/footer/FooterSection";
 
 const ErrorPage = () => {
   return (

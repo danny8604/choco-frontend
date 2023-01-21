@@ -1,8 +1,8 @@
 import Loading from "../components/loading/Loading";
 import Navbar from "../components/navigation/Navbar";
-import FooterSection from "../components/footer/FooterSection";
+import FooterSection from "../components/ui/footer/FooterSection";
 
-const ErrorPage = () => {
+const LoadingPage = () => {
   return (
     <main>
       <Navbar />
@@ -12,4 +12,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default LoadingPage;

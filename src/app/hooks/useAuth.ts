@@ -4,7 +4,11 @@ import {
   resetShoppingCart,
   userShoppingCart,
 } from "../../features/cart/cartItem/cartSlice";
-import { userLogin, userLogout } from "../../features/login/loginSlice";
+import {
+  userFavoriteItems,
+  userLogin,
+  userLogout,
+} from "../../features/login/loginSlice";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
@@ -55,10 +59,7 @@ const useAuth = () => {
           tokenExpirationDate: tokenExpirationDate.toISOString(),
         })
       );
-      localStorage.setItem(
-        "cart",
-        JSON.stringify({ userCart: response.data.userCart })
-      );
+
       navigate("/");
     } catch (err) {
       dispatch(
@@ -72,9 +73,9 @@ const useAuth = () => {
   const authUserLogout = () => {
     if (login) {
       dispatch(userLogout());
-      dispatch(resetShoppingCart());
+      dispatch(userFavoriteItems([]));
+      dispatch(userShoppingCart([]));
       localStorage.removeItem("userData");
-      localStorage.removeItem("cart");
       dispatch(
         openUtilModal({
           message: "You have been logged out.",
@@ -132,7 +133,6 @@ const useAuth = () => {
       dispatch(userLogout());
       dispatch(resetShoppingCart());
       localStorage.removeItem("userData");
-      localStorage.removeItem("cart");
       dispatch(
         openUtilModal({ message: "Change password success.", isSucceed: true })
       );
@@ -144,7 +144,6 @@ const useAuth = () => {
         })
       );
     }
-    return;
   };
 
   return {

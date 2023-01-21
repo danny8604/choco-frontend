@@ -6,9 +6,8 @@ import styles from "./CartItemInput.module.scss";
 const CartItemInput = ({ _id, productName, quantity }: ItemQuantity) => {
   const { cartInputQuantity } = useCart();
 
-  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     cartInputQuantity(e.target.value, _id);
-  };
 
   return (
     <input

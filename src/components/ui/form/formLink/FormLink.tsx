@@ -9,7 +9,6 @@ interface FormLinkProps {
 }
 
 const FormLink = ({ link, content }: FormLinkProps) => {
-  const dispatch = useDispatch();
   return (
     <div className={styles.linkContainer}>
       <Link to={`/${link}`}>{content}</Link>

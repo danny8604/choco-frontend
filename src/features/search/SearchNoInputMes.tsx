@@ -5,8 +5,6 @@ const SearchNoInputMes = () => {
   const search = useAppSelector((state) => state.search);
   const noInput = search.value.length === 0;
 
-  // if (!noInput) return <></>;
-
   return (
     <div className={styles.messageContaiter}>
       <h4>{noInput ? "FINDE SOMTHING ..." : ""}</h4>

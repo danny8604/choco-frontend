@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { openBackdrop } from "../../features/backdrop/backdropSlice";
 import {
@@ -8,23 +8,47 @@ import {
   userShoppingCart,
 } from "../../features/cart/cartItem/cartSlice";
 import { openCartModal } from "../../features/cartModal/cartModalSlice";
-import { closeCheckModal } from "../../features/checkModal/checkModalSlice";
+
 import { openInfoModal } from "../../features/infoModal/infoModalSlice";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
-const useCart = () => {
+const useCart = (productIdd?: string) => {
   const { login, userToken } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { shoppingCart } = useAppSelector((state) => state.cart);
+  const [disabledBtn, setDisabledBtn] = useState(false);
 
-  const cartFindById = (productId: string) => {
-    const product = shoppingCart.find(
-      (item) => item.productId._id.toString() === productId.toString()
-    );
-    return product;
-  };
+  // useEffect(() => {
+  //   if (login) {
+  //     const fetchUserCart = async () => {
+  //       const response = await axios.get(
+  //         `http://localhost:5000/api/users/getUserCart/`,
+  //         {
+  //           headers: {
+  //             Authorization: "Bearer " + userToken,
+  //           },
+  //         }
+  //       );
+
+  //       dispatch(userShoppingCart(response.data.userCart));
+  //     };
+  //     fetchUserCart();
+  //   }
+  // }, [login, userToken]);
+
+  useEffect(() => {
+    if (productIdd) {
+      const product = shoppingCart.find(
+        (item) => item.productId._id.toString() === productIdd.toString()
+      );
+
+      product && product.quantity >= 20
+        ? setDisabledBtn(true)
+        : setDisabledBtn(false);
+    }
+  }, [shoppingCart, productIdd]);
 
   const cartRemoveItem = async (productId: string) => {
     if (!login) {
@@ -52,8 +76,6 @@ const useCart = () => {
         })
       );
     }
-
-    dispatch(closeCheckModal());
   };
 
   const cartAddToCart = async (productId: string) => {
@@ -195,7 +217,7 @@ const useCart = () => {
     cartCheckout,
     cartSelectQuantity,
     cartInputQuantity,
-    cartFindById,
+    disabledBtn,
   };
 };
 

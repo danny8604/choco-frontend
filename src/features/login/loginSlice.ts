@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ShoppingCartItem } from "../../app/type";
+import { FavoriteItem, ShoppingCartItem } from "../../app/type";
 
 interface LoginState {
   userId: null | string;
@@ -7,6 +7,7 @@ interface LoginState {
   userToken: null | string;
   tokenExpirationDate: null | Date;
   userCart: ShoppingCartItem[];
+  favoriteItems: FavoriteItem[];
   login: boolean;
   logout: boolean;
 }
@@ -17,6 +18,7 @@ const initialState: LoginState = {
   userToken: null,
   tokenExpirationDate: null,
   userCart: [],
+  favoriteItems: [],
   login: false,
   logout: true,
 };
@@ -40,9 +42,12 @@ const loginSlice = createSlice({
       state.login = false;
       state.logout = true;
     },
+    userFavoriteItems(state, action) {
+      state.favoriteItems = action.payload;
+    },
   },
 });
 
-export const { userLogin, userLogout } = loginSlice.actions;
+export const { userLogin, userLogout, userFavoriteItems } = loginSlice.actions;
 
 export default loginSlice.reducer;

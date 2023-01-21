@@ -1,12 +1,13 @@
-@use "../../styles/" as *;
+@use "../../../styles/" as *;
 
 .topSection {
-  @include navbar__Height;
   background-size: cover;
-  background-image: url(../../assets/mainSectionIMG//chair-24.jpg);
   background-color: $color-gray;
   background-blend-mode: multiply;
   background-position: center;
+
+  @include navbar__Height;
+
   .leadText {
     @include flex__justify-center__align-center;
     flex-direction: column;
@@ -25,6 +26,31 @@
       letter-spacing: 0.6px;
       color: $color-white;
     }
+  }
+}
+
+.topSection.diningRoom {
+  background-image: url(../../../assets/mainSectionIMG/chair-24.jpg);
+}
+.topSection.homeRoom {
+  background-image: url(../../../assets/mainSectionIMG/chair-25.jpg);
+}
+.topSection.livingRoom {
+  background-image: url(../../../assets/mainSectionIMG/chair-26.jpg);
+}
+.topSection.othersRoom {
+  background-image: url(../../../assets/mainSectionIMG/chair-27.jpg);
+}
+.topSection.mainPage {
+  background-image: url(../../../assets/mainSectionIMG/chair-01.jpg);
+  background-blend-mode: normal;
+  color: $color-black;
+  h1 {
+    color: $color-black;
+  }
+  p {
+    padding-bottom: 2em;
+    color: $color-black;
   }
 }
 

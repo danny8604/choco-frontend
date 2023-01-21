@@ -1,7 +1,4 @@
-import { Link } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks/hooks";
 import styles from "./User.module.scss";
-import UserFeatures from "./UserFeatures";
 
 type UserProps = {
   headerText: string;

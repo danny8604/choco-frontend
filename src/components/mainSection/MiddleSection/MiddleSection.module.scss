@@ -19,7 +19,7 @@
       font-size: $fontSize--h2;
       font-weight: $text-regular;
       letter-spacing: 0.6px;
-      padding-bottom: 15px;
+      padding-bottom: 0.5em;
       color: $color-gray;
     }
     p {
@@ -27,6 +27,7 @@
       font-weight: $text-regular;
       letter-spacing: 0.6px;
       color: $color-gray;
+      padding-bottom: 2em;
     }
   }
 

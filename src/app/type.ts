@@ -64,6 +64,10 @@ export interface Orders {
   ];
 }
 
+export interface FavoriteItem {
+  productId: string;
+}
+
 export interface ChairDataProps {
   chairData: ProductsType;
 }

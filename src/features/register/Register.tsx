@@ -1,13 +1,12 @@
 import { useState } from "react";
-
 import FormLink from "../../components/ui/form/formLink/FormLink";
 import styles from "./register.module.scss";
 import FormInput from "../../components/ui/form/formInput/FormInput";
 import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginButton";
-import useAuth from "../../app/hooks/useAuth";
+import useUser from "../../app/hooks/useUser";
 
 const Register = () => {
-  const { authUserSignup } = useAuth();
+  const { authUserSignup } = useUser();
   const [values, setValues] = useState({
     signupEmail: "",
     signupPassword: "",

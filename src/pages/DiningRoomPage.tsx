@@ -4,15 +4,20 @@ import Loading from "../components/loading/Loading";
 import { ScrollRestoration } from "react-router-dom";
 import TopPage from "../components/ui/topPage/TopPage";
 const DiningRoomPage = () => {
-  const { chairsData } = useChairsData("category/diningRoom");
+  const { categoryChairsData } = useChairsData({
+    category: "diningRoom",
+  });
+
+  console.log(categoryChairsData, "🦔🦔🦔");
+
   return (
     <main>
-      {!chairsData && <Loading />}
-      {chairsData && (
+      {!categoryChairsData && <Loading />}
+      {categoryChairsData && (
         <>
           <ScrollRestoration />
           <TopPage title={"DINING ROOM CHAIR"} category={"diningRoom"} />
-          <ShopList props={chairsData} />
+          <ShopList props={categoryChairsData} />
         </>
       )}
     </main>

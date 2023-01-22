@@ -23,6 +23,7 @@ export interface ShoppingCartItem {
     price: number;
     path: string;
     _id: string;
+    series: string;
   };
   quantity: number;
 }

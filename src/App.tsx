@@ -17,12 +17,15 @@ import LivingRoomPage from "./pages/LivingRoomPage";
 import OthersPage from "./pages/OthersPage";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
-import { useAppSelector } from "./app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "./app/hooks/hooks";
 import OrderPage from "./pages/OrderPage";
 import UserPage from "./pages/UserPage";
 import UserChangePasswordPage from "./pages/UserChangePasswordPage";
 import UserOrderPage from "./pages/UserOrderPage";
 import UserFavoriteItemsPage from "./pages/UserFavoriteItems";
+import { userLogin, userLogout } from "./features/login/loginSlice";
+import { resetShoppingCart } from "./features/cart/cartItem/cartSlice";
+import useAuth from "./app/hooks/useAuth";
 
 type ProtectedRouteProps = {
   children: JSX.Element;
@@ -30,6 +33,7 @@ type ProtectedRouteProps = {
 
 function App() {
   const { login } = useAppSelector((state) => state.login);
+  useAuth();
 
   const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     if (!login) return <Navigate to="/" />;

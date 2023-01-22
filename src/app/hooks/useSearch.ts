@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { getSearchOrder } from "../../api/axios";
+import { getSearchOrder } from "../../api/usersApi";
+import getErrorMessage from "../../components/util/getErrorMessage";
 import { Order } from "../type";
 
 const useSearch = () => {
@@ -20,9 +21,7 @@ const useSearch = () => {
         setLoading(false);
       })
       .catch((err) => {
-        setMessage(
-          "Can't find order for the provided order number, please check your number and try again later."
-        );
+        setMessage(`${getErrorMessage(err)}`);
         setSearchResult(null);
         setLoading(false);
       });

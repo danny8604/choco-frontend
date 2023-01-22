@@ -5,16 +5,18 @@ import ShopList from "../components/shop/ShopList";
 import TopPage from "../components/ui/topPage/TopPage";
 
 const LivingRoomPage = () => {
-  const { chairsData } = useChairsData("category/livingRoom");
+  const { categoryChairsData } = useChairsData({
+    category: "livingRoom",
+  });
 
   return (
     <main>
-      {!chairsData && <Loading />}
-      {chairsData && (
+      {!categoryChairsData && <Loading />}
+      {categoryChairsData && (
         <>
           <ScrollRestoration />
           <TopPage title={"LIVING ROOM CHAIR"} category={"livingRoom"} />
-          <ShopList props={chairsData} />
+          <ShopList props={categoryChairsData} />
         </>
       )}
     </main>

@@ -21,6 +21,8 @@ const ShopList = ({ props }: ShopListProps) => {
   const showDesignerMies =
     searchParams.get("filter") === "designer__Mies-van-der-Rohe";
 
+  console.log(props, "🦔🦔🦔🦔🦔");
+
   const productsArr = () => {
     if (showReverse) return props.map((item) => item).reverse();
     if (showDesignerFrank)
@@ -30,9 +32,7 @@ const ShopList = ({ props }: ShopListProps) => {
     if (showDesignerZaha)
       return props
         .map((item) => item)
-        .filter(
-          (item) => item.designer === "Dame Zaha Mohammad HadproductName"
-        );
+        .filter((item) => item.designer === "Dame Zaha Mohammad Hadproduct");
     if (showDesignerMies)
       return props
         .map((item) => item)

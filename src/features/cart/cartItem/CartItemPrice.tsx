@@ -6,7 +6,7 @@ type CartItemPriceProps = {
   quantity: number;
 };
 
-const CartItemPrice = ({ price, quantity }: CartItemPriceProps) => {
+const CartItemPrice = ({ price, quantity = 1 }: CartItemPriceProps) => {
   const usdPrice = usDollar(price * quantity);
 
   return (

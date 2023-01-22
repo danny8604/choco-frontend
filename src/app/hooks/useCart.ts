@@ -1,6 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  patchCartInputQuantity,
+  patchCartSelectQuantity,
+  postAddToCart,
+  postCartCheckout,
+  postCartRemoveItem,
+} from "../../api/usersApi";
 import getErrorMessage from "../../components/util/getErrorMessage";
 import { openBackdrop } from "../../features/backdrop/backdropSlice";
 import {
@@ -21,96 +28,58 @@ const useCart = (productId?: string, productName?: string) => {
   const { shoppingCart } = useAppSelector((state) => state.cart);
   const [disabledBtn, setDisabledBtn] = useState(false);
 
-  // useEffect(() => {
-  //   if (login) {
-  //     const fetchUserCart = async () => {
-  //       const response = await axios.get(
-  //         `http://localhost:5000/api/users/getUserCart/`,
-  //         {
-  //           headers: {
-  //             Authorization: "Bearer " + userToken,
-  //           },
-  //         }
-  //       );
-
-  //       dispatch(userShoppingCart(response.data.userCart));
-  //     };
-  //     fetchUserCart();
-  //   }
-  // }, [login, userToken]);
-
   useEffect(() => {
-    if (productId) {
-      const product = shoppingCart.find(
-        (item) => item.productId._id.toString() === productId.toString()
-      );
+    if (!productId) return;
 
-      product && product.quantity >= 20
-        ? setDisabledBtn(true)
-        : setDisabledBtn(false);
-    }
+    const product = shoppingCart.find(
+      (item) => item.productId._id.toString() === productId.toString()
+    );
+
+    product && product.quantity >= 20
+      ? setDisabledBtn(true)
+      : setDisabledBtn(false);
   }, [shoppingCart, productId]);
 
   const cartRemoveItem = async () => {
-    if (!login) {
+    if (!(login && productId && userToken)) {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/removeFromCart",
-        {
-          productId: productId,
-        },
-        {
-          headers: {
-            Authorization: "Bearer " + userToken,
-          },
-        }
+    postCartRemoveItem({ productId, userToken })
+      .then((data) => {
+        dispatch(userShoppingCart(data));
+        dispatch(
+          openUtilModal({
+            message: `Delete ${productName} success.`,
+            isSucceed: true,
+          })
+        );
+      })
+      .catch((err) =>
+        dispatch(
+          openUtilModal({
+            message: getErrorMessage(err),
+          })
+        )
       );
-
-      dispatch(userShoppingCart(response.data.cart));
-      dispatch(
-        openUtilModal({
-          message: `Delete ${productName} success.`,
-          isSucceed: true,
-        })
-      );
-    } catch (err) {
-      dispatch(
-        openUtilModal({
-          message: getErrorMessage(err),
-        })
-      );
-    }
   };
 
   const cartAddToCart = async (productId: string) => {
-    if (!login) {
+    if (!(login && userToken)) {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
-    if (login) {
-      try {
-        const response = await axios.post(
-          `http://localhost:5000/api/users/addToCart/`,
-          {
-            productId: productId,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-        dispatch(userShoppingCart(response.data.cart));
+
+    postAddToCart({ userToken, productId })
+      .then((data) => {
+        dispatch(userShoppingCart(data));
         dispatch(openBackdrop());
         dispatch(openCartModal());
-      } catch (err) {
-        dispatch(openUtilModal({ message: getErrorMessage }));
-      }
-    }
+      })
+      .catch((err) =>
+        dispatch(openUtilModal({ message: getErrorMessage(err) }))
+      );
   };
 
   const cartCheckout = async ({
@@ -122,69 +91,43 @@ const useCart = (productId?: string, productName?: string) => {
     address: string;
     phone: string;
   }) => {
-    if (login) {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/users/userCheckout/",
-          {
-            name: name,
-            address: address,
-            phone: +phone,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
+    if (!(login && userToken)) return;
+
+    postCartCheckout({ name, address, phone, userToken })
+      .then((data) => {
         dispatch(
           checkoutCart({
-            orderNumber: response.data.orderNumber,
+            orderNumber: data.orderNumber,
             orderName: name,
             orderAddress: address,
             orderPhone: phone,
-            orderDate: response.data.orderDate,
+            orderDate: data.orderDate,
           })
         );
         dispatch(openInfoModal());
         dispatch(openBackdrop());
         dispatch(userShoppingCart([]));
         navigate("/");
-      } catch (err) {
+      })
+      .catch((err) => {
         dispatch(openUtilModal({ message: getErrorMessage(err) }));
-      }
-    }
+      });
   };
 
   const cartSelectQuantity = async (selectValue: string, productId: string) => {
-    if (!selectValue) {
+    if (!selectValue)
       return dispatch(openUtilModal({ message: "input error." }));
-    }
 
-    if (!login) {
+    if (!(login && userToken)) {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
 
-    if (login) {
-      try {
-        const response = await axios.patch(
-          `http://localhost:5000/api/users/editItemQuantity/`,
-          {
-            productId: productId,
-            quantity: selectValue,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-        dispatch(userShoppingCart(response.data.cart));
-      } catch (err) {
-        dispatch(openUtilModal({ message: getErrorMessage(err) }));
-      }
-    }
+    patchCartSelectQuantity({ productId, selectValue, userToken })
+      .then((data) => dispatch(userShoppingCart(data)))
+      .catch((err) =>
+        dispatch(openUtilModal({ message: getErrorMessage(err) }))
+      );
   };
 
   const cartInputQuantity = async (inputValue: string, productId: string) => {
@@ -192,31 +135,16 @@ const useCart = (productId?: string, productName?: string) => {
       return dispatch(openUtilModal({ message: "Input error." }));
     }
 
-    if (!login) {
+    if (!(login && userToken)) {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
 
-    if (login) {
-      try {
-        const response = await axios.patch(
-          `http://localhost:5000/api/users/editItemQuantity/`,
-          {
-            productId: productId,
-            quantity: inputValue,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + userToken,
-            },
-          }
-        );
-
-        dispatch(userShoppingCart(response.data.cart));
-      } catch (err) {
-        dispatch(openUtilModal({ message: getErrorMessage(err) }));
-      }
-    }
+    patchCartInputQuantity({ productId, inputValue, userToken })
+      .then((data) => dispatch(userShoppingCart(data)))
+      .catch((err) =>
+        dispatch(openUtilModal({ message: getErrorMessage(err) }))
+      );
   };
 
   return {

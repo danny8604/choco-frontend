@@ -7,7 +7,9 @@ import ProductInfo from "../components/product/productInfo/ProductInfo";
 
 const ProductPage = () => {
   const { productPath } = useParams();
-  const { pathChairsData } = useChairsData(productPath);
+  const { pathChairsData } = useChairsData({
+    path: productPath,
+  });
 
   return (
     <main>
@@ -15,8 +17,8 @@ const ProductPage = () => {
       {pathChairsData && (
         <>
           <ScrollRestoration />
-          <ProductInfo chairData={pathChairsData.product} />
-          <ProductDetails chairData={pathChairsData.product} />
+          <ProductInfo chairData={pathChairsData} />
+          <ProductDetails chairData={pathChairsData} />
           <ProductCarousel />
         </>
       )}

@@ -4,9 +4,10 @@ import styles from "./Login.module.scss";
 import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginButton";
 import FormInput from "../../components/ui/form/formInput/FormInput";
 import useAuth from "../../app/hooks/useAuth";
+import useUser from "../../app/hooks/useUser";
 
 const Login = () => {
-  const { authUserLogin } = useAuth();
+  const { authUserLogin } = useUser();
   const [values, setValues] = useState({
     email: "test@test.com",
     password: "123123123",

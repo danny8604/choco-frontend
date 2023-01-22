@@ -5,10 +5,15 @@ import ProductAddToCartBtn from "./ProductAddToCartBtn";
 import ProductDescript from "./ProductDescript";
 import Loading from "../../loading/Loading";
 import usDollar from "../../util/usDollar";
-import { ChairDataProps } from "../../../app/type";
+import { ChairDataProps, ProductsType } from "../../../app/type";
 import FavoriteBtn from "../../ui/button/FavoriteBtn";
 
-const ProductInfo = ({ chairData }: ChairDataProps) => {
+type ProductInfoProps = {
+  chairData: ProductsType;
+};
+
+const ProductInfo = ({ chairData }: ProductInfoProps) => {
+  console.log(chairData.img, "🐄🐄🐄🐄🐄🐄");
   return (
     <>
       {!chairData && <Loading />}

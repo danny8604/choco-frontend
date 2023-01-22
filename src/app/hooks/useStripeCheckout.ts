@@ -1,4 +1,4 @@
-import { postStripeCardCheckout } from "../../api/axios";
+import { postStripeCardCheckout } from "../../api/stripeApi";
 import getErrorMessage from "../../components/util/getErrorMessage";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";

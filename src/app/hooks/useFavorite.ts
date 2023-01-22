@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api, getFavoriteItems, postFavoriteItems } from "../../api/axios";
+import { getFavoriteItems, postFavoriteItems } from "../../api/usersApi";
 import getErrorMessage from "../../components/util/getErrorMessage";
 import { userFavoriteItems } from "../../features/login/loginSlice";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
@@ -50,18 +49,18 @@ const useFavorite = (productId?: string, pageNumber: number = 1) => {
   //   return () => controller.abort();
   // }, [pageNumber]);
 
-  useEffect(() => {
-    if (!(login && userToken)) return;
+  // useEffect(() => {
+  //   if (!(login && userToken)) return;
 
-    getFavoriteItems(userToken)
-      .then((data) => {
-        dispatch(userFavoriteItems(data));
-      })
-      .catch((err) => {
-        dispatch(openUtilModal({ message: getErrorMessage(err) }));
-        navigate("/");
-      });
-  }, [login, userToken]);
+  //   getFavoriteItems(userToken)
+  //     .then((data) => {
+  //       dispatch(userFavoriteItems(data));
+  //     })
+  //     .catch((err) => {
+  //       dispatch(openUtilModal({ message: getErrorMessage(err) }));
+  //       navigate("/");
+  //     });
+  // }, [login, userToken]);
 
   const userFavoriteItemToggle = async () => {
     if (!(login && userToken && productId)) {
@@ -69,7 +68,7 @@ const useFavorite = (productId?: string, pageNumber: number = 1) => {
       return dispatch(openUtilModal({ message: "Please you login first." }));
     }
 
-    postFavoriteItems(userToken, productId)
+    postFavoriteItems({ userToken, productId })
       .then((data) => {
         dispatch(userFavoriteItems(data));
       })

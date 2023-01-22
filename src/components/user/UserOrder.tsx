@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../app/hooks/useAuth";
 import useOrder from "../../app/hooks/useOrder";
 import OrderInfo from "../orderSearch/OrderInfo";
 import ArrowLeftBtn from "../ui/button/ArrowLeftBtn";
@@ -13,6 +14,7 @@ const UserOrder = () => {
   const perPage = 2;
   const pageVisited = perPage * page;
   const pageMax = ordersResult && Math.ceil(ordersResult.orders.length / 2);
+  console.log(ordersResult, "ordersResult");
 
   const nextPage = () => setPage((page) => page + 1);
   const prevPage = () => setPage((page) => page - 1);
@@ -20,7 +22,7 @@ const UserOrder = () => {
   return (
     <>
       {!ordersResult && (
-        <div className={styles.userOrder}>
+        <div>
           <p>
             You don't have any orders,{" "}
             <Link to="/shop">buy something right now?</Link>

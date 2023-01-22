@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import useChairsData from "../../app/hooks/useChairsData";
-import useFavorite from "../../app/hooks/useFavorite";
 import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeSearchModal } from "../searchModal/searchModalSlice";
@@ -15,11 +14,13 @@ import {
 const Search = () => {
   const search = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
-  const { allChairsData } = useChairsData("");
+  const { allChairsData } = useChairsData({});
 
   useEffect(() => {
+    console.log("tsetseset");
     dispatch(searchValueIsValid());
     if (search.value.length < 1 || !allChairsData) return;
+
     dispatch(
       filterSearchData(
         allChairsData.filter((item) =>

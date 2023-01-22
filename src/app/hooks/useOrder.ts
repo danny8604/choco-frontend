@@ -1,10 +1,9 @@
 import { Orders } from "../type";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import axios from "axios";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useNavigate } from "react-router-dom";
-import { getUserOrder } from "../../api/axios";
+import { getUserOrder } from "../../api/usersApi";
 import getErrorMessage from "../../components/util/getErrorMessage";
 
 const useOrder = () => {

@@ -3,9 +3,10 @@ import styles from "./FooterSection.module.scss";
 import github from "../../../assets/mainSectionIMG/github.png";
 import { useAppSelector } from "../../../app/hooks/hooks";
 import useAuth from "../../../app/hooks/useAuth";
+import useUser from "../../../app/hooks/useUser";
 
 const FooterSection = () => {
-  const { authUserLogout } = useAuth();
+  const { authUserLogout } = useUser();
   const { login } = useAppSelector((state) => state.login);
 
   const logoutHandler = () => login && authUserLogout();

@@ -1,34 +1,58 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useCallback, useRef, useState } from "react";
 import { useAppSelector } from "../../app/hooks/hooks";
-import InfoItem from "../../features/infoModal/InfoItem";
-import OrderInfo from "../orderSearch/OrderInfo";
-import FavoriteBtn from "../ui/button/FavoriteBtn";
-import styles from "./UserOrder.module.scss";
+import useFavoritePage from "../../app/hooks/useFavoritePage";
+import FavoriteItmes from "../ui/favoriteItem/FavoriteItems";
+import styles from "./UserFavoriteItems.module.scss";
 
 const UserFavoriteItems = () => {
-  const { favoriteItems } = useAppSelector((state) => state.login);
-  console.log(favoriteItems, "favoriteItems");
-  return (
-    <>
-      {!Boolean(favoriteItems.length) && (
-        <div>
-          <p>You don't have any favorite items.</p>
-        </div>
-      )}
-      {favoriteItems.map((item) => {
-        return (
-          <InfoItem
-            key={item.productId._id}
-            productId={item.productId}
-            quantity={item.quantity}
-            showFavoriteBtn
-            showSeries
-          />
-        );
-      })}
-    </>
+  const [pageNumber, setPageNumber] = useState(1);
+  const { hasNextPage, isloading, results } = useFavoritePage(pageNumber);
+
+  const intObserver = useRef();
+  const lastPostRef = useCallback(
+    (product) => {
+      if (isloading) return;
+
+      if (intObserver.current) intObserver.current.disconnect();
+      // console.log(results, "🐄🐄🐄");
+      intObserver.current = new IntersectionObserver((posts) => {
+        // console.log(posts[0].isIntersecting, "🐧🐧🐧");
+        // console.log(posts[0], "🐧12312312312🐧");
+        if (posts[0].isIntersecting && hasNextPage) {
+          console.log("We are near the last post!");
+          setPageNumber((prev) => prev + 1);
+        }
+      });
+      // console.log(intObserver.current, "intObserver.current");
+      // console.log(isloading, "isloading");
+      // console.log(hasNextPage, "hasNextPage");
+      if (product) intObserver.current.observe(product);
+    },
+    [isloading, hasNextPage]
   );
+
+  if (!Boolean(results.length)) {
+    return (
+      <div className={styles.text}>
+        <p>You don't have any favorite items.</p>
+      </div>
+    );
+  }
+
+  const content1 = results.map((item, i) => {
+    if (results.length === i + 1) {
+      return (
+        <FavoriteItmes
+          ref={lastPostRef}
+          key={item.productId._id}
+          products={item.productId}
+        />
+      );
+    }
+    return <FavoriteItmes key={item.productId._id} products={item.productId} />;
+  });
+
+  return <div className={styles.favoriteItems}>{content1}</div>;
 };
 
 export default UserFavoriteItems;

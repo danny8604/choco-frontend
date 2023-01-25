@@ -27,6 +27,22 @@
   }
 }
 
+.introSection.noBackGroundColor {
+  color: $color-black;
+  background-color: $color-white;
+  h2 {
+    color: $color-black;
+  }
+
+  p {
+    color: $color-black;
+  }
+}
+
+.introSection.paddingTop {
+  padding-top: 12em;
+}
+
 .aboutbutton {
   @include button($color-white, $color-warmGray, $color-warmGray);
 }

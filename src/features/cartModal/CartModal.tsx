@@ -45,7 +45,9 @@ const CartModal = () => {
         ))}
       </div>
       <div className={styles.priceContainer}>
-        <CartTotalPrice totalPrice={shoppingCartTotalPrice} />
+        {shoppingCartTotalQuantity > 0 && (
+          <CartTotalPrice totalPrice={shoppingCartTotalPrice} />
+        )}
         {shoppingCart.length > 0 && <CartLeadCheckout />}
       </div>
     </section>

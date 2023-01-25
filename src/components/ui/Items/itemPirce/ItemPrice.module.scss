@@ -1,0 +1,7 @@
+@use "../../../../styles/" as *;
+
+.itemPrice {
+  color: $color-black;
+  font-weight: $text-medium;
+  font-size: $fontSize--p--Small;
+}

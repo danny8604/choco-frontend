@@ -3,7 +3,7 @@ import ProductDetailList from "./ProductDetailsList";
 import ProductDetailsImg from "./ProductDetailsImg";
 import { messageData } from "../../../app/data";
 import { ChairDataProps } from "../../../app/type";
-import Loading from "../../loading/Loading";
+import Loading from "../../ui/loading/Loading";
 
 const ProductDetails = ({ chairData }: ChairDataProps) => {
   return (

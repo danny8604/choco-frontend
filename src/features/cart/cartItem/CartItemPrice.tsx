@@ -2,16 +2,13 @@ import usDollar from "../../../components/util/usDollar";
 import styles from "./CartItemPrice.module.scss";
 
 type CartItemPriceProps = {
-  price: number;
-  quantity: number;
+  totalPrice: number;
 };
 
-const CartItemPrice = ({ price, quantity = 1 }: CartItemPriceProps) => {
-  const usdPrice = usDollar(price * quantity);
-
+const CartItemPrice = ({ totalPrice }: CartItemPriceProps) => {
   return (
     <span className={styles.itemPrice}>
-      <p>{usdPrice}</p>
+      <p>{totalPrice && usDollar(totalPrice)}</p>
     </span>
   );
 };

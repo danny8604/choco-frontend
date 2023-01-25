@@ -17,6 +17,7 @@ import {
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { Orders } from "../type";
 import { useAppDispatch, useAppSelector } from "./hooks";
+import useUser from "./useUser";
 
 const useAuth = () => {
   const dispatch = useAppDispatch();
@@ -53,8 +54,10 @@ const useAuth = () => {
       const remainingTime =
         new Date(tokenExpirationDate).getTime() - new Date().getTime();
       logoutTimer = setTimeout(() => {
-        dispatch(resetShoppingCart());
+        dispatch(userShoppingCart([]));
+        dispatch(userFavoriteItems([]));
         dispatch(userLogout());
+        localStorage.removeItem("userData");
       }, remainingTime);
     } else {
       clearTimeout(logoutTimer);

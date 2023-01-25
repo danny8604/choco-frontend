@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from "axios";
 import { ShoppingCartItem } from "../app/type";
 import { api, tokenAndProductId } from "./axios";
 
@@ -8,6 +9,26 @@ export const getFavoriteItems = async (userToken: string) => {
     },
   });
 
+  return response.data.favoriteItems;
+};
+
+export const getFavoriteItemsPage = async (
+  {
+    userToken,
+    pageNumber = 1,
+  }: {
+    userToken: string;
+    pageNumber: number;
+  },
+  options: AxiosRequestConfig<any> = {}
+) => {
+  const response = await api.get(`api/users/favoriteItems/${pageNumber}`, {
+    headers: {
+      Authorization: "Bearer " + userToken,
+    },
+    signal: options.signal,
+  });
+  console.log(options.signal, "options");
   return response.data.favoriteItems;
 };
 

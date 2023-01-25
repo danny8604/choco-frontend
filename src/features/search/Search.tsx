@@ -17,7 +17,6 @@ const Search = () => {
   const { allChairsData } = useChairsData({});
 
   useEffect(() => {
-    console.log("tsetseset");
     dispatch(searchValueIsValid());
     if (search.value.length < 1 || !allChairsData) return;
 
@@ -53,8 +52,8 @@ const Search = () => {
         <input
           onChange={inputHandler}
           type="text"
-          id="text"
-          placeholder="SEARCH HERE"
+          id="chair"
+          placeholder="SEARCH CHAIR NAME"
         />
       </div>
     </>

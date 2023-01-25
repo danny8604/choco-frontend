@@ -2,7 +2,7 @@ import styles from "./ProductFigureText.module.scss";
 
 interface ProductFigureTextProps {
   productName: string;
-  series: number;
+  series: string;
 }
 
 const ProductFigureText = ({ productName, series }: ProductFigureTextProps) => {

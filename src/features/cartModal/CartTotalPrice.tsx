@@ -8,7 +8,7 @@ type CartTotalPriceProps = {
 const CartTotalPrice = ({ totalPrice }: CartTotalPriceProps) => {
   return (
     <div className={styles.cartTotalPrice}>
-      <h3>TOTAL PRICE: {usDollar(totalPrice)}</h3>
+      <h3>TOTAL PRICE : {usDollar(totalPrice)}</h3>
     </div>
   );
 };

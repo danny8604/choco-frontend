@@ -10,7 +10,7 @@ type StarBtnProps = {
 };
 
 const FavoriteBtn = ({ productId }: StarBtnProps) => {
-  const { userFavoriteItemToggle } = useFavorite(productId);
+  const { userFavoriteItemToggle } = useFavorite({ productId });
   const { favoriteItems } = useAppSelector((state) => state.login);
   const existed = favoriteItems.find(
     (item) => item.productId._id === productId

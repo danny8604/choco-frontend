@@ -61,16 +61,14 @@ const UserChangePassword = () => {
 
   return (
     <form className={styles.form} onSubmit={submitHandler}>
-      {inputs.map((input) => {
-        return (
-          <FormInput
-            key={input.id}
-            onChange={changeHandler}
-            errorMessage={input.errorMessage}
-            props={{ ...input.input }}
-          />
-        );
-      })}
+      {inputs.map((input) => (
+        <FormInput
+          key={input.id}
+          onChange={changeHandler}
+          errorMessage={input.errorMessage}
+          props={{ ...input.input }}
+        />
+      ))}
       <button>SUBMIT</button>
     </form>
   );

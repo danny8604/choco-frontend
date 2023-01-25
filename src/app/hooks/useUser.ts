@@ -44,7 +44,7 @@ const useUser = () => {
   };
 
   const authUserLogin = async ({ email, password }: authUserLoginProps) => {
-    const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
+    const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 30);
 
     postUserLogin(email, password)
       .then((data) => {

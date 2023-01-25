@@ -11,9 +11,9 @@ import Button from "../components/ui/button/Button";
 const MainPage = () => {
   const navigate = useNavigate();
 
-  const shopHandler = () => {
-    navigate("/shop");
-  };
+  const toAbout = () => navigate("/about");
+  const toShop = () => navigate("/shop");
+
   return (
     <main>
       <article>
@@ -22,15 +22,20 @@ const MainPage = () => {
           title={"DESIGNER CHAIR"}
           category={"mainPage"}
           footer={
-            <Button
-              btnMessage={" SHOP NOW ➝"}
-              clickAciton={shopHandler}
-              small
-            />
+            <Button btnMessage={"SHOP NOW ➝"} clickAciton={toAbout} small />
           }
         />
         <MiddleSection />
-        <IntroSection />
+        <IntroSection
+          footer={
+            <Button
+              small
+              whiteBG
+              btnMessage={"ABOUT US ➝"}
+              clickAciton={toShop}
+            />
+          }
+        />
         <AddToCartSection />
         <ScrollSection />
         <FindStoreSection />

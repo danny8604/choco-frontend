@@ -1,13 +1,33 @@
 export interface ProductsType {
   productName: string;
-  descript: string;
   price: number;
-  series: number;
+  series: string;
   path: string;
   img: { imgA: string; imgB: string; imgC: string; imgD: string; imgE: string };
+  descript: string;
   category: string;
   designer: string;
   _id: string;
+}
+
+export interface FavoriteItemType {
+  productId: {
+    productName: string;
+    price: number;
+    series: string;
+    path: string;
+    img: {
+      imgA: string;
+      imgB: string;
+      imgC: string;
+      imgD: string;
+      imgE: string;
+    };
+    descript: string;
+    category: string;
+    designer: string;
+    _id: string;
+  };
 }
 
 export interface ShoppingCartItem {

@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   getAllProducts,
   getProductsByCategory,
@@ -7,7 +6,7 @@ import {
 } from "../../api/cartApi";
 import getErrorMessage from "../../components/util/getErrorMessage";
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
-import { ProductsType, ShoppingCartItem } from "../type";
+import { ProductsType } from "../type";
 import { useAppDispatch } from "./hooks";
 
 const useChairsData = ({
@@ -25,6 +24,8 @@ const useChairsData = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log("Test getAllProducts re-render times");
+
     getAllProducts()
       .then((data) => setAllChairsData(data))
       .catch((err) =>

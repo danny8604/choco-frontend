@@ -3,9 +3,9 @@ import ProductText from "./ProductText";
 import ProductImg from "./ProductImg";
 import ProductAddToCartBtn from "./ProductAddToCartBtn";
 import ProductDescript from "./ProductDescript";
-import Loading from "../../loading/Loading";
+import Loading from "../../ui/loading/Loading";
 import usDollar from "../../util/usDollar";
-import { ChairDataProps, ProductsType } from "../../../app/type";
+import { ProductsType } from "../../../app/type";
 import FavoriteBtn from "../../ui/button/FavoriteBtn";
 
 type ProductInfoProps = {
@@ -13,7 +13,6 @@ type ProductInfoProps = {
 };
 
 const ProductInfo = ({ chairData }: ProductInfoProps) => {
-  console.log(chairData.img, "🐄🐄🐄🐄🐄🐄");
   return (
     <>
       {!chairData && <Loading />}

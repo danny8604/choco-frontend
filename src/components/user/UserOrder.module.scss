@@ -1,5 +1,9 @@
 @use "../../styles/" as *;
 
+.text {
+  padding: 6em;
+}
+
 .userOrder {
   padding: 6em 0;
   display: flex;

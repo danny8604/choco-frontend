@@ -23,7 +23,7 @@ const CartItem = ({
           productName={productName}
           quantity={quantity}
         />
-        <CartItemPrice price={price} quantity={quantity} />
+        <CartItemPrice totalPrice={price * quantity} />
         <CartItemRemoveBtn productName={productName} productId={_id} />
       </figcaption>
     </figure>

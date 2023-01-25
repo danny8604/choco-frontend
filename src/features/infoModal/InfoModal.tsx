@@ -41,8 +41,12 @@ const InfoModal = () => {
           orderItems.map((item) => (
             <InfoItem
               key={item.productId._id}
-              productId={item.productId}
+              products={item.productId}
               quantity={item.quantity}
+              showTotalPrice
+              showQuantity
+              showPrice
+              showBorderBottom
             />
           ))}
       </div>

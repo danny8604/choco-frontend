@@ -9,7 +9,7 @@ type ProductAddToCartBtnProps = {
 const ProductAddToCartBtn = ({ props }: ProductAddToCartBtnProps) => {
   const { cartAddToCart, disabledBtn } = useCart(props._id);
 
-  const addToCartHandler = async () => await cartAddToCart(props._id);
+  const addToCartHandler = () => cartAddToCart(props._id);
 
   return (
     <div className={styles.buttonContainer}>

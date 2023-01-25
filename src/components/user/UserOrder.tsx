@@ -22,7 +22,7 @@ const UserOrder = () => {
   return (
     <>
       {!ordersResult && (
-        <div>
+        <div className={styles.text}>
           <p>
             You don't have any orders,{" "}
             <Link to="/shop">buy something right now?</Link>

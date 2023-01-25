@@ -19,8 +19,11 @@ const OrderInfo = ({ order, orderNumber }: OrderInfoProps) => {
           {order.products.map((item) => (
             <InfoItem
               key={item.productId._id}
-              productId={item.productId}
+              products={item.productId}
               quantity={item.quantity}
+              showTotalPrice
+              showQuantity
+              showBorderBottom
             />
           ))}
         </div>

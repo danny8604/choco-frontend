@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { api } from "./axios";
 
 export const getProductsByCategory = async (category: string) => {

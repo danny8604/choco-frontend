@@ -1,4 +1,4 @@
-import Loading from "../components/loading/Loading";
+import Loading from "../components/ui/loading/Loading";
 import Navbar from "../components/navigation/Navbar";
 import FooterSection from "../components/ui/footer/FooterSection";
 

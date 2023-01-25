@@ -1,6 +1,6 @@
 import { ScrollRestoration } from "react-router-dom";
 import useChairsData from "../app/hooks/useChairsData";
-import Loading from "../components/loading/Loading";
+import Loading from "../components/ui/loading/Loading";
 import ShopList from "../components/shop/ShopList";
 import TopPage from "../components/ui/topPage/TopPage";
 

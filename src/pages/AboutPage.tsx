@@ -1,11 +1,26 @@
-import { ScrollRestoration } from "react-router-dom";
-import AboutTop from "../components/about/AboutTop";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
+import StoreMap from "../components/about/StoreMap";
+import IntroSection from "../components/mainSection/IntroSection/IntroSection";
+import Button from "../components/ui/button/Button";
+import TopPage from "../components/ui/topPage/TopPage";
 
 const AboutPage = () => {
+  const navigate = useNavigate();
+  const shopHandler = () => {
+    navigate("/shop");
+  };
   return (
     <main>
       <ScrollRestoration />
-      <AboutTop />
+      <TopPage title={"ANYTHING BUT ORDINARY"} showVideo />
+      <IntroSection
+        noBackGroundColor
+        paddingTop
+        footer={
+          <Button small btnMessage={"BUY NOW ➝"} clickAciton={shopHandler} />
+        }
+      />
+      <StoreMap />
     </main>
   );
 };

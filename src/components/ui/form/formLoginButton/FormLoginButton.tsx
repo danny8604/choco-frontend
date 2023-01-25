@@ -15,4 +15,5 @@ const FormLoginButton = ({ buttonText }: LoginButtonProps) => {
     </div>
   );
 };
+
 export default FormLoginButton;

@@ -41,13 +41,30 @@
       font-size: $fontSize--h5;
     }
   }
+}
 
-  .orderInfor {
-    width: 100%;
-    padding: 3em 0;
-    gap: 2em;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: space-between;
+@media screen and (max-width: $media-laptopM) {
+  .orderContainer {
+    min-width: 80%;
+  }
+}
+
+@media screen and (max-width: $media-landscapeM) {
+  .orderContainer {
+    min-width: 90%;
+  }
+}
+
+@media screen and (max-width: $media-tablet) {
+  .orderContainer {
+    .searchContainer {
+      input {
+        font-size: $fontSize--p--Small;
+      }
+      button {
+        height: 15px;
+        width: 15px;
+      }
+    }
   }
 }

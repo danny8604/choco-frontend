@@ -28,3 +28,16 @@
     }
   }
 }
+
+@media screen and (max-width: $media-tabletR) {
+  .userOrder {
+    .btnContainer {
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0.5em;
+
+      .pageBtnContainer {
+        gap: 1em;
+      }
+    }
+  }
+}

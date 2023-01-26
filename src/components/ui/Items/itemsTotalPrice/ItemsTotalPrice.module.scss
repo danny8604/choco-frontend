@@ -1,18 +1,16 @@
 @use "../../../../styles/" as *;
 
-.itemSeries {
-  color: $color-black;
-  font-weight: $text-medium;
-  font-size: $fontSize--p--Small;
+.itemTotalPrice {
+  font-size: $fontSize--p;
 }
 
 @media screen and (max-width: $media-landscapeM) {
-  .itemSeries {
+  .itemTotalPrice {
     font-size: $fontSize--p--Small-1;
   }
 }
 @media screen and (max-width: $media-mobilesG) {
-  .itemSeries {
+  .itemTotalPrice {
     font-size: $fontSize--p--Small-3;
   }
 }

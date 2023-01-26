@@ -5,3 +5,14 @@
   font-weight: $text-medium;
   font-size: $fontSize--p--Small;
 }
+
+@media screen and (max-width: $media-landscapeM) {
+  .itemPrice {
+    font-size: $fontSize--p--Small-1;
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .itemPrice {
+    font-size: $fontSize--p--Small-3;
+  }
+}

@@ -1,25 +1,13 @@
 import styles from "./InfoItem.module.scss";
 
-import CartItemName from "../cart/cartItem/CartItemName";
-import CartItemPrice from "../cart/cartItem/CartItemPrice";
 import CartItemImg from "../cart/cartItem/CartItemImg";
-import { ProductsType } from "../../app/type";
-import InfoItemQuantity from "./InfoItemQuantity";
 import FavoriteBtn from "../../components/ui/button/FavoriteBtn";
 import ItemSeries from "../../components/ui/Items/ItemSeries/ItemSeries";
 import ItemPrice from "../../components/ui/Items/itemPirce/ItemPrice";
+import ItemName from "../../components/ui/Items/itemName/ItemName";
+import ItemQuantity from "../../components/ui/Items/itemQuantity/ItemQuantity";
+import ItemTotalPrice from "../../components/ui/Items/itemsTotalPrice/ItemsTotalPrice";
 
-interface InfoItemProps {
-  id: string;
-  imgA: string;
-  path: string;
-  productName: string;
-  price?: number;
-  series?: number;
-  quantity?: number;
-  totalPrice?: number;
-  showFavoriteBtn?: boolean;
-}
 interface InfoItemType {
   products: {
     _id: string;
@@ -62,12 +50,12 @@ const InfoItem = ({
       {showFavoriteBtn && <FavoriteBtn key={_id} productId={_id} />}
       <CartItemImg img={img.imgA} path={path} />
       <figcaption className={styles.cartItemText}>
-        <CartItemName productName={productName} />
+        <ItemName productName={productName} />
         {showPrice && price && <ItemPrice price={price} />}
-        {showQuantity && quantity && <InfoItemQuantity quantity={quantity} />}
+        {showQuantity && quantity && <ItemQuantity quantity={quantity} />}
         {showSeries && series && <ItemSeries series={series} />}
         {showTotalPrice && price && quantity && (
-          <CartItemPrice totalPrice={price * quantity} />
+          <ItemTotalPrice totalPrice={price * quantity} />
         )}
       </figcaption>
     </figure>

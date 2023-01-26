@@ -1,0 +1,23 @@
+@use "../../../../styles/" as *;
+
+.ItemQuantity {
+  p {
+    font-size: $fontSize--p;
+  }
+}
+
+@media screen and (max-width: $media-landscapeM) {
+  .ItemQuantity {
+    p {
+      font-size: $fontSize--p--Small-1;
+    }
+  }
+}
+
+@media screen and (max-width: $media-mobilesG) {
+  .ItemQuantity {
+    p {
+      font-size: $fontSize--p--Small-3;
+    }
+  }
+}

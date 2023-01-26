@@ -1,5 +1,4 @@
 import { useCallback, useRef, useState } from "react";
-import { useAppSelector } from "../../app/hooks/hooks";
 import useFavoritePage from "../../app/hooks/useFavoritePage";
 import FavoriteItmes from "../ui/favoriteItem/FavoriteItems";
 import styles from "./UserFavoriteItems.module.scss";
@@ -8,24 +7,20 @@ const UserFavoriteItems = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { hasNextPage, isloading, results } = useFavoritePage(pageNumber);
 
-  const intObserver = useRef();
+  const intObserver = useRef<any>();
   const lastPostRef = useCallback(
     (product) => {
       if (isloading) return;
 
       if (intObserver.current) intObserver.current.disconnect();
-      // console.log(results, "🐄🐄🐄");
       intObserver.current = new IntersectionObserver((posts) => {
-        // console.log(posts[0].isIntersecting, "🐧🐧🐧");
-        // console.log(posts[0], "🐧12312312312🐧");
         if (posts[0].isIntersecting && hasNextPage) {
+          console.log(posts[0].isIntersecting, "posts[0].isIntersecting");
           console.log("We are near the last post!");
           setPageNumber((prev) => prev + 1);
         }
       });
-      // console.log(intObserver.current, "intObserver.current");
-      // console.log(isloading, "isloading");
-      // console.log(hasNextPage, "hasNextPage");
+
       if (product) intObserver.current.observe(product);
     },
     [isloading, hasNextPage]

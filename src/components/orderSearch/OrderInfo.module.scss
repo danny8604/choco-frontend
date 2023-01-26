@@ -10,3 +10,14 @@
   grid-template-columns: repeat(2, auto);
   justify-content: space-between;
 }
+
+@media screen and (max-width: $media-tablet) {
+  .orderInfor {
+    font-size: $fontSize--p--Small-1;
+  }
+}
+@media screen and (max-width: $media-tabletR) {
+  .orderInfor {
+    grid-template-columns: 1fr;
+  }
+}

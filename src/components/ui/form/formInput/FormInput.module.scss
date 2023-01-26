@@ -26,3 +26,11 @@ input:invalid[data-focused="true"] ~ span {
 input:invalid[data-focused="true"] {
   border: 1px solid $color-red;
 }
+
+@media screen and (max-width: $media-tabletS) {
+  .formInput {
+    input {
+      font-size: $fontSize--p--Small-2;
+    }
+  }
+}

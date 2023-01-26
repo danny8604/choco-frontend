@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import useUser from "../../app/hooks/useUser";
+import NavbarLogin from "../../components/navigation/NavbarLogin";
+import NavbarOrder from "../../components/navigation/NavbarOrder";
+import NavbarUser from "../../components/navigation/NavbarUser";
 import styles from "./NavModal.module.scss";
 import { navModalToggle } from "./navModalSlice";
 
@@ -8,13 +11,7 @@ const NavModal = () => {
   const { navModalIsOpen } = useAppSelector((state) => state.navModal);
   const { login } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
-  const { authUserLogout } = useUser();
   const navModalHandler = () => dispatch(navModalToggle());
-
-  const logoutHandler = () => {
-    dispatch(navModalToggle());
-    login && authUserLogout();
-  };
 
   return (
     <nav
@@ -38,14 +35,9 @@ const NavModal = () => {
             ABOUT
           </Link>
         </li>
-        <li>
-          <Link
-            onClick={() => logoutHandler()}
-            to={`${login ? "/" : "/login"}`}
-          >
-            {login ? "LOGOUT" : "LOGIN"}
-          </Link>
-        </li>
+        <NavbarOrder />
+        <NavbarLogin />
+        {login && <NavbarUser />}
       </ul>
     </nav>
   );

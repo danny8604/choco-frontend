@@ -1,18 +1,17 @@
 @use "../../../../styles/" as *;
 
-.itemSeries {
-  color: $color-black;
-  font-weight: $text-medium;
-  font-size: $fontSize--p--Small;
+.itemName {
+  font-size: $fontSize--h5;
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: $media-landscapeM) {
-  .itemSeries {
+  .itemName {
     font-size: $fontSize--p--Small-1;
   }
 }
 @media screen and (max-width: $media-mobilesG) {
-  .itemSeries {
+  .itemName {
     font-size: $fontSize--p--Small-3;
   }
 }

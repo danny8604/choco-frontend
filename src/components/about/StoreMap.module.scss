@@ -41,3 +41,45 @@
     }
   }
 }
+
+@media screen and (max-width: $media-laptopL) {
+  .mapContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: $media-landscape) {
+  .mapContainer {
+    & .mapInfo {
+      padding: 3em 1.5em;
+
+      h4 {
+        font-size: $fontSize--h5;
+      }
+      .mapBtn {
+        h6 {
+          font-size: $fontSize--p--Small-1;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-tabletR) {
+  .mapContainer {
+    & .mapInfo {
+      h4 {
+        font-size: $fontSize--h6;
+      }
+      .mapBtn {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        h6 {
+          font-size: $fontSize--p--Small-3;
+          padding-bottom: 0.5em;
+        }
+      }
+    }
+  }
+}

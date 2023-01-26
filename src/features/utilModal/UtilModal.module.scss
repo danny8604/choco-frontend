@@ -44,3 +44,23 @@
   opacity: 0;
   transition: all 300ms;
 }
+
+@media screen and (max-width: $media-landscapeS) {
+  .modal {
+    padding: 1.5em 2.5em;
+    width: 80%;
+
+    p {
+      font-size: $fontSize--p--Small;
+    }
+  }
+}
+@media screen and (max-width: $media-mobilesG) {
+  .modal {
+    padding: 1em 2em;
+
+    p {
+      font-size: $fontSize--p--Small-1;
+    }
+  }
+}

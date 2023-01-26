@@ -1,4 +1,4 @@
-import React from "react";
+import React, { LegacyRef } from "react";
 import { ProductsType } from "../../../app/type";
 import InfoItem from "../../../features/infoModal/InfoItem";
 import Card from "../card/Card";
@@ -8,26 +8,27 @@ type PostProps = {
   products: ProductsType;
 };
 
-const FavoriteItmes = React.forwardRef(({ products }: PostProps, ref) => {
-  console.log(products, "products");
-  const postBody = (
-    <Card>
-      <InfoItem
-        key={products._id}
-        products={products}
-        showFavoriteBtn
-        showPrice
-        showSeries
-      />
-    </Card>
-  );
+const FavoriteItmes = React.forwardRef(
+  ({ products }: PostProps, ref: LegacyRef<HTMLElement> | undefined) => {
+    const postBody = (
+      <Card>
+        <InfoItem
+          key={products._id}
+          products={products}
+          showFavoriteBtn
+          showPrice
+          showSeries
+        />
+      </Card>
+    );
 
-  const content = ref ? (
-    <section ref={ref}>{postBody}</section>
-  ) : (
-    <section>{postBody}</section>
-  );
+    const content = ref ? (
+      <section ref={ref}>{postBody}</section>
+    ) : (
+      <section>{postBody}</section>
+    );
 
-  return <div className={styles.post}>{content}</div>;
-});
+    return <div className={styles.post}>{content}</div>;
+  }
+);
 export default FavoriteItmes;

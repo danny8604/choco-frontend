@@ -73,7 +73,6 @@ const CheckoutForm = () => {
 
   const checkoutHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧");
     stripeCardCheckout();
   };
 

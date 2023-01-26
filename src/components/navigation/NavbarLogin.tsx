@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import useAuth from "../../app/hooks/useAuth";
 import useUser from "../../app/hooks/useUser";
+import { navModalToggle } from "../../features/navModal/navModalSlice";
 
 const NavbarLogin = () => {
   const { login } = useAppSelector((state) => state.login);
+  const { navModalIsOpen } = useAppSelector((state) => state.navModal);
   const { authUserLogout } = useUser();
+  const dispatch = useAppDispatch();
 
-  const LogoutHandler = () => authUserLogout();
+  const LogoutHandler = () => {
+    if (navModalIsOpen) dispatch(navModalToggle());
+    authUserLogout();
+  };
 
   return (
     <li>

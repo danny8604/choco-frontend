@@ -10,3 +10,18 @@
     text-decoration: none;
   }
 }
+
+@media screen and (max-width: $media-landscapeM) {
+  .featureContainer {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .featureContainer {
+    gap: 2em;
+
+    a {
+      font-size: $fontSize--p--Small-1;
+    }
+  }
+}

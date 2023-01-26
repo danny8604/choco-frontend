@@ -5,7 +5,7 @@
   height: 100%;
   margin: 0 auto;
   text-align: center;
-  width: 50%;
+  width: 60%;
   letter-spacing: 1.5px;
   .userHeader {
     border-bottom: solid 1px $color-black;
@@ -13,6 +13,27 @@
     h4 {
       font-size: $fontSize--h4;
       color: $color-black;
+    }
+  }
+}
+
+@media screen and (max-width: $media-laptop) {
+  .userContainer {
+    width: 80%;
+
+    .userHeader {
+      h4 {
+        font-size: $fontSize--p;
+      }
+    }
+  }
+}
+@media screen and (max-width: $media-laptop) {
+  .userContainer {
+    .userHeader {
+      h4 {
+        font-size: $fontSize--p--Small;
+      }
     }
   }
 }

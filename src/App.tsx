@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
+  useNavigate,
 } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
@@ -24,8 +25,12 @@ import UserChangePasswordPage from "./pages/UserChangePasswordPage";
 import UserOrderPage from "./pages/UserOrderPage";
 import UserFavoriteItemsPage from "./pages/UserFavoriteItems";
 import { userLogin, userLogout } from "./features/login/loginSlice";
-import { resetShoppingCart } from "./features/cart/cartItem/cartSlice";
+import {
+  resetShoppingCart,
+  userShoppingCart,
+} from "./features/cart/cartItem/cartSlice";
 import useAuth from "./app/hooks/useAuth";
+import axios from "axios";
 
 type ProtectedRouteProps = {
   children: JSX.Element;

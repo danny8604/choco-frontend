@@ -1,5 +1,5 @@
 import Login from "../../features/login/Login";
-import Map from "../about/StoreMap";
+import Button from "../ui/button/Button";
 import styles from "./LoginForm.module.scss";
 
 const LoginForm = () => {

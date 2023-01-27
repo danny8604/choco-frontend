@@ -5,6 +5,8 @@ import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginB
 import FormInput from "../../components/ui/form/formInput/FormInput";
 import useAuth from "../../app/hooks/useAuth";
 import useUser from "../../app/hooks/useUser";
+import Button from "../../components/ui/button/Button";
+import axios from "axios";
 
 const Login = () => {
   const { authUserLogin } = useUser();
@@ -49,21 +51,36 @@ const Login = () => {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValues({ ...values, [e.target.name]: e.target.value });
 
+  const googleHandler = () => {
+    window.open("http://localhost:5000/auth/google", "_self");
+  };
+
   return (
-    <form onSubmit={LoginSubmitHandler} className={styles.form}>
-      {inputs.map((input) => {
-        return (
-          <FormInput
-            key={input.id}
-            errorMessage={input.errorMessage}
-            props={{ ...input.input }}
-            onChange={changeHandler}
-          />
-        );
-      })}
-      <FormLoginButton buttonText={"LOGIN ➝"} />
-      <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
-    </form>
+    <div className={styles.test}>
+      <form onSubmit={LoginSubmitHandler} className={styles.form}>
+        {inputs.map((input) => {
+          return (
+            <FormInput
+              key={input.id}
+              errorMessage={input.errorMessage}
+              props={{ ...input.input }}
+              onChange={changeHandler}
+            />
+          );
+        })}
+        <FormLoginButton buttonText={"LOGIN ➝"} />
+        <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
+      </form>
+      <div className={styles.oAuthBtn}>
+        <Button
+          btnMessage={"GOOGLE"}
+          className={"google"}
+          clickAciton={googleHandler}
+        />
+        <Button btnMessage={"Facebook"} className={"facebook"} />
+        <Button btnMessage={"Github"} className={"github"} />
+      </div>
+    </div>
   );
 };
 

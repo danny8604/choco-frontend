@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   getFavoriteItems,
@@ -28,6 +29,46 @@ const useAuth = () => {
   const [ordersResult, setOrdersResult] = useState<Orders | null>(null);
 
   ////////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    const fetchGoogleUser = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/auth/login/success",
+          { withCredentials: true }
+        );
+        const tokenExpirationDate = new Date(
+          new Date().getTime() + 1000 * 60 * 30
+        );
+        console.log(response, "🐧🐧🐧");
+        if (response.data.status !== 200) return;
+        const data = response.data;
+
+        dispatch(
+          userLogin({
+            userEmail: data.user.email,
+            userId: data.user.userId,
+            userToken: data.user.token,
+            tokenExpirationDate: tokenExpirationDate.toISOString(),
+          })
+        );
+        dispatch(userShoppingCart(data.userCart));
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userId: data.user.userId,
+            userEmail: data.user.email,
+            userToken: data.user.token,
+            login: true,
+            tokenExpirationDate: tokenExpirationDate.toISOString(),
+          })
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchGoogleUser();
+  }, []);
 
   useEffect(() => {
     if (!localStorage.getItem("userData")) return;

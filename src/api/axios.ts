@@ -7,5 +7,9 @@ export interface tokenAndProductId {
 }
 
 export const api = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://choco-chair-backend.herokuapp.com/",
 });
+
+// export const api = axios.create({
+//   baseURL: "http://localhost:5000/",
+// });

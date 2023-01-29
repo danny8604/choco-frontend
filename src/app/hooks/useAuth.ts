@@ -35,7 +35,7 @@ const useAuth = () => {
     const fetchGoogleUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/auth/login/success",
+          "https://choco-chair-backend.herokuapp.com/auth/login/success",
           { withCredentials: true }
         );
         console.log(response, "🦔🦔");

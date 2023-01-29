@@ -7,11 +7,10 @@ import styles from "./UserFavoriteItems.module.scss";
 const UserFavoriteItems = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { hasNextPage, isloading, results } = useFavoritePage(pageNumber);
-
   const intObserver = useRef<any>();
   const lastPostRef = useCallback(
     (product: HTMLElement) => {
-      if (isloading) return <Loading />;
+      if (isloading) return;
       console.log(product, "🦔🦔🦔🦔🦔");
       if (intObserver.current) intObserver.current.disconnect();
       intObserver.current = new IntersectionObserver((posts) => {
@@ -26,6 +25,8 @@ const UserFavoriteItems = () => {
     },
     [isloading, hasNextPage]
   );
+
+  if (isloading) return <Loading />;
 
   if (!Boolean(results.length)) {
     return (

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../api/axios";
 import {
   postUserChangePassword,
   postUserLogin,
@@ -35,10 +36,7 @@ const useUser = () => {
         isSucceed: true,
       })
     );
-    window.open(
-      "https://choco-chair-backend.herokuapp.com/auth/logout",
-      "_self"
-    );
+    window.open(`${baseURL}auth/logout`, "_self");
     localStorage.removeItem("userData");
   };
 

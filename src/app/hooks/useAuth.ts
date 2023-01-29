@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { baseURL } from "../../api/axios";
 import {
   getFavoriteItems,
   getUserCart,
@@ -34,10 +35,9 @@ const useAuth = () => {
   useEffect(() => {
     const fetchGoogleUser = async () => {
       try {
-        const response = await axios.get(
-          "https://choco-chair-backend.herokuapp.com/auth/login/success",
-          { withCredentials: true }
-        );
+        const response = await axios.get(`${baseURL}auth/login/success`, {
+          withCredentials: true,
+        });
         console.log(response, "🦔🦔");
         const tokenExpirationDate = new Date(
           new Date().getTime() + 1000 * 60 * 30

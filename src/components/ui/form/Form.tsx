@@ -1,3 +1,4 @@
+import { baseURL } from "../../../api/axios";
 import Button from "../button/Button";
 import styles from "./Form.module.scss";
 
@@ -9,10 +10,7 @@ type FormProps = {
 
 const Form = ({ formTitle, children, showGoogleBtn }: FormProps) => {
   const googleHandler = () => {
-    window.open(
-      "https://choco-chair-backend.herokuapp.com/auth/google",
-      "_self"
-    );
+    window.open(`${baseURL}auth/google`, "_self");
   };
 
   return (

@@ -9,7 +9,10 @@ type FormProps = {
 
 const Form = ({ formTitle, children, showGoogleBtn }: FormProps) => {
   const googleHandler = () => {
-    window.open("http://localhost:5000/auth/google", "_self");
+    window.open(
+      "https://choco-chair-backend.herokuapp.com/auth/google",
+      "_self"
+    );
   };
 
   return (

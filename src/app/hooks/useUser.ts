@@ -35,7 +35,10 @@ const useUser = () => {
         isSucceed: true,
       })
     );
-    window.open("http://localhost:5000/auth/logout", "_self");
+    window.open(
+      "https://choco-chair-backend.herokuapp.com/auth/logout",
+      "_self"
+    );
     localStorage.removeItem("userData");
   };
 

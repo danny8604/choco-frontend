@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../../ui/button/Button";
 import styles from "./IntroSection.module.scss";
 
 type IntroSectionProps = {

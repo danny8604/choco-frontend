@@ -16,18 +16,15 @@ const useFavoritePage = (pageNumber: number) => {
 
   useEffect(() => {
     if (!(login && userToken)) return;
-
     setIsloading(true);
     const controller = new AbortController();
     const { signal } = controller;
-    console.log(controller, "controller");
-
     getFavoriteItemsPage({ userToken, pageNumber }, { signal })
       .then((data) => {
         setResults((prev) => [...prev, ...data]);
         setHasNextPage(Boolean(data.length));
-        console.log(Boolean(data.length), "HasNextPage");
-        console.log(data, "data");
+        // console.log(Boolean(data.length), "HasNextPage");
+        // console.log(data, "data");
         setIsloading(false);
       })
       .catch((err) => {

@@ -33,20 +33,16 @@
 
 @media screen and (max-width: $media-tabletR) {
   .formWrapper {
-    .formTitle {
-      h3 {
-        font-size: $fontSize--h5;
-      }
+    h3 {
+      font-size: $fontSize--h5;
     }
   }
 }
 
 @media screen and (max-width: $media-mobilesG) {
   .formWrapper {
-    .formTitle {
-      h3 {
-        font-size: $fontSize--h6;
-      }
+    h3 {
+      font-size: $fontSize--p--Small;
     }
   }
 }

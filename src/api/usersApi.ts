@@ -28,7 +28,6 @@ export const getFavoriteItemsPage = async (
     },
     signal: options.signal,
   });
-  console.log(options.signal, "options");
   return response.data.favoriteItems;
 };
 

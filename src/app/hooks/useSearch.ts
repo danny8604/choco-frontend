@@ -21,7 +21,7 @@ const useSearch = () => {
         setLoading(false);
       })
       .catch((err) => {
-        setMessage(`${getErrorMessage(err)}`);
+        setMessage("can't find the order for the provider order number.");
         setSearchResult(null);
         setLoading(false);
       });

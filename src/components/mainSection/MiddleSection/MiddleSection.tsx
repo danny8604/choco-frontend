@@ -3,7 +3,6 @@ import chart05 from "../../../assets/mainSectionIMG/chair-05.jpg";
 import chart06 from "../../../assets/mainSectionIMG/chair-06.jpg";
 import { useNavigate } from "react-router-dom";
 import Button from "../../ui/button/Button";
-import TopPage from "../../ui/topPage/TopPage";
 
 const MiddleSection = () => {
   const navigate = useNavigate();

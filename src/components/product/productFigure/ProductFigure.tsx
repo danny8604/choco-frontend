@@ -3,10 +3,10 @@ import { useAppDispatch } from "../../../app/hooks/hooks";
 import { ProductsType } from "../../../app/type";
 import { closeBackdrop } from "../../../features/backdrop/backdropSlice";
 import { closeSearchModal } from "../../../features/searchModal/searchModalSlice";
+import FavoriteBtn from "../../ui/button/FavoriteBtn";
 import styles from "./ProductFigure.module.scss";
 import ProductFigureImg from "./ProductFigureImg";
 import ProductFigureText from "./ProductFigureText";
-import FavoriteBtn from "../../ui/button/FavoriteBtn";
 
 const ProductFigure = ({
   productName,

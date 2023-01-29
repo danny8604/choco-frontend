@@ -35,6 +35,7 @@
   }
   .messageContaiter {
     padding: 3em;
+    text-align: center;
     h5 {
       color: $color-gray;
       font-weight: $text-regular;
@@ -64,6 +65,21 @@
       button {
         height: 15px;
         width: 15px;
+      }
+    }
+    .messageContaiter {
+      h5 {
+        font-size: $fontSize--h6;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-mobilesG) {
+  .orderContainer {
+    .messageContaiter {
+      h5 {
+        font-size: $fontSize--p--Small;
       }
     }
   }

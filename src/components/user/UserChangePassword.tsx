@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useAuth from "../../app/hooks/useAuth";
 import useUser from "../../app/hooks/useUser";
 import FormInput from "../ui/form/formInput/FormInput";
 import styles from "./UserChangePassword.module.scss";

@@ -27,3 +27,15 @@
     transform: translateX(30%);
   }
 }
+@media screen and (max-width: $media-tabletR) {
+  .loadingPage {
+    .loadingText {
+      h1 {
+        font-size: $fontSize--h4;
+      }
+      h2 {
+        font-size: $fontSize--h4;
+      }
+    }
+  }
+}

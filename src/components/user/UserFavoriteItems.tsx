@@ -10,8 +10,8 @@ const UserFavoriteItems = () => {
   const intObserver = useRef<any>();
   const lastPostRef = useCallback(
     (product: HTMLElement) => {
-      if (isloading) return;
-      console.log(product, "🦔🦔🦔🦔🦔");
+      if (isloading) return <Loading />;
+      // console.log(product, "🦔🦔🦔🦔🦔");
       if (intObserver.current) intObserver.current.disconnect();
       intObserver.current = new IntersectionObserver((posts) => {
         if (posts[0].isIntersecting && hasNextPage) {
@@ -26,8 +26,6 @@ const UserFavoriteItems = () => {
     [isloading, hasNextPage]
   );
 
-  if (isloading) return <Loading />;
-
   if (!Boolean(results.length)) {
     return (
       <div className={styles.text}>
@@ -36,7 +34,7 @@ const UserFavoriteItems = () => {
     );
   }
 
-  const content1 = results.map((item, i) => {
+  const content = results.map((item, i) => {
     if (results.length === i + 1) {
       return (
         <FavoriteItmes
@@ -49,7 +47,7 @@ const UserFavoriteItems = () => {
     return <FavoriteItmes key={item.productId._id} products={item.productId} />;
   });
 
-  return <div className={styles.favoriteItems}>{content1}</div>;
+  return <div className={styles.favoriteItems}>{content}</div>;
 };
 
 export default UserFavoriteItems;

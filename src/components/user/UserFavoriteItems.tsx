@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import useFavoritePage from "../../app/hooks/useFavoritePage";
 import FavoriteItmes from "../ui/favoriteItem/FavoriteItems";
+import Loading from "../ui/loading/Loading";
 import styles from "./UserFavoriteItems.module.scss";
 
 const UserFavoriteItems = () => {
@@ -10,7 +11,7 @@ const UserFavoriteItems = () => {
   const intObserver = useRef<any>();
   const lastPostRef = useCallback(
     (product: HTMLElement) => {
-      if (isloading) return;
+      if (isloading) return <Loading />;
       console.log(product, "🦔🦔🦔🦔🦔");
       if (intObserver.current) intObserver.current.disconnect();
       intObserver.current = new IntersectionObserver((posts) => {

@@ -1,3 +1,4 @@
+import usDollar from "../../../util/usDollar";
 import styles from "./ItemPrice.module.scss";
 
 type ItemPriceProps = {
@@ -7,7 +8,7 @@ type ItemPriceProps = {
 const ItemPrice = ({ price }: ItemPriceProps) => {
   return (
     <div className={styles.itemPrice}>
-      <p>Price : {price}</p>
+      <p>Price : {usDollar(price)}</p>
     </div>
   );
 };

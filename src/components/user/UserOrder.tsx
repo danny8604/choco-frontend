@@ -6,10 +6,11 @@ import OrderInfo from "../orderSearch/OrderInfo";
 import ArrowLeftBtn from "../ui/button/ArrowLeftBtn";
 import ArrowRightBtn from "../ui/button/ArrowRight";
 import Button from "../ui/button/Button";
+import Loading from "../ui/loading/Loading";
 import styles from "./UserOrder.module.scss";
 
 const UserOrder = () => {
-  const { ordersResult } = useOrder();
+  const { ordersResult, isloading } = useOrder();
   const [page, setPage] = useState(1);
   const perPage = 2;
   const pageVisited = perPage * page;
@@ -18,6 +19,8 @@ const UserOrder = () => {
 
   const nextPage = () => setPage((page) => page + 1);
   const prevPage = () => setPage((page) => page - 1);
+
+  if (isloading) return <Loading />;
 
   return (
     <>

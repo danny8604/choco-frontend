@@ -11,23 +11,27 @@ const useOrder = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [ordersResult, setOrdersResult] = useState<Orders | null>(null);
+  const [isloading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!(login && userToken)) return;
+    setIsLoading(true);
 
     getUserOrder(userToken)
       .then((data) => {
         data.orders.length === 0
           ? setOrdersResult(null)
           : setOrdersResult(data);
+        setIsLoading(false);
       })
       .catch((err) => {
+        setIsLoading(false);
         dispatch(openUtilModal({ message: getErrorMessage(err) }));
         navigate("/");
       });
   }, [login, userToken]);
 
-  return { ordersResult };
+  return { ordersResult, isloading };
 };
 
 export default useOrder;

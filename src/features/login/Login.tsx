@@ -17,7 +17,7 @@ const Login = () => {
 
   const LoginSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    authUserLogin({ email: values.email, password: values.password });
+    authUserLogin(values.email, values.password);
   };
 
   const inputs = [
@@ -30,7 +30,6 @@ const Login = () => {
         name: "email",
         label: "email",
         placeholder: "EMAIL",
-        pattern: values.email,
         required: true,
       },
     },
@@ -51,36 +50,19 @@ const Login = () => {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValues({ ...values, [e.target.name]: e.target.value });
 
-  const googleHandler = () => {
-    window.open("http://localhost:5000/auth/google", "_self");
-  };
-
   return (
-    <div className={styles.test}>
-      <form onSubmit={LoginSubmitHandler} className={styles.form}>
-        {inputs.map((input) => {
-          return (
-            <FormInput
-              key={input.id}
-              errorMessage={input.errorMessage}
-              props={{ ...input.input }}
-              onChange={changeHandler}
-            />
-          );
-        })}
-        <FormLoginButton buttonText={"LOGIN ➝"} />
-        <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
-      </form>
-      <div className={styles.oAuthBtn}>
-        <Button
-          btnMessage={"GOOGLE"}
-          className={"google"}
-          clickAciton={googleHandler}
+    <form onSubmit={LoginSubmitHandler} className={styles.form}>
+      {inputs.map((input) => (
+        <FormInput
+          key={input.id}
+          errorMessage={input.errorMessage}
+          props={{ ...input.input }}
+          onChange={changeHandler}
         />
-        <Button btnMessage={"Facebook"} className={"facebook"} />
-        <Button btnMessage={"Github"} className={"github"} />
-      </div>
-    </div>
+      ))}
+      <FormLoginButton buttonText={"LOGIN ➝"} />
+      <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
+    </form>
   );
 };
 

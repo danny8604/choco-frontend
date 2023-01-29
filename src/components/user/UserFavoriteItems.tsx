@@ -9,9 +9,9 @@ const UserFavoriteItems = () => {
 
   const intObserver = useRef<any>();
   const lastPostRef = useCallback(
-    (product) => {
+    (product: HTMLElement) => {
       if (isloading) return;
-
+      console.log(product, "🦔🦔🦔🦔🦔");
       if (intObserver.current) intObserver.current.disconnect();
       intObserver.current = new IntersectionObserver((posts) => {
         if (posts[0].isIntersecting && hasNextPage) {

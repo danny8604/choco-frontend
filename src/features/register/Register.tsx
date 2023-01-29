@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormLink from "../../components/ui/form/formLink/FormLink";
-import styles from "./register.module.scss";
+import styles from "./Register.module.scss";
 import FormInput from "../../components/ui/form/formInput/FormInput";
 import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginButton";
 import useUser from "../../app/hooks/useUser";
@@ -27,7 +27,6 @@ const Register = () => {
         name: "signupEmail",
         label: "email",
         placeholder: "EMAIL",
-        pattern: "^{8,20}$",
         required: true,
       },
     },

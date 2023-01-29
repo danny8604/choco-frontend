@@ -11,6 +11,7 @@ import {
   userShoppingCart,
 } from "../../features/cart/cartItem/cartSlice";
 import {
+  changePasswordBtn,
   userFavoriteItems,
   userLogin,
   userLogout,
@@ -37,11 +38,11 @@ const useAuth = () => {
           "http://localhost:5000/auth/login/success",
           { withCredentials: true }
         );
+        console.log(response, "🦔🦔");
         const tokenExpirationDate = new Date(
           new Date().getTime() + 1000 * 60 * 30
         );
         console.log(response, "🐧🐧🐧");
-        if (response.data.status !== 200) return;
         const data = response.data;
 
         dispatch(
@@ -53,6 +54,7 @@ const useAuth = () => {
           })
         );
         dispatch(userShoppingCart(data.userCart));
+        dispatch(changePasswordBtn(false));
         localStorage.setItem(
           "userData",
           JSON.stringify({
@@ -60,6 +62,7 @@ const useAuth = () => {
             userEmail: data.user.email,
             userToken: data.user.token,
             login: true,
+            showChangePassword: false,
             tokenExpirationDate: tokenExpirationDate.toISOString(),
           })
         );
@@ -75,6 +78,7 @@ const useAuth = () => {
 
     const userData = JSON.parse(localStorage.getItem("userData") || "");
 
+    console.log(userData, "userData");
     if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
       dispatch(
         userLogin({
@@ -86,6 +90,9 @@ const useAuth = () => {
           ).toISOString(),
         })
       );
+      if (!userData.showChangePassword) {
+        dispatch(changePasswordBtn(false));
+      }
     }
   }, []);
 

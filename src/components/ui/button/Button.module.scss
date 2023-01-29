@@ -25,16 +25,6 @@
     color: $color-red;
   }
 }
-.button.facebook {
-  background-color: $color-blue;
-  border: solid 1px $color-blue;
-  &:hover {
-    background-color: $color-white;
-    color: $color-blue;
-  }
-}
-.button.github {
-}
 
 .button.small {
   padding: 1.25em 3em;

@@ -7,7 +7,7 @@ type FormInputProps = {
     name: string;
     label: string;
     placeholder: string;
-    pattern: string;
+    pattern?: string;
     required: boolean;
   };
   errorMessage: string;

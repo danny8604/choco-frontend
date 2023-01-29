@@ -19,7 +19,7 @@ const ExploreProducts = () => {
   const { sliderDown, mouseDownX, mouseMoveX } = useAppSelector(
     (state) => state.slider
   );
-  const { chairsData } = useChairsData("");
+  const { allChairsData } = useChairsData({});
 
   const [productArr, setProductArr] = useState<ProductsType[]>([]);
 
@@ -28,17 +28,16 @@ const ExploreProducts = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // only get once
-    if (!chairsData || chairsData.length === 0 || productArr.length > 0) {
+    if (!allChairsData || allChairsData.length === 0 || productArr.length > 0) {
       return;
     }
     setProductArr(
-      chairsData
+      allChairsData
         .slice()
         .sort(() => Math.random() - 0.5)
         .slice(0, 8)
     );
-  }, [chairsData]);
+  }, [allChairsData]);
 
   useEffect(() => {
     const sectionRect = sectionRef.current!.getBoundingClientRect();

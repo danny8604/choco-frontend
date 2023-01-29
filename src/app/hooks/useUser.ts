@@ -18,11 +18,6 @@ import {
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
-type authUserLoginProps = {
-  email: string;
-  password: string;
-};
-
 const useUser = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -40,10 +35,11 @@ const useUser = () => {
         isSucceed: true,
       })
     );
+    window.open("http://localhost:5000/auth/logout", "_self");
     localStorage.removeItem("userData");
   };
 
-  const authUserLogin = async ({ email, password }: authUserLoginProps) => {
+  const authUserLogin = async (email: string, password: string) => {
     const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 30);
 
     postUserLogin(email, password)
@@ -70,6 +66,7 @@ const useUser = () => {
             userEmail: data.user.email,
             userToken: data.user.token,
             login: true,
+            showChangePassword: true,
             tokenExpirationDate: tokenExpirationDate.toISOString(),
           })
         );

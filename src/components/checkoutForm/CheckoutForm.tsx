@@ -95,11 +95,7 @@ const CheckoutForm = () => {
             );
           })}
         </div>
-        <Button
-          btnMessage={"CONTINUE TO PAYMENT"}
-          className=""
-          clickAciton={() => "2"}
-        />
+        <Button btnMessage={"CONTINUE TO PAYMENT"} />
       </form>
     </>
   );

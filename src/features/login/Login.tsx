@@ -5,6 +5,8 @@ import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginB
 import FormInput from "../../components/ui/form/formInput/FormInput";
 import useAuth from "../../app/hooks/useAuth";
 import useUser from "../../app/hooks/useUser";
+import Button from "../../components/ui/button/Button";
+import axios from "axios";
 
 const Login = () => {
   const { authUserLogin } = useUser();
@@ -15,7 +17,7 @@ const Login = () => {
 
   const LoginSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    authUserLogin({ email: values.email, password: values.password });
+    authUserLogin(values.email, values.password);
   };
 
   const inputs = [
@@ -28,7 +30,6 @@ const Login = () => {
         name: "email",
         label: "email",
         placeholder: "EMAIL",
-        pattern: values.email,
         required: true,
       },
     },
@@ -51,16 +52,14 @@ const Login = () => {
 
   return (
     <form onSubmit={LoginSubmitHandler} className={styles.form}>
-      {inputs.map((input) => {
-        return (
-          <FormInput
-            key={input.id}
-            errorMessage={input.errorMessage}
-            props={{ ...input.input }}
-            onChange={changeHandler}
-          />
-        );
-      })}
+      {inputs.map((input) => (
+        <FormInput
+          key={input.id}
+          errorMessage={input.errorMessage}
+          props={{ ...input.input }}
+          onChange={changeHandler}
+        />
+      ))}
       <FormLoginButton buttonText={"LOGIN ➝"} />
       <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
     </form>

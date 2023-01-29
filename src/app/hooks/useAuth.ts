@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   getFavoriteItems,
@@ -10,6 +11,7 @@ import {
   userShoppingCart,
 } from "../../features/cart/cartItem/cartSlice";
 import {
+  changePasswordBtn,
   userFavoriteItems,
   userLogin,
   userLogout,
@@ -30,10 +32,53 @@ const useAuth = () => {
   ////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
+    const fetchGoogleUser = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/auth/login/success",
+          { withCredentials: true }
+        );
+        console.log(response, "🦔🦔");
+        const tokenExpirationDate = new Date(
+          new Date().getTime() + 1000 * 60 * 30
+        );
+        console.log(response, "🐧🐧🐧");
+        const data = response.data;
+
+        dispatch(
+          userLogin({
+            userEmail: data.user.email,
+            userId: data.user.userId,
+            userToken: data.user.token,
+            tokenExpirationDate: tokenExpirationDate.toISOString(),
+          })
+        );
+        dispatch(userShoppingCart(data.userCart));
+        dispatch(changePasswordBtn(false));
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userId: data.user.userId,
+            userEmail: data.user.email,
+            userToken: data.user.token,
+            login: true,
+            showChangePassword: false,
+            tokenExpirationDate: tokenExpirationDate.toISOString(),
+          })
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchGoogleUser();
+  }, []);
+
+  useEffect(() => {
     if (!localStorage.getItem("userData")) return;
 
     const userData = JSON.parse(localStorage.getItem("userData") || "");
 
+    console.log(userData, "userData");
     if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
       dispatch(
         userLogin({
@@ -45,6 +90,9 @@ const useAuth = () => {
           ).toISOString(),
         })
       );
+      if (!userData.showChangePassword) {
+        dispatch(changePasswordBtn(false));
+      }
     }
   }, []);
 

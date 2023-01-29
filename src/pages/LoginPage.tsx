@@ -1,11 +1,14 @@
 import { ScrollRestoration } from "react-router-dom";
-import LoginForm from "../components/loginForm/LoginForm";
+import Form from "../components/ui/form/Form";
+import Login from "../features/login/Login";
 
 const LoginPage = () => {
   return (
     <main>
       <ScrollRestoration />
-      <LoginForm />
+      <Form formTitle={"LOGIN CHOCO STORE"} showGoogleBtn>
+        <Login />
+      </Form>
     </main>
   );
 };

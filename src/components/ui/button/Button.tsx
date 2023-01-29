@@ -5,7 +5,7 @@ type ButtonProps = {
   className?: string;
   small?: boolean;
   whiteBG?: boolean;
-  clickAciton: () => void;
+  clickAciton?: () => void;
 };
 
 const Button = ({
@@ -17,7 +17,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      onClick={() => clickAciton()}
+      onClick={() => clickAciton && clickAciton()}
       className={`${styles.button} ${small && styles.small} ${
         className && styles[className]
       } ${whiteBG && styles.whiteBG}`}

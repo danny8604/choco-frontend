@@ -8,6 +8,7 @@ interface LoginState {
   tokenExpirationDate: null | Date;
   userCart: ShoppingCartItem[];
   favoriteItems: ShoppingCartItem[];
+  showChangePassword: boolean;
   login: boolean;
   logout: boolean;
 }
@@ -19,6 +20,7 @@ const initialState: LoginState = {
   tokenExpirationDate: null,
   userCart: [],
   favoriteItems: [],
+  showChangePassword: true,
   login: false,
   logout: true,
 };
@@ -45,9 +47,13 @@ const loginSlice = createSlice({
     userFavoriteItems(state, action) {
       state.favoriteItems = action.payload;
     },
+    changePasswordBtn(state, action) {
+      state.showChangePassword = action.payload;
+    },
   },
 });
 
-export const { userLogin, userLogout, userFavoriteItems } = loginSlice.actions;
+export const { userLogin, userLogout, userFavoriteItems, changePasswordBtn } =
+  loginSlice.actions;
 
 export default loginSlice.reducer;

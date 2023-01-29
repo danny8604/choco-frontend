@@ -1,0 +1,52 @@
+@use "../../../styles/" as *;
+
+.formWrapper {
+  padding: 8em 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 80%;
+  height: 80%;
+  h3 {
+    font-size: $fontSize--h3;
+    font-weight: $text-bold;
+    letter-spacing: 2px;
+    color: $color-black;
+  }
+  .formContainer {
+    min-width: 25%;
+    height: 100%;
+  }
+  .oAuthBtn {
+    border-top: 1px solid $color-lightGray-1;
+    width: 100%;
+    border-bottom: 1px solid $color-lightGray-1;
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: $media-tabletR) {
+  .formWrapper {
+    .formTitle {
+      h3 {
+        font-size: $fontSize--h5;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-mobilesG) {
+  .formWrapper {
+    .formTitle {
+      h3 {
+        font-size: $fontSize--h6;
+      }
+    }
+  }
+}

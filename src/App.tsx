@@ -1,4 +1,4 @@
-import { ReactNode, Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -17,14 +17,12 @@ import LivingRoomPage from "./pages/LivingRoomPage";
 import OthersPage from "./pages/OthersPage";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
-import { useAppDispatch, useAppSelector } from "./app/hooks/hooks";
+import { useAppSelector } from "./app/hooks/hooks";
 import OrderPage from "./pages/OrderPage";
 import UserPage from "./pages/UserPage";
 import UserChangePasswordPage from "./pages/UserChangePasswordPage";
 import UserOrderPage from "./pages/UserOrderPage";
 import UserFavoriteItemsPage from "./pages/UserFavoriteItems";
-import { userLogin, userLogout } from "./features/login/loginSlice";
-import { resetShoppingCart } from "./features/cart/cartItem/cartSlice";
 import useAuth from "./app/hooks/useAuth";
 
 type ProtectedRouteProps = {
@@ -37,6 +35,11 @@ function App() {
 
   const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     if (!login) return <Navigate to="/" />;
+
+    return children;
+  };
+  const ProtectedLoginRoute = ({ children }: ProtectedRouteProps) => {
+    if (login) return <Navigate to="/" />;
 
     return children;
   };
@@ -86,7 +89,11 @@ function App() {
         },
         {
           path: "login",
-          element: <LoginPage />,
+          element: (
+            <ProtectedLoginRoute>
+              <LoginPage />
+            </ProtectedLoginRoute>
+          ),
         },
         {
           path: "register",

@@ -5,7 +5,7 @@ export interface tokenAndProductId {
   productId: string;
 }
 
-export const baseURL = "https://eloquent-monstera-4c0676.netlify.app";
+export const baseURL = "https://choco-chair-backend.herokuapp.com/";
 
 export const api = axios.create({
   baseURL: baseURL,

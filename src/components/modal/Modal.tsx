@@ -12,10 +12,7 @@ const Modal = () => {
   const { backdropIsOpen } = useAppSelector((state) => state.backdrop);
 
   useEffect(() => {
-    // lock the page when use searchModal and cartModal.
     document.body.style.overflow = backdropIsOpen ? "hidden" : "auto";
-    // const scrollBarCompensation = window.innerWidth - document.body.offsetWidth;
-    // document.body.style.paddingRight = `17px`;
   }, [backdropIsOpen]);
 
   return (

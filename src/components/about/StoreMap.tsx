@@ -39,7 +39,7 @@ const StoreMap = React.memo(() => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API,
+    googleMapsApiKey: "AIzaSyB8ZlJF1NmBsicSMQNWQ7_sq7IPruZXU7c",
   });
 
   return isLoaded ? (

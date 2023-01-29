@@ -1,12 +1,11 @@
 import axios from "axios";
-import { ShoppingCartItem } from "../app/type";
 
 export interface tokenAndProductId {
   userToken: string;
   productId: string;
 }
 
-export const baseURL = "http://localhost:5000";
+export const baseURL = "https://eloquent-monstera-4c0676.netlify.app";
 
 export const api = axios.create({
   baseURL: baseURL,

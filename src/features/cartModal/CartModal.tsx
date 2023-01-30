@@ -32,7 +32,6 @@ const CartModal = () => {
             <h3>Your shopping cart is empty</h3>
           )}
         </div>
-
         <RemoveIconBtn onClick={closeCartModalHandler} />
       </div>
       <div className={styles.cartContainer}>

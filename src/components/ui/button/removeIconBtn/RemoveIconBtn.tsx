@@ -5,7 +5,7 @@ import styles from "./RemoveIconBtn.module.scss";
 
 type RemoveBtnProps = {
   onClick(): void;
-  removeIsLoading: boolean;
+  removeIsLoading?: boolean;
 };
 const RemoveBtn = ({ onClick, removeIsLoading }: RemoveBtnProps) => {
   return (

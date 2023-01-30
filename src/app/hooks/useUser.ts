@@ -82,7 +82,7 @@ const useUser = () => {
         setIsLoading(false);
         dispatch(
           openUtilModal({
-            message: getErrorMessage(err),
+            message: "Login failed.",
           })
         );
       });
@@ -106,7 +106,7 @@ const useUser = () => {
         setIsLoading(false);
         dispatch(
           openUtilModal({
-            message: getErrorMessage(err),
+            message: "Signup failed.",
             isSucceed: false,
             showbutton: false,
           })

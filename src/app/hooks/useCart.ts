@@ -44,6 +44,7 @@ const useCart = (productId?: string, productName?: string) => {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
+    setIsLoading(true);
 
     postCartRemoveItem({ productId, userToken })
       .then((data) => {
@@ -54,14 +55,16 @@ const useCart = (productId?: string, productName?: string) => {
             isSucceed: true,
           })
         );
+        setIsLoading(false);
       })
-      .catch((err) =>
+      .catch((err) => {
+        setIsLoading(false);
         dispatch(
           openUtilModal({
             message: getErrorMessage(err),
           })
-        )
-      );
+        );
+      });
   };
 
   const cartAddToCart = async (productId: string) => {

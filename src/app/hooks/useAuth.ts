@@ -39,11 +39,9 @@ const useAuth = () => {
         const response = await axios.get(`${baseURL}auth/login/success`, {
           withCredentials: true,
         });
-        console.log(response, "🦔🦔");
         const tokenExpirationDate = new Date(
           new Date().getTime() + 1000 * 60 * 30
         );
-        console.log(response, "🐧🐧🐧");
         const data = response.data;
 
         dispatch(

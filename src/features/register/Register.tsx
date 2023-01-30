@@ -6,7 +6,7 @@ import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginB
 import useUser from "../../app/hooks/useUser";
 
 const Register = () => {
-  const { authUserSignup } = useUser();
+  const { authUserSignup, isLoading } = useUser();
   const [values, setValues] = useState({
     signupEmail: "",
     signupPassword: "",
@@ -57,7 +57,7 @@ const Register = () => {
           onChange={changeHandler}
         />
       ))}
-      <FormLoginButton buttonText={"SIGN UP ➝"} />
+      <FormLoginButton buttonText={"SIGN UP ➝"} disabled={isLoading} />
       <FormLink link={"login"} content={"LOGIN HERE"} />
     </form>
   );

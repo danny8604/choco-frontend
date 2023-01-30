@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from "../../api/axios";
 import {
@@ -23,6 +24,7 @@ const useUser = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { login, userToken } = useAppSelector((state) => state.login);
+  const [isLoading, setIsLoading] = useState(false);
 
   const authUserLogout = () => {
     if (!login) return;
@@ -41,6 +43,7 @@ const useUser = () => {
   };
 
   const authUserLogin = async (email: string, password: string) => {
+    setIsLoading(true);
     const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 30);
 
     postUserLogin(email, password)
@@ -72,18 +75,21 @@ const useUser = () => {
           })
         );
 
+        setIsLoading(false);
         navigate("/shop");
       })
-      .catch((err) =>
+      .catch((err) => {
+        setIsLoading(false);
         dispatch(
           openUtilModal({
             message: getErrorMessage(err),
           })
-        )
-      );
+        );
+      });
   };
 
   const authUserSignup = async (email: string, password: string) => {
+    setIsLoading(true);
     postUserSignup(email, password)
       .then(() => {
         dispatch(
@@ -93,17 +99,19 @@ const useUser = () => {
             showbutton: false,
           })
         );
+        setIsLoading(false);
         navigate("/login");
       })
-      .catch((err) =>
+      .catch((err) => {
+        setIsLoading(false);
         dispatch(
           openUtilModal({
             message: getErrorMessage(err),
             isSucceed: false,
             showbutton: false,
           })
-        )
-      );
+        );
+      });
   };
 
   const authUserChangePassword = async (values: {
@@ -143,6 +151,7 @@ const useUser = () => {
     authUserLogout,
     authUserSignup,
     authUserChangePassword,
+    isLoading,
   };
 };
 

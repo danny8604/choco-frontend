@@ -9,7 +9,7 @@ import Button from "../../components/ui/button/Button";
 import axios from "axios";
 
 const Login = () => {
-  const { authUserLogin } = useUser();
+  const { authUserLogin, isLoading } = useUser();
   const [values, setValues] = useState({
     email: "test@test.com",
     password: "123123123",
@@ -60,7 +60,7 @@ const Login = () => {
           onChange={changeHandler}
         />
       ))}
-      <FormLoginButton buttonText={"LOGIN ➝"} />
+      <FormLoginButton buttonText={"LOGIN ➝"} disabled={isLoading} />
       <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
     </form>
   );

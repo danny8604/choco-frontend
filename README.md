@@ -58,3 +58,7 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 ## 商家位置 Store location 
 
 ![Recording 2023-01-31 at 02 29 53](https://user-images.githubusercontent.com/112278978/215564069-5e43f1cb-9d3b-4f66-be0a-f58dc3ed7be7.gif)
+
+## 變更密碼 Change password (only choco member)
+
+![Recording 2023-01-31 at 02 38 27](https://user-images.githubusercontent.com/112278978/215565698-5428b44e-f1c5-4c78-a812-35e877a403da.gif)

@@ -79,4 +79,7 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 ![Recording 2023-01-31 at 03 05 31](https://user-images.githubusercontent.com/112278978/215570975-87d26479-1f1d-412f-8b43-4335556e2423.gif)
 
+#### Pagination
+
+![Recording 2023-01-31 at 03 16 15](https://user-images.githubusercontent.com/112278978/215573066-cf7d50fc-4e2c-4ed6-881c-314c320972f1.gif)
 

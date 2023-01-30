@@ -2,9 +2,21 @@
 
 <a href="https://eloquent-monstera-4c0676.netlify.app">CHOCO</a>
 
-前端 : React , Typescript , Scss , Vite Vitest(Jest)
+前端 : 
 
-後端 : Node.js , Express , MongoDB(Mongoose)  
+React : js框架 狀態管理使用Redux 路由使用Routerv6
+
+Typescript : 現在很多專案已經使用TS來減少bug的產生 所以使用的TS來建置
+
+Scss : 使用Scss及 css module
+
+Vite : Vite較webpack設置上較方便且更快速
+
+Vitest(Jest) 
+
+後端 : Node.js , Express , MongoDB(Mongoose)
+
+後端主要功能有 註冊登入 訂單查詢 變更密碼
 
 api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 ( google )
  
@@ -21,7 +33,7 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 </table>
 
-## 註冊 singup 
+## 註冊 Singup 
 
 ![Recording 2023-01-31 at 02 41 52](https://user-images.githubusercontent.com/112278978/215566387-04cbba7e-ff3c-4b4a-9b93-6bc19aecb021.gif)
 
@@ -40,6 +52,10 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 ## 數量修改 modify quantity
 
 ![Recording 2023-01-31 at 01 59 12](https://user-images.githubusercontent.com/112278978/215556879-84f9a678-4128-4b22-a30e-9b0565b5c398.gif)
+
+## 刪除物品 Remove item
+
+![Recording 2023-01-31 at 03 20 03](https://user-images.githubusercontent.com/112278978/215574558-d6588091-f336-45dc-8a09-378412de3e1e.gif)
 
 ## 結帳 Stripe card checkout
 
@@ -70,3 +86,24 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 #### Infinite scroll
 
 ![Recording 2023-01-31 at 02 54 37 (1)](https://user-images.githubusercontent.com/112278978/215569037-2b555add-b474-4b09-b144-2da0adfe5c94.gif)
+
+#### Carousel
+
+![Recording 2023-01-31 at 03 01 18](https://user-images.githubusercontent.com/112278978/215570174-153c42c5-db6a-4282-9c98-73b1dfa45e85.gif)
+
+#### Mouse scroll
+
+![Recording 2023-01-31 at 03 05 31](https://user-images.githubusercontent.com/112278978/215570975-87d26479-1f1d-412f-8b43-4335556e2423.gif)
+
+#### Pagination
+
+![Recording 2023-01-31 at 03 16 15](https://user-images.githubusercontent.com/112278978/215573066-cf7d50fc-4e2c-4ed6-881c-314c320972f1.gif)
+
+
+#### Filter
+
+![Recording 2023-01-31 at 03 25 16](https://user-images.githubusercontent.com/112278978/215575611-e3f90c28-b07f-4ce3-b4e7-d5f86b6b828d.gif)
+
+#### Read More
+
+![Recording 2023-01-31 at 03 28 23 (1)](https://user-images.githubusercontent.com/112278978/215576392-3cd99e6c-36c4-49db-83c1-d6184ea0617f.gif)

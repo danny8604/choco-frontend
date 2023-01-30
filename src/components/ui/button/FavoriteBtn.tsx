@@ -10,17 +10,21 @@ type StarBtnProps = {
 };
 
 const FavoriteBtn = ({ productId }: StarBtnProps) => {
-  const { userFavoriteItemToggle } = useFavorite({ productId });
+  const { userFavoriteItemToggle, isLoading } = useFavorite({ productId });
   const { favoriteItems } = useAppSelector((state) => state.login);
   const existed = favoriteItems.find(
     (item) => item.productId._id === productId
   );
 
-  const favoriteHandler = () => userFavoriteItemToggle();
+  const favoriteHandler = () => {
+    console.log("🐄🐄🐄🐄🐄🐄");
+    userFavoriteItemToggle();
+  };
 
   return (
     <button
       className={`${styles.favoriteBtn} ${existed && styles.favoriteItem}`}
+      disabled={isLoading}
       onClick={() => favoriteHandler()}
     >
       <Star />

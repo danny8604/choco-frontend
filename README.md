@@ -15,3 +15,11 @@ Live demo: <a href="https://react-ecom-cfcb1.web.app/">CHOCO</a>
 </tr>
 
 </table>
+
+
+## 登入 Login
+
+
+![Recording 2023-01-31 at 00 28 31](https://user-images.githubusercontent.com/112278978/215542618-c2e821bb-ad31-4e4a-b2ce-929e25e51f65.gif)
+
+## 第三方登入 Passport and oAuth2.0 Google Login

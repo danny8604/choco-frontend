@@ -21,9 +21,11 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 </table>
 
+## 註冊 singup 
+
+![Recording 2023-01-31 at 02 41 52](https://user-images.githubusercontent.com/112278978/215566387-04cbba7e-ff3c-4b4a-9b93-6bc19aecb021.gif)
 
 ## 登入 Login
-
 
 ![Recording 2023-01-31 at 01 31 05](https://user-images.githubusercontent.com/112278978/215551515-2841ee99-935c-4eb7-86d9-2b2cd16e6a1f.gif)
 
@@ -58,3 +60,13 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 ## 商家位置 Store location 
 
 ![Recording 2023-01-31 at 02 29 53](https://user-images.githubusercontent.com/112278978/215564069-5e43f1cb-9d3b-4f66-be0a-f58dc3ed7be7.gif)
+
+## 變更密碼 Change password (only choco member)
+
+![Recording 2023-01-31 at 02 38 27](https://user-images.githubusercontent.com/112278978/215565698-5428b44e-f1c5-4c78-a812-35e877a403da.gif)
+
+## 其他功能 (Others features) 
+
+#### Infinite scroll
+
+![Recording 2023-01-31 at 02 54 37 (1)](https://user-images.githubusercontent.com/112278978/215569037-2b555add-b474-4b09-b144-2da0adfe5c94.gif)

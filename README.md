@@ -43,4 +43,7 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 ![Recording 2023-01-31 at 02 13 26](https://user-images.githubusercontent.com/112278978/215560778-748cba41-8d33-4fd8-88d7-c160bdaad7f7.gif)
 
+## 訂單查詢 Order search and user order list
+
+![Recording 2023-01-31 at 02 17 18](https://user-images.githubusercontent.com/112278978/215561595-af1687f7-5200-4e61-8f33-88db7db7d79f.gif)
 

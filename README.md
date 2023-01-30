@@ -74,3 +74,9 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 #### Carousel
 
 ![Recording 2023-01-31 at 03 01 18](https://user-images.githubusercontent.com/112278978/215570174-153c42c5-db6a-4282-9c98-73b1dfa45e85.gif)
+
+#### Mouse scroll
+
+![Recording 2023-01-31 at 03 05 31](https://user-images.githubusercontent.com/112278978/215570975-87d26479-1f1d-412f-8b43-4335556e2423.gif)
+
+

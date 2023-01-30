@@ -8,7 +8,6 @@ type RemoveBtnProps = {
   removeIsLoading: boolean;
 };
 const RemoveBtn = ({ onClick, removeIsLoading }: RemoveBtnProps) => {
-  console.log(removeIsLoading, "🐄🐄🐄");
   return (
     <button
       onClick={() => onClick()}

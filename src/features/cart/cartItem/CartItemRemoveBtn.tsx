@@ -11,13 +11,16 @@ const CartItemRemoveBtn = ({
   productId,
   productName,
 }: CartItemRemoveBtnProps) => {
-  const { cartRemoveItem, isLoading } = useCart(productId, productName);
+  const { cartRemoveItem, removeIsLoading } = useCart(productId, productName);
 
   const confirmRemoveItem = () => cartRemoveItem();
 
   return (
     <div className={styles.removeItemButton}>
-      <RemoveIconBtn onClick={confirmRemoveItem} isLoading={isLoading} />
+      <RemoveIconBtn
+        onClick={confirmRemoveItem}
+        removeIsLoading={removeIsLoading}
+      />
     </div>
   );
 };

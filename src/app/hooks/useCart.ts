@@ -26,6 +26,7 @@ const useCart = (productId?: string, productName?: string) => {
   const { shoppingCart } = useAppSelector((state) => state.cart);
   const [disabledBtn, setDisabledBtn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [removeIsLoading, setRemoveIsLoading] = useState(false);
 
   useEffect(() => {
     if (!productId) return;
@@ -40,11 +41,11 @@ const useCart = (productId?: string, productName?: string) => {
   }, [shoppingCart, productId]);
 
   const cartRemoveItem = async () => {
+    setRemoveIsLoading(true);
     if (!(login && productId && userToken)) {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
-    setIsLoading(true);
 
     postCartRemoveItem({ productId, userToken })
       .then((data) => {
@@ -55,10 +56,10 @@ const useCart = (productId?: string, productName?: string) => {
             isSucceed: true,
           })
         );
-        setIsLoading(false);
+        setRemoveIsLoading(false);
       })
       .catch((err) => {
-        setIsLoading(false);
+        setRemoveIsLoading(false);
         dispatch(
           openUtilModal({
             message: getErrorMessage(err),
@@ -160,6 +161,7 @@ const useCart = (productId?: string, productName?: string) => {
     cartInputQuantity,
     disabledBtn,
     isLoading,
+    removeIsLoading,
   };
 };
 

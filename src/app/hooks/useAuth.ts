@@ -7,10 +7,7 @@ import {
   getUserOrder,
 } from "../../api/usersApi";
 import getErrorMessage from "../../components/util/getErrorMessage";
-import {
-  resetShoppingCart,
-  userShoppingCart,
-} from "../../features/cart/cartItem/cartSlice";
+import { userShoppingCart } from "../../features/cart/cartItem/cartSlice";
 import {
   changePasswordBtn,
   userFavoriteItems,
@@ -20,7 +17,6 @@ import {
 import { openUtilModal } from "../../features/utilModal/utilModalSlice";
 import { Orders } from "../type";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import useUser from "./useUser";
 
 const useAuth = () => {
   const dispatch = useAppDispatch();

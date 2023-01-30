@@ -34,3 +34,8 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 ## 加到購物車 Add to cart
 
 ![Recording 2023-01-31 at 01 56 52 (1)](https://user-images.githubusercontent.com/112278978/215556309-9a6946a8-6b20-428d-93e5-7f314714d68c.gif)
+
+## 數量修改 modify quantity
+
+![Recording 2023-01-31 at 01 59 12](https://user-images.githubusercontent.com/112278978/215556879-84f9a678-4128-4b22-a30e-9b0565b5c398.gif)
+

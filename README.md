@@ -67,6 +67,6 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 ## 其他功能 (Others features) 
 
-#### infinite scroll
+#### Infinite scroll
 
 ![Recording 2023-01-31 at 02 54 37 (1)](https://user-images.githubusercontent.com/112278978/215569037-2b555add-b474-4b09-b144-2da0adfe5c94.gif)

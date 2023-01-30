@@ -1,8 +1,13 @@
 # CHOCO - A furniture design company
 
-Live demo: <a href="https://eloquent-monstera-4c0676.netlify.app">CHOCO</a>
+<a href="https://eloquent-monstera-4c0676.netlify.app">CHOCO</a>
 
+前端 : React Typescript Scss Vite Vitest(Jest)
 
+後端 : Node.js Express MongoDB(Mongoose)  
+
+api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 ( google )
+ 
 
 <table>
 <tr>

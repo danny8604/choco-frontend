@@ -35,6 +35,7 @@ const useAuth = () => {
   useEffect(() => {
     const fetchGoogleUser = async () => {
       try {
+        console.log("test fetchGoogleUser");
         const response = await axios.get(`${baseURL}auth/login/success`, {
           withCredentials: true,
         });

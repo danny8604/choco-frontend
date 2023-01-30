@@ -35,10 +35,10 @@ const useAuth = () => {
   useEffect(() => {
     const fetchGoogleUser = async () => {
       try {
-        console.log("test fetchGoogleUser");
         const response = await axios.get(`${baseURL}auth/login/success`, {
           withCredentials: true,
         });
+        if (!response.data) return;
         const tokenExpirationDate = new Date(
           new Date().getTime() + 1000 * 60 * 30
         );

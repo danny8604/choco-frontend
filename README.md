@@ -70,3 +70,7 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 #### Infinite scroll
 
 ![Recording 2023-01-31 at 02 54 37 (1)](https://user-images.githubusercontent.com/112278978/215569037-2b555add-b474-4b09-b144-2da0adfe5c94.gif)
+
+#### Carousel
+
+![Recording 2023-01-31 at 03 01 18](https://user-images.githubusercontent.com/112278978/215570174-153c42c5-db6a-4282-9c98-73b1dfa45e85.gif)

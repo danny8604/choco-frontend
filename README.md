@@ -55,3 +55,6 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 ![Recording 2023-01-31 at 02 26 05](https://user-images.githubusercontent.com/112278978/215563411-b14ccb29-e902-4025-920c-9f990a5d27ea.gif)
 
+## 商家位置 Store location 
+
+![Recording 2023-01-31 at 02 29 53](https://user-images.githubusercontent.com/112278978/215564069-5e43f1cb-9d3b-4f66-be0a-f58dc3ed7be7.gif)

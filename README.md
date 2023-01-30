@@ -2,9 +2,21 @@
 
 <a href="https://eloquent-monstera-4c0676.netlify.app">CHOCO</a>
 
-前端 : React , Typescript , Scss , Vite Vitest(Jest)
+前端 : 
 
-後端 : Node.js , Express , MongoDB(Mongoose)  
+React : js框架 狀態管理使用Redux 路由使用Routerv6
+
+Typescript : 現在很多專案已經使用TS來減少bug的產生 所以使用的TS來建置
+
+Scss : 使用Scss及 css module
+
+Vite : Vite較webpack設置上較方便且更快速
+
+Vitest(Jest) 
+
+後端 : Node.js , Express , MongoDB(Mongoose)
+
+後端主要功能有 註冊登入 訂單查詢 變更密碼
 
 api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 ( google )
  

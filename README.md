@@ -21,9 +21,11 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 </table>
 
+## 註冊 singup 
+
+![Recording 2023-01-31 at 02 41 52](https://user-images.githubusercontent.com/112278978/215566387-04cbba7e-ff3c-4b4a-9b93-6bc19aecb021.gif)
 
 ## 登入 Login
-
 
 ![Recording 2023-01-31 at 01 31 05](https://user-images.githubusercontent.com/112278978/215551515-2841ee99-935c-4eb7-86d9-2b2cd16e6a1f.gif)
 

@@ -64,3 +64,9 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 ## 變更密碼 Change password (only choco member)
 
 ![Recording 2023-01-31 at 02 38 27](https://user-images.githubusercontent.com/112278978/215565698-5428b44e-f1c5-4c78-a812-35e877a403da.gif)
+
+## 其他功能 (Others features) 
+
+#### infinite scroll
+
+![Recording 2023-01-31 at 02 54 37 (1)](https://user-images.githubusercontent.com/112278978/215569037-2b555add-b474-4b09-b144-2da0adfe5c94.gif)

@@ -2,9 +2,9 @@
 
 <a href="https://eloquent-monstera-4c0676.netlify.app">CHOCO</a>
 
-前端 : React Typescript Scss Vite Vitest(Jest)
+前端 : React , Typescript , Scss , Vite Vitest(Jest)
 
-後端 : Node.js Express MongoDB(Mongoose)  
+後端 : Node.js , Express , MongoDB(Mongoose)  
 
 api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 ( google )
  

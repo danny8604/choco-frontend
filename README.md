@@ -39,3 +39,8 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 ![Recording 2023-01-31 at 01 59 12](https://user-images.githubusercontent.com/112278978/215556879-84f9a678-4128-4b22-a30e-9b0565b5c398.gif)
 
+## 結帳 Stripe card checkout
+
+![Recording 2023-01-31 at 02 13 26](https://user-images.githubusercontent.com/112278978/215560778-748cba41-8d33-4fd8-88d7-c160bdaad7f7.gif)
+
+

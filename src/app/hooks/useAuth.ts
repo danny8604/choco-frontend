@@ -45,6 +45,12 @@ const useAuth = () => {
         const data = response.data;
 
         dispatch(
+          openUtilModal({
+            message: "Logged in success.",
+            isSucceed: true,
+          })
+        );
+        dispatch(
           userLogin({
             userEmail: data.user.email,
             userId: data.user.userId,

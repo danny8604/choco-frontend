@@ -1,6 +1,6 @@
 # CHOCO - A furniture design company
 
-Live demo: <a href="https://react-ecom-cfcb1.web.app/">CHOCO</a>
+Live demo: <a href="https://eloquent-monstera-4c0676.netlify.app">CHOCO</a>
 
 
 
@@ -20,6 +20,8 @@ Live demo: <a href="https://react-ecom-cfcb1.web.app/">CHOCO</a>
 ## 登入 Login
 
 
-![Recording 2023-01-31 at 00 28 31](https://user-images.githubusercontent.com/112278978/215542618-c2e821bb-ad31-4e4a-b2ce-929e25e51f65.gif)
+![Recording 2023-01-31 at 01 31 05](https://user-images.githubusercontent.com/112278978/215551515-2841ee99-935c-4eb7-86d9-2b2cd16e6a1f.gif)
 
 ## 第三方登入 Passport and oAuth2.0 Google Login
+
+![Recording 2023-01-31 at 01 34 23](https://user-images.githubusercontent.com/112278978/215551720-a266b412-00fa-454b-84c1-2dc5c3e43c27.gif)

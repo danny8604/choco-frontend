@@ -7,13 +7,14 @@ type ProductAddToCartBtnProps = {
 };
 
 const ProductAddToCartBtn = ({ props }: ProductAddToCartBtnProps) => {
-  const { cartAddToCart, disabledBtn } = useCart(props._id);
+  const { cartAddToCart, disabledBtn, isLoading } = useCart(props._id);
 
   const addToCartHandler = () => cartAddToCart(props._id);
+  const activeBtn = disabledBtn || isLoading;
 
   return (
-    <div className={styles.buttonContainer}>
-      <button disabled={disabledBtn} onClick={() => addToCartHandler()}>
+    <div className={`${styles.buttonContainer}`}>
+      <button disabled={activeBtn} onClick={() => addToCartHandler()}>
         {disabledBtn ? "OUT OF STOCK" : "ADD TO CART"}
       </button>
     </div>

@@ -11,7 +11,6 @@ import getErrorMessage from "../../components/util/getErrorMessage";
 import { openBackdrop } from "../../features/backdrop/backdropSlice";
 import {
   checkoutCart,
-  resetShoppingCart,
   userShoppingCart,
 } from "../../features/cart/cartItem/cartSlice";
 import { openCartModal } from "../../features/cartModal/cartModalSlice";
@@ -26,6 +25,7 @@ const useCart = (productId?: string, productName?: string) => {
   const navigate = useNavigate();
   const { shoppingCart } = useAppSelector((state) => state.cart);
   const [disabledBtn, setDisabledBtn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!productId) return;
@@ -69,16 +69,19 @@ const useCart = (productId?: string, productName?: string) => {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
+    setIsLoading(true);
 
     postAddToCart({ userToken, productId })
       .then((data) => {
         dispatch(userShoppingCart(data));
         dispatch(openBackdrop());
         dispatch(openCartModal());
+        setIsLoading(false);
       })
-      .catch((err) =>
-        dispatch(openUtilModal({ message: getErrorMessage(err) }))
-      );
+      .catch((err) => {
+        setIsLoading(false);
+        dispatch(openUtilModal({ message: getErrorMessage(err) }));
+      });
   };
 
   const cartCheckout = async ({
@@ -153,6 +156,7 @@ const useCart = (productId?: string, productName?: string) => {
     cartSelectQuantity,
     cartInputQuantity,
     disabledBtn,
+    isLoading,
   };
 };
 

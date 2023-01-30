@@ -1,6 +1,6 @@
+import useCart from "../../../../app/hooks/useCart";
 import { ItemQuantity } from "../../../../app/type";
 import styles from "./CartItemSelect.module.scss";
-import useCart from "../../../../app/hooks/useCart";
 
 const CartItemSelect = ({ _id, quantity }: ItemQuantity) => {
   const { cartSelectQuantity } = useCart();

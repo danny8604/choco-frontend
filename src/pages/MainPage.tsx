@@ -5,8 +5,8 @@ import ScrollSection from "../components/mainSection/explore/exploreProducts/Exp
 import FindStoreSection from "../components/mainSection/FindStoreSection/FindStoreSection";
 import CardSection from "../components/mainSection/Card/CardSection";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
-import TopPage from "../components/ui/topPage/TopPage";
 import Button from "../components/ui/button/Button";
+import TopPage from "../components/ui/topPage/TopPage";
 
 const MainPage = () => {
   const navigate = useNavigate();

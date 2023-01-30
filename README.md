@@ -27,6 +27,6 @@ api : Stripe ( Card checkuot ) , Maps JavaScript API ( google map ) , OAuth 2.0 
 
 ![Recording 2023-01-31 at 01 31 05](https://user-images.githubusercontent.com/112278978/215551515-2841ee99-935c-4eb7-86d9-2b2cd16e6a1f.gif)
 
-## 第三方登入 Passport and oAuth2.0 Google Login
+## 第三方登入 Passport with oAuth2.0 Google Login
 
 ![Recording 2023-01-31 at 01 34 23](https://user-images.githubusercontent.com/112278978/215551720-a266b412-00fa-454b-84c1-2dc5c3e43c27.gif)

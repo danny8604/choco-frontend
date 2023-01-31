@@ -16,24 +16,3 @@
     background-color: $bgColor;
   }
 }
-
-@mixin underLineButton {
-  color: $color-black;
-  border: none;
-  border-bottom: solid 1px $color-black;
-  background-color: $color-white;
-  transition: all 0.3s;
-  cursor: pointer;
-  &:hover {
-    color: $color-warmGray;
-    border-bottom: solid 1px $color-warmGray;
-  }
-}
-
-@mixin removeIconButton {
-  width: 30px;
-  height: 30px;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-}

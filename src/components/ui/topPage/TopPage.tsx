@@ -21,7 +21,7 @@ const TopPage = ({ title, category, footer, showVideo }: TopPageProps) => {
           <source src={productVideo} type="video/mp4" />
         </video>
       )}
-      <div className={styles.leadText}>
+      <div className={`${styles.leadText} flex-alignCenter-justifyCenter`}>
         <h1>{title}</h1>
         <p>FOREVER RELEVANT IN TIME</p>
         {footer}

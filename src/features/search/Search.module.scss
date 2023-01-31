@@ -1,13 +1,16 @@
 @use "../../styles/" as *;
 
 .searchNav {
-  @include flex__justify-between__align-center;
   padding-bottom: 4em;
   h3 {
     @include modalNavH3;
   }
   button {
-    @include removeIconButton;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
   }
 }
 

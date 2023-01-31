@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./OrderSearch.module.scss";
 import searchSvgIcon from "../../assets/svg/search-outline.svg";
 
@@ -9,25 +9,28 @@ const OrderSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { loading, searchResult, message, fetchSearchResult } = useSearch();
 
-  const searchHandler = () => fetchSearchResult(inputRef.current?.value);
+  const searchHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+    fetchSearchResult(inputRef.current?.value);
+  };
 
   return (
     <section className={styles.orderContainer}>
-      <div className={styles.searchContainer}>
+      <form className={styles.searchContainer} onSubmit={searchHandler}>
         <input
           ref={inputRef}
           type="text"
           id="text"
           placeholder="ORDER NUMBER"
         />
-        <button onClick={() => searchHandler()} disabled={loading}>
+        <button type="submit" disabled={loading}>
           <img
             src={searchSvgIcon}
             className={styles.Icon}
             alt="searchSvgIcon"
           />
         </button>
-      </div>
+      </form>
       <div>
         {!searchResult && (
           <div className={styles.messageContaiter}>

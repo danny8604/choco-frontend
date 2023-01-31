@@ -1,37 +1,32 @@
 @use "../../styles/" as *;
 
-.contentContainer {
-  @include modalAnimation;
-  .cartNav {
-    @include flex__justify-between__align-center;
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 5em;
+.cartNav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5em;
+  background-color: white;
+  h3 {
+    @include modalNavH3;
+  }
+  button {
+    width: 30px;
+    height: 30px;
+    border: none;
     background-color: white;
-    h3 {
-      @include modalNavH3;
-    }
-    button {
-      @include removeIconButton;
-    }
-  }
-  .cartContainer {
-    padding: 0 5em;
-  }
-
-  .priceContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 3em 5em 6em 5em;
+    cursor: pointer;
   }
 }
+.cartContainer {
+  padding: 0 5em;
+}
 
-.active {
-  opacity: 1;
-  transform: translateX(100%);
+.priceContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 3em 5em 6em 5em;
 }
 
 @media screen and (max-width: $media-laptopM) {
@@ -46,55 +41,42 @@
 }
 
 @media screen and (max-width: $media-tabletM) {
-  .contentContainer {
-    width: 100%;
-    transform: translateX(100%);
-    pointer-events: auto;
-    .cartNav {
-      padding: 2em 4em;
-      h3 {
-        font-size: $fontSize--h5;
-      }
-    }
-    .cartContainer {
-      padding: 0 2em;
-    }
-
-    .priceContainer {
-      padding: 3em 2em 6em 2em;
+  .cartNav {
+    padding: 2em 4em;
+    h3 {
+      font-size: $fontSize--h5;
     }
   }
-  .active {
-    opacity: 1;
-    transform: translateX(0%);
+  .cartContainer {
+    padding: 0 2em;
+  }
+
+  .priceContainer {
+    padding: 3em 2em 6em 2em;
   }
 }
 
 @media screen and (max-width: $media-tabletS) {
-  .contentContainer {
-    .cartNav {
-      padding: 2em;
-      h3 {
-        font-size: $fontSize--p--Small;
-      }
+  .cartNav {
+    padding: 2em;
+    h3 {
+      font-size: $fontSize--p--Small;
     }
-    .priceContainer {
-      gap: 1em;
-      grid-template-columns: 1fr;
-    }
+  }
+  .priceContainer {
+    gap: 1em;
+    grid-template-columns: 1fr;
   }
 }
 @media screen and (max-width: $media-mobilesL) {
-  .contentContainer {
-    .cartNav {
-      padding: 2em;
-      h3 {
-        font-size: $fontSize--p--Small-1;
-      }
+  .cartNav {
+    padding: 2em;
+    h3 {
+      font-size: $fontSize--p--Small-1;
     }
-    .priceContainer {
-      padding: 2em;
-      padding-bottom: 7em;
-    }
+  }
+  .priceContainer {
+    padding: 2em;
+    padding-bottom: 7em;
   }
 }

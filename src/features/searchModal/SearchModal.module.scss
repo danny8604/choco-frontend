@@ -1,19 +1,7 @@
 @use "../../styles/" as *;
 
-.contentContainer {
-  @include modalAnimation;
+.searchContainer {
   padding: 5em;
-  .searchInput {
-    input {
-      width: 100%;
-      font-size: $fontSize--h4;
-      border: none;
-      border-bottom: solid 1px $color-black;
-      &:focus {
-        outline: none;
-      }
-    }
-  }
   .searchFigure {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -21,34 +9,12 @@
   }
 }
 
-.active {
-  overflow-y: auto;
-  opacity: 1;
-  transform: translateX(100%);
-}
-
-@media screen and (max-width: $media-laptopM) {
-  .contentContainer {
-    width: 100%;
-    transform: translateX(100%);
-  }
-  .active {
-    opacity: 1;
-    transform: translateX(0%);
-  }
-}
-
 @media screen and (max-width: $media-tabletR) {
-  .contentContainer {
-    padding: 3em;
+  .searchContainer {
+    padding: 2em;
     .searchFigure {
       grid-template-columns: 1fr;
       gap: 2em;
     }
-  }
-}
-@media screen and (max-width: $media-mobilesL) {
-  .contentContainer {
-    padding: 1.5em;
   }
 }

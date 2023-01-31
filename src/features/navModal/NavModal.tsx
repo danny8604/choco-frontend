@@ -19,7 +19,7 @@ const NavModal = () => {
         navModalIsOpen && styles.active
       }`}
     >
-      <ul>
+      <ul className="flex-alignCenter-justifyCenter">
         <li>
           <Link onClick={() => navModalHandler()} to={"/"}>
             HOME

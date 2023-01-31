@@ -12,7 +12,9 @@ const MiddleSection = () => {
   return (
     <>
       <section className={styles.middleSection}>
-        <div className={styles.middleSectionText}>
+        <div
+          className={`${styles.middleSectionText} flex-alignCenter-justifyCenter-column`}
+        >
           <h2>ANYTHING BUT ORDINARY</h2>
           <p>FOREVER RELEVANT IN TIME</p>
           <Button clickAciton={shopHandler} btnMessage={"SHOP NOW ➝"} small />
@@ -35,7 +37,9 @@ const MiddleSection = () => {
             alt="a wooden chair"
           />
         </div>
-        <div className={styles.middleSectionText}>
+        <div
+          className={`${styles.middleSectionText} flex-alignCenter-justifyCenter-column`}
+        >
           <h2>ANYTHING BUT ORDINARY</h2>
           <p>FOREVER RELEVANT IN TIME</p>
           <Button clickAciton={shopHandler} btnMessage={"SHOP NOW ➝"} small />

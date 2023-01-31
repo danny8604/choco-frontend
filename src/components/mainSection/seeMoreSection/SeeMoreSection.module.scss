@@ -62,7 +62,16 @@
 }
 
 .sofaButton {
-  @include underLineButton;
+  color: $color-black;
+  border: none;
+  border-bottom: solid 1px $color-black;
+  background-color: $color-white;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    color: $color-warmGray;
+    border-bottom: solid 1px $color-warmGray;
+  }
 }
 
 @media screen and (max-width: $media-tablet) {

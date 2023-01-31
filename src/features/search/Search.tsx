@@ -44,7 +44,7 @@ const Search = () => {
 
   return (
     <>
-      <div className={styles.searchNav}>
+      <div className={`${styles.searchNav}  flex-alignCenter-justifyBetween`}>
         <h3>Search CHOCO Store</h3>
         <RemoveIconBtn onClick={closeSearchModalHandler} />
       </div>

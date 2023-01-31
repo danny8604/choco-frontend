@@ -36,13 +36,13 @@ const Navbar = () => {
             onClick={() => navModalHandler()}
           ></button>
           <div
-            className={`${styles.logoPageWrapper} felx-alignCenter-justifyCenter`}
+            className={`${styles.logoPageWrapper} flex-alignCenter-justifyCenter`}
           >
             <div className={styles.logoContainer}>
               <NavbarLogoLink />
             </div>
 
-            <ul className={`${styles.pageLink} felx-alignCenter-justifyCenter`}>
+            <ul className={`${styles.pageLink} flex-alignCenter-justifyCenter`}>
               <li>
                 <Link to="/">HOME</Link>
               </li>
@@ -72,7 +72,7 @@ const Navbar = () => {
               {login && <NavbarUser />}
             </ul>
           </div>
-          <ul className={`${styles.shopIcon} felx-alignCenter-justifyCenter`}>
+          <ul className={`${styles.shopIcon} flex-alignCenter-justifyCenter`}>
             <NavbarSearch />
             <NavbarCart />
           </ul>

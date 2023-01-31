@@ -24,7 +24,7 @@ const ShopTop = () => {
       </Link>
       <Link
         to="/shop/Others"
-        className={`${styles.others} ${styles.container}`}
+        className={`${styles.others} ${styles.container} flex-alignCenter-justifyCenter`}
       >
         <h4>OTHERS</h4>
       </Link>

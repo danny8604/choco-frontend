@@ -7,3 +7,14 @@
 .text {
   padding: 6em;
 }
+
+@media screen and (max-width: $media-tablet) {
+  .text {
+    padding: 3em;
+  }
+}
+@media screen and (max-width: $media-tabletS) {
+  .text {
+    padding: 1.5em;
+  }
+}

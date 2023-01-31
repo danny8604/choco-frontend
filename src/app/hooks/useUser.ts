@@ -32,6 +32,7 @@ const useUser = () => {
     dispatch(userLogout());
     dispatch(userFavoriteItems([]));
     dispatch(userShoppingCart([]));
+    localStorage.removeItem("userData");
     dispatch(
       openUtilModal({
         message: "You have been logged out.",
@@ -39,7 +40,6 @@ const useUser = () => {
       })
     );
     window.open(`${baseURL}auth/logout`, "_self");
-    localStorage.removeItem("userData");
   };
 
   const authUserLogin = async (email: string, password: string) => {
@@ -123,6 +123,7 @@ const useUser = () => {
       dispatch(openUtilModal({ message: "Please log in first." }));
       return navigate("/login");
     }
+    setIsLoading(true);
 
     postUserChangePassword({ ...values, userToken })
       .then(() => {
@@ -134,16 +135,18 @@ const useUser = () => {
             isSucceed: true,
           })
         );
+        setIsLoading(false);
         navigate("/login");
         localStorage.removeItem("userData");
       })
-      .catch((err) =>
+      .catch((err) => {
+        setIsLoading(false);
         dispatch(
           openUtilModal({
-            message: getErrorMessage(err),
+            message: "Origin password is wrong.",
           })
-        )
-      );
+        );
+      });
   };
 
   return {

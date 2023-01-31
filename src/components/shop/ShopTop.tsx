@@ -6,19 +6,19 @@ const ShopTop = () => {
     <section className={styles.topSection}>
       <Link
         to="/shop/Living-Room"
-        className={`${styles.LivingRoom} ${styles.container}`}
+        className={`${styles.LivingRoom} ${styles.container} flex-alignCenter-justifyCenter`}
       >
         <h4>LIVING ROOM</h4>
       </Link>
       <Link
         to="/shop/Home-Room"
-        className={`${styles.homeOffice} ${styles.container}`}
+        className={`${styles.homeOffice} ${styles.container} flex-alignCenter-justifyCenter`}
       >
         <h4>HOME ROOM</h4>
       </Link>
       <Link
         to="/shop/Dining-Room"
-        className={`${styles.diningRoom} ${styles.container}`}
+        className={`${styles.diningRoom} ${styles.container} flex-alignCenter-justifyCenter`}
       >
         <h4>DINING ROOM</h4>
       </Link>

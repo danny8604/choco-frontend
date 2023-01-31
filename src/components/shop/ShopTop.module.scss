@@ -8,11 +8,11 @@
   @include navbar__Height;
 
   .container {
-    @include centerTextBackground;
     background-color: $color-darkBlack;
     background-blend-mode: multiply;
     transition: all 0.4s;
     text-decoration: none;
+    background-size: cover;
 
     h4 {
       font-size: $fontSize--h4;

@@ -61,9 +61,7 @@ const useAuth = () => {
             tokenExpirationDate: tokenExpirationDate.toISOString(),
           })
         );
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     fetchGoogleUser();
   }, []);
@@ -73,7 +71,6 @@ const useAuth = () => {
 
     const userData = JSON.parse(localStorage.getItem("userData") || "");
 
-    console.log(userData, "userData");
     if (userData && new Date(userData.tokenExpirationDate) > new Date()) {
       dispatch(
         userLogin({

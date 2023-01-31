@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import styles from "./CardFigure.module.scss";
+import styles from "./Figure.module.scss";
 
-type CardFigureProps = {
+type FigureProps = {
   src: string;
   title: string;
   path: string;
 };
 
-const CardFigure = ({ src, title, path }: CardFigureProps) => {
+const Figure = ({ src, title, path }: FigureProps) => {
   return (
-    <figure className={styles.cardFigure}>
+    <figure className={styles.figure}>
       <Link to={path}>
-        <div className={styles.cardContainer}>
+        <div className={styles.content}>
           <div className={styles.imgContainer}>
             <img src={src} alt="chair" />
           </div>
@@ -33,4 +33,4 @@ const CardFigure = ({ src, title, path }: CardFigureProps) => {
   );
 };
 
-export default CardFigure;
+export default Figure;

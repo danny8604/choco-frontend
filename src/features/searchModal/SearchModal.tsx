@@ -2,8 +2,7 @@ import styles from "./SearchModal.module.scss";
 import { useAppSelector } from "../../app/hooks/hooks";
 import ProductFigure from "../../components/product/productFigure/ProductFigure";
 import Search from "../search/Search";
-import SearchNoInputMes from "../search/SearchNoInputMes";
-import SearchNoResultMes from "../search/SearchNoResultMes";
+import SearchMessage from "../search/SearchMessage";
 
 const SearchModal = () => {
   const search = useAppSelector((state) => state.search);
@@ -32,8 +31,7 @@ const SearchModal = () => {
               _id={map._id}
             />
           ))}
-        <SearchNoInputMes />
-        <SearchNoResultMes />
+        <SearchMessage />
       </div>
     </section>
   );

@@ -24,8 +24,6 @@ const useChairsData = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log("Test getAllProducts re-render times");
-
     getAllProducts()
       .then((data) => setAllChairsData(data))
       .catch((err) =>

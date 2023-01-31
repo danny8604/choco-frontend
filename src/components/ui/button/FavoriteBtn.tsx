@@ -17,7 +17,6 @@ const FavoriteBtn = ({ productId }: StarBtnProps) => {
   );
 
   const favoriteHandler = () => {
-    console.log("🐄🐄🐄🐄🐄🐄");
     userFavoriteItemToggle();
   };
 

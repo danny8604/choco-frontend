@@ -47,7 +47,9 @@ const FooterSection = () => {
           </li>
         </ul>
       </section>
-      <section className={styles.footerNav}>
+      <section
+        className={`${styles.footerNav} flex-alignCenter-justifyBetween`}
+      >
         <div>
           <a href="https://github.com/u0454/react-ecom">
             <img src={github} alt="github" />

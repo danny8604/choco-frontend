@@ -25,7 +25,9 @@ const DesignerFigure = ({
   };
 
   return (
-    <figure className={styles.designerFigure}>
+    <figure
+      className={`${styles.designerFigure} flex-alignCenter-justifyCenter-column`}
+    >
       <button
         className={`${styles[btnStyles]} ${styles.btnPop}`}
         onClick={() => designerHandler()}

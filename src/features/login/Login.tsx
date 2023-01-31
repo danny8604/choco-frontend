@@ -3,10 +3,7 @@ import FormLink from "../../components/ui/form/formLink/FormLink";
 import styles from "./Login.module.scss";
 import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginButton";
 import FormInput from "../../components/ui/form/formInput/FormInput";
-import useAuth from "../../app/hooks/useAuth";
 import useUser from "../../app/hooks/useUser";
-import Button from "../../components/ui/button/Button";
-import axios from "axios";
 
 const Login = () => {
   const { authUserLogin, isLoading } = useUser();

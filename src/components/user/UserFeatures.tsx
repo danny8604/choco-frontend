@@ -6,7 +6,6 @@ import styles from "./UserFeatures.module.scss";
 const UserFeatures = () => {
   const { showChangePassword } = useAppSelector((state) => state.login);
 
-  console.log(showChangePassword, "showChangePassword");
   return (
     <div className={styles.featureContainer}>
       {showChangePassword && (

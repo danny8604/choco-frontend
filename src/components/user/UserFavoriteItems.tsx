@@ -11,12 +11,9 @@ const UserFavoriteItems = () => {
   const lastPostRef = useCallback(
     (product: HTMLElement) => {
       if (isloading) return <Loading />;
-      // console.log(product, "🦔🦔🦔🦔🦔");
       if (intObserver.current) intObserver.current.disconnect();
       intObserver.current = new IntersectionObserver((posts) => {
         if (posts[0].isIntersecting && hasNextPage) {
-          console.log(posts[0].isIntersecting, "posts[0].isIntersecting");
-          console.log("We are near the last post!");
           setPageNumber((prev) => prev + 1);
         }
       });

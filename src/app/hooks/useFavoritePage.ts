@@ -23,8 +23,7 @@ const useFavoritePage = (pageNumber: number) => {
       .then((data) => {
         setResults((prev) => [...prev, ...data]);
         setHasNextPage(Boolean(data.length));
-        // console.log(Boolean(data.length), "HasNextPage");
-        // console.log(data, "data");
+
         setIsloading(false);
       })
       .catch((err) => {

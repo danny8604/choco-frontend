@@ -1,5 +1,5 @@
 import { ScrollRestoration, useNavigate } from "react-router-dom";
-import StoreMap from "../components/about/StoreMap";
+import StoreMap from "../components/storeMap/StoreMap";
 import IntroSection from "../components/mainSection/IntroSection/IntroSection";
 import Button from "../components/ui/button/Button";
 import TopPage from "../components/ui/topPage/TopPage";

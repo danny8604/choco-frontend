@@ -8,8 +8,6 @@ const DiningRoomPage = () => {
     category: "diningRoom",
   });
 
-  console.log(categoryChairsData, "🦔🦔🦔");
-
   return (
     <main>
       {!categoryChairsData && <Loading />}

@@ -1,6 +1,6 @@
 @use "../../../styles/" as *;
 
-.cardFigure {
+.figure {
   box-shadow: 5px 5px 15px rgba($color-warmGray, 0.4);
   text-align: center;
 
@@ -9,7 +9,7 @@
   }
 
   &:hover {
-    .cardContainer {
+    .content {
       .imgContainer {
         img {
           transform: scale(1.1);
@@ -25,7 +25,7 @@
     }
   }
 
-  .cardContainer {
+  .content {
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -71,8 +71,8 @@
 }
 
 @media screen and (max-width: $media-laptopM) {
-  .cardFigure {
-    .cardContainer {
+  .figure {
+    .content {
       .imgContainer {
         height: 85vh;
       }
@@ -80,8 +80,8 @@
   }
 }
 @media screen and (max-width: $media-tablet) {
-  .cardFigure {
-    .cardContainer {
+  .figure {
+    .content {
       .imgContainer {
         height: 55vh;
       }
@@ -96,8 +96,8 @@
   }
 }
 @media screen and (max-width: $media-tabletS) {
-  .cardFigure {
-    .cardContainer {
+  .figure {
+    .content {
       .imgContainer {
         height: 35vh;
       }
@@ -105,8 +105,8 @@
   }
 }
 @media screen and (max-width: $media-mobilesL) {
-  .cardFigure {
-    .cardContainer {
+  .figure {
+    .content {
       .imgContainer {
         height: 35vh;
       }

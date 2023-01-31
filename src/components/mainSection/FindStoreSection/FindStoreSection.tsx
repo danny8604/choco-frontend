@@ -18,7 +18,7 @@ const FindStore = () => {
           </p>
         </div>
         <div>
-          <Link to="/shop">FIND STORE ➝</Link>
+          <Link to="/about">FIND STORE ➝</Link>
         </div>
       </div>
     </section>

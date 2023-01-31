@@ -1,6 +1,6 @@
 @use "../../../styles/" as *;
 
-.cardSection {
+.figureContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4em;
@@ -10,24 +10,24 @@
 }
 
 @media screen and (max-width: $media-laptopL) {
-  .cardSection {
+  .figureContainer {
     max-width: 90%;
   }
 }
 @media screen and (max-width: $media-laptopM) {
-  .cardSection {
+  .figureContainer {
     grid-template-columns: 1fr;
     margin: 25em auto;
   }
 }
 @media screen and (max-width: $media-tablet) {
-  .cardSection {
+  .figureContainer {
     grid-template-columns: 1fr;
     margin: 15em auto;
   }
 }
 @media screen and (max-width: $media-tabletS) {
-  .cardSection {
+  .figureContainer {
     grid-template-columns: 1fr;
     margin: 10em auto;
   }

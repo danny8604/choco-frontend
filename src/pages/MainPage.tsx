@@ -3,7 +3,7 @@ import IntroSection from "../components/mainSection/IntroSection/IntroSection";
 import AddToCartSection from "../components/mainSection/seeMoreSection/SeeMoreSection";
 import ScrollSection from "../components/mainSection/explore/exploreProducts/ExploreProducts";
 import FindStoreSection from "../components/mainSection/FindStoreSection/FindStoreSection";
-import CardSection from "../components/mainSection/Card/CardSection";
+import FigureContainer from "../components/mainSection/figureContainer/FigureContainer";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
 import Button from "../components/ui/button/Button";
 import TopPage from "../components/ui/topPage/TopPage";
@@ -39,7 +39,7 @@ const MainPage = () => {
         <AddToCartSection />
         <ScrollSection />
         <FindStoreSection />
-        <CardSection />
+        <FigureContainer />
       </article>
     </main>
   );

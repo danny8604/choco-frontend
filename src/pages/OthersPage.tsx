@@ -8,7 +8,6 @@ const OthersPage = () => {
   const { categoryChairsData } = useChairsData({
     category: "others",
   });
-  console.log(categoryChairsData, "🦔🦔");
   return (
     <main>
       {!categoryChairsData && <Loading />}

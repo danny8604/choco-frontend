@@ -4,7 +4,7 @@ import FormInput from "../ui/form/formInput/FormInput";
 import styles from "./UserChangePassword.module.scss";
 
 const UserChangePassword = () => {
-  const { authUserChangePassword } = useUser();
+  const { authUserChangePassword, isLoading } = useUser();
   const [values, setValues] = useState({
     originPassword: "",
     newPassword: "",
@@ -59,7 +59,10 @@ const UserChangePassword = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
 
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
+    <form
+      className={`${styles.form} ${isLoading && styles.isLoading}`}
+      onSubmit={submitHandler}
+    >
       {inputs.map((input) => (
         <FormInput
           key={input.id}
@@ -68,7 +71,7 @@ const UserChangePassword = () => {
           props={{ ...input.input }}
         />
       ))}
-      <button>SUBMIT</button>
+      <button disabled={isLoading}>SUBMIT</button>
     </form>
   );
 };

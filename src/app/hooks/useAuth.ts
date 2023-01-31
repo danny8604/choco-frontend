@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseURL } from "../../api/axios";
+import { getPassportUser } from "../../api/passportApi";
 import {
   getFavoriteItems,
   getUserCart,
@@ -31,14 +32,14 @@ const useAuth = () => {
   useEffect(() => {
     const fetchGoogleUser = async () => {
       try {
-        const response = await axios.get(`${baseURL}auth/login/success`, {
-          withCredentials: true,
-        });
-        if (!response.data) return;
+        // const response = await axios.get(`${baseURL}auth/login/success`, {
+        //   withCredentials: true,
+        // });
+        const data = await getPassportUser();
+        if (!data) return;
         const tokenExpirationDate = new Date(
           new Date().getTime() + 1000 * 60 * 30
         );
-        const data = response.data;
 
         dispatch(
           userLogin({

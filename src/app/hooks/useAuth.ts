@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseURL } from "../../api/axios";
-import { getPassportUser } from "../../api/passportApi";
 import {
   getFavoriteItems,
   getUserCart,

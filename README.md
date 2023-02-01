@@ -1,6 +1,6 @@
 # CHOCO - A furniture design company
 
-<a href="https://eloquent-monstera-4c0676.netlify.app">CHOCO</a>
+<a href="https://frabjous-jelly-ed917e.netlify.app/">CHOCO</a>
 
 前端 : 
 

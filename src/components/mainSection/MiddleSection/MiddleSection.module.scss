@@ -38,10 +38,6 @@
   }
 }
 
-.shopNowbutton {
-  @include button($color-warmGray, $color-white, $color-white);
-}
-
 @media screen and (max-width: $media-laptopL) {
   .middleSection {
     grid-template-columns: 1fr;
@@ -58,10 +54,6 @@
       p {
         color: $color-white;
       }
-    }
-
-    .shopNowbutton {
-      @include button($color-white, $color-warmGray, $color-warmGray);
     }
   }
 }
@@ -83,10 +75,6 @@
       p {
         font-size: $fontSize--p--Small-1;
       }
-    }
-    .shopNowbutton {
-      padding: 0.325em 1.75em;
-      font-size: $fontSize--p--Small-2;
     }
   }
 }

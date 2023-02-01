@@ -11,7 +11,6 @@ const CartItemQuantity = ({ _id, productName, quantity }: ItemQuantity) => {
     if (showInput) return;
     quantity >= 10 && setShowInput(true);
   }, [quantity]);
-
   return (
     <>
       {quantity < 10 && !showInput && (

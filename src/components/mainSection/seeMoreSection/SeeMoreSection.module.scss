@@ -57,10 +57,6 @@
   }
 }
 
-.shopNowbutton {
-  @include button($color-warmGray, $color-white, $color-lightGray);
-}
-
 .sofaButton {
   color: $color-black;
   border: none;

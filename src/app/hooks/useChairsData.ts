@@ -24,6 +24,7 @@ const useChairsData = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log("getAllProducts");
     getAllProducts()
       .then((data) => setAllChairsData(data))
       .catch((err) =>

@@ -1,4 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  PreloadedState,
+} from "@reduxjs/toolkit";
 import loginReducer from "../features/login/loginSlice";
 import searchReducer from "../features/search/searchSlice";
 import cartReducer from "../features/cart/cartItem/cartSlice";
@@ -30,7 +34,30 @@ const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+const rootReducer = combineReducers({
+  backdrop: backdropReducer,
+  utilModal: utilModalReducer,
+  infoModal: infoModalReducer,
+  navModal: navModalReducer,
+  designerModal: designerModalReducer,
+  searchModal: searchModalReducer,
+  cartModal: cartModalReducer,
+  carousel: carouselReducer,
+  slider: sliderReducer,
+  search: searchReducer,
+  cart: cartReducer,
+  login: loginReducer,
+});
+
+export function setupStore(preloadedState?: PreloadedState<RootState>) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+}
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore["dispatch"];
 
 export default store;

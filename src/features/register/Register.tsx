@@ -1,9 +1,8 @@
 import { useState } from "react";
 import FormLink from "../../components/ui/form/formLink/FormLink";
-import styles from "./Register.module.scss";
-import FormInput from "../../components/ui/form/formInput/FormInput";
 import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginButton";
 import useUser from "../../app/hooks/useUser";
+import Form from "../../components/ui/form/Form";
 
 const Register = () => {
   const { authUserSignup, isLoading } = useUser();
@@ -48,18 +47,17 @@ const Register = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
 
   return (
-    <form onSubmit={SignUpSubmitHandler} className={styles.form}>
-      {inputs.map((input) => (
-        <FormInput
-          key={input.id}
-          errorMessage={input.errorMessage}
-          props={{ ...input.input }}
-          onChange={changeHandler}
-        />
-      ))}
-      <FormLoginButton buttonText={"SIGN UP ➝"} disabled={isLoading} />
-      <FormLink link={"login"} content={"LOGIN HERE"} />
-    </form>
+    <Form
+      submitAction={SignUpSubmitHandler}
+      changeHandler={changeHandler}
+      inputs={inputs}
+      footer={
+        <>
+          <FormLoginButton buttonText={"SIGN UP ➝"} disabled={isLoading} />
+          <FormLink link={"login"} content={"LOGIN HERE"} />
+        </>
+      }
+    />
   );
 };
 

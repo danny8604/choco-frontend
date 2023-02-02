@@ -92,3 +92,16 @@ export interface FavoriteItem {
 export interface ChairDataProps {
   chairData: ProductsType;
 }
+
+export interface FormInputs {
+  id: number;
+  errorMessage: string;
+  input: {
+    type: string;
+    name: string;
+    label: string;
+    placeholder: string;
+    required: boolean;
+    pattern?: string;
+  };
+}

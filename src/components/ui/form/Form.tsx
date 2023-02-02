@@ -1,34 +1,27 @@
-import { baseURL } from "../../../api/axios";
-import Button from "../button/Button";
+import { FormInputs } from "../../../app/type";
 import styles from "./Form.module.scss";
+import FormInput from "./formInput/FormInput";
 
 type FormProps = {
-  formTitle: string;
-  children: JSX.Element;
-  showGoogleBtn?: boolean;
+  submitAction: (e: React.FormEvent<HTMLFormElement>) => void;
+  changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputs: FormInputs[];
+  footer?: JSX.Element;
 };
 
-const Form = ({ formTitle, children, showGoogleBtn }: FormProps) => {
-  const googleHandler = () => {
-    window.open(`${baseURL}auth/google`, "_self");
-  };
-
+const Form = ({ submitAction, inputs, changeHandler, footer }: FormProps) => {
   return (
-    <section className={styles.formWrapper}>
-      <h3>{formTitle}</h3>
-      <div className={styles.formContainer}>
-        {children}
-        {showGoogleBtn && (
-          <div className={styles.oAuthBtn}>
-            <Button
-              btnMessage={"GOOGLE"}
-              className={"google"}
-              clickAciton={googleHandler}
-            />
-          </div>
-        )}
-      </div>
-    </section>
+    <form onSubmit={submitAction} className={styles.form}>
+      {inputs.map((input) => (
+        <FormInput
+          key={input.id}
+          errorMessage={input.errorMessage}
+          props={{ ...input.input }}
+          onChange={changeHandler}
+        />
+      ))}
+      {footer}
+    </form>
   );
 };
 

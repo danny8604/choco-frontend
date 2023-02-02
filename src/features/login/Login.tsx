@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import FormLink from "../../components/ui/form/formLink/FormLink";
-import styles from "./Login.module.scss";
 import FormLoginButton from "../../components/ui/form/formLoginButton/FormLoginButton";
-import FormInput from "../../components/ui/form/formInput/FormInput";
 import useUser from "../../app/hooks/useUser";
+import { FormInputs } from "../../app/type";
+import Form from "../../components/ui/form/Form";
 
 const Login = () => {
   const { authUserLogin, isLoading } = useUser();
@@ -17,7 +17,7 @@ const Login = () => {
     authUserLogin(values.email, values.password);
   };
 
-  const inputs = [
+  const inputs: FormInputs[] = [
     {
       id: 1,
       errorMessage:
@@ -48,18 +48,17 @@ const Login = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
 
   return (
-    <form onSubmit={LoginSubmitHandler} className={styles.form}>
-      {inputs.map((input) => (
-        <FormInput
-          key={input.id}
-          errorMessage={input.errorMessage}
-          props={{ ...input.input }}
-          onChange={changeHandler}
-        />
-      ))}
-      <FormLoginButton buttonText={"LOGIN ➝"} disabled={isLoading} />
-      <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
-    </form>
+    <Form
+      submitAction={LoginSubmitHandler}
+      changeHandler={changeHandler}
+      inputs={inputs}
+      footer={
+        <>
+          <FormLoginButton buttonText={"LOGIN ➝"} disabled={isLoading} />
+          <FormLink link={"register"} content={"REGISTER CHOCO ACCOUNT"} />
+        </>
+      }
+    />
   );
 };
 

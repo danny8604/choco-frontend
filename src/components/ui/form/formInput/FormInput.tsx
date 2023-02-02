@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "./FormInput.module.scss";
 
-type FormInputProps = {
+export interface FormInputProps {
   props: {
     type: string;
     name: string;
@@ -9,10 +9,11 @@ type FormInputProps = {
     placeholder: string;
     pattern?: string;
     required: boolean;
+    value: string;
   };
   errorMessage: string;
   onChange: Dispatch<SetStateAction<any>>;
-};
+}
 
 const FormInput = ({ props, onChange, errorMessage }: FormInputProps) => {
   const [focused, setFocused] = useState(false);
@@ -43,8 +44,9 @@ const FormInput = ({ props, onChange, errorMessage }: FormInputProps) => {
 
   return (
     <div className={styles.formInput}>
-      <label>{placeholder}</label>
+      <label htmlFor={props.name}>{placeholder}</label>
       <input
+        id={props.name}
         defaultValue={defalutValue(props.name)}
         onChange={onChange}
         {...props}

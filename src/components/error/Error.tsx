@@ -3,7 +3,9 @@ import styles from "./Error.module.scss";
 const Error = () => {
   return (
     <section className={styles.errorPage}>
-      <div className={styles.errorText}>
+      <div
+        className={`${styles.errorText} flex-alignCenter-justifyCenter-column`}
+      >
         <h1>Opps</h1>
         <p>Sorry, an unexpected error has occurred...</p>
       </div>

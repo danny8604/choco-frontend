@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
-import useAuth from "../../app/hooks/useAuth";
 import useUser from "../../app/hooks/useUser";
 import { navModalToggle } from "../../features/navModal/navModalSlice";
 

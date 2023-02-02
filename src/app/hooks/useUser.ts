@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from "../../api/axios";
@@ -7,7 +6,6 @@ import {
   postUserLogin,
   postUserSignup,
 } from "../../api/usersApi";
-import getErrorMessage from "../../components/util/getErrorMessage";
 import {
   resetShoppingCart,
   userShoppingCart,

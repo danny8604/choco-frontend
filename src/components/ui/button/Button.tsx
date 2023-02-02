@@ -5,6 +5,8 @@ type ButtonProps = {
   className?: string;
   small?: boolean;
   whiteBG?: boolean;
+  disable?: boolean;
+  smallMarginTop?: boolean;
   clickAciton?: () => void;
 };
 
@@ -13,7 +15,9 @@ const Button = ({
   btnMessage,
   className,
   small,
+  disable,
   whiteBG,
+  smallMarginTop,
 }: ButtonProps) => {
   return (
     <button
@@ -21,6 +25,8 @@ const Button = ({
       className={`${styles.button} ${small && styles.small} ${
         className && styles[className]
       } ${whiteBG && styles.whiteBG}`}
+      data-smallMarginTop={smallMarginTop}
+      disabled={disable}
     >
       {btnMessage}
     </button>

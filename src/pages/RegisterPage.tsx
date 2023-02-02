@@ -1,14 +1,14 @@
 import { ScrollRestoration } from "react-router-dom";
-import Form from "../components/ui/form/Form";
+import FormWrapper from "../components/ui/form/FormWrapper";
 import Register from "../features/register/Register";
 
 const RegisterPage = () => {
   return (
     <main>
       <ScrollRestoration />
-      <Form formTitle={"REGISTER CHOCO STORE"}>
+      <FormWrapper formTitle={"REGISTER CHOCO STORE"}>
         <Register />
-      </Form>
+      </FormWrapper>
     </main>
   );
 };

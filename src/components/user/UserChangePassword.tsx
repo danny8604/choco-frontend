@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import useUser from "../../app/hooks/useUser";
+import Button from "../ui/button/Button";
+import Form from "../ui/form/Form";
 import FormInput from "../ui/form/formInput/FormInput";
 import styles from "./UserChangePassword.module.scss";
 
@@ -21,7 +23,7 @@ const UserChangePassword = () => {
         label: "originPassword",
         placeholder: "ORIGIN PASSWORD",
         pattern: "^[A-Za-z0-9]{8,20}$",
-        values: values.originPassword,
+        value: values.originPassword,
         required: true,
       },
     },
@@ -34,7 +36,7 @@ const UserChangePassword = () => {
         label: "newPassword",
         placeholder: "NEW PASSWORD",
         pattern: "^[A-Za-z0-9]{8,20}$",
-        values: values.newPassword,
+        value: values.newPassword,
         required: true,
       },
     },
@@ -47,7 +49,7 @@ const UserChangePassword = () => {
         label: "confirmPassword",
         placeholder: "CONFIRM PASSWORD",
         pattern: values.newPassword,
-        values: values.confirmPassword,
+        value: values.confirmPassword,
         required: true,
       },
     },
@@ -62,20 +64,14 @@ const UserChangePassword = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
 
   return (
-    <form
-      className={`${styles.form} ${isLoading && styles.isLoading}`}
-      onSubmit={submitHandler}
-    >
-      {inputs.map((input) => (
-        <FormInput
-          key={input.id}
-          onChange={changeHandler}
-          errorMessage={input.errorMessage}
-          props={{ ...input.input }}
-        />
-      ))}
-      <button disabled={isLoading}>SUBMIT</button>
-    </form>
+    <Form
+      submitAction={submitHandler}
+      inputs={inputs}
+      changeHandler={changeHandler}
+      footer={
+        <Button disable={isLoading} btnMessage={"SUBMIT"} smallMarginTop />
+      }
+    />
   );
 };
 

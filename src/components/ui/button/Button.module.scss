@@ -17,6 +17,15 @@
   }
 }
 
+.button[data-smallMarginTop="true"] {
+  margin-top: 2em;
+}
+
+.button:disabled {
+  background-color: $color-white;
+  color: $color-black;
+}
+
 .button.google {
   background-color: $color-red;
   border: solid 1px $color-red;

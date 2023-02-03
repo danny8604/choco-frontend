@@ -2,6 +2,9 @@ import { renderHook } from "@testing-library/react";
 import useSearch from "./useSearch";
 import user from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
+import { server } from "../../mocks/server";
+import { rest } from "msw";
+import { baseURL } from "../../api/axios";
 
 describe("useSearch", () => {
   const SearchInitialState = {
@@ -27,10 +30,30 @@ describe("useSearch", () => {
     expect(result.current.message).toBe(SearchInitialState.message);
   });
 
-  it("Should render error message order number wrong", async () => {
+  it("Should render no order message if order number is wrong", async () => {
     const { result } = renderHook(useSearch);
 
-    await act(() => result.current.fetchSearchResult("test error"));
+    await act(() =>
+      result.current.fetchSearchResult("test wrong order number")
+    );
+
+    expect(result.current.message).toBe(
+      "Can't find order for the provided order number, please check your number and try again later."
+    );
+  });
+
+  it("Should render server error message", async () => {
+    server.use(
+      rest.get(`${baseURL}api/users/getOrders/:searchInput`, (req, res, ctx) =>
+        res(ctx.status(500))
+      )
+    );
+
+    const { result } = renderHook(useSearch);
+
+    await act(() =>
+      result.current.fetchSearchResult("test server error message")
+    );
 
     expect(result.current.message).toBe(
       "can't find the order for the provider order number."

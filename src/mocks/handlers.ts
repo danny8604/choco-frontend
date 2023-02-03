@@ -20,9 +20,9 @@ export const handlers = [
       );
     }
     return res(
-      ctx.status(500),
+      ctx.status(200),
       ctx.json({
-        data: "no order",
+        order: null,
       })
     );
   }),

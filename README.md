@@ -4,7 +4,7 @@
 
 前端 : 
 
-React : js框架 狀態管理使用Redux 路由使用Routerv6
+React :  狀態管理使用Redux 路由使用Routerv6
 
 Typescript : 現在很多專案已經使用TS來減少bug的產生 所以使用的TS來建置
 

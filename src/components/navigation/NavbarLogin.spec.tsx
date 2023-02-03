@@ -1,6 +1,5 @@
-import { getByRole, render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
 import { LoginState } from "../../features/login/loginSlice";
 import { renderWithProviders } from "../util/test-utils";
 import NavbarLogin from "./NavbarLogin";

@@ -1,5 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter, Router } from "react-router-dom";
+import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../util/test-utils";
 import Navbar from "./Navbar";
 

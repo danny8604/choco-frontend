@@ -25,7 +25,7 @@ const Button = ({
       className={`${styles.button} ${small && styles.small} ${
         className && styles[className]
       } ${whiteBG && styles.whiteBG}`}
-      data-smallMarginTop={smallMarginTop}
+      data-smallmargintop={smallMarginTop}
       disabled={disable}
     >
       {btnMessage}

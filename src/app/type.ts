@@ -72,6 +72,7 @@ export interface Order {
   createdAt: string;
   updatedAt: string;
 }
+
 export interface Orders {
   orders: [
     {

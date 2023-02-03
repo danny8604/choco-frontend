@@ -6,6 +6,8 @@ import { renderWithProviders } from "../util/test-utils";
 import NavbarLogin from "./NavbarLogin";
 
 describe("NavvarLogin", () => {
+  const render = <NavbarLogin />;
+
   const initialLoginState: LoginState = {
     userId: "testId",
     userEmail: "test@test.com",
@@ -19,22 +21,14 @@ describe("NavvarLogin", () => {
   };
 
   it("Should render link", () => {
-    renderWithProviders(
-      <BrowserRouter>
-        <NavbarLogin />
-      </BrowserRouter>
-    );
+    renderWithProviders(render);
 
     const link = screen.getByRole("link");
 
     expect(link).toBeInTheDocument();
   });
   it("Should render link with LOGIN text", () => {
-    renderWithProviders(
-      <BrowserRouter>
-        <NavbarLogin />
-      </BrowserRouter>
-    );
+    renderWithProviders(render);
 
     const link = screen.getByRole("link");
 
@@ -42,11 +36,7 @@ describe("NavvarLogin", () => {
   });
 
   it("Should not render link with LOGIN", () => {
-    renderWithProviders(
-      <BrowserRouter>
-        <NavbarLogin />
-      </BrowserRouter>
-    );
+    renderWithProviders(render);
 
     const link = screen.getByRole("link");
 
@@ -54,16 +44,11 @@ describe("NavvarLogin", () => {
   });
 
   it("Should render link with LOGOUT", async () => {
-    renderWithProviders(
-      <BrowserRouter>
-        <NavbarLogin />
-      </BrowserRouter>,
-      {
-        preloadedState: {
-          login: initialLoginState,
-        },
-      }
-    );
+    renderWithProviders(render, {
+      preloadedState: {
+        login: initialLoginState,
+      },
+    });
 
     const link = screen.getByRole("link");
 
@@ -73,16 +58,11 @@ describe("NavvarLogin", () => {
   it("Should render link with LOGIN when click logout link", async () => {
     user.setup();
 
-    renderWithProviders(
-      <BrowserRouter>
-        <NavbarLogin />
-      </BrowserRouter>,
-      {
-        preloadedState: {
-          login: initialLoginState,
-        },
-      }
-    );
+    renderWithProviders(render, {
+      preloadedState: {
+        login: initialLoginState,
+      },
+    });
 
     const link = screen.getByRole("link");
 

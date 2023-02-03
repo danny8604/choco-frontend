@@ -5,11 +5,7 @@ import Navbar from "./Navbar";
 
 describe("Navbar", () => {
   it("Should render correctly", () => {
-    renderWithProviders(
-      <BrowserRouter>
-        <Navbar />
-      </BrowserRouter>
-    );
+    renderWithProviders(<Navbar />);
 
     const navBtn = screen.getByText(/HOME ROOM CHAIR/i);
 

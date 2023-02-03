@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FavoriteItem, ShoppingCartItem } from "../../app/type";
 
-interface LoginState {
+export interface LoginState {
   userId: null | string;
   userEmail: null | string;
   userToken: null | string;

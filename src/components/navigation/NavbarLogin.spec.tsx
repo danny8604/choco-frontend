@@ -69,4 +69,25 @@ describe("NavvarLogin", () => {
 
     expect(link).toHaveTextContent(/LOGOUT/i);
   });
+
+  it("Should render link with LOGIN when click logout link", async () => {
+    user.setup();
+
+    renderWithProviders(
+      <BrowserRouter>
+        <NavbarLogin />
+      </BrowserRouter>,
+      {
+        preloadedState: {
+          login: initialLoginState,
+        },
+      }
+    );
+
+    const link = screen.getByRole("link");
+
+    await user.click(link);
+
+    expect(link).toHaveTextContent(/LOGIN/i);
+  });
 });

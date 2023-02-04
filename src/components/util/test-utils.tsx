@@ -1,14 +1,25 @@
 import { PreloadedState } from "@reduxjs/toolkit";
 import { render, RenderOptions } from "@testing-library/react";
-import { PropsWithChildren } from "react";
+import { FC, PropsWithChildren, ReactElement } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Router, RouterProvider } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { AppStore, RootState, setupStore } from "../../app/store";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<RootState>;
   store?: AppStore;
 }
+const RouterProviders = ({ children }: PropsWithChildren<{}>) => {
+  return <BrowserRouter>{children}</BrowserRouter>;
+};
+
+const customRender = (
+  ui: ReactElement,
+  options?: Omit<RenderOptions, "wrapper">
+) => render(ui, { wrapper: RouterProviders, ...options });
+
+export * from "@testing-library/react";
+export { customRender as render };
 
 export function renderWithProviders(
   ui: React.ReactElement,

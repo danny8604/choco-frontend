@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import useChairsData from "../../app/hooks/useChairsData";
+import { useDebounce } from "../../app/hooks/useDebounce";
 import RemoveIconBtn from "../../components/ui/button/removeIconBtn/RemoveIconBtn";
 import { closeBackdrop } from "../backdrop/backdropSlice";
 import { closeSearchModal } from "../searchModal/searchModalSlice";
@@ -15,22 +16,22 @@ const Search = () => {
   const search = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
   const { allChairsData } = useChairsData({});
+  const debounceValue = useDebounce(search.value, 250);
 
   useEffect(() => {
     dispatch(searchValueIsValid());
-    if (search.value.length < 1 || !allChairsData) return;
-
+    if (search.value.length < 1 || !allChairsData || !debounceValue) return;
     dispatch(
       filterSearchData(
         allChairsData.filter((item) =>
           item.productName
             .trim()
             .toLowerCase()
-            .includes(search.value.toLowerCase().trim())
+            .includes(debounceValue!.toLowerCase().trim())
         )
       )
     );
-  }, [search.value]);
+  }, [debounceValue]);
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

@@ -6,8 +6,7 @@
 
 React :  狀態管理使用Redux 路由使用Routerv6
 
-Typescript : 現在很多專案已經使用TS來減少bug的產生 所以使用的TS來建置
-
+Typescript : 現在很多專案已經使用TS來減少bug的產生 
 Scss : 使用Scss及 css module
 
 Vite : Vite較webpack設置上較方便且更快速
